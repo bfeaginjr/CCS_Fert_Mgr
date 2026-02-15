@@ -1,0 +1,67 @@
+: 80_0
+3 JUMP ;
+: 80_2
+
+1 LINE.NUM
+  1.0    FDELAY
+2 JUMP ;
+: 80_5
+
+1 LINE.NUM
+  1.0    FDELAY
+2 JUMP ;
+: 80_7
+1 LINE.NUM ^uiEditGS3_AssignID @@ {tGS3ID_Unassigned $TABLE@ ^uiEditGS3_AssignProgramID @@ 1 - {tGS3ID_ProgramIndex $TABLE@  $MOVE 
+2 LINE.NUM ^uiEditGS3_AssignID @@ {tGS3ID_Unassigned $TABLE@ ^uiEditGS3_AssignProgramID @@ 1 - {tGS3_Descriptions $TABLE@  $MOVE 
+3 LINE.NUM 0 ^uiEditGS3_AssignProgramID @@ 1 -  }tGS3_Mineral TABLE! 
+5 LINE.NUM " " ^uiEditGS3_AssignID @@ {tGS3ID_Unassigned $TABLE@  $MOVE 
+7 LINE.NUM ^uiEditGS3_AssignProgramID @@ 1 -  ^uiEditGS3_AssignID @! 
+10 LINE.NUM " " ^uiEditGS3_AssignID @@ {tGS3_UpdateTime $TABLE@  $MOVE 
+11 LINE.NUM 0 ^uiEditGS3_AssignID @@ }tCurGS3_UpdateTime TABLE! 
+12 LINE.NUM 0 I>F ^uiEditGS3_AssignID @@ }tCurGS3_Volts TABLE! 
+14 LINE.NUM ^uiEditGS3_AssignID @@ 3 *  ^uiEditGS3_AssignID @! 
+15 LINE.NUM 0 I>F ^uiEditGS3_AssignID @@ }tCurGS3_Temp TABLE! 
+16 LINE.NUM 0 I>F ^uiEditGS3_AssignID @@ }tCurGS3_EC TABLE! 
+17 LINE.NUM 0 I>F ^uiEditGS3_AssignID @@ }tCurGS3_VWC TABLE! 
+19 LINE.NUM ^uiEditGS3_AssignID @@ 1 +  ^uiEditGS3_AssignID @! 
+20 LINE.NUM 0 I>F ^uiEditGS3_AssignID @@ }tCurGS3_Temp TABLE! 
+21 LINE.NUM 0 I>F ^uiEditGS3_AssignID @@ }tCurGS3_EC TABLE! 
+22 LINE.NUM 0 I>F ^uiEditGS3_AssignID @@ }tCurGS3_VWC TABLE! 
+24 LINE.NUM ^uiEditGS3_AssignID @@ 1 +  ^uiEditGS3_AssignID @! 
+25 LINE.NUM 0 I>F ^uiEditGS3_AssignID @@ }tCurGS3_Temp TABLE! 
+26 LINE.NUM 0 I>F ^uiEditGS3_AssignID @@ }tCurGS3_EC TABLE! 
+27 LINE.NUM 0 I>F ^uiEditGS3_AssignID @@ }tCurGS3_VWC TABLE! 
+29 LINE.NUM -1 ^uiEditGS3_AssignID @! 
+30 LINE.NUM -1 ^uiEditGS3_AssignProgramID @! 
+2 JUMP ;
+: 80_1
+TRUE
+
+1 LINE.NUM
+  ^uiEditGS3_AssignID @@ 
+  0    >=
+LAND
+IF 0 ELSE -4 THEN JUMP ;
+: 80_4
+TRUE
+
+1 LINE.NUM
+  ^uiEditGS3_AssignProgramID @@ 
+  21    <
+LAND
+
+2 LINE.NUM
+  ^uiEditGS3_AssignProgramID @@ 
+  0    >
+LAND
+IF -3 ELSE -4 THEN JUMP ;
+T: T80
+DUMMY
+80_0
+80_2
+80_5
+80_7
+80_1
+80_4
+T;
+&XBEE_AssignNode ' T80 SETTASK

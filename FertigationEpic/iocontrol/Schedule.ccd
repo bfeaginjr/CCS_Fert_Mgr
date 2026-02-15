@@ -1,0 +1,816 @@
+: 98_0
+19 JUMP ;
+: 98_283
+-2 JUMP ;
+: 98_288
+11 JUMP ;
+: 98_289
+8 LINE.NUM ^uiTempProgramNum @@ ^uiEditProgramNum @@ = IF 
+1 9 LINE.NUM ^cMaxZones @@ 1 -  1 + 0 DO? I ^iStartEditProg_Tmp5 @! 
+11 LINE.NUM ^iStartEditProg_Tmp5 @@ }uiEditZoneFlags TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp5 @@ +  }uiProgramZoneFlags TABLE@ <> IF 
+11 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+11 LINE.NUM THEN 
+12 LINE.NUM ^iStartEditProg_Tmp5 @@ }uiEditZoneStartTime TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp5 @@ +  }uiProgramZoneStartTime TABLE@ F<> IF 
+12 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+12 LINE.NUM 0 ^iUndoEditProgram @! 
+12 LINE.NUM THEN 
+13 LINE.NUM ^iStartEditProg_Tmp5 @@ }uiEditZoneStopTime TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp5 @@ +  }uiProgramZoneStopTime TABLE@ F<> IF 
+13 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+13 LINE.NUM 0 ^iUndoEditProgram @! 
+13 LINE.NUM THEN 
+14 LINE.NUM ^iStartEditProg_Tmp5 @@ }uiEditZoneRestTime TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp5 @@ +  }uiProgramZoneRestTime TABLE@ F<> IF 
+14 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+14 LINE.NUM 0 ^iUndoEditProgram @! 
+14 LINE.NUM THEN 
+15 LINE.NUM ^iStartEditProg_Tmp5 @@ }uiEditZoneTriggerTime TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp5 @@ +  }uiProgramZoneTriggerTime TABLE@ F<> IF 
+15 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+15 LINE.NUM 0 ^iUndoEditProgram @! 
+15 LINE.NUM THEN 
+16 LINE.NUM ^iStartEditProg_Tmp5 @@ }uiEditZoneValveMultiplier TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp5 @@ +  }uiProgramZoneValveMultiplier TABLE@ F<> IF 
+16 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+16 LINE.NUM 0 ^iUndoEditProgram @! 
+16 LINE.NUM THEN 
+17 LINE.NUM ^iStartEditProg_Tmp5 @@ }uiEditZoneSolarSP TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp5 @@ +  }uiProgramZoneSolarSP TABLE@ F<> IF 
+17 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+17 LINE.NUM 0 ^iUndoEditProgram @! 
+17 LINE.NUM THEN 
+18 LINE.NUM ^iStartEditProg_Tmp5 @@ }uiEditZoneAuxECSP TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp5 @@ +  }uiProgramZoneAuxECSP TABLE@ F<> IF 
+18 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+18 LINE.NUM 0 ^iUndoEditProgram @! 
+18 LINE.NUM THEN 
+19 LINE.NUM ^iStartEditProg_Tmp5 @@ }uiEditZoneExternalStart TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp5 @@ +  }uiProgramZoneExternalStart TABLE@ <> IF 
+19 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+19 LINE.NUM 0 ^iUndoEditProgram @! 
+19 LINE.NUM THEN 
+20 LINE.NUM ^iStartEditProg_Tmp5 @@ }uiEditZoneMoisterSP TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp5 @@ +  }uiProgramZoneMoisterSP TABLE@ F<> IF 
+20 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+20 LINE.NUM 0 ^iUndoEditProgram @! 
+20 LINE.NUM THEN 
+21 LINE.NUM ^iStartEditProg_Tmp5 @@ }uiEditZoneMoisterDB TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp5 @@ +  }uiProgramZoneMoisterDB TABLE@ F<> IF 
+21 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+21 LINE.NUM 0 ^iUndoEditProgram @! 
+21 LINE.NUM THEN 
+23 LINE.NUM ^uoDispAuxNum @@ ^uiEditProgramNum @@ }uiProgram_Auxiliaries TABLE@ <> IF 
+23 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+23 LINE.NUM 0 ^iUndoEditProgram @! 
+23 LINE.NUM THEN 
+25 LINE.NUM ^iStartEditProg_Tmp5 @@ {uiEditZoneStartDate $TABLE@ 2 ^iStartEditProg_Tmp5 @@ *  ^uiEditProgramNum @@ ^cMaxZones @@ *  ^cMaxZoneDateVariables @@ *  +  ^cPD_ZD_StartDateNdx @@ + {uiProgramZoneDates $TABLE@ $= LNOT  IF 
+26 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+27 LINE.NUM 0 ^iUndoEditProgram @! 
+28 LINE.NUM THEN 
+30 LINE.NUM ^iStartEditProg_Tmp5 @@ {uiEditZoneStopDate $TABLE@ 2 ^iStartEditProg_Tmp5 @@ *  ^uiEditProgramNum @@ ^cMaxZones @@ *  ^cMaxZoneDateVariables @@ *  +  ^cPD_ZD_StopDateNdx @@ + {uiProgramZoneDates $TABLE@ $= LNOT  IF 
+31 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+32 LINE.NUM 0 ^iUndoEditProgram @! 
+33 LINE.NUM THEN 
+35 LINE.NUM *uiEditProgramName ^uiEditProgramNum @@ {uiProgramName $TABLE@ $= LNOT  IF 
+36 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+37 LINE.NUM 0 ^iUndoEditProgram @! 
+38 LINE.NUM THEN 
+40 LINE.NUM *uoDispGroupName ^uoDispGroupNum @@ {uiGroupName $TABLE@ $= LNOT  IF 
+41 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+42 LINE.NUM THEN 
+44 LINE.NUM *uoDispRecipeName ^uoDispRecipeNum @@ {uiRecipeName $TABLE@ $= LNOT  IF 
+45 LINE.NUM " Unsaved!" *sSaveEditProgram  $MOVE 
+46 LINE.NUM THEN 
+48 LINE.NUM 1 +LOOP 
+49 LINE.NUM THEN 
+0 JUMP ;
+: 98_296
+6 LINE.NUM 0 ^iEditProgramError @! 
+8 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ ^cMaxZoneDateVariables @@ *  *  ^iSaveErrorProg_Tmp1 @! 
+9 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveErrorProg_Tmp2 @! 
+12 LINE.NUM -1 ^iTempStartYearNum @! 
+13 LINE.NUM -1 ^iTempStartMonthNum @! 
+14 LINE.NUM -1 ^iTempStartDayNum @! 
+15 LINE.NUM -1 ^iTempStopYearNum @! 
+16 LINE.NUM -1 ^iTempStopMonthNum @! 
+17 LINE.NUM -1 ^iTempStopDayNum @! 
+19 LINE.NUM 0 ^iSaveErrorProg_Tmp3 @! 
+20 LINE.NUM BEGIN ^iSaveErrorProg_Tmp3 @@ ^cMaxZones @@ < WHILE 
+23 LINE.NUM ^iSaveErrorProg_Tmp3 @@ {uiEditZoneStartDate $TABLE@ ^iSaveErrorProg_Tmp1 @@ ^cPD_ZD_StartDateNdx @@ + {uiEditZoneDates $TABLE@  $MOVE 
+25 LINE.NUM ^iSaveErrorProg_Tmp1 @@ ^cPD_ZD_StartDateNdx @@ + {uiEditZoneDates $TABLE@ 0 4 *sTempStartYear  $SUB 
+26 LINE.NUM *sTempStartYear  $>I ^iTempStartYearNum @! 
+27 LINE.NUM ^iSaveErrorProg_Tmp1 @@ ^cPD_ZD_StartDateNdx @@ + {uiEditZoneDates $TABLE@ 5 2 *sTempStartMonth  $SUB 
+28 LINE.NUM *sTempStartMonth  $>I ^iTempStartMonthNum @! 
+29 LINE.NUM ^iSaveErrorProg_Tmp1 @@ ^cPD_ZD_StartDateNdx @@ + {uiEditZoneDates $TABLE@ 8 2 *sTempStartDay  $SUB 
+30 LINE.NUM *sTempStartDay  $>I ^iTempStartDayNum @! 
+32 LINE.NUM 0 ^iLeapYear @! 
+33 LINE.NUM ^iTempStartYearNum @@ 4 MOD  0 = ^iTempStartMonthNum @@ 2 > LAND  IF 
+34 LINE.NUM 1 ^iLeapYear @! 
+35 LINE.NUM ELSE 
+36 LINE.NUM 0 ^iLeapYear @! 
+37 LINE.NUM THEN 
+39 LINE.NUM ^iTempStartYearNum @@ 2020 - I>F 3.65250000e+002 F* ^iTempStartMonthNum @@ }MonthToDays TABLE@F F+ ^iTempStartDayNum @@F F+ ^iLeapYear @@F F+ ^iSaveErrorProg_Tmp2 @@ ^iSaveErrorProg_Tmp3 @@ +  }uiEditZoneStartDays FTABLE! 
+40 LINE.NUM ^iSaveErrorProg_Tmp2 @@ ^iSaveErrorProg_Tmp3 @@ +  }uiEditZoneStartDays TABLE@ ^iSaveErrorProg_Tmp3 @@ }uiEditZoneStartDay TABLE! 
+42 LINE.NUM ^iSaveErrorProg_Tmp3 @@ {uiEditZoneStopDate $TABLE@ ^iSaveErrorProg_Tmp1 @@ ^cPD_ZD_StopDateNdx @@ + {uiEditZoneDates $TABLE@  $MOVE 
+44 LINE.NUM ^iSaveErrorProg_Tmp1 @@ ^cPD_ZD_StopDateNdx @@ + {uiEditZoneDates $TABLE@ 0 4 *sTempStopYear  $SUB 
+45 LINE.NUM *sTempStopYear  $>I ^iTempStopYearNum @! 
+46 LINE.NUM ^iSaveErrorProg_Tmp1 @@ ^cPD_ZD_StopDateNdx @@ + {uiEditZoneDates $TABLE@ 5 2 *sTempStopMonth  $SUB 
+47 LINE.NUM *sTempStopMonth  $>I ^iTempStopMonthNum @! 
+48 LINE.NUM ^iSaveErrorProg_Tmp1 @@ ^cPD_ZD_StopDateNdx @@ + {uiEditZoneDates $TABLE@ 8 2 *sTempStopDay  $SUB 
+49 LINE.NUM *sTempStopDay  $>I ^iTempStopDayNum @! 
+51 LINE.NUM 0 ^iLeapYear @! 
+52 LINE.NUM ^iTempStopYearNum @@ 4 MOD  0 = ^iTempStopMonthNum @@ 2 > LAND  IF 
+53 LINE.NUM 1 ^iLeapYear @! 
+54 LINE.NUM ELSE 
+55 LINE.NUM 0 ^iLeapYear @! 
+56 LINE.NUM THEN 
+58 LINE.NUM ^iTempStopYearNum @@ 2020 - I>F 3.65250000e+002 F* ^iTempStopMonthNum @@ }MonthToDays TABLE@F F+ ^iTempStopDayNum @@F F+ ^iLeapYear @@F F+ ^iSaveErrorProg_Tmp2 @@ ^iSaveErrorProg_Tmp3 @@ +  }uiEditZoneStopDays FTABLE! 
+59 LINE.NUM ^iSaveErrorProg_Tmp2 @@ ^iSaveErrorProg_Tmp3 @@ +  }uiEditZoneStopDays TABLE@ ^iSaveErrorProg_Tmp3 @@ }uiEditZoneStopDay TABLE! 
+61 LINE.NUM ^iSaveErrorProg_Tmp2 @@ ^iSaveErrorProg_Tmp3 @@ +  }uiEditZoneStopDays TABLE@ ^iSaveErrorProg_Tmp2 @@ ^iSaveErrorProg_Tmp3 @@ +  }uiEditZoneStartDays TABLE@ -  ^iSaveErrorProg_Tmp2 @@ ^iSaveErrorProg_Tmp3 @@ +  }uiEditZoneDays TABLE! 
+63 LINE.NUM ^iSaveErrorProg_Tmp2 @@ ^iSaveErrorProg_Tmp3 @@ +  }uiEditZoneDays TABLE@ 0 < IF 
+64 LINE.NUM 0 ^iSaveErrorProg_Tmp3 @@ }uoDispProgramZoneDays TABLE! 
+65 LINE.NUM ELSE 
+66 LINE.NUM ^iSaveErrorProg_Tmp2 @@ ^iSaveErrorProg_Tmp3 @@ +  }uiEditZoneDays TABLE@ ^iSaveErrorProg_Tmp3 @@ }uoDispProgramZoneDays TABLE! 
+67 LINE.NUM THEN 
+69 LINE.NUM ^iSaveErrorProg_Tmp1 @@ ^cMaxZoneDateVariables @@ +  ^iSaveErrorProg_Tmp1 @! 
+71 LINE.NUM ^iSaveErrorProg_Tmp3 @@ 1 +  ^iSaveErrorProg_Tmp3 @! 
+73 LINE.NUM REPEAT 
+75 LINE.NUM 0 ^iSaveEditProgErrorCheck @! 
+76 LINE.NUM BEGIN ^iSaveEditProgErrorCheck @@ ^cMaxZones @@ < WHILE 
+79 LINE.NUM ^iSaveEditProgErrorCheck @@ {uoDispCurrentZoneRecipes $TABLE@ " " $= ^iSaveEditProgErrorCheck @@ }uiEditZoneFlags TABLE@ 1 = LAND  IF 
+80 LINE.NUM ^iSaveEditProgErrorCheck @@ 1 +  *uoErrorMessage  I>$ 
+81 LINE.NUM *_HSV_SEMA Acquire1String " Prog. "  *_HSV_TEMP $MOVE *uoErrorMessage  *_HSV_TEMP $CAT " : Schedule enabled but no recipe selected"  *_HSV_TEMP $CAT *_HSV_TEMP *uoErrorMessage $MOVE Release1String 
+82 LINE.NUM 1 ^iEditProgramError @! 
+83 LINE.NUM THEN 
+85 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProgErrorCheck @@ +  ^iSaveEditProgErrorDate @! 
+87 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStartTime TABLE@ 0 I>F F> IF 
+89 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStopTime TABLE@ ^iSaveEditProgErrorCheck @@ }uiEditZoneStartTime TABLE@ F< IF 
+90 LINE.NUM ^iSaveEditProgErrorCheck @@ ^iSaveEditOverLap @! 
+91 LINE.NUM ELSE 
+92 LINE.NUM -1 ^iSaveEditOverLap @! 
+93 LINE.NUM THEN 
+95 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStopTime TABLE@ 0 I>F F<= IF 
+97 LINE.NUM ^iSaveEditProgErrorCheck @@ 1 +  *uoErrorMessage  I>$ 
+98 LINE.NUM *_HSV_SEMA Acquire1String " Time Prog. "  *_HSV_TEMP $MOVE *uoErrorMessage  *_HSV_TEMP $CAT " : Stop time must be greater than 0"  *_HSV_TEMP $CAT *_HSV_TEMP *uoErrorMessage $MOVE Release1String 
+99 LINE.NUM 1 ^iEditProgramError @! 
+101 LINE.NUM ELSE 
+101 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStopTime TABLE@ ^iSaveEditProgErrorCheck @@ }uiEditZoneStartTime TABLE@ F<= IF 
+102 LINE.NUM ^iSaveEditProgErrorCheck @@ ^iSaveEditOverLap @@ <> IF 
+103 LINE.NUM ^iSaveEditProgErrorCheck @@ 1 +  *uoErrorMessage  I>$ 
+104 LINE.NUM *_HSV_SEMA Acquire1String " Time Prog. "  *_HSV_TEMP $MOVE *uoErrorMessage  *_HSV_TEMP $CAT " : Stop time must greater than start time"  *_HSV_TEMP $CAT *_HSV_TEMP *uoErrorMessage $MOVE Release1String 
+105 LINE.NUM 1 ^iEditProgramError @! 
+106 LINE.NUM THEN 
+107 LINE.NUM THEN THEN 
+109 LINE.NUM THEN 
+112 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStartTime TABLE@ ^iSaveEditProgErrorCheck @@ }iStartTimeTmp FTABLE! 
+113 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStopTime TABLE@ ^iSaveEditProgErrorCheck @@ }iStopTimeTmp FTABLE! 
+115 LINE.NUM ^iSaveEditProgErrorCheck @@ }iStartTimeTmp TABLE@F ^iSaveEditProgErrorCheck @@ }uiEditZoneStartTime TABLE@ F- 0 I>F F> IF 
+117 LINE.NUM ^iSaveEditProgErrorCheck @@ }iStartTimeTmp TABLE@ 1 -  ^iSaveEditProgErrorCheck @@ }iStartTimeTmp TABLE! 
+119 LINE.NUM THEN 
+121 LINE.NUM ^iSaveEditProgErrorCheck @@ }iStopTimeTmp TABLE@F ^iSaveEditProgErrorCheck @@ }uiEditZoneStopTime TABLE@ F- 0 I>F F> IF 
+123 LINE.NUM ^iSaveEditProgErrorCheck @@ }iStopTimeTmp TABLE@ 1 -  ^iSaveEditProgErrorCheck @@ }iStopTimeTmp TABLE! 
+125 LINE.NUM THEN 
+129 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStartTime TABLE@ ^iSaveEditProgErrorCheck @@ }iStartTimeTmp TABLE@F F- 6.00000024e-001 F>= ^iSaveEditProgErrorCheck @@ }uiEditZoneStopTime TABLE@ ^iSaveEditProgErrorCheck @@ }iStopTimeTmp TABLE@F F- 6.00000024e-001 F>= LOR  IF 
+131 LINE.NUM ^iSaveEditProgErrorCheck @@ 1 +  *uoErrorMessage  I>$ 
+132 LINE.NUM *_HSV_SEMA Acquire1String " Time Prog. "  *_HSV_TEMP $MOVE *uoErrorMessage  *_HSV_TEMP $CAT " : Minute entry must be less than 60"  *_HSV_TEMP $CAT *_HSV_TEMP *uoErrorMessage $MOVE Release1String 
+133 LINE.NUM 1 ^iEditProgramError @! 
+135 LINE.NUM THEN 
+138 LINE.NUM ^iSaveEditProgErrorDate @@ }uiEditZoneStartDays TABLE@ 0 > IF 
+139 LINE.NUM ^iSaveEditProgErrorDate @@ }uiEditZoneStopDays TABLE@ 0 <= IF 
+140 LINE.NUM ^iSaveEditProgErrorCheck @@ 1 +  *uoErrorMessage  I>$ 
+141 LINE.NUM *_HSV_SEMA Acquire1String " Date Prog. "  *_HSV_TEMP $MOVE *uoErrorMessage  *_HSV_TEMP $CAT " : Stop date must be greater than 0"  *_HSV_TEMP $CAT *_HSV_TEMP *uoErrorMessage $MOVE Release1String 
+142 LINE.NUM 1 ^iEditProgramError @! 
+143 LINE.NUM ELSE 
+143 LINE.NUM ^iSaveEditProgErrorDate @@ }uiEditZoneStopDays TABLE@ ^iSaveEditProgErrorDate @@ }uiEditZoneStartDays TABLE@ < IF 
+144 LINE.NUM ^iSaveEditProgErrorCheck @@ 1 +  *uoErrorMessage  I>$ 
+145 LINE.NUM *_HSV_SEMA Acquire1String " Date Prog. "  *_HSV_TEMP $MOVE *uoErrorMessage  *_HSV_TEMP $CAT " : Stop date must be greater than or equal to start date"  *_HSV_TEMP $CAT *_HSV_TEMP *uoErrorMessage $MOVE Release1String 
+146 LINE.NUM 1 ^iEditProgramError @! 
+147 LINE.NUM THEN THEN 
+148 LINE.NUM THEN 
+150 LINE.NUM ^iSaveEditProgErrorCheck @@ 0 >= IF 
+1 153 LINE.NUM ^cMaxZones @@ 1 -  1 + 0 DO? I ^nZoneErrorIndex @! 
+155 LINE.NUM ^nZoneErrorIndex @@ ^iSaveEditProgErrorCheck @@ <> IF 
+158 LINE.NUM ^iSaveEditProgErrorCheck @@ ^iSaveEditOverLap @@ <> IF 
+159 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStartTime TABLE@ ^nZoneErrorIndex @@ }uiEditZoneStopTime TABLE@ F< IF 
+160 LINE.NUM ^nZoneErrorIndex @@ }uiEditZoneStartTime TABLE@ ^iSaveEditProgErrorCheck @@ }uiEditZoneStopTime TABLE@ F< IF 
+161 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStartDay TABLE@ 0 < ^iSaveEditProgErrorCheck @@ }uiEditZoneStopDay TABLE@ 0 < LAND  IF 
+162 LINE.NUM ^iSaveEditProgErrorCheck @@ 1 +  *uoErrorMessage  I>$ 
+163 LINE.NUM *_HSV_SEMA Acquire1String " Time Prog. "  *_HSV_TEMP $MOVE *uoErrorMessage  *_HSV_TEMP $CAT " : Start time overlaps previous stop time"  *_HSV_TEMP $CAT *_HSV_TEMP *uoErrorMessage $MOVE Release1String 
+164 LINE.NUM 1 ^iEditProgramError @! 
+165 LINE.NUM THEN 
+166 LINE.NUM THEN 
+167 LINE.NUM THEN 
+168 LINE.NUM THEN 
+170 LINE.NUM ^iSaveEditProgErrorCheck @@ ^iSaveEditOverLap @@ = IF 
+171 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStartTime TABLE@ 0 I>F F> ^iSaveEditProgErrorCheck @@ }uiEditZoneStopTime TABLE@ 0 I>F F> LAND  ^nZoneErrorIndex @@ }uiEditZoneStartTime TABLE@ 0 I>F F> LAND  ^nZoneErrorIndex @@ }uiEditZoneStopTime TABLE@ 0 I>F F> LAND  IF 
+172 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStartTime TABLE@ ^nZoneErrorIndex @@ }uiEditZoneStopTime TABLE@ F< IF 
+173 LINE.NUM ^nZoneErrorIndex @@ }uiEditZoneStartTime TABLE@ ^iSaveEditProgErrorCheck @@ }uiEditZoneStopTime TABLE@ F> IF 
+174 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStartDay TABLE@ 0 < ^iSaveEditProgErrorCheck @@ }uiEditZoneStopDay TABLE@ 0 < LAND  IF 
+175 LINE.NUM ^iSaveEditProgErrorCheck @@ 1 +  *uoErrorMessage  I>$ 
+176 LINE.NUM *_HSV_SEMA Acquire1String " Time Prog. "  *_HSV_TEMP $MOVE *uoErrorMessage  *_HSV_TEMP $CAT " : Start time overlaps previous stop time"  *_HSV_TEMP $CAT *_HSV_TEMP *uoErrorMessage $MOVE Release1String 
+177 LINE.NUM 1 ^iEditProgramError @! 
+178 LINE.NUM THEN 
+179 LINE.NUM THEN 
+180 LINE.NUM THEN 
+181 LINE.NUM THEN 
+182 LINE.NUM THEN 
+185 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStartTime TABLE@ ^nZoneErrorIndex @@ }uiEditZoneStopTime TABLE@ F< IF 
+186 LINE.NUM ^nZoneErrorIndex @@ }uiEditZoneStartTime TABLE@ ^iSaveEditProgErrorCheck @@ }uiEditZoneStopTime TABLE@ F< IF 
+187 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStartDay TABLE@ 0 > ^iSaveEditProgErrorCheck @@ }uiEditZoneStopDay TABLE@ 0 > LAND  IF 
+188 LINE.NUM ^iSaveEditProgErrorCheck @@ }uiEditZoneStartDay TABLE@ ^nZoneErrorIndex @@ }uiEditZoneStopDay TABLE@ <= ^iSaveEditProgErrorCheck @@ }uiEditZoneStopDay TABLE@ ^nZoneErrorIndex @@ }uiEditZoneStartDay TABLE@ <= LOR  IF 
+189 LINE.NUM ^nZoneErrorIndex @@ }uiEditZoneStartDay TABLE@ ^iSaveEditProgErrorCheck @@ }uiEditZoneStopDay TABLE@ <= ^nZoneErrorIndex @@ }uiEditZoneStopDay TABLE@ ^iSaveEditProgErrorCheck @@ }uiEditZoneStartDay TABLE@ <= LOR  IF 
+190 LINE.NUM ^iSaveEditProgErrorCheck @@ 1 +  *uoErrorMessage  I>$ 
+191 LINE.NUM *_HSV_SEMA Acquire1String " Date Prog. "  *_HSV_TEMP $MOVE *uoErrorMessage  *_HSV_TEMP $CAT " : Start/Stop date overlaps previous Start/Stop date! Please check dates"  *_HSV_TEMP $CAT *_HSV_TEMP *uoErrorMessage $MOVE Release1String 
+192 LINE.NUM 1 ^iEditProgramError @! 
+193 LINE.NUM THEN 
+194 LINE.NUM THEN 
+195 LINE.NUM THEN 
+196 LINE.NUM THEN 
+197 LINE.NUM THEN 
+199 LINE.NUM THEN 
+201 LINE.NUM 1 +LOOP 
+202 LINE.NUM 0 ^nZoneErrorIndex @! 
+204 LINE.NUM THEN 
+206 LINE.NUM ^iSaveEditProgErrorCheck @@ 1 +  ^iSaveEditProgErrorCheck @! 
+208 LINE.NUM REPEAT 
+211 LINE.NUM ^iEditProgramError @@ 0 = IF 
+212 LINE.NUM " " *uoErrorMessage  $MOVE 
+213 LINE.NUM THEN 
+216 LINE.NUM ^iEditProgramError @@ 1 = IF 
+217 LINE.NUM 0 ^iSaveEditProgram @! 
+218 LINE.NUM THEN 
+6 JUMP ;
+: 98_300
+1 6 LINE.NUM ^cMaxZones @@ 1 -  1 + 0 DO? I ^iStartEditProg_Tmp4 @! 
+8 LINE.NUM 0 ^iStartEditProg_Tmp4 @@ }uiEditZoneFlags TABLE! 
+9 LINE.NUM 0 I>F ^iStartEditProg_Tmp4 @@ }uiEditZoneStartTime TABLE! 
+10 LINE.NUM 0 I>F ^iStartEditProg_Tmp4 @@ }uiEditZoneStopTime TABLE! 
+11 LINE.NUM 0 I>F ^iStartEditProg_Tmp4 @@ }uiEditZoneRestTime TABLE! 
+12 LINE.NUM 0 I>F ^iStartEditProg_Tmp4 @@ }uiEditZoneTriggerTime TABLE! 
+13 LINE.NUM 1 I>F ^iStartEditProg_Tmp4 @@ }uiEditZoneValveMultiplier TABLE! 
+14 LINE.NUM 0 I>F ^iStartEditProg_Tmp4 @@ }uiEditZoneSolarSP TABLE! 
+15 LINE.NUM 0 I>F ^iStartEditProg_Tmp4 @@ }uiEditZoneAuxECSP TABLE! 
+16 LINE.NUM 0 ^iStartEditProg_Tmp4 @@ }uiEditZoneExternalStart TABLE! 
+17 LINE.NUM 0 I>F ^iStartEditProg_Tmp4 @@ }uiEditZoneMoisterSP TABLE! 
+18 LINE.NUM 0 I>F ^iStartEditProg_Tmp4 @@ }uiEditZoneMoisterDB TABLE! 
+21 LINE.NUM " " ^iStartEditProg_Tmp4 @@ {uoDispCurrentZoneRecipes $TABLE@  $MOVE 
+23 LINE.NUM " " ^iStartEditProg_Tmp4 @@ {uiEditZoneStartDate $TABLE@  $MOVE 
+25 LINE.NUM " " ^iStartEditProg_Tmp4 @@ {uiEditZoneStopDate $TABLE@  $MOVE 
+27 LINE.NUM 0 ^iStartEditProg_Tmp4 @@ }uoDispProgramZoneDays TABLE! 
+29 LINE.NUM 1 +LOOP 
+31 LINE.NUM 0 ^iClearAllEditProgram @! 
+12 JUMP ;
+: 98_304
+1 LINE.NUM ^uiEditProgramNum @@ 3 *  0 +  }tCurGS3_VWC TABLE@ 0 }uiEditGS3_VWC FTABLE! 
+2 LINE.NUM ^uiEditProgramNum @@ 3 *  1 +  }tCurGS3_VWC TABLE@ 1 }uiEditGS3_VWC FTABLE! 
+3 LINE.NUM ^uiEditProgramNum @@ 3 *  2 +  }tCurGS3_VWC TABLE@ 2 }uiEditGS3_VWC FTABLE! 
+5 LINE.NUM 0 ^iRefWC_Factor @! 
+6 LINE.NUM 0 }uiEditGS3_VWC TABLE@ 0 > IF 
+7 LINE.NUM ^iRefWC_Factor @@ 1 +  ^iRefWC_Factor @! 
+8 LINE.NUM THEN 
+9 LINE.NUM 1 }uiEditGS3_VWC TABLE@ 0 > IF 
+10 LINE.NUM ^iRefWC_Factor @@ 1 +  ^iRefWC_Factor @! 
+11 LINE.NUM THEN 
+12 LINE.NUM 2 }uiEditGS3_VWC TABLE@ 0 > IF 
+13 LINE.NUM ^iRefWC_Factor @@ 1 +  ^iRefWC_Factor @! 
+14 LINE.NUM THEN 
+16 LINE.NUM ^iRefWC_Factor @@ 0 > IF 
+17 LINE.NUM 0 }uiEditGS3_VWC TABLE@ 1 }uiEditGS3_VWC TABLE@ +  2 }uiEditGS3_VWC TABLE@ +  ^iRefWC_Factor @@ / I>F ^uoDispMoisterAverage @! 
+18 LINE.NUM ELSE 
+19 LINE.NUM 0 I>F ^uoDispMoisterAverage @! 
+20 LINE.NUM THEN 
+23 LINE.NUM ^uiEditProgramNum @@ }fCurrentSolarAccum TABLE@ ^fDispSolarAccum @! 
+18 JUMP ;
+: 98_306
+2 LINE.NUM 0 I>F ^uoDispProgramTimer @! 
+3 LINE.NUM ^uiEditProgramNum @@ 0 = IF 
+4 LINE.NUM ^dtTimeInterval_0 @@F ^uoDispProgramTimer @! 
+5 LINE.NUM ELSE 
+5 LINE.NUM ^uiEditProgramNum @@ 1 = IF 
+6 LINE.NUM ^dtTimeInterval_1 @@F ^uoDispProgramTimer @! 
+7 LINE.NUM ELSE 
+7 LINE.NUM ^uiEditProgramNum @@ 2 = IF 
+8 LINE.NUM ^dtTimeInterval_2 @@F ^uoDispProgramTimer @! 
+9 LINE.NUM ELSE 
+9 LINE.NUM ^uiEditProgramNum @@ 3 = IF 
+10 LINE.NUM ^dtTimeInterval_3 @@F ^uoDispProgramTimer @! 
+11 LINE.NUM ELSE 
+11 LINE.NUM ^uiEditProgramNum @@ 4 = IF 
+12 LINE.NUM ^dtTimeInterval_4 @@F ^uoDispProgramTimer @! 
+13 LINE.NUM ELSE 
+13 LINE.NUM ^uiEditProgramNum @@ 5 = IF 
+14 LINE.NUM ^dtTimeInterval_5 @@F ^uoDispProgramTimer @! 
+15 LINE.NUM ELSE 
+15 LINE.NUM ^uiEditProgramNum @@ 6 = IF 
+16 LINE.NUM ^dtTimeInterval_6 @@F ^uoDispProgramTimer @! 
+17 LINE.NUM ELSE 
+17 LINE.NUM ^uiEditProgramNum @@ 7 = IF 
+18 LINE.NUM ^dtTimeInterval_7 @@F ^uoDispProgramTimer @! 
+19 LINE.NUM ELSE 
+19 LINE.NUM ^uiEditProgramNum @@ 8 = IF 
+20 LINE.NUM ^dtTimeInterval_8 @@F ^uoDispProgramTimer @! 
+21 LINE.NUM ELSE 
+21 LINE.NUM ^uiEditProgramNum @@ 9 = IF 
+22 LINE.NUM ^dtTimeInterval_9 @@F ^uoDispProgramTimer @! 
+23 LINE.NUM ELSE 
+23 LINE.NUM ^uiEditProgramNum @@ 10 = IF 
+24 LINE.NUM ^dtTimeInterval_10 @@F ^uoDispProgramTimer @! 
+25 LINE.NUM ELSE 
+25 LINE.NUM ^uiEditProgramNum @@ 11 = IF 
+26 LINE.NUM ^dtTimeInterval_11 @@F ^uoDispProgramTimer @! 
+27 LINE.NUM ELSE 
+27 LINE.NUM ^uiEditProgramNum @@ 12 = IF 
+28 LINE.NUM ^dtTimeInterval_12 @@F ^uoDispProgramTimer @! 
+29 LINE.NUM ELSE 
+29 LINE.NUM ^uiEditProgramNum @@ 13 = IF 
+30 LINE.NUM ^dtTimeInterval_13 @@F ^uoDispProgramTimer @! 
+31 LINE.NUM ELSE 
+31 LINE.NUM ^uiEditProgramNum @@ 14 = IF 
+32 LINE.NUM ^dtTimeInterval_14 @@F ^uoDispProgramTimer @! 
+33 LINE.NUM ELSE 
+33 LINE.NUM ^uiEditProgramNum @@ 15 = IF 
+34 LINE.NUM ^dtTimeInterval_15 @@F ^uoDispProgramTimer @! 
+35 LINE.NUM ELSE 
+35 LINE.NUM ^uiEditProgramNum @@ 16 = IF 
+36 LINE.NUM ^dtTimeInterval_16 @@F ^uoDispProgramTimer @! 
+37 LINE.NUM ELSE 
+37 LINE.NUM ^uiEditProgramNum @@ 17 = IF 
+38 LINE.NUM ^dtTimeInterval_17 @@F ^uoDispProgramTimer @! 
+39 LINE.NUM ELSE 
+39 LINE.NUM ^uiEditProgramNum @@ 18 = IF 
+40 LINE.NUM ^dtTimeInterval_18 @@F ^uoDispProgramTimer @! 
+41 LINE.NUM ELSE 
+41 LINE.NUM ^uiEditProgramNum @@ 19 = IF 
+42 LINE.NUM ^dtTimeInterval_19 @@F ^uoDispProgramTimer @! 
+43 LINE.NUM THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN 
+-2 JUMP ;
+: 98_309
+
+1 LINE.NUM
+  1000    DELAY
+4 JUMP ;
+: 98_314
+18 JUMP ;
+: 98_319
+
+1 LINE.NUM
+  750    DELAY
+16 JUMP ;
+: 98_320
+
+1 LINE.NUM
+  250    DELAY
+-6 JUMP ;
+: 98_323
+
+1 LINE.NUM
+  ^uiEditProgramNum @@ 
+  }fCurrentSolarAccum TABLE@   
+  ^fDispSolarAccum @! 
+
+2 LINE.NUM
+  "  " 
+ 
+  *sSaveEditProgram   $MOVE
+
+3 LINE.NUM
+  -1  
+  ^iUndoEditProgram @!   
+
+4 LINE.NUM
+  0  
+  ^iSaveEditProgram @!   
+-6 JUMP ;
+: 98_324
+6 LINE.NUM ^uiEditProgramNum @@ ^uiTempProgramNum @! 
+8 LINE.NUM ^uoDispAuxNum @@ 0 > IF 
+9 LINE.NUM ^uoDispAuxNum @@ 41 < IF 
+10 LINE.NUM ^uoDispAuxNum @@ {uoOutputDesc $TABLE@ *uoDispAuxName  $MOVE 
+11 LINE.NUM ELSE 
+12 LINE.NUM ^uoDispAuxNum @@ {uoOutputDesc $TABLE@ *uoDispAuxName  $MOVE 
+13 LINE.NUM THEN 
+14 LINE.NUM THEN 
+19 LINE.NUM ^uiEditProgramNum @@ ^iStartEditProg_Tmp @! 
+20 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ ^cMaxZoneDateVariables @@ *  *  ^iStartEditProg_Tmp3 @! 
+22 LINE.NUM ^iStartEditProg_Tmp @@ }uiProgramValveGroup TABLE@ ^uoDispGroupNum @! 
+23 LINE.NUM ^uoDispGroupNum @@ {uiGroupName $TABLE@ *uoDispGroupName  $MOVE 
+25 LINE.NUM ^uiEditProgramNum @@ }uiProgramRecipeIndex TABLE@ ^uoDispRecipeNum @! 
+26 LINE.NUM ^uoDispRecipeNum @@ {uiRecipeName $TABLE@ *uoDispRecipeName  $MOVE 
+28 LINE.NUM ^uiEditProgramNum @@ 3 *  0 +  }tCurGS3_VWC TABLE@ 0 }uiEditGS3_VWC FTABLE! 
+29 LINE.NUM ^uiEditProgramNum @@ 3 *  1 +  }tCurGS3_VWC TABLE@ 1 }uiEditGS3_VWC FTABLE! 
+30 LINE.NUM ^uiEditProgramNum @@ 3 *  2 +  }tCurGS3_VWC TABLE@ 2 }uiEditGS3_VWC FTABLE! 
+32 LINE.NUM 0 ^iStartEditProg_Factor @! 
+33 LINE.NUM 0 }uiEditGS3_VWC TABLE@ 0 > IF 
+34 LINE.NUM ^iStartEditProg_Factor @@ 1 +  ^iStartEditProg_Factor @! 
+35 LINE.NUM THEN 
+36 LINE.NUM 1 }uiEditGS3_VWC TABLE@ 0 > IF 
+37 LINE.NUM ^iStartEditProg_Factor @@ 1 +  ^iStartEditProg_Factor @! 
+38 LINE.NUM THEN 
+39 LINE.NUM 2 }uiEditGS3_VWC TABLE@ 0 > IF 
+40 LINE.NUM ^iStartEditProg_Factor @@ 1 +  ^iStartEditProg_Factor @! 
+41 LINE.NUM THEN 
+43 LINE.NUM ^iStartEditProg_Factor @@ 0 > IF 
+44 LINE.NUM 0 }uiEditGS3_VWC TABLE@ 1 }uiEditGS3_VWC TABLE@ +  2 }uiEditGS3_VWC TABLE@ +  ^iStartEditProg_Factor @@ / I>F ^uoDispMoisterAverage @! 
+45 LINE.NUM ELSE 
+46 LINE.NUM 0 I>F ^uoDispMoisterAverage @! 
+47 LINE.NUM THEN 
+49 LINE.NUM ^uiEditProgramNum @@ }uiMoisterAlarm TABLE@ ^uiEditMoisterAlarm @! 
+51 LINE.NUM ^uiEditProgramNum @@ }uiProgramDays TABLE@ ^uiEditProgramDays @! 
+52 LINE.NUM  DOW@I ^uoDispCurrentDay @! 
+54 LINE.NUM -1 ^uoDispCurrentProgZone @! 
+1 58 LINE.NUM ^cMaxZones @@ 1 -  1 + 0 DO? I ^iStartEditProg_Tmp2 @! 
+60 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneFlags TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneFlags TABLE! 
+61 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneStartTime TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStartTime TABLE! 
+62 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneStopTime TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStopTime TABLE! 
+63 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneRestTime TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneRestTime TABLE! 
+64 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneTriggerTime TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneTriggerTime TABLE! 
+65 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneValveMultiplier TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneValveMultiplier TABLE! 
+66 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneSolarSP TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneSolarSP TABLE! 
+67 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneAuxECSP TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneAuxECSP TABLE! 
+68 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneExternalStart TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneExternalStart TABLE! 
+69 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneMoisterSP TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneMoisterSP TABLE! 
+70 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneMoisterDB TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneMoisterDB TABLE! 
+73 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneFlags TABLE@ 0 = IF 
+74 LINE.NUM " " ^iStartEditProg_Tmp2 @@ {uoDispCurrentZoneRecipes $TABLE@  $MOVE 
+75 LINE.NUM ELSE 
+77 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneRecipeIndex TABLE@ -1 > IF 
+78 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneRecipeIndex TABLE@ {uiRecipeName $TABLE@ ^iStartEditProg_Tmp2 @@ {uoDispCurrentZoneRecipes $TABLE@  $MOVE 
+79 LINE.NUM ELSE 
+79 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneRecipeIndex TABLE@ -1 = IF 
+80 LINE.NUM 0 ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneFlags TABLE! 
+81 LINE.NUM " " ^iStartEditProg_Tmp2 @@ {uoDispCurrentZoneRecipes $TABLE@  $MOVE 
+82 LINE.NUM THEN THEN 
+83 LINE.NUM THEN 
+86 LINE.NUM ^iStartEditProg_Tmp3 @@ ^cPD_ZD_StartDateNdx @@ + {uiProgramZoneDates $TABLE@ ^iStartEditProg_Tmp2 @@ {uiEditZoneStartDate $TABLE@  $MOVE 
+89 LINE.NUM ^iStartEditProg_Tmp3 @@ ^cPD_ZD_StopDateNdx @@ + {uiProgramZoneDates $TABLE@ ^iStartEditProg_Tmp2 @@ {uiEditZoneStopDate $TABLE@  $MOVE 
+92 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneFlags TABLE@ 0 > IF 
+93 LINE.NUM ^iStartEditProg_Tmp2 @@ {uiEditZoneStopDate $TABLE@ " " $= ^iStartEditProg_Tmp2 @@ {uiEditZoneStartDate $TABLE@ " " $= LAND  IF 
+96 LINE.NUM ^iStartEditProg_Tmp2 @@ }uiEditZoneStartTime TABLE@ 0 I>F F> ^iStartEditProg_Tmp2 @@ }uiEditZoneStopTime TABLE@ 0 I>F F> LAND  IF 
+100 LINE.NUM  TIME@ -ROT DROP DROP ^iStartEditProgram_Tmp0 @! 
+101 LINE.NUM  TIME@ DROP SWAP DROP I>F  ^fStartEditProgram_Temp1 @! 
+102 LINE.NUM ^iStartEditProgram_Tmp0 @@F ^fStartEditProgram_Temp1 @@ 100 I>F F/ F+ ^fStartEditProgram_Temp2 @! 
+103 LINE.NUM ^iStartEditProg_Tmp2 @@ }uiEditZoneStopTime TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStartTime TABLE@ F> ^fStartEditProgram_Temp2 @@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStartTime TABLE@ F>= LAND  ^fStartEditProgram_Temp2 @@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStopTime TABLE@ F<= LAND  ^iStartEditProg_Tmp2 @@ }uiEditZoneStopTime TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStartTime TABLE@ F< ^fStartEditProgram_Temp2 @@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStartTime TABLE@ F>= ^fStartEditProgram_Temp2 @@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStopTime TABLE@ F<= LOR  LAND  LOR  IF 
+124 LINE.NUM ^iStartEditProg_Tmp2 @@ ^uoDispCurrentProgZone @! 
+127 LINE.NUM ^uoDispCurrentProgZone @@ {uoDispCurrentZoneRecipes $TABLE@ *uoDispRecipeName  $MOVE 
+128 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneRecipeIndex TABLE@ ^uiEditProgramNum @@ }uiProgramRecipeIndex TABLE! 
+129 LINE.NUM THEN 
+130 LINE.NUM THEN 
+132 LINE.NUM ELSE 
+134 LINE.NUM ^iCurrentDay @@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneStartDays TABLE@ >= ^iCurrentDay @@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneStopDays TABLE@ <= LAND  IF 
+141 LINE.NUM ^iStartEditProg_Tmp2 @@ }uiEditZoneStartTime TABLE@ 0 I>F F> ^iStartEditProg_Tmp2 @@ }uiEditZoneStopTime TABLE@ 0 I>F F> LAND  IF 
+145 LINE.NUM  TIME@ -ROT DROP DROP ^iStartEditProgram_Tmp0 @! 
+146 LINE.NUM  TIME@ DROP SWAP DROP I>F  ^fStartEditProgram_Temp1 @! 
+147 LINE.NUM ^iStartEditProgram_Tmp0 @@F ^fStartEditProgram_Temp1 @@ 100 I>F F/ F+ ^fStartEditProgram_Temp2 @! 
+148 LINE.NUM ^iStartEditProg_Tmp2 @@ }uiEditZoneStopTime TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStartTime TABLE@ F> ^fStartEditProgram_Temp2 @@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStartTime TABLE@ F>= LAND  ^fStartEditProgram_Temp2 @@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStopTime TABLE@ F<= LAND  ^iStartEditProg_Tmp2 @@ }uiEditZoneStopTime TABLE@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStartTime TABLE@ F< ^fStartEditProgram_Temp2 @@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStartTime TABLE@ F>= ^fStartEditProgram_Temp2 @@ ^iStartEditProg_Tmp2 @@ }uiEditZoneStopTime TABLE@ F<= LOR  LAND  LOR  IF 
+169 LINE.NUM ^iStartEditProg_Tmp2 @@ ^uoDispCurrentProgZone @! 
+172 LINE.NUM ^uoDispCurrentProgZone @@ {uoDispCurrentZoneRecipes $TABLE@ *uoDispRecipeName  $MOVE 
+173 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp2 @@ +  }uiProgramZoneRecipeIndex TABLE@ ^uiEditProgramNum @@ }uiProgramRecipeIndex TABLE! 
+174 LINE.NUM THEN 
+175 LINE.NUM THEN 
+176 LINE.NUM THEN 
+177 LINE.NUM THEN 
+178 LINE.NUM THEN 
+179 LINE.NUM ^iStartEditProg_Tmp3 @@ ^cMaxZoneDateVariables @@ +  ^iStartEditProg_Tmp3 @! 
+180 LINE.NUM 1 +LOOP 
+182 LINE.NUM ^uiEditProgramNum @@ }fCurrentSolarAccum TABLE@ ^fDispSolarAccum @! 
+184 LINE.NUM ^uiEditProgramNum @@ PTBL_dtTimeInterval_PtrTable 
+TableMoveToPointer PTR_dtTimeInterval_Ptr_Edit 
+185 LINE.NUM ^uiEditProgramNum @@ PTBL_dtProgram_MinRest_PtrTable 
+TableMoveToPointer PTR_dtProgram_MinRest_Ptr_Edit 
+187 LINE.NUM ^uiEditProgramNum @@ }tProgramMVOverride TABLE@ ^uiEditProgMVOverride @! 
+188 LINE.NUM ^uiEditProgramNum @@ }tProgramMVOverride_SP TABLE@ ^uiEditProgMVOverride_SP @! 
+189 LINE.NUM ^uiEditProgramNum @@ }tProgramMVOverride_DB TABLE@ ^uiEditProgMVOverride_DB @! 
+-2 JUMP ;
+: 98_325
+
+1 LINE.NUM
+  ^uiEditProgramNum @@ 
+  }uiProgram_Auxiliaries TABLE@   
+  ^uoDispAuxNum @! 
+
+2 LINE.NUM
+  ^uiEditProgramNum @@ 
+  {uiProgramName $TABLE@ 
+  *uiEditProgramName   $MOVE
+-2 JUMP ;
+: 98_326
+2 LINE.NUM -1 ^iTempStartYearNum @! 
+3 LINE.NUM -1 ^iTempStartMonthNum @! 
+4 LINE.NUM -1 ^iTempStartDayNum @! 
+5 LINE.NUM -1 ^iTempStopYearNum @! 
+6 LINE.NUM -1 ^iTempStopMonthNum @! 
+7 LINE.NUM -1 ^iTempStopDayNum @! 
+10 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ ^cMaxZoneDateVariables @@ *  *  ^iSaveEditProg_Tmp6 @! 
+11 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProg_Tmp7 @! 
+13 LINE.NUM 0 ^iSaveEditProg_Tmp5 @! 
+14 LINE.NUM -1 ^iSaveEditProg_Tmp @! 
+1 16 LINE.NUM ^cMaxZones @@ 1 -  1 + 0 DO? I ^iSaveEditProg_Tmp4 @! 
+17 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneStartTime TABLE@ 0 I>F F> IF 
+18 LINE.NUM ^iSaveEditProg_Tmp4 @@ ^iSaveEditProg_Tmp5 @! 
+19 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneStopTime TABLE@ ^iSaveEditProg_Tmp4 @@ }uiEditZoneStartTime TABLE@ F<= ^iSaveEditProg_Tmp @@ 1 < LAND  IF 
+20 LINE.NUM ^iSaveEditProg_Tmp4 @@ ^iSaveEditProg_Tmp @! 
+21 LINE.NUM THEN 
+22 LINE.NUM THEN 
+23 LINE.NUM 1 +LOOP 
+25 LINE.NUM ^uiEditProgramNum @@ ^iSaveEditProgramValveGroup @! 
+27 LINE.NUM ^uoDispGroupNum @@ ^iSaveEditProgramValveGroup @@ }uiProgramValveGroup TABLE! 
+29 LINE.NUM ^uoDispRecipeNum @@ ^uiEditProgramNum @@ }uiProgramRecipeIndex TABLE! 
+33 LINE.NUM ^iSaveEditProg_Tmp5 @@ ^iSaveEditProg_Tmp2 @! 
+36 LINE.NUM ^iSaveEditProg_Tmp @@ 0 < IF 
+37 LINE.NUM ^iSaveEditProg_Tmp2 @@ ^iSaveEditProg_Tmp @! 
+38 LINE.NUM THEN 
+40 LINE.NUM 0 ^iSaveEditProg_Tmp4 @! 
+41 LINE.NUM BEGIN ^iSaveEditProg_Tmp4 @@ ^cMaxZones @@ < WHILE 
+44 LINE.NUM ^uiEditMoisterAlarm @@ ^uiEditProgramNum @@ }uiMoisterAlarm TABLE! 
+46 LINE.NUM ^uiEditProgramDays @@ ^uiEditProgramNum @@ }uiProgramDays TABLE! 
+48 LINE.NUM ^iSaveEditProg_Tmp4 @@ ^cMaxZones @@ < IF 
+50 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneFlags TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneFlags TABLE! 
+51 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneStartTime TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneStartTime TABLE! 
+52 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneStopTime TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneStopTime TABLE! 
+53 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneRestTime TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneRestTime TABLE! 
+54 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneTriggerTime TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneTriggerTime TABLE! 
+55 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneValveMultiplier TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneValveMultiplier TABLE! 
+56 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneSolarSP TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneSolarSP TABLE! 
+57 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneAuxECSP TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneAuxECSP TABLE! 
+58 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneExternalStart TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneExternalStart TABLE! 
+59 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneMoisterSP TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneMoisterSP TABLE! 
+60 LINE.NUM ^iSaveEditProg_Tmp4 @@ }uiEditZoneMoisterDB TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneMoisterDB TABLE! 
+62 LINE.NUM THEN 
+64 LINE.NUM ^iSaveEditProg_Tmp4 @@ {uiEditZoneStartDate $TABLE@ ^iSaveEditProg_Tmp6 @@ ^cPD_ZD_StartDateNdx @@ + {uiProgramZoneDates $TABLE@  $MOVE 
+66 LINE.NUM ^iSaveEditProg_Tmp6 @@ ^cPD_ZD_StartDateNdx @@ + {uiProgramZoneDates $TABLE@ 0 4 *sTempStartYear  $SUB 
+67 LINE.NUM *sTempStartYear  $>I ^iTempStartYearNum @! 
+68 LINE.NUM ^iSaveEditProg_Tmp6 @@ ^cPD_ZD_StartDateNdx @@ + {uiProgramZoneDates $TABLE@ 5 2 *sTempStartMonth  $SUB 
+69 LINE.NUM *sTempStartMonth  $>I ^iTempStartMonthNum @! 
+70 LINE.NUM ^iSaveEditProg_Tmp6 @@ ^cPD_ZD_StartDateNdx @@ + {uiProgramZoneDates $TABLE@ 8 2 *sTempStartDay  $SUB 
+71 LINE.NUM *sTempStartDay  $>I ^iTempStartDayNum @! 
+73 LINE.NUM 0 ^iLeapYear @! 
+74 LINE.NUM ^iTempStartYearNum @@ 4 MOD  0 = ^iTempStartMonthNum @@ 2 > LAND  IF 
+75 LINE.NUM 1 ^iLeapYear @! 
+76 LINE.NUM ELSE 
+77 LINE.NUM 0 ^iLeapYear @! 
+78 LINE.NUM THEN 
+80 LINE.NUM ^iTempStartYearNum @@ 2020 - I>F 3.65250000e+002 F* ^iTempStartMonthNum @@ }MonthToDays TABLE@F F+ ^iTempStartDayNum @@F F+ ^iLeapYear @@F F+ ^iSaveEditProg_Tmp7 @@ ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneStartDays FTABLE! 
+81 LINE.NUM ^iSaveEditProg_Tmp7 @@ ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneStartDays TABLE@ ^iSaveEditProg_Tmp4 @@ }uiEditZoneStartDay TABLE! 
+83 LINE.NUM ^iSaveEditProg_Tmp4 @@ {uiEditZoneStopDate $TABLE@ ^iSaveEditProg_Tmp6 @@ ^cPD_ZD_StopDateNdx @@ + {uiProgramZoneDates $TABLE@  $MOVE 
+85 LINE.NUM ^iSaveEditProg_Tmp6 @@ ^cPD_ZD_StopDateNdx @@ + {uiProgramZoneDates $TABLE@ 0 4 *sTempStopYear  $SUB 
+86 LINE.NUM *sTempStopYear  $>I ^iTempStopYearNum @! 
+87 LINE.NUM ^iSaveEditProg_Tmp6 @@ ^cPD_ZD_StopDateNdx @@ + {uiProgramZoneDates $TABLE@ 5 2 *sTempStopMonth  $SUB 
+88 LINE.NUM *sTempStopMonth  $>I ^iTempStopMonthNum @! 
+89 LINE.NUM ^iSaveEditProg_Tmp6 @@ ^cPD_ZD_StopDateNdx @@ + {uiProgramZoneDates $TABLE@ 8 2 *sTempStopDay  $SUB 
+90 LINE.NUM *sTempStopDay  $>I ^iTempStopDayNum @! 
+92 LINE.NUM 0 ^iLeapYear @! 
+93 LINE.NUM ^iTempStopYearNum @@ 4 MOD  0 = ^iTempStopMonthNum @@ 2 > LAND  IF 
+94 LINE.NUM 1 ^iLeapYear @! 
+95 LINE.NUM ELSE 
+96 LINE.NUM 0 ^iLeapYear @! 
+97 LINE.NUM THEN 
+99 LINE.NUM ^iTempStopYearNum @@ 2020 - I>F 3.65250000e+002 F* ^iTempStopMonthNum @@ }MonthToDays TABLE@F F+ ^iTempStopDayNum @@F F+ ^iLeapYear @@F F+ ^iSaveEditProg_Tmp7 @@ ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneStopDays FTABLE! 
+100 LINE.NUM ^iSaveEditProg_Tmp7 @@ ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneStopDays TABLE@ ^iSaveEditProg_Tmp4 @@ }uiEditZoneStopDay TABLE! 
+102 LINE.NUM ^iSaveEditProg_Tmp7 @@ ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneStopDays TABLE@ ^iSaveEditProg_Tmp7 @@ ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneStartDays TABLE@ -  ^iSaveEditProg_Tmp7 @@ ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneDays TABLE! 
+104 LINE.NUM ^iSaveEditProg_Tmp7 @@ ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneDays TABLE@ 0 < IF 
+105 LINE.NUM 0 ^iSaveEditProg_Tmp4 @@ }uoDispProgramZoneDays TABLE! 
+106 LINE.NUM ELSE 
+107 LINE.NUM ^iSaveEditProg_Tmp7 @@ ^iSaveEditProg_Tmp4 @@ +  }uiProgramZoneDays TABLE@ ^iSaveEditProg_Tmp4 @@ }uoDispProgramZoneDays TABLE! 
+108 LINE.NUM THEN 
+111 LINE.NUM ^uiEditProgMVOverride @@ ^uiEditProgramNum @@ }tProgramMVOverride TABLE! 
+112 LINE.NUM ^uiEditProgMVOverride_SP @@ ^uiEditProgramNum @@ }tProgramMVOverride_SP TABLE! 
+113 LINE.NUM ^uiEditProgMVOverride_DB @@ ^uiEditProgramNum @@ }tProgramMVOverride_DB TABLE! 
+115 LINE.NUM ^iSaveEditProg_Tmp4 @@ ^iSaveEditProg_Tmp2 @! 
+116 LINE.NUM ^iSaveEditProg_Tmp4 @@ 1 +  ^iSaveEditProg_Tmp4 @! 
+117 LINE.NUM ^iSaveEditProg_Tmp6 @@ ^cMaxZoneDateVariables @@ +  ^iSaveEditProg_Tmp6 @! 
+119 LINE.NUM REPEAT 
+121 LINE.NUM ^uiEditProgramNum @@ }uiProgramRecipeIndex TABLE@ -1 > IF 
+122 LINE.NUM ^uiEditProgramNum @@ }uiProgramRecipeIndex TABLE@ ^uoDispRecipeNum @@ <> IF 
+1 123 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^iSaveEditProg_Tmp @! 
+126 LINE.NUM ^uiEditProgramNum @@ }uiProgramRecipeIndex TABLE@ ^cMaxInjectors @@ *  ^iSaveEditProg_Tmp @@ +  }uiInjectorSetpoints TABLE@ ^uiEditProgramNum @@ ^cMaxInjectors @@ *  ^iSaveEditProg_Tmp @@ +  }nInjectorSetpoints_Auto TABLE! 
+128 LINE.NUM 1 +LOOP 
+130 LINE.NUM ^uoDispRecipeNum @@ }uiRecipeProportional TABLE@ 1 = IF 
+132 LINE.NUM 0 I>F ^uiEditProgramNum @@ }nPulseFactor_EC TABLE! 
+133 LINE.NUM 0 I>F ^uiEditProgramNum @@ }nPulseFactor_PH TABLE! 
+134 LINE.NUM ELSE 
+136 LINE.NUM ^uiEditProgramNum @@ }nPulseFactor_EC TABLE@ 0 I>F F= IF 
+137 LINE.NUM 1 I>F ^uiEditProgramNum @@ }nPulseFactor_EC TABLE! 
+138 LINE.NUM 1 I>F ^uiEditProgramNum @@ }nPulseFactor_PH TABLE! 
+139 LINE.NUM THEN 
+140 LINE.NUM THEN 
+141 LINE.NUM THEN 
+142 LINE.NUM THEN 
+1 JUMP ;
+: 98_327
+
+1 LINE.NUM
+  *uiEditProgramName 
+  ^uiEditProgramNum @@ 
+  {uiProgramName $TABLE@   $MOVE
+
+2 LINE.NUM
+  ^uoDispAuxNum @@ 
+  ^uiEditProgramNum @@ 
+  }uiProgram_Auxiliaries TABLE!   
+
+3 LINE.NUM
+  0  
+  ^iEditProgramError @!   
+-2 JUMP ;
+: 98_331
+
+1 LINE.NUM
+  0  
+  ^iSaveEditProgram @!   
+
+2 LINE.NUM
+  " " 
+ 
+  *sSaveEditProgram   $MOVE
+
+3 LINE.NUM
+  0  
+  ^iEditProgramError @!   
+
+4 LINE.NUM
+  " Saved Successfully" 
+ 
+  *sSaveEditProgram   $MOVE
+-10 JUMP ;
+: 98_334
+7 LINE.NUM *uoDispGroupName ^uoDispGroupNum @@ {uiGroupName $TABLE@ $= LNOT  IF 
+8 LINE.NUM ^uoDispGroupNum @@ {uiGroupName $TABLE@ *uoDispGroupName  $MOVE 
+9 LINE.NUM THEN 
+12 LINE.NUM *uoDispRecipeName ^uoDispRecipeNum @@ {uiRecipeName $TABLE@ $= LNOT  IF 
+13 LINE.NUM ^uoDispRecipeNum @@ {uiRecipeName $TABLE@ *uoDispRecipeName  $MOVE 
+14 LINE.NUM THEN 
+1 17 LINE.NUM ^cMaxZones @@ 1 -  1 + 0 DO? I ^iStartEditProg_Tmp6 @! 
+19 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp6 @@ +  }uiProgramZoneRecipeIndex TABLE@ -1 > IF 
+20 LINE.NUM ^iStartEditProg_Tmp6 @@ {uoDispCurrentZoneRecipes $TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp6 @@ +  }uiProgramZoneRecipeIndex TABLE@ {uiRecipeName $TABLE@ $= LNOT  IF 
+22 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp6 @@ +  }uiProgramZoneFlags TABLE@ 0 = IF 
+23 LINE.NUM " " ^iStartEditProg_Tmp6 @@ {uoDispCurrentZoneRecipes $TABLE@  $MOVE 
+24 LINE.NUM ELSE 
+25 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^iStartEditProg_Tmp6 @@ +  }uiProgramZoneRecipeIndex TABLE@ {uiRecipeName $TABLE@ ^iStartEditProg_Tmp6 @@ {uoDispCurrentZoneRecipes $TABLE@  $MOVE 
+26 LINE.NUM THEN 
+27 LINE.NUM THEN 
+28 LINE.NUM THEN 
+29 LINE.NUM 1 +LOOP 
+-16 JUMP ;
+: 98_351
+2 LINE.NUM 0 ^iCloseEditProgram @! 
+3 LINE.NUM 0 ^iSaveEditProgram @! 
+4 LINE.NUM -1 ^uiEditProgramNum @! 
+5 LINE.NUM -1 ^iUndoEditProgram @! 
+6 LINE.NUM 0 ^iClearAllEditProgram @! 
+7 LINE.NUM -1 ^uiTempProgramNum @! 
+8 LINE.NUM -1 ^uoDispAuxNum @! 
+9 LINE.NUM -1 ^uoDispRecipeNum @! 
+10 LINE.NUM -1 ^uoDispGroupNum @! 
+12 LINE.NUM " " *uiEditProgramName  $MOVE 
+13 LINE.NUM " " *uoDispAuxName  $MOVE 
+14 LINE.NUM " " *uoDispGroupName  $MOVE 
+15 LINE.NUM " " *uoDispRecipeName  $MOVE 
+17 LINE.NUM " " *sSaveEditProgram  $MOVE 
+18 LINE.NUM " " *uoErrorMessage  $MOVE 
+20 LINE.NUM 0 ^uiEditProgMVOverride @! 
+21 LINE.NUM 0 ^uiEditProgMVOverride_SP @! 
+22 LINE.NUM 0 ^uiEditProgMVOverride_DB @! 
+24 LINE.NUM 0 I>F ^fDispSolarAccum @! 
+26 LINE.NUM -1 ^uoDispCurrentProgZone @! 
+28 LINE.NUM 0 I>F ^uiEditMoisterAlarm @! 
+29 LINE.NUM 0 I>F ^uoDispMoisterAverage @! 
+31 LINE.NUM -1 ^uiEditProgramDays @! 
+32 LINE.NUM -1 ^uoDispCurrentDay @! 
+34 LINE.NUM 0 0 ^cMaxZones @@ 1 -  }uiEditZoneFlags  InitTable 
+35 LINE.NUM " " 0 ^cMaxZones @@ 1 -  {uoDispCurrentZoneRecipes  Init$Table 
+36 LINE.NUM " " 0 ^cMaxZones @@ 1 -  {uiEditZoneStartDate  Init$Table 
+37 LINE.NUM " " 0 ^cMaxZones @@ 1 -  {uiEditZoneStopDate  Init$Table 
+38 LINE.NUM 0 0 ^cMaxZones @@ 1 -  }uoDispProgramZoneDays  InitTable 
+39 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneStartTime  InitTable 
+40 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneStopTime  InitTable 
+41 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneRestTime  InitTable 
+42 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneTriggerTime  InitTable 
+43 LINE.NUM 1 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneValveMultiplier  InitTable 
+44 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneSolarSP  InitTable 
+45 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneAuxECSP  InitTable 
+46 LINE.NUM 0 0 ^cMaxZones @@ 1 -  }uiEditZoneExternalStart  InitTable 
+47 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneMoisterSP  InitTable 
+48 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneMoisterDB  InitTable 
+50 LINE.NUM 0 0 2 }uiEditGS3_VWC  InitTable 
+-11 JUMP ;
+: 98_354
+2 LINE.NUM 0 ^iCloseEditProgram @! 
+3 LINE.NUM 0 ^iSaveEditProgram @! 
+4 LINE.NUM -1 ^iUndoEditProgram @! 
+5 LINE.NUM 0 ^iClearAllEditProgram @! 
+6 LINE.NUM -1 ^uoDispAuxNum @! 
+7 LINE.NUM -1 ^uoDispRecipeNum @! 
+8 LINE.NUM -1 ^uoDispGroupNum @! 
+10 LINE.NUM " " *uiEditProgramName  $MOVE 
+11 LINE.NUM " " *uoDispAuxName  $MOVE 
+12 LINE.NUM " " *uoDispGroupName  $MOVE 
+13 LINE.NUM " " *uoDispRecipeName  $MOVE 
+15 LINE.NUM " " *sSaveEditProgram  $MOVE 
+16 LINE.NUM " " *uoErrorMessage  $MOVE 
+18 LINE.NUM 0 ^uiEditProgMVOverride @! 
+19 LINE.NUM 0 ^uiEditProgMVOverride_SP @! 
+20 LINE.NUM 0 ^uiEditProgMVOverride_DB @! 
+22 LINE.NUM 0 I>F ^fDispSolarAccum @! 
+24 LINE.NUM -1 ^uoDispCurrentProgZone @! 
+26 LINE.NUM 0 I>F ^uiEditMoisterAlarm @! 
+27 LINE.NUM 0 I>F ^uoDispMoisterAverage @! 
+29 LINE.NUM -1 ^uiEditProgramDays @! 
+30 LINE.NUM -1 ^uoDispCurrentDay @! 
+32 LINE.NUM 0 0 ^cMaxZones @@ 1 -  }uiEditZoneFlags  InitTable 
+33 LINE.NUM " " 0 ^cMaxZones @@ 1 -  {uoDispCurrentZoneRecipes  Init$Table 
+34 LINE.NUM " " 0 ^cMaxZones @@ 1 -  {uiEditZoneStartDate  Init$Table 
+35 LINE.NUM " " 0 ^cMaxZones @@ 1 -  {uiEditZoneStopDate  Init$Table 
+36 LINE.NUM 0 0 ^cMaxZones @@ 1 -  }uoDispProgramZoneDays  InitTable 
+37 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneStartTime  InitTable 
+38 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneStopTime  InitTable 
+39 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneRestTime  InitTable 
+40 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneTriggerTime  InitTable 
+41 LINE.NUM 1 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneValveMultiplier  InitTable 
+42 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneSolarSP  InitTable 
+43 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneAuxECSP  InitTable 
+44 LINE.NUM 0 0 ^cMaxZones @@ 1 -  }uiEditZoneExternalStart  InitTable 
+45 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneMoisterSP  InitTable 
+46 LINE.NUM 0 I>F 0 ^cMaxZones @@ 1 -  }uiEditZoneMoisterDB  InitTable 
+48 LINE.NUM 0 0 2 }uiEditGS3_VWC  InitTable 
+0 JUMP ;
+: 98_357
+
+1 LINE.NUM
+  50    DELAY
+5 JUMP ;
+: 98_284
+TRUE
+
+1 LINE.NUM
+  ^uiTempProgramNum @@ 
+  ^uiEditProgramNum @@   <>
+LAND
+IF -22 ELSE -5 THEN JUMP ;
+: 98_295
+TRUE
+
+1 LINE.NUM
+  ^iSaveEditProgram @@ 
+  1    =
+LAND
+
+2 LINE.NUM
+  ^iEditProgramError @@ 
+  0    =
+LAND
+IF -8 ELSE 2 THEN JUMP ;
+: 98_299
+FALSE
+
+1 LINE.NUM
+  ^iClearAllEditProgram @@ 
+  1    =
+LOR
+IF -20 ELSE -3 THEN JUMP ;
+: 98_307
+TRUE
+
+1 LINE.NUM
+  ^iUndoEditProgram @@ 
+  1    =
+LAND
+IF -24 ELSE -3 THEN JUMP ;
+: 98_330
+FALSE
+
+1 LINE.NUM
+  ^iCloseEditProgram @@ 
+  1    =
+LOR
+IF -8 ELSE -3 THEN JUMP ;
+: 98_332
+TRUE
+
+1 LINE.NUM
+  ^uiEditProgramNum @@ 
+  -1    >
+LAND
+IF -14 ELSE -18 THEN JUMP ;
+T: T98
+DUMMY
+98_0
+98_283
+98_288
+98_289
+98_296
+98_300
+98_304
+98_306
+98_309
+98_314
+98_319
+98_320
+98_323
+98_324
+98_325
+98_326
+98_327
+98_331
+98_334
+98_351
+98_354
+98_357
+98_284
+98_295
+98_299
+98_307
+98_330
+98_332
+T;
+&Schedule ' T98 SETTASK

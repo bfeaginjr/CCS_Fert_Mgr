@@ -1,0 +1,55 @@
+: 95_0
+3 JUMP ;
+: 95_3
+1 LINE.NUM ^uiMIOnum @@ 1 >= IF 
+2 LINE.NUM 1 13 }uiEditOutputDiagnosisEnable TABLE! 
+3 LINE.NUM ELSE 
+4 LINE.NUM 0 13 }uiEditOutputDiagnosisEnable TABLE! 
+5 LINE.NUM THEN 
+7 LINE.NUM ^uiMIOnum @@ 2 = IF 
+8 LINE.NUM 1 12 }uiEditOutputDiagnosisEnable TABLE! 
+9 LINE.NUM ELSE 
+10 LINE.NUM 0 12 }uiEditOutputDiagnosisEnable TABLE! 
+11 LINE.NUM THEN 
+1 13 LINE.NUM ^cMaxDispList @@ 1 -  1 + 0 DO? I ^iRefreshMaintenanceDisp_Tmp @! 
+14 LINE.NUM ^uiEditMaintenanceCardNum @@ ^cMaxDispList @@ *  ^iRefreshMaintenanceDisp_Tmp @@ +  }doOutputs TABLE@ ^iRefreshMaintenanceDisp_Tmp @@ }uoDispOutputTypes TABLE! 
+15 LINE.NUM ^iRefreshMaintenanceDisp_Tmp @@ }uoDispOutputTypes TABLE@  ABS {uoOutputDesc $TABLE@ ^iRefreshMaintenanceDisp_Tmp @@ {uoDispOutputListDesc $TABLE@  $MOVE 
+17 LINE.NUM ^iRefreshMaintenanceDisp_Tmp @@ }uoDispOutputTypes TABLE@ 41 = ^iRefreshMaintenanceDisp_Tmp @@ }uoDispOutputTypes TABLE@ 50 = LOR  IF 
+18 LINE.NUM 1 ^iRefreshMaintenanceDisp_Tmp @@ }bMaintenanceAutoFlag TABLE! 
+19 LINE.NUM ELSE 
+20 LINE.NUM 0 ^iRefreshMaintenanceDisp_Tmp @@ }bMaintenanceAutoFlag TABLE! 
+21 LINE.NUM THEN 
+23 LINE.NUM 1 +LOOP 
+25 LINE.NUM ^cOptLastOutputRackIndex @@ 0 > IF 
+1 26 LINE.NUM ^cOptLastOutputRackIndex @@ 1 + 0 DO? I ^iRefreshMaintenanceDisp_Tmp @! 
+27 LINE.NUM 1 ^iRefreshMaintenanceDisp_Tmp @@ }uiEditOutputDiagnosisEnable TABLE! 
+28 LINE.NUM 1 +LOOP 
+1 29 LINE.NUM ^cMaxOutputRacks @@ 1 -  1 + ^cOptLastOutputRackIndex @@ 1 +  DO? I ^iRefreshMaintenanceDisp_Tmp @! 
+30 LINE.NUM 0 ^iRefreshMaintenanceDisp_Tmp @@ }uiEditOutputDiagnosisEnable TABLE! 
+31 LINE.NUM 1 +LOOP 
+32 LINE.NUM THEN 
+0 JUMP ;
+: 95_4
+
+1 LINE.NUM
+  500    DELAY
+1 JUMP ;
+: 95_8
+1 JUMP ;
+: 95_1
+TRUE
+
+1 LINE.NUM
+  ^uiEditMaintenanceCardNum @@ 
+  -1    >
+LAND
+IF -4 ELSE -2 THEN JUMP ;
+T: T95
+DUMMY
+95_0
+95_3
+95_4
+95_8
+95_1
+T;
+&Maintenance_Screen_Refresh ' T95 SETTASK

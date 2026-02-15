@@ -1,0 +1,93 @@
+: 71_0
+0 JUMP ;
+: 71_1
+1 2 LINE.NUM ^cMaxTimers @@ 1 -  1 + 0 DO? I ^i @! 
+3 LINE.NUM ^i @@ PTBL_dtCycleTimer_TimeOff_PtrTable 
+TableMoveToPointer PTR_dtCycleTimer_TimeOff_Ptr 
+4 LINE.NUM ^i @@ PTBL_utCycleTimer_TimeOn_PtrTable 
+TableMoveToPointer PTR_utCycleTimer_TimeOn_Ptr 
+6 LINE.NUM ^i @@ }tCycleTimerEnabled TABLE@ 1 = ^i @@ }tOutCycleTimerIndex TABLE@ 0 >= LAND  IF 
+8 LINE.NUM ^i @@ }tCycleTimerTimeStart TABLE@  Truncate ^iTimers_Tmp3 F@! 
+9 LINE.NUM ^iTimers_Tmp3 @@F ^fTimers_Temp @! 
+10 LINE.NUM ^i @@ }tCycleTimerTimeStart TABLE@ ^fTimers_Temp @@ F- ^fTimers_Temp @! 
+11 LINE.NUM ^iTimers_Tmp3 @@ 60 * I>F ^fTimers_Temp @@ 1.00000000e+002 F* F+ ^iTimers_Tmp2 F@! 
+14 LINE.NUM ^i @@ }tCycleTimerTimeEnd TABLE@  Truncate ^iTimers_Tmp3 F@! 
+15 LINE.NUM ^iTimers_Tmp3 @@F ^fTimers_Temp @! 
+16 LINE.NUM ^i @@ }tCycleTimerTimeEnd TABLE@ ^fTimers_Temp @@ F- ^fTimers_Temp @! 
+17 LINE.NUM ^iTimers_Tmp3 @@ 60 * I>F ^fTimers_Temp @@ 1.00000000e+002 F* F+ ^iTimers_Tmp3 F@! 
+20 LINE.NUM  TIME@ -ROT DROP DROP 60 *   TIME@ DROP SWAP DROP + I>F ^fTimers_Time @! 
+22 LINE.NUM ^iTimers_Tmp3 @@ ^iTimers_Tmp2 @@ > ^fTimers_Time @@ ^iTimers_Tmp2 @@F F> LAND  ^fTimers_Time @@ ^iTimers_Tmp3 @@F F< LAND  ^iTimers_Tmp3 @@ ^iTimers_Tmp2 @@ < ^fTimers_Time @@ ^iTimers_Tmp2 @@F F> ^fTimers_Time @@ ^iTimers_Tmp3 @@F F< LOR  LAND  LOR  ^i @@ }tCycleTimerTimeStart TABLE@ 0 I>F F= ^i @@ }tCycleTimerTimeEnd TABLE@ 0 I>F F= LAND  LOR  IF 
+26 LINE.NUM ^i @@ }tCycleTimerTimeON TABLE@ 0 I>F F= ^i @@ }tCycleTimerTimeOFF TABLE@ 0 I>F F= LAND  IF 
+27 LINE.NUM ^i @@ }tCurCycleTimerState TABLE@ 0 = IF 
+28 LINE.NUM ^i @@ }tOutCycleTimerIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTimer_Ptr 
+29 LINE.NUM PTR_doTimer_Ptr  ON 
+30 LINE.NUM THEN 
+32 LINE.NUM 1 ^i @@ }tCurCycleTimerState TABLE! 
+34 LINE.NUM PTR_dtCycleTimer_TimeOff_Ptr  StopTimer 
+35 LINE.NUM PTR_utCycleTimer_TimeOn_Ptr  StopTimer 
+36 LINE.NUM ELSE 
+37 LINE.NUM PTR_dtCycleTimer_TimeOff_Ptr @@F 0 I>F F= PTR_utCycleTimer_TimeOn_Ptr @@F 0 I>F F= LAND  IF 
+38 LINE.NUM 0 I>F PTR_dtCycleTimer_TimeOff_Ptr  SetTimer 
+39 LINE.NUM PTR_dtCycleTimer_TimeOff_Ptr  StartTimer 
+40 LINE.NUM THEN 
+42 LINE.NUM ^i @@ }tCurCycleTimerState TABLE@ 0 = IF 
+43 LINE.NUM PTR_dtCycleTimer_TimeOff_Ptr  T0= IF 
+45 LINE.NUM ^i @@ }tOutCycleTimerIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTimer_Ptr 
+46 LINE.NUM PTR_doTimer_Ptr  ON 
+48 LINE.NUM 1 ^i @@ }tCurCycleTimerState TABLE! 
+50 LINE.NUM PTR_dtCycleTimer_TimeOff_Ptr  StopTimer 
+51 LINE.NUM ^i @@ }tCycleTimerTimeON TABLE@ 60 I>F F* PTR_utCycleTimer_TimeOn_Ptr  SetTimer 
+52 LINE.NUM PTR_utCycleTimer_TimeOn_Ptr  StartTimer 
+53 LINE.NUM THEN 
+54 LINE.NUM ELSE 
+55 LINE.NUM PTR_utCycleTimer_TimeOn_Ptr  T0= IF 
+56 LINE.NUM ^i @@ }tOutCycleTimerIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTimer_Ptr 
+57 LINE.NUM PTR_doTimer_Ptr  OFF 
+59 LINE.NUM 0 ^i @@ }tCurCycleTimerState TABLE! 
+61 LINE.NUM PTR_utCycleTimer_TimeOn_Ptr  StopTimer 
+62 LINE.NUM ^i @@ }tCycleTimerTimeOFF TABLE@ 60 I>F F* PTR_dtCycleTimer_TimeOff_Ptr  SetTimer 
+63 LINE.NUM PTR_dtCycleTimer_TimeOff_Ptr  StartTimer 
+64 LINE.NUM THEN 
+65 LINE.NUM THEN 
+66 LINE.NUM THEN 
+67 LINE.NUM ELSE 
+68 LINE.NUM ^i @@ }tOutCycleTimerIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTimer_Ptr 
+69 LINE.NUM ^i @@ }tCurCycleTimerState TABLE@ 1 = PTR_doTimer_Ptr  ?ON LOR  IF 
+70 LINE.NUM PTR_doTimer_Ptr  OFF 
+71 LINE.NUM THEN 
+73 LINE.NUM 0 ^i @@ }tCurCycleTimerState TABLE! 
+75 LINE.NUM PTR_dtCycleTimer_TimeOff_Ptr  StopTimer 
+76 LINE.NUM PTR_utCycleTimer_TimeOn_Ptr  StopTimer 
+77 LINE.NUM THEN 
+78 LINE.NUM ELSE 
+80 LINE.NUM &Maintenance_Screen_Refresh  ?STOPPED IF 
+81 LINE.NUM ^i @@ }tOutCycleTimerIndex TABLE@ 0 >= IF 
+82 LINE.NUM ^i @@ }tOutCycleTimerIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTimer_Ptr 
+83 LINE.NUM ^i @@ }tCurCycleTimerState TABLE@ 1 = PTR_doTimer_Ptr  ?ON LOR  IF 
+84 LINE.NUM PTR_doTimer_Ptr  OFF 
+85 LINE.NUM THEN 
+86 LINE.NUM THEN 
+87 LINE.NUM THEN 
+90 LINE.NUM 0 ^i @@ }tCurCycleTimerState TABLE! 
+92 LINE.NUM PTR_dtCycleTimer_TimeOff_Ptr  StopTimer 
+93 LINE.NUM PTR_utCycleTimer_TimeOn_Ptr  StopTimer 
+95 LINE.NUM THEN 
+96 LINE.NUM 1 +LOOP 
+0 JUMP ;
+: 71_2
+
+1 LINE.NUM
+  1.0    FDELAY
+-2 JUMP ;
+T: T71
+DUMMY
+71_0
+71_1
+71_2
+T;
+&Timers ' T71 SETTASK

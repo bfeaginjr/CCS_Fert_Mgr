@@ -1,0 +1,1468 @@
+: 117_0
+8 JUMP ;
+: 117_33
+
+1 LINE.NUM
+  100    DELAY
+8 JUMP ;
+: 117_37
+60 LINE.NUM 0 0 4 }iAGZoneActiveFlag  InitTable 
+61 LINE.NUM 0 0 4 }iAGCurrentRunNum  InitTable 
+62 LINE.NUM 0 0 4 }iAGPtrNumIndex  InitTable 
+63 LINE.NUM 0 0 4 }iAGTimerRunningFlag  InitTable 
+64 LINE.NUM 0 0 4 }iAGPumpStatus  InitTable 
+65 LINE.NUM 0 0 4 }iAG_LastRun  InitTable 
+66 LINE.NUM 0 0 4 }iAG_PtrNumTmp  InitTable 
+67 LINE.NUM 0 0 49 }iAGValveOnBit  InitTable 
+69 LINE.NUM 0 I>F ^dtAgritech_ZN1 @! 
+70 LINE.NUM 0 I>F ^dtAgritech_ZN2 @! 
+71 LINE.NUM 0 I>F ^dtAgritech_ZN3 @! 
+72 LINE.NUM 0 I>F ^dtAgritech_ZN4 @! 
+73 LINE.NUM 0 I>F ^dtAgritech_ZN5 @! 
+7 JUMP ;
+: 117_57
+17 LINE.NUM 0 ^iAGZoneNum @! 
+22 LINE.NUM ^iAGZoneNum @@ }uiAGZoneEnable TABLE@ 1 = IF 
+24 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 0 = IF 
+26 LINE.NUM ^iAGZoneNum @@ }uiAGEndtime TABLE@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F> ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F>= ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGEndtime TABLE@ F< LAND  LAND  IF 
+29 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+31 LINE.NUM ELSE 
+31 LINE.NUM ^iAGZoneNum @@ }uiAGEndtime TABLE@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F< ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F>= ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGEndtime TABLE@ F< LOR  LAND  IF 
+34 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+36 LINE.NUM ELSE 
+36 LINE.NUM ^iAGZoneNum @@ }uiAGStartTime TABLE@ 0.00000000e+000 F= ^iAGZoneNum @@ }uiAGEndtime TABLE@ 0.00000000e+000 F= LAND  IF 
+38 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+39 LINE.NUM ELSE 
+41 LINE.NUM 0 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+43 LINE.NUM THEN THEN THEN 
+45 LINE.NUM THEN 
+48 LINE.NUM ^dtAgritech_ZN1  T0= IF 
+49 LINE.NUM 0 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+50 LINE.NUM ^iAGZoneNum @@ }iAG_BatchTankActive TABLE@ 1 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+51 LINE.NUM 9 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+52 LINE.NUM 1 ^iAGZoneNum @@ }iAG_LastRun TABLE! 
+53 LINE.NUM THEN 
+54 LINE.NUM THEN 
+57 LINE.NUM ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE@ 1 = ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE@ 0 = LAND  IF 
+59 LINE.NUM ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = ^iAGZoneNum @@ }iAG_BatchTankActive TABLE@ 0 = LAND  ^iAGZoneNum @@ }iTank_Output TABLE@ 0 = LAND  ^iAGZoneNum @@ }iTank_AlarmLO TABLE@ 0 = LAND  IF 
+61 LINE.NUM ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE@ ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+64 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeEn_ZN1 TABLE@ IF 
+66 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeSP_ZN1 TABLE@ 0 I>F F> IF 
+68 LINE.NUM ^dtAgritech_ZN1 @@F 0.00000000e+000 F<= IF 
+69 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeSP_ZN1 TABLE@ 60 I>F F* ^dtAgritech_ZN1  SetTimer 
+70 LINE.NUM ^dtAgritech_ZN1  StartTimer 
+71 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+72 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+73 LINE.NUM 1 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+74 LINE.NUM 1 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+75 LINE.NUM THEN 
+76 LINE.NUM ELSE 
+77 LINE.NUM 0 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+78 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+79 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+80 LINE.NUM THEN 
+81 LINE.NUM ELSE 
+82 LINE.NUM 0 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+83 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+84 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+85 LINE.NUM THEN 
+87 LINE.NUM THEN 
+90 LINE.NUM ^iAGZoneNum @@ }iTank_Output TABLE@ 1 = ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE@ 0 = LAND  IF 
+91 LINE.NUM 9 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+92 LINE.NUM 1 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+93 LINE.NUM THEN 
+96 LINE.NUM ^iAGZoneNum @@ }iTank_AlarmLO TABLE@ IF 
+97 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+98 LINE.NUM THEN 
+101 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 9 > IF 
+102 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+103 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+104 LINE.NUM THEN 
+107 LINE.NUM ^iAGZoneNum @@ }iAGValveActive TABLE@ 1 = IF 
+108 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+109 LINE.NUM ELSE 
+110 LINE.NUM 0 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+111 LINE.NUM THEN 
+113 LINE.NUM 0 ^iAG_Tmp1 @! 
+114 LINE.NUM 0 ^iAG_Tmp @! 
+116 LINE.NUM BEGIN ^iAG_Tmp @@ 9 < WHILE 
+117 LINE.NUM ^iAG_Tmp @@ }uiAGValveTimeEn_ZN1 TABLE@ 1 = IF 
+118 LINE.NUM 1 ^iAG_Tmp1 @! 
+119 LINE.NUM 10 ^iAG_Tmp @! 
+120 LINE.NUM ELSE 
+121 LINE.NUM ^iAG_Tmp @@ 1 +  ^iAG_Tmp @! 
+122 LINE.NUM THEN 
+123 LINE.NUM REPEAT 
+126 LINE.NUM ^iAGZoneNum @@ }iAGValveActive TABLE@ 1 = ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 0 = LAND  ^iAG_Tmp1 @@ 0 = LOR  IF 
+127 LINE.NUM -1 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+128 LINE.NUM THEN 
+131 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 1 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+132 LINE.NUM 0 }tOutCustomIndex TABLE@ -1 > IF 
+133 LINE.NUM 0 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+135 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+137 LINE.NUM THEN 
+138 LINE.NUM ELSE 
+139 LINE.NUM 0 }tOutCustomIndex TABLE@ -1 > IF 
+140 LINE.NUM 0 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+141 LINE.NUM PTR_doAgritechOutput_Ptr  ?ON IF 
+142 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+143 LINE.NUM THEN 
+144 LINE.NUM THEN 
+145 LINE.NUM THEN 
+148 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 2 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+149 LINE.NUM 1 }tOutCustomIndex TABLE@ -1 > IF 
+150 LINE.NUM 1 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+152 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+154 LINE.NUM THEN 
+155 LINE.NUM ELSE 
+156 LINE.NUM 1 }tOutCustomIndex TABLE@ -1 > IF 
+157 LINE.NUM 1 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+158 LINE.NUM PTR_doAgritechOutput_Ptr  ?ON IF 
+159 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+160 LINE.NUM THEN 
+161 LINE.NUM THEN 
+162 LINE.NUM THEN 
+165 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 3 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+166 LINE.NUM 2 }tOutCustomIndex TABLE@ -1 > IF 
+167 LINE.NUM 2 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+169 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+171 LINE.NUM THEN 
+172 LINE.NUM ELSE 
+173 LINE.NUM 2 }tOutCustomIndex TABLE@ -1 > IF 
+174 LINE.NUM 2 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+175 LINE.NUM PTR_doAgritechOutput_Ptr  ?ON IF 
+176 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+177 LINE.NUM THEN 
+178 LINE.NUM THEN 
+179 LINE.NUM THEN 
+182 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 4 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+183 LINE.NUM 3 }tOutCustomIndex TABLE@ -1 > IF 
+184 LINE.NUM 3 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+186 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+188 LINE.NUM THEN 
+189 LINE.NUM ELSE 
+190 LINE.NUM 3 }tOutCustomIndex TABLE@ -1 > IF 
+191 LINE.NUM 3 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+192 LINE.NUM PTR_doAgritechOutput_Ptr  ?ON IF 
+193 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+194 LINE.NUM THEN 
+195 LINE.NUM THEN 
+196 LINE.NUM THEN 
+199 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 5 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+200 LINE.NUM 4 }tOutCustomIndex TABLE@ -1 > IF 
+201 LINE.NUM 4 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+203 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+205 LINE.NUM THEN 
+206 LINE.NUM ELSE 
+207 LINE.NUM 4 }tOutCustomIndex TABLE@ -1 > IF 
+208 LINE.NUM 4 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+209 LINE.NUM PTR_doAgritechOutput_Ptr  ?ON IF 
+210 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+211 LINE.NUM THEN 
+212 LINE.NUM THEN 
+213 LINE.NUM THEN 
+216 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 6 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+217 LINE.NUM 5 }tOutCustomIndex TABLE@ -1 > IF 
+218 LINE.NUM 5 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+220 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+222 LINE.NUM THEN 
+223 LINE.NUM ELSE 
+224 LINE.NUM 5 }tOutCustomIndex TABLE@ -1 > IF 
+225 LINE.NUM 5 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+226 LINE.NUM PTR_doAgritechOutput_Ptr  ?ON IF 
+227 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+228 LINE.NUM THEN 
+229 LINE.NUM THEN 
+230 LINE.NUM THEN 
+233 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 7 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+234 LINE.NUM 6 }tOutCustomIndex TABLE@ -1 > IF 
+235 LINE.NUM 6 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+237 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+239 LINE.NUM THEN 
+240 LINE.NUM ELSE 
+241 LINE.NUM 6 }tOutCustomIndex TABLE@ -1 > IF 
+242 LINE.NUM 6 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+243 LINE.NUM PTR_doAgritechOutput_Ptr  ?ON IF 
+244 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+245 LINE.NUM THEN 
+246 LINE.NUM THEN 
+247 LINE.NUM THEN 
+250 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 8 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+251 LINE.NUM 7 }tOutCustomIndex TABLE@ -1 > IF 
+252 LINE.NUM 7 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+254 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+256 LINE.NUM THEN 
+257 LINE.NUM ELSE 
+258 LINE.NUM 7 }tOutCustomIndex TABLE@ -1 > IF 
+259 LINE.NUM 7 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+260 LINE.NUM PTR_doAgritechOutput_Ptr  ?ON IF 
+261 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+262 LINE.NUM THEN 
+263 LINE.NUM THEN 
+264 LINE.NUM THEN 
+267 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 9 = IF 
+268 LINE.NUM 8 }tOutCustomIndex TABLE@ -1 > IF 
+269 LINE.NUM 8 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+271 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+273 LINE.NUM THEN 
+274 LINE.NUM ELSE 
+275 LINE.NUM 8 }tOutCustomIndex TABLE@ -1 > IF 
+276 LINE.NUM 8 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+278 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+280 LINE.NUM THEN 
+281 LINE.NUM THEN 
+284 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ -1 = IF 
+285 LINE.NUM 0 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+286 LINE.NUM 9 }tOutCustomIndex TABLE@ -1 > IF 
+287 LINE.NUM 9 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+289 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+291 LINE.NUM THEN 
+292 LINE.NUM ELSE 
+293 LINE.NUM 1 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+294 LINE.NUM 9 }tOutCustomIndex TABLE@ -1 > IF 
+295 LINE.NUM 9 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+297 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+299 LINE.NUM THEN 
+300 LINE.NUM THEN 
+302 LINE.NUM THEN 
+304 LINE.NUM THEN 
+306 LINE.NUM ^iAGZoneNum @@ }uiAGZoneEnable TABLE@ 0 = ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE@ 0 = LOR  IF 
+309 LINE.NUM 0 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+310 LINE.NUM 0 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+311 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+312 LINE.NUM 0 ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+313 LINE.NUM 0 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+314 LINE.NUM 0 I>F ^dtAgritech_ZN1 @! 
+315 LINE.NUM 0 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+317 LINE.NUM 0 }tOutCustomIndex TABLE@ -1 > IF 
+318 LINE.NUM 0 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+320 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+322 LINE.NUM THEN 
+324 LINE.NUM 1 }tOutCustomIndex TABLE@ -1 > IF 
+325 LINE.NUM 1 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+327 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+329 LINE.NUM THEN 
+331 LINE.NUM 2 }tOutCustomIndex TABLE@ -1 > IF 
+332 LINE.NUM 2 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+334 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+336 LINE.NUM THEN 
+338 LINE.NUM 3 }tOutCustomIndex TABLE@ -1 > IF 
+339 LINE.NUM 3 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+341 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+343 LINE.NUM THEN 
+345 LINE.NUM 4 }tOutCustomIndex TABLE@ -1 > IF 
+346 LINE.NUM 4 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+348 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+350 LINE.NUM THEN 
+352 LINE.NUM 5 }tOutCustomIndex TABLE@ -1 > IF 
+353 LINE.NUM 5 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+355 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+357 LINE.NUM THEN 
+359 LINE.NUM 6 }tOutCustomIndex TABLE@ -1 > IF 
+360 LINE.NUM 6 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+362 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+364 LINE.NUM THEN 
+366 LINE.NUM 7 }tOutCustomIndex TABLE@ -1 > IF 
+367 LINE.NUM 7 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+369 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+371 LINE.NUM THEN 
+373 LINE.NUM 8 }tOutCustomIndex TABLE@ -1 > IF 
+374 LINE.NUM 8 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+376 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+378 LINE.NUM THEN 
+380 LINE.NUM 9 }tOutCustomIndex TABLE@ -1 > IF 
+381 LINE.NUM 9 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+383 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+385 LINE.NUM THEN 
+387 LINE.NUM THEN 
+1 390 LINE.NUM 9 1 + 0 DO? I ^iAG_Tmp @! 
+392 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ ^iAG_Tmp @@ = ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 0 > LAND  IF 
+393 LINE.NUM 1 ^iAGZoneNum @@ ^iAG_Tmp @@ +  }iAGValveOnBit TABLE! 
+394 LINE.NUM ELSE 
+394 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ -1 = ^iAGZoneNum @@ 0 +  }iAGValveOnBit TABLE@ 0 = LAND  IF 
+395 LINE.NUM 1 ^iAGZoneNum @@ 0 +  }iAGValveOnBit TABLE! 
+396 LINE.NUM ELSE 
+397 LINE.NUM 0 ^iAGZoneNum @@ ^iAG_Tmp @@ +  }iAGValveOnBit TABLE! 
+398 LINE.NUM THEN THEN 
+400 LINE.NUM 1 +LOOP 
+0 JUMP ;
+: 117_60
+17 LINE.NUM 1 ^iAGZoneNum @! 
+22 LINE.NUM ^iAGZoneNum @@ }uiAGZoneEnable TABLE@ 1 = IF 
+24 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 0 = IF 
+26 LINE.NUM ^iAGZoneNum @@ }uiAGEndtime TABLE@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F> ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F>= ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGEndtime TABLE@ F< LAND  LAND  IF 
+29 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+31 LINE.NUM ELSE 
+31 LINE.NUM ^iAGZoneNum @@ }uiAGEndtime TABLE@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F< ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F>= ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGEndtime TABLE@ F< LOR  LAND  IF 
+34 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+36 LINE.NUM ELSE 
+36 LINE.NUM ^iAGZoneNum @@ }uiAGStartTime TABLE@ 0.00000000e+000 F= ^iAGZoneNum @@ }uiAGEndtime TABLE@ 0.00000000e+000 F= LAND  IF 
+38 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+39 LINE.NUM ELSE 
+41 LINE.NUM 0 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+43 LINE.NUM THEN THEN THEN 
+45 LINE.NUM THEN 
+48 LINE.NUM ^dtAgritech_ZN2  T0= IF 
+49 LINE.NUM 0 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+50 LINE.NUM ^iAGZoneNum @@ }iAG_BatchTankActive TABLE@ 1 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+51 LINE.NUM 9 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+52 LINE.NUM 1 ^iAGZoneNum @@ }iAG_LastRun TABLE! 
+53 LINE.NUM THEN 
+54 LINE.NUM THEN 
+57 LINE.NUM ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE@ 1 = ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE@ 0 = LAND  IF 
+59 LINE.NUM ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = ^iAGZoneNum @@ }iAG_BatchTankActive TABLE@ 0 = LAND  ^iAGZoneNum @@ }iTank_Output TABLE@ 0 = LAND  ^iAGZoneNum @@ }iTank_AlarmLO TABLE@ 0 = LAND  IF 
+61 LINE.NUM ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE@ ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+64 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeEn_ZN2 TABLE@ IF 
+66 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeSP_ZN2 TABLE@ 0 I>F F> IF 
+68 LINE.NUM ^dtAgritech_ZN2 @@F 0.00000000e+000 F<= IF 
+69 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeSP_ZN2 TABLE@ 60 I>F F* ^dtAgritech_ZN2  SetTimer 
+70 LINE.NUM ^dtAgritech_ZN2  StartTimer 
+71 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+72 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+73 LINE.NUM 1 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+74 LINE.NUM 1 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+75 LINE.NUM THEN 
+76 LINE.NUM ELSE 
+77 LINE.NUM 0 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+78 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+79 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+80 LINE.NUM THEN 
+81 LINE.NUM ELSE 
+82 LINE.NUM 0 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+83 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+84 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+85 LINE.NUM THEN 
+87 LINE.NUM THEN 
+90 LINE.NUM ^iAGZoneNum @@ }iTank_Output TABLE@ 1 = ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE@ 0 = LAND  IF 
+91 LINE.NUM 9 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+92 LINE.NUM 1 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+93 LINE.NUM THEN 
+96 LINE.NUM ^iAGZoneNum @@ }iTank_AlarmLO TABLE@ IF 
+97 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+98 LINE.NUM THEN 
+101 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 9 > IF 
+102 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+103 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+104 LINE.NUM THEN 
+107 LINE.NUM ^iAGZoneNum @@ }iAGValveActive TABLE@ 1 = IF 
+108 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+109 LINE.NUM ELSE 
+110 LINE.NUM 0 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+111 LINE.NUM THEN 
+113 LINE.NUM 0 ^iAG_Tmp1 @! 
+114 LINE.NUM 0 ^iAG_Tmp @! 
+116 LINE.NUM BEGIN ^iAG_Tmp @@ 9 < WHILE 
+117 LINE.NUM ^iAG_Tmp @@ }uiAGValveTimeEn_ZN2 TABLE@ 1 = IF 
+118 LINE.NUM 1 ^iAG_Tmp1 @! 
+119 LINE.NUM 10 ^iAG_Tmp @! 
+120 LINE.NUM ELSE 
+121 LINE.NUM ^iAG_Tmp @@ 1 +  ^iAG_Tmp @! 
+122 LINE.NUM THEN 
+123 LINE.NUM REPEAT 
+126 LINE.NUM ^iAGZoneNum @@ }iAGValveActive TABLE@ 1 = ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 0 = LAND  ^iAG_Tmp1 @@ 0 = LOR  IF 
+127 LINE.NUM -1 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+128 LINE.NUM THEN 
+131 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 1 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+132 LINE.NUM 10 }tOutCustomIndex TABLE@ -1 > IF 
+133 LINE.NUM 10 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+135 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+137 LINE.NUM THEN 
+138 LINE.NUM ELSE 
+139 LINE.NUM 10 }tOutCustomIndex TABLE@ -1 > IF 
+140 LINE.NUM 10 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+142 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+144 LINE.NUM THEN 
+145 LINE.NUM THEN 
+148 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 2 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+149 LINE.NUM 11 }tOutCustomIndex TABLE@ -1 > IF 
+150 LINE.NUM 11 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+152 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+154 LINE.NUM THEN 
+155 LINE.NUM ELSE 
+156 LINE.NUM 11 }tOutCustomIndex TABLE@ -1 > IF 
+157 LINE.NUM 11 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+159 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+161 LINE.NUM THEN 
+162 LINE.NUM THEN 
+165 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 3 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+166 LINE.NUM 12 }tOutCustomIndex TABLE@ -1 > IF 
+167 LINE.NUM 12 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+169 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+171 LINE.NUM THEN 
+172 LINE.NUM ELSE 
+173 LINE.NUM 12 }tOutCustomIndex TABLE@ -1 > IF 
+174 LINE.NUM 12 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+176 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+178 LINE.NUM THEN 
+179 LINE.NUM THEN 
+182 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 4 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+183 LINE.NUM 13 }tOutCustomIndex TABLE@ -1 > IF 
+184 LINE.NUM 13 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+186 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+188 LINE.NUM THEN 
+189 LINE.NUM ELSE 
+190 LINE.NUM 13 }tOutCustomIndex TABLE@ -1 > IF 
+191 LINE.NUM 13 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+193 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+195 LINE.NUM THEN 
+196 LINE.NUM THEN 
+199 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 5 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+200 LINE.NUM 14 }tOutCustomIndex TABLE@ -1 > IF 
+201 LINE.NUM 14 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+203 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+205 LINE.NUM THEN 
+206 LINE.NUM ELSE 
+207 LINE.NUM 14 }tOutCustomIndex TABLE@ -1 > IF 
+208 LINE.NUM 14 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+210 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+212 LINE.NUM THEN 
+213 LINE.NUM THEN 
+216 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 6 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+217 LINE.NUM 15 }tOutCustomIndex TABLE@ -1 > IF 
+218 LINE.NUM 15 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+220 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+222 LINE.NUM THEN 
+223 LINE.NUM ELSE 
+224 LINE.NUM 15 }tOutCustomIndex TABLE@ -1 > IF 
+225 LINE.NUM 15 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+227 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+229 LINE.NUM THEN 
+230 LINE.NUM THEN 
+233 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 7 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+234 LINE.NUM 16 }tOutCustomIndex TABLE@ -1 > IF 
+235 LINE.NUM 16 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+237 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+239 LINE.NUM THEN 
+240 LINE.NUM ELSE 
+241 LINE.NUM 16 }tOutCustomIndex TABLE@ -1 > IF 
+242 LINE.NUM 16 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+244 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+246 LINE.NUM THEN 
+247 LINE.NUM THEN 
+250 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 8 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+251 LINE.NUM 17 }tOutCustomIndex TABLE@ -1 > IF 
+252 LINE.NUM 17 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+254 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+256 LINE.NUM THEN 
+257 LINE.NUM ELSE 
+258 LINE.NUM 17 }tOutCustomIndex TABLE@ -1 > IF 
+259 LINE.NUM 17 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+261 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+263 LINE.NUM THEN 
+264 LINE.NUM THEN 
+267 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 9 = IF 
+268 LINE.NUM 18 }tOutCustomIndex TABLE@ -1 > IF 
+269 LINE.NUM 18 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+271 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+273 LINE.NUM THEN 
+274 LINE.NUM ELSE 
+275 LINE.NUM 18 }tOutCustomIndex TABLE@ -1 > IF 
+276 LINE.NUM 18 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+278 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+280 LINE.NUM THEN 
+281 LINE.NUM THEN 
+284 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ -1 = IF 
+285 LINE.NUM 0 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+286 LINE.NUM 19 }tOutCustomIndex TABLE@ -1 > IF 
+287 LINE.NUM 19 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+289 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+291 LINE.NUM THEN 
+292 LINE.NUM ELSE 
+293 LINE.NUM 1 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+294 LINE.NUM 19 }tOutCustomIndex TABLE@ -1 > IF 
+295 LINE.NUM 19 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+297 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+299 LINE.NUM THEN 
+300 LINE.NUM THEN 
+302 LINE.NUM THEN 
+304 LINE.NUM THEN 
+306 LINE.NUM ^iAGZoneNum @@ }uiAGZoneEnable TABLE@ 0 = ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE@ 0 = LOR  IF 
+309 LINE.NUM 0 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+310 LINE.NUM 0 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+311 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+312 LINE.NUM 0 ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+313 LINE.NUM 0 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+314 LINE.NUM 0 I>F ^dtAgritech_ZN2 @! 
+315 LINE.NUM 0 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+317 LINE.NUM 10 }tOutCustomIndex TABLE@ -1 > IF 
+318 LINE.NUM 10 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+320 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+322 LINE.NUM THEN 
+324 LINE.NUM 11 }tOutCustomIndex TABLE@ -1 > IF 
+325 LINE.NUM 11 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+327 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+329 LINE.NUM THEN 
+331 LINE.NUM 12 }tOutCustomIndex TABLE@ -1 > IF 
+332 LINE.NUM 12 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+334 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+336 LINE.NUM THEN 
+338 LINE.NUM 13 }tOutCustomIndex TABLE@ -1 > IF 
+339 LINE.NUM 13 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+341 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+343 LINE.NUM THEN 
+345 LINE.NUM 14 }tOutCustomIndex TABLE@ -1 > IF 
+346 LINE.NUM 14 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+348 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+350 LINE.NUM THEN 
+352 LINE.NUM 15 }tOutCustomIndex TABLE@ -1 > IF 
+353 LINE.NUM 15 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+355 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+357 LINE.NUM THEN 
+359 LINE.NUM 16 }tOutCustomIndex TABLE@ -1 > IF 
+360 LINE.NUM 16 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+362 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+364 LINE.NUM THEN 
+366 LINE.NUM 17 }tOutCustomIndex TABLE@ -1 > IF 
+367 LINE.NUM 17 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+369 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+371 LINE.NUM THEN 
+373 LINE.NUM 18 }tOutCustomIndex TABLE@ -1 > IF 
+374 LINE.NUM 18 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+376 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+378 LINE.NUM THEN 
+380 LINE.NUM 19 }tOutCustomIndex TABLE@ -1 > IF 
+381 LINE.NUM 19 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+383 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+385 LINE.NUM THEN 
+387 LINE.NUM THEN 
+1 390 LINE.NUM 9 1 + 0 DO? I ^iAG_Tmp @! 
+392 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ ^iAG_Tmp @@ = ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 0 > LAND  IF 
+393 LINE.NUM 1 ^iAGZoneNum @@ 9 +  ^iAG_Tmp @@ +  }iAGValveOnBit TABLE! 
+394 LINE.NUM ELSE 
+394 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ -1 = ^iAGZoneNum @@ 9 +  }iAGValveOnBit TABLE@ 0 = LAND  IF 
+395 LINE.NUM 1 ^iAGZoneNum @@ 9 +  0 +  }iAGValveOnBit TABLE! 
+396 LINE.NUM ELSE 
+397 LINE.NUM 0 ^iAGZoneNum @@ 9 +  ^iAG_Tmp @@ +  }iAGValveOnBit TABLE! 
+398 LINE.NUM THEN THEN 
+400 LINE.NUM 1 +LOOP 
+1 JUMP ;
+: 117_63
+
+1 LINE.NUM
+  2000    DELAY
+-4 JUMP ;
+: 117_66
+17 LINE.NUM 2 ^iAGZoneNum @! 
+22 LINE.NUM ^iAGZoneNum @@ }uiAGZoneEnable TABLE@ 1 = IF 
+24 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 0 = IF 
+26 LINE.NUM ^iAGZoneNum @@ }uiAGEndtime TABLE@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F> ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F>= ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGEndtime TABLE@ F< LAND  LAND  IF 
+29 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+31 LINE.NUM ELSE 
+31 LINE.NUM ^iAGZoneNum @@ }uiAGEndtime TABLE@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F< ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F>= ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGEndtime TABLE@ F< LOR  LAND  IF 
+34 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+36 LINE.NUM ELSE 
+36 LINE.NUM ^iAGZoneNum @@ }uiAGStartTime TABLE@ 0.00000000e+000 F= ^iAGZoneNum @@ }uiAGEndtime TABLE@ 0.00000000e+000 F= LAND  IF 
+38 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+39 LINE.NUM ELSE 
+41 LINE.NUM 0 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+43 LINE.NUM THEN THEN THEN 
+45 LINE.NUM THEN 
+48 LINE.NUM ^dtAgritech_ZN3  T0= IF 
+49 LINE.NUM 0 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+50 LINE.NUM ^iAGZoneNum @@ }iAG_BatchTankActive TABLE@ 1 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+51 LINE.NUM 9 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+52 LINE.NUM 1 ^iAGZoneNum @@ }iAG_LastRun TABLE! 
+53 LINE.NUM THEN 
+54 LINE.NUM THEN 
+57 LINE.NUM ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE@ 1 = ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE@ 0 = LAND  IF 
+59 LINE.NUM ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = ^iAGZoneNum @@ }iAG_BatchTankActive TABLE@ 0 = LAND  ^iAGZoneNum @@ }iTank_Output TABLE@ 0 = LAND  ^iAGZoneNum @@ }iTank_AlarmLO TABLE@ 0 = LAND  IF 
+61 LINE.NUM ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE@ ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+64 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeEn_ZN3 TABLE@ IF 
+66 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeSP_ZN3 TABLE@ 0 I>F F> IF 
+68 LINE.NUM ^dtAgritech_ZN3 @@F 0.00000000e+000 F<= IF 
+69 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeSP_ZN3 TABLE@ 60 I>F F* ^dtAgritech_ZN3  SetTimer 
+70 LINE.NUM ^dtAgritech_ZN3  StartTimer 
+71 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+72 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+73 LINE.NUM 1 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+74 LINE.NUM 1 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+75 LINE.NUM THEN 
+76 LINE.NUM ELSE 
+77 LINE.NUM 0 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+78 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+79 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+80 LINE.NUM THEN 
+81 LINE.NUM ELSE 
+82 LINE.NUM 0 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+83 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+84 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+85 LINE.NUM THEN 
+87 LINE.NUM THEN 
+90 LINE.NUM ^iAGZoneNum @@ }iTank_Output TABLE@ 1 = ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE@ 0 = LAND  IF 
+91 LINE.NUM 9 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+92 LINE.NUM 1 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+93 LINE.NUM THEN 
+96 LINE.NUM ^iAGZoneNum @@ }iTank_AlarmLO TABLE@ IF 
+97 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+98 LINE.NUM THEN 
+101 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 9 > IF 
+102 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+103 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+104 LINE.NUM THEN 
+107 LINE.NUM ^iAGZoneNum @@ }iAGValveActive TABLE@ 1 = IF 
+108 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+109 LINE.NUM ELSE 
+110 LINE.NUM 0 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+111 LINE.NUM THEN 
+113 LINE.NUM 0 ^iAG_Tmp1 @! 
+114 LINE.NUM 0 ^iAG_Tmp @! 
+116 LINE.NUM BEGIN ^iAG_Tmp @@ 9 < WHILE 
+117 LINE.NUM ^iAG_Tmp @@ }uiAGValveTimeEn_ZN3 TABLE@ 1 = IF 
+118 LINE.NUM 1 ^iAG_Tmp1 @! 
+119 LINE.NUM 10 ^iAG_Tmp @! 
+120 LINE.NUM ELSE 
+121 LINE.NUM ^iAG_Tmp @@ 1 +  ^iAG_Tmp @! 
+122 LINE.NUM THEN 
+123 LINE.NUM REPEAT 
+126 LINE.NUM ^iAGZoneNum @@ }iAGValveActive TABLE@ 1 = ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 0 = LAND  ^iAG_Tmp1 @@ 0 = LOR  IF 
+127 LINE.NUM -1 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+128 LINE.NUM THEN 
+131 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 1 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+132 LINE.NUM 20 }tOutCustomIndex TABLE@ -1 > IF 
+133 LINE.NUM 20 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+135 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+137 LINE.NUM THEN 
+138 LINE.NUM ELSE 
+139 LINE.NUM 20 }tOutCustomIndex TABLE@ -1 > IF 
+140 LINE.NUM 20 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+142 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+144 LINE.NUM THEN 
+145 LINE.NUM THEN 
+148 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 2 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+149 LINE.NUM 21 }tOutCustomIndex TABLE@ -1 > IF 
+150 LINE.NUM 21 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+152 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+154 LINE.NUM THEN 
+155 LINE.NUM ELSE 
+156 LINE.NUM 21 }tOutCustomIndex TABLE@ -1 > IF 
+157 LINE.NUM 21 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+159 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+161 LINE.NUM THEN 
+162 LINE.NUM THEN 
+165 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 3 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+166 LINE.NUM 22 }tOutCustomIndex TABLE@ -1 > IF 
+167 LINE.NUM 22 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+169 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+171 LINE.NUM THEN 
+172 LINE.NUM ELSE 
+173 LINE.NUM 22 }tOutCustomIndex TABLE@ -1 > IF 
+174 LINE.NUM 22 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+176 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+178 LINE.NUM THEN 
+179 LINE.NUM THEN 
+182 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 4 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+183 LINE.NUM 23 }tOutCustomIndex TABLE@ -1 > IF 
+184 LINE.NUM 23 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+186 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+188 LINE.NUM THEN 
+189 LINE.NUM ELSE 
+190 LINE.NUM 23 }tOutCustomIndex TABLE@ -1 > IF 
+191 LINE.NUM 23 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+193 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+195 LINE.NUM THEN 
+196 LINE.NUM THEN 
+199 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 5 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+200 LINE.NUM 24 }tOutCustomIndex TABLE@ -1 > IF 
+201 LINE.NUM 24 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+203 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+205 LINE.NUM THEN 
+206 LINE.NUM ELSE 
+207 LINE.NUM 24 }tOutCustomIndex TABLE@ -1 > IF 
+208 LINE.NUM 24 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+210 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+212 LINE.NUM THEN 
+213 LINE.NUM THEN 
+216 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 6 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+217 LINE.NUM 25 }tOutCustomIndex TABLE@ -1 > IF 
+218 LINE.NUM 25 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+220 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+222 LINE.NUM THEN 
+223 LINE.NUM ELSE 
+224 LINE.NUM 25 }tOutCustomIndex TABLE@ -1 > IF 
+225 LINE.NUM 25 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+227 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+229 LINE.NUM THEN 
+230 LINE.NUM THEN 
+233 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 7 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+234 LINE.NUM 26 }tOutCustomIndex TABLE@ -1 > IF 
+235 LINE.NUM 26 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+237 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+239 LINE.NUM THEN 
+240 LINE.NUM ELSE 
+241 LINE.NUM 26 }tOutCustomIndex TABLE@ -1 > IF 
+242 LINE.NUM 26 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+244 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+246 LINE.NUM THEN 
+247 LINE.NUM THEN 
+250 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 8 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+251 LINE.NUM 27 }tOutCustomIndex TABLE@ -1 > IF 
+252 LINE.NUM 27 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+254 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+256 LINE.NUM THEN 
+257 LINE.NUM ELSE 
+258 LINE.NUM 27 }tOutCustomIndex TABLE@ -1 > IF 
+259 LINE.NUM 27 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+261 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+263 LINE.NUM THEN 
+264 LINE.NUM THEN 
+267 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 9 = IF 
+268 LINE.NUM 28 }tOutCustomIndex TABLE@ -1 > IF 
+269 LINE.NUM 28 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+271 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+273 LINE.NUM THEN 
+274 LINE.NUM ELSE 
+275 LINE.NUM 28 }tOutCustomIndex TABLE@ -1 > IF 
+276 LINE.NUM 28 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+278 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+280 LINE.NUM THEN 
+281 LINE.NUM THEN 
+284 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ -1 = IF 
+285 LINE.NUM 0 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+286 LINE.NUM 29 }tOutCustomIndex TABLE@ -1 > IF 
+287 LINE.NUM 29 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+289 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+291 LINE.NUM THEN 
+292 LINE.NUM ELSE 
+293 LINE.NUM 1 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+294 LINE.NUM 29 }tOutCustomIndex TABLE@ -1 > IF 
+295 LINE.NUM 29 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+297 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+299 LINE.NUM THEN 
+300 LINE.NUM THEN 
+302 LINE.NUM THEN 
+304 LINE.NUM THEN 
+306 LINE.NUM ^iAGZoneNum @@ }uiAGZoneEnable TABLE@ 0 = ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE@ 0 = LOR  IF 
+309 LINE.NUM 0 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+310 LINE.NUM 0 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+311 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+312 LINE.NUM 0 ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+313 LINE.NUM 0 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+314 LINE.NUM 0 I>F ^dtAgritech_ZN3 @! 
+315 LINE.NUM 0 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+317 LINE.NUM 20 }tOutCustomIndex TABLE@ -1 > IF 
+318 LINE.NUM 20 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+320 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+322 LINE.NUM THEN 
+324 LINE.NUM 21 }tOutCustomIndex TABLE@ -1 > IF 
+325 LINE.NUM 21 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+327 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+329 LINE.NUM THEN 
+331 LINE.NUM 22 }tOutCustomIndex TABLE@ -1 > IF 
+332 LINE.NUM 22 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+334 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+336 LINE.NUM THEN 
+338 LINE.NUM 23 }tOutCustomIndex TABLE@ -1 > IF 
+339 LINE.NUM 23 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+341 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+343 LINE.NUM THEN 
+345 LINE.NUM 24 }tOutCustomIndex TABLE@ -1 > IF 
+346 LINE.NUM 24 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+348 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+350 LINE.NUM THEN 
+352 LINE.NUM 25 }tOutCustomIndex TABLE@ -1 > IF 
+353 LINE.NUM 25 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+355 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+357 LINE.NUM THEN 
+359 LINE.NUM 26 }tOutCustomIndex TABLE@ -1 > IF 
+360 LINE.NUM 26 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+362 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+364 LINE.NUM THEN 
+366 LINE.NUM 27 }tOutCustomIndex TABLE@ -1 > IF 
+367 LINE.NUM 27 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+369 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+371 LINE.NUM THEN 
+373 LINE.NUM 28 }tOutCustomIndex TABLE@ -1 > IF 
+374 LINE.NUM 28 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+376 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+378 LINE.NUM THEN 
+380 LINE.NUM 29 }tOutCustomIndex TABLE@ -1 > IF 
+381 LINE.NUM 29 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+383 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+385 LINE.NUM THEN 
+387 LINE.NUM THEN 
+1 390 LINE.NUM 9 1 + 0 DO? I ^iAG_Tmp @! 
+392 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ ^iAG_Tmp @@ = ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 0 > LAND  IF 
+393 LINE.NUM 1 ^iAGZoneNum @@ 18 +  ^iAG_Tmp @@ +  }iAGValveOnBit TABLE! 
+394 LINE.NUM ELSE 
+394 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ -1 = ^iAGZoneNum @@ 18 +  }iAGValveOnBit TABLE@ 0 = LAND  IF 
+395 LINE.NUM 1 ^iAGZoneNum @@ 18 +  0 +  }iAGValveOnBit TABLE! 
+396 LINE.NUM ELSE 
+397 LINE.NUM 0 ^iAGZoneNum @@ 18 +  ^iAG_Tmp @@ +  }iAGValveOnBit TABLE! 
+398 LINE.NUM THEN THEN 
+400 LINE.NUM 1 +LOOP 
+0 JUMP ;
+: 117_69
+17 LINE.NUM 3 ^iAGZoneNum @! 
+22 LINE.NUM ^iAGZoneNum @@ }uiAGZoneEnable TABLE@ 1 = IF 
+24 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 0 = IF 
+26 LINE.NUM ^iAGZoneNum @@ }uiAGEndtime TABLE@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F> ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F>= ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGEndtime TABLE@ F< LAND  LAND  IF 
+29 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+31 LINE.NUM ELSE 
+31 LINE.NUM ^iAGZoneNum @@ }uiAGEndtime TABLE@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F< ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F>= ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGEndtime TABLE@ F< LOR  LAND  IF 
+34 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+36 LINE.NUM ELSE 
+36 LINE.NUM ^iAGZoneNum @@ }uiAGStartTime TABLE@ 0.00000000e+000 F= ^iAGZoneNum @@ }uiAGEndtime TABLE@ 0.00000000e+000 F= LAND  IF 
+38 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+39 LINE.NUM ELSE 
+41 LINE.NUM 0 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+43 LINE.NUM THEN THEN THEN 
+45 LINE.NUM THEN 
+48 LINE.NUM ^dtAgritech_ZN4  T0= IF 
+49 LINE.NUM 0 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+50 LINE.NUM ^iAGZoneNum @@ }iAG_BatchTankActive TABLE@ 1 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+51 LINE.NUM 9 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+52 LINE.NUM 1 ^iAGZoneNum @@ }iAG_LastRun TABLE! 
+53 LINE.NUM THEN 
+54 LINE.NUM THEN 
+57 LINE.NUM ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE@ 1 = ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE@ 0 = LAND  IF 
+59 LINE.NUM ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = ^iAGZoneNum @@ }iAG_BatchTankActive TABLE@ 0 = LAND  ^iAGZoneNum @@ }iTank_Output TABLE@ 0 = LAND  ^iAGZoneNum @@ }iTank_AlarmLO TABLE@ 0 = LAND  IF 
+61 LINE.NUM ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE@ ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+64 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeEn_ZN4 TABLE@ IF 
+66 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeSP_ZN4 TABLE@ 0 I>F F> IF 
+68 LINE.NUM ^dtAgritech_ZN4 @@F 0.00000000e+000 F<= IF 
+69 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeSP_ZN4 TABLE@ 60 I>F F* ^dtAgritech_ZN4  SetTimer 
+70 LINE.NUM ^dtAgritech_ZN4  StartTimer 
+71 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+72 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+73 LINE.NUM 1 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+74 LINE.NUM 1 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+75 LINE.NUM THEN 
+76 LINE.NUM ELSE 
+77 LINE.NUM 0 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+78 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+79 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+80 LINE.NUM THEN 
+81 LINE.NUM ELSE 
+82 LINE.NUM 0 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+83 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+84 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+85 LINE.NUM THEN 
+87 LINE.NUM THEN 
+90 LINE.NUM ^iAGZoneNum @@ }iTank_Output TABLE@ 1 = ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE@ 0 = LAND  IF 
+91 LINE.NUM 9 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+92 LINE.NUM 1 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+93 LINE.NUM THEN 
+96 LINE.NUM ^iAGZoneNum @@ }iTank_AlarmLO TABLE@ IF 
+97 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+98 LINE.NUM THEN 
+101 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 9 > IF 
+102 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+103 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+104 LINE.NUM THEN 
+107 LINE.NUM ^iAGZoneNum @@ }iAGValveActive TABLE@ 1 = IF 
+108 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+109 LINE.NUM ELSE 
+110 LINE.NUM 0 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+111 LINE.NUM THEN 
+113 LINE.NUM 0 ^iAG_Tmp1 @! 
+114 LINE.NUM 0 ^iAG_Tmp @! 
+116 LINE.NUM BEGIN ^iAG_Tmp @@ 9 < WHILE 
+117 LINE.NUM ^iAG_Tmp @@ }uiAGValveTimeEn_ZN4 TABLE@ 1 = IF 
+118 LINE.NUM 1 ^iAG_Tmp1 @! 
+119 LINE.NUM 10 ^iAG_Tmp @! 
+120 LINE.NUM ELSE 
+121 LINE.NUM ^iAG_Tmp @@ 1 +  ^iAG_Tmp @! 
+122 LINE.NUM THEN 
+123 LINE.NUM REPEAT 
+126 LINE.NUM ^iAGZoneNum @@ }iAGValveActive TABLE@ 1 = ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 0 = LAND  ^iAG_Tmp1 @@ 0 = LOR  IF 
+127 LINE.NUM -1 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+128 LINE.NUM THEN 
+131 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 1 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+132 LINE.NUM 30 }tOutCustomIndex TABLE@ -1 > IF 
+133 LINE.NUM 30 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+135 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+137 LINE.NUM THEN 
+138 LINE.NUM ELSE 
+139 LINE.NUM 30 }tOutCustomIndex TABLE@ -1 > IF 
+140 LINE.NUM 30 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+142 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+144 LINE.NUM THEN 
+145 LINE.NUM THEN 
+148 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 2 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+149 LINE.NUM 31 }tOutCustomIndex TABLE@ -1 > IF 
+150 LINE.NUM 31 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+152 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+154 LINE.NUM THEN 
+155 LINE.NUM ELSE 
+156 LINE.NUM 31 }tOutCustomIndex TABLE@ -1 > IF 
+157 LINE.NUM 31 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+159 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+161 LINE.NUM THEN 
+162 LINE.NUM THEN 
+165 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 3 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+166 LINE.NUM 32 }tOutCustomIndex TABLE@ -1 > IF 
+167 LINE.NUM 32 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+169 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+171 LINE.NUM THEN 
+172 LINE.NUM ELSE 
+173 LINE.NUM 32 }tOutCustomIndex TABLE@ -1 > IF 
+174 LINE.NUM 32 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+176 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+178 LINE.NUM THEN 
+179 LINE.NUM THEN 
+182 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 4 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+183 LINE.NUM 33 }tOutCustomIndex TABLE@ -1 > IF 
+184 LINE.NUM 33 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+186 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+188 LINE.NUM THEN 
+189 LINE.NUM ELSE 
+190 LINE.NUM 33 }tOutCustomIndex TABLE@ -1 > IF 
+191 LINE.NUM 33 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+193 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+195 LINE.NUM THEN 
+196 LINE.NUM THEN 
+199 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 5 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+200 LINE.NUM 34 }tOutCustomIndex TABLE@ -1 > IF 
+201 LINE.NUM 34 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+203 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+205 LINE.NUM THEN 
+206 LINE.NUM ELSE 
+207 LINE.NUM 34 }tOutCustomIndex TABLE@ -1 > IF 
+208 LINE.NUM 34 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+210 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+212 LINE.NUM THEN 
+213 LINE.NUM THEN 
+216 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 6 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+217 LINE.NUM 35 }tOutCustomIndex TABLE@ -1 > IF 
+218 LINE.NUM 35 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+220 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+222 LINE.NUM THEN 
+223 LINE.NUM ELSE 
+224 LINE.NUM 35 }tOutCustomIndex TABLE@ -1 > IF 
+225 LINE.NUM 35 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+227 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+229 LINE.NUM THEN 
+230 LINE.NUM THEN 
+233 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 7 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+234 LINE.NUM 36 }tOutCustomIndex TABLE@ -1 > IF 
+235 LINE.NUM 36 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+237 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+239 LINE.NUM THEN 
+240 LINE.NUM ELSE 
+241 LINE.NUM 36 }tOutCustomIndex TABLE@ -1 > IF 
+242 LINE.NUM 36 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+244 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+246 LINE.NUM THEN 
+247 LINE.NUM THEN 
+250 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 8 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+251 LINE.NUM 37 }tOutCustomIndex TABLE@ -1 > IF 
+252 LINE.NUM 37 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+254 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+256 LINE.NUM THEN 
+257 LINE.NUM ELSE 
+258 LINE.NUM 37 }tOutCustomIndex TABLE@ -1 > IF 
+259 LINE.NUM 37 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+261 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+263 LINE.NUM THEN 
+264 LINE.NUM THEN 
+267 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 9 = IF 
+268 LINE.NUM 38 }tOutCustomIndex TABLE@ -1 > IF 
+269 LINE.NUM 38 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+271 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+273 LINE.NUM THEN 
+274 LINE.NUM ELSE 
+275 LINE.NUM 38 }tOutCustomIndex TABLE@ -1 > IF 
+276 LINE.NUM 38 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+278 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+280 LINE.NUM THEN 
+281 LINE.NUM THEN 
+284 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ -1 = IF 
+285 LINE.NUM 0 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+286 LINE.NUM 39 }tOutCustomIndex TABLE@ -1 > IF 
+287 LINE.NUM 39 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+289 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+291 LINE.NUM THEN 
+292 LINE.NUM ELSE 
+293 LINE.NUM 1 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+294 LINE.NUM 39 }tOutCustomIndex TABLE@ -1 > IF 
+295 LINE.NUM 39 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+297 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+299 LINE.NUM THEN 
+300 LINE.NUM THEN 
+302 LINE.NUM THEN 
+304 LINE.NUM THEN 
+306 LINE.NUM ^iAGZoneNum @@ }uiAGZoneEnable TABLE@ 0 = ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE@ 0 = LOR  IF 
+309 LINE.NUM 0 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+310 LINE.NUM 0 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+311 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+312 LINE.NUM 0 ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+313 LINE.NUM 0 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+314 LINE.NUM 0 I>F ^dtAgritech_ZN4 @! 
+315 LINE.NUM 0 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+317 LINE.NUM 30 }tOutCustomIndex TABLE@ -1 > IF 
+318 LINE.NUM 30 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+320 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+322 LINE.NUM THEN 
+324 LINE.NUM 31 }tOutCustomIndex TABLE@ -1 > IF 
+325 LINE.NUM 31 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+327 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+329 LINE.NUM THEN 
+331 LINE.NUM 32 }tOutCustomIndex TABLE@ -1 > IF 
+332 LINE.NUM 32 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+334 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+336 LINE.NUM THEN 
+338 LINE.NUM 33 }tOutCustomIndex TABLE@ -1 > IF 
+339 LINE.NUM 33 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+341 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+343 LINE.NUM THEN 
+345 LINE.NUM 34 }tOutCustomIndex TABLE@ -1 > IF 
+346 LINE.NUM 34 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+348 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+350 LINE.NUM THEN 
+352 LINE.NUM 35 }tOutCustomIndex TABLE@ -1 > IF 
+353 LINE.NUM 35 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+355 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+357 LINE.NUM THEN 
+359 LINE.NUM 36 }tOutCustomIndex TABLE@ -1 > IF 
+360 LINE.NUM 36 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+362 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+364 LINE.NUM THEN 
+366 LINE.NUM 37 }tOutCustomIndex TABLE@ -1 > IF 
+367 LINE.NUM 37 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+369 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+371 LINE.NUM THEN 
+373 LINE.NUM 38 }tOutCustomIndex TABLE@ -1 > IF 
+374 LINE.NUM 38 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+376 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+378 LINE.NUM THEN 
+380 LINE.NUM 39 }tOutCustomIndex TABLE@ -1 > IF 
+381 LINE.NUM 39 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+383 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+385 LINE.NUM THEN 
+387 LINE.NUM THEN 
+1 390 LINE.NUM 9 1 + 0 DO? I ^iAG_Tmp @! 
+392 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ ^iAG_Tmp @@ = ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 0 > LAND  IF 
+393 LINE.NUM 1 ^iAGZoneNum @@ 27 +  ^iAG_Tmp @@ +  }iAGValveOnBit TABLE! 
+394 LINE.NUM ELSE 
+394 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ -1 = ^iAGZoneNum @@ 27 +  }iAGValveOnBit TABLE@ 0 = LAND  IF 
+395 LINE.NUM 1 ^iAGZoneNum @@ 27 +  0 +  }iAGValveOnBit TABLE! 
+396 LINE.NUM ELSE 
+397 LINE.NUM 0 ^iAGZoneNum @@ 27 +  ^iAG_Tmp @@ +  }iAGValveOnBit TABLE! 
+398 LINE.NUM THEN THEN 
+400 LINE.NUM 1 +LOOP 
+0 JUMP ;
+: 117_72
+17 LINE.NUM 4 ^iAGZoneNum @! 
+22 LINE.NUM ^iAGZoneNum @@ }uiAGZoneEnable TABLE@ 1 = IF 
+24 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 0 = IF 
+26 LINE.NUM ^iAGZoneNum @@ }uiAGEndtime TABLE@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F> ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F>= ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGEndtime TABLE@ F< LAND  LAND  IF 
+29 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+31 LINE.NUM ELSE 
+31 LINE.NUM ^iAGZoneNum @@ }uiAGEndtime TABLE@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F< ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGStartTime TABLE@ F>= ^fCurrentTime @@ ^iAGZoneNum @@ }uiAGEndtime TABLE@ F< LOR  LAND  IF 
+34 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+36 LINE.NUM ELSE 
+36 LINE.NUM ^iAGZoneNum @@ }uiAGStartTime TABLE@ 0.00000000e+000 F= ^iAGZoneNum @@ }uiAGEndtime TABLE@ 0.00000000e+000 F= LAND  IF 
+38 LINE.NUM 1 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+39 LINE.NUM ELSE 
+41 LINE.NUM 0 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+43 LINE.NUM THEN THEN THEN 
+45 LINE.NUM THEN 
+48 LINE.NUM ^dtAgritech_ZN5  T0= IF 
+49 LINE.NUM 0 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+50 LINE.NUM ^iAGZoneNum @@ }iAG_BatchTankActive TABLE@ 1 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+51 LINE.NUM 9 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+52 LINE.NUM 1 ^iAGZoneNum @@ }iAG_LastRun TABLE! 
+53 LINE.NUM THEN 
+54 LINE.NUM THEN 
+57 LINE.NUM ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE@ 1 = ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE@ 0 = LAND  IF 
+59 LINE.NUM ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = ^iAGZoneNum @@ }iAG_BatchTankActive TABLE@ 0 = LAND  ^iAGZoneNum @@ }iTank_Output TABLE@ 0 = LAND  ^iAGZoneNum @@ }iTank_AlarmLO TABLE@ 0 = LAND  IF 
+61 LINE.NUM ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE@ ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+64 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeEn_ZN5 TABLE@ IF 
+66 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeSP_ZN5 TABLE@ 0 I>F F> IF 
+68 LINE.NUM ^dtAgritech_ZN5 @@F 0.00000000e+000 F<= IF 
+69 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ }uiAGValveTimeSP_ZN5 TABLE@ 60 I>F F* ^dtAgritech_ZN5  SetTimer 
+70 LINE.NUM ^dtAgritech_ZN5  StartTimer 
+71 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+72 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+73 LINE.NUM 1 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+74 LINE.NUM 1 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+75 LINE.NUM THEN 
+76 LINE.NUM ELSE 
+77 LINE.NUM 0 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+78 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+79 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+80 LINE.NUM THEN 
+81 LINE.NUM ELSE 
+82 LINE.NUM 0 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+83 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 1 +  ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+84 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+85 LINE.NUM THEN 
+87 LINE.NUM THEN 
+90 LINE.NUM ^iAGZoneNum @@ }iTank_Output TABLE@ 1 = ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE@ 0 = LAND  IF 
+91 LINE.NUM 9 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+92 LINE.NUM 1 ^iAGZoneNum @@ }iAGValveActive TABLE! 
+93 LINE.NUM THEN 
+96 LINE.NUM ^iAGZoneNum @@ }iTank_AlarmLO TABLE@ IF 
+97 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+98 LINE.NUM THEN 
+101 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ 9 > IF 
+102 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+103 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+104 LINE.NUM THEN 
+107 LINE.NUM ^iAGZoneNum @@ }iAGValveActive TABLE@ 1 = IF 
+108 LINE.NUM ^iAGZoneNum @@ }iAGPtrNumIndex TABLE@ ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+109 LINE.NUM ELSE 
+110 LINE.NUM 0 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+111 LINE.NUM THEN 
+113 LINE.NUM 0 ^iAG_Tmp1 @! 
+114 LINE.NUM 0 ^iAG_Tmp @! 
+116 LINE.NUM BEGIN ^iAG_Tmp @@ 9 < WHILE 
+117 LINE.NUM ^iAG_Tmp @@ }uiAGValveTimeEn_ZN5 TABLE@ 1 = IF 
+118 LINE.NUM 1 ^iAG_Tmp1 @! 
+119 LINE.NUM 10 ^iAG_Tmp @! 
+120 LINE.NUM ELSE 
+121 LINE.NUM ^iAG_Tmp @@ 1 +  ^iAG_Tmp @! 
+122 LINE.NUM THEN 
+123 LINE.NUM REPEAT 
+126 LINE.NUM ^iAGZoneNum @@ }iAGValveActive TABLE@ 1 = ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 0 = LAND  ^iAG_Tmp1 @@ 0 = LOR  IF 
+127 LINE.NUM -1 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+128 LINE.NUM THEN 
+131 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 1 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+132 LINE.NUM 40 }tOutCustomIndex TABLE@ -1 > IF 
+133 LINE.NUM 40 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+135 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+137 LINE.NUM THEN 
+138 LINE.NUM ELSE 
+139 LINE.NUM 40 }tOutCustomIndex TABLE@ -1 > IF 
+140 LINE.NUM 40 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+142 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+144 LINE.NUM THEN 
+145 LINE.NUM THEN 
+148 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 2 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+149 LINE.NUM 41 }tOutCustomIndex TABLE@ -1 > IF 
+150 LINE.NUM 41 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+152 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+154 LINE.NUM THEN 
+155 LINE.NUM ELSE 
+156 LINE.NUM 41 }tOutCustomIndex TABLE@ -1 > IF 
+157 LINE.NUM 41 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+159 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+161 LINE.NUM THEN 
+162 LINE.NUM THEN 
+165 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 3 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+166 LINE.NUM 42 }tOutCustomIndex TABLE@ -1 > IF 
+167 LINE.NUM 42 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+169 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+171 LINE.NUM THEN 
+172 LINE.NUM ELSE 
+173 LINE.NUM 42 }tOutCustomIndex TABLE@ -1 > IF 
+174 LINE.NUM 42 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+176 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+178 LINE.NUM THEN 
+179 LINE.NUM THEN 
+182 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 4 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+183 LINE.NUM 43 }tOutCustomIndex TABLE@ -1 > IF 
+184 LINE.NUM 43 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+186 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+188 LINE.NUM THEN 
+189 LINE.NUM ELSE 
+190 LINE.NUM 43 }tOutCustomIndex TABLE@ -1 > IF 
+191 LINE.NUM 43 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+193 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+195 LINE.NUM THEN 
+196 LINE.NUM THEN 
+199 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 5 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+200 LINE.NUM 44 }tOutCustomIndex TABLE@ -1 > IF 
+201 LINE.NUM 44 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+203 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+205 LINE.NUM THEN 
+206 LINE.NUM ELSE 
+207 LINE.NUM 44 }tOutCustomIndex TABLE@ -1 > IF 
+208 LINE.NUM 44 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+210 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+212 LINE.NUM THEN 
+213 LINE.NUM THEN 
+216 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 6 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+217 LINE.NUM 45 }tOutCustomIndex TABLE@ -1 > IF 
+218 LINE.NUM 45 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+220 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+222 LINE.NUM THEN 
+223 LINE.NUM ELSE 
+224 LINE.NUM 45 }tOutCustomIndex TABLE@ -1 > IF 
+225 LINE.NUM 45 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+227 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+229 LINE.NUM THEN 
+230 LINE.NUM THEN 
+233 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 7 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+234 LINE.NUM 46 }tOutCustomIndex TABLE@ -1 > IF 
+235 LINE.NUM 46 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+237 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+239 LINE.NUM THEN 
+240 LINE.NUM ELSE 
+241 LINE.NUM 46 }tOutCustomIndex TABLE@ -1 > IF 
+242 LINE.NUM 46 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+244 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+246 LINE.NUM THEN 
+247 LINE.NUM THEN 
+250 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 8 = ^iAGZoneNum @@ }iAG_LastRun TABLE@ 0 = LAND  IF 
+251 LINE.NUM 47 }tOutCustomIndex TABLE@ -1 > IF 
+252 LINE.NUM 47 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+254 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+256 LINE.NUM THEN 
+257 LINE.NUM ELSE 
+258 LINE.NUM 47 }tOutCustomIndex TABLE@ -1 > IF 
+259 LINE.NUM 47 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+261 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+263 LINE.NUM THEN 
+264 LINE.NUM THEN 
+267 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 9 = IF 
+268 LINE.NUM 48 }tOutCustomIndex TABLE@ -1 > IF 
+269 LINE.NUM 48 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+271 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+273 LINE.NUM THEN 
+274 LINE.NUM ELSE 
+275 LINE.NUM 48 }tOutCustomIndex TABLE@ -1 > IF 
+276 LINE.NUM 48 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+278 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+280 LINE.NUM THEN 
+281 LINE.NUM THEN 
+284 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ -1 = IF 
+285 LINE.NUM 0 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+286 LINE.NUM 49 }tOutCustomIndex TABLE@ -1 > IF 
+287 LINE.NUM 49 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+289 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+291 LINE.NUM THEN 
+292 LINE.NUM ELSE 
+293 LINE.NUM 1 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+294 LINE.NUM 49 }tOutCustomIndex TABLE@ -1 > IF 
+295 LINE.NUM 49 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+297 LINE.NUM PTR_doAgritechOutput_Ptr  ON 
+299 LINE.NUM THEN 
+300 LINE.NUM THEN 
+302 LINE.NUM THEN 
+304 LINE.NUM THEN 
+306 LINE.NUM ^iAGZoneNum @@ }uiAGZoneEnable TABLE@ 0 = ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE@ 0 = LOR  IF 
+309 LINE.NUM 0 ^iAGZoneNum @@ }iAGZoneActiveFlag TABLE! 
+310 LINE.NUM 0 ^iAGZoneNum @@ }iAGCurrentRunNum TABLE! 
+311 LINE.NUM 0 ^iAGZoneNum @@ }iAGPtrNumIndex TABLE! 
+312 LINE.NUM 0 ^iAGZoneNum @@ }iAG_PtrNumTmp TABLE! 
+313 LINE.NUM 0 ^iAGZoneNum @@ }iAGTimerRunningFlag TABLE! 
+314 LINE.NUM 0 I>F ^dtAgritech_ZN5 @! 
+315 LINE.NUM 0 ^iAGZoneNum @@ }iAGPumpStatus TABLE! 
+317 LINE.NUM 40 }tOutCustomIndex TABLE@ -1 > IF 
+318 LINE.NUM 40 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+320 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+322 LINE.NUM THEN 
+324 LINE.NUM 41 }tOutCustomIndex TABLE@ -1 > IF 
+325 LINE.NUM 41 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+327 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+329 LINE.NUM THEN 
+331 LINE.NUM 42 }tOutCustomIndex TABLE@ -1 > IF 
+332 LINE.NUM 42 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+334 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+336 LINE.NUM THEN 
+338 LINE.NUM 43 }tOutCustomIndex TABLE@ -1 > IF 
+339 LINE.NUM 43 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+341 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+343 LINE.NUM THEN 
+345 LINE.NUM 44 }tOutCustomIndex TABLE@ -1 > IF 
+346 LINE.NUM 44 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+348 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+350 LINE.NUM THEN 
+352 LINE.NUM 45 }tOutCustomIndex TABLE@ -1 > IF 
+353 LINE.NUM 45 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+355 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+357 LINE.NUM THEN 
+359 LINE.NUM 46 }tOutCustomIndex TABLE@ -1 > IF 
+360 LINE.NUM 46 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+362 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+364 LINE.NUM THEN 
+366 LINE.NUM 47 }tOutCustomIndex TABLE@ -1 > IF 
+367 LINE.NUM 47 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+369 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+371 LINE.NUM THEN 
+373 LINE.NUM 48 }tOutCustomIndex TABLE@ -1 > IF 
+374 LINE.NUM 48 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+376 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+378 LINE.NUM THEN 
+380 LINE.NUM 49 }tOutCustomIndex TABLE@ -1 > IF 
+381 LINE.NUM 49 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doAgritechOutput_Ptr 
+383 LINE.NUM PTR_doAgritechOutput_Ptr  OFF 
+385 LINE.NUM THEN 
+387 LINE.NUM THEN 
+1 390 LINE.NUM 9 1 + 0 DO? I ^iAG_Tmp @! 
+392 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ ^iAG_Tmp @@ = ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ 0 > LAND  IF 
+393 LINE.NUM 1 ^iAGZoneNum @@ 36 +  ^iAG_Tmp @@ +  }iAGValveOnBit TABLE! 
+394 LINE.NUM ELSE 
+394 LINE.NUM ^iAGZoneNum @@ }iAGCurrentRunNum TABLE@ -1 = ^iAGZoneNum @@ 36 +  }iAGValveOnBit TABLE@ 0 = LAND  IF 
+395 LINE.NUM 1 ^iAGZoneNum @@ 36 +  0 +  }iAGValveOnBit TABLE! 
+396 LINE.NUM ELSE 
+397 LINE.NUM 0 ^iAGZoneNum @@ 36 +  ^iAG_Tmp @@ +  }iAGValveOnBit TABLE! 
+398 LINE.NUM THEN THEN 
+400 LINE.NUM 1 +LOOP 
+-8 JUMP ;
+: 117_82
+0 JUMP ;
+: 117_34
+TRUE
+
+1 LINE.NUM
+  ^iAgritechOnOff @@ 
+  1    =
+LAND
+IF -8 ELSE -6 THEN JUMP ;
+T: T117
+DUMMY
+117_0
+117_33
+117_37
+117_57
+117_60
+117_63
+117_66
+117_69
+117_72
+117_82
+117_34
+T;
+&Agritech ' T117 SETTASK

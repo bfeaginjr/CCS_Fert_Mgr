@@ -1,0 +1,134 @@
+: 45_0
+6 JUMP ;
+: 45_5
+
+1 LINE.NUM
+  0  
+  ^bInProgress @!   
+
+2 LINE.NUM
+  &Main   START.T
+  ^iChartStatus_Tmp @! 
+6 JUMP ;
+: 45_9
+
+1 LINE.NUM
+  1.0    FDELAY
+4 JUMP ;
+: 45_11
+
+1 LINE.NUM
+  &RunGroup   CALL.T
+  ^iChartStatus_Tmp @! 
+
+2 LINE.NUM
+  " " 
+ 
+  *uoRunProgramName   $MOVE
+-3 JUMP ;
+: 45_15
+1 LINE.NUM ^uiEditProgramNum @@ ^nRunProgramIndex @! 
+2 LINE.NUM ^nRunProgramIndex @@ ^nProgramDataIndex @! 
+3 LINE.NUM ^nRunProgramIndex @@ ^iRunProgramIndex @! 
+4 LINE.NUM ^nProgramDataIndex @@ }uiProgramValveGroup TABLE@ ^nRunGroupIndex @! 
+5 LINE.NUM ^nRunProgramIndex @@ }uiProgramRecipeIndex TABLE@ ^nRunRecipeIndex @! 
+7 LINE.NUM ^cTT_Manual @@ ^nTriggerType @! 
+-2 JUMP ;
+: 45_18
+
+1 LINE.NUM
+  &Main   STOP.T
+
+2 LINE.NUM
+  &RunGroup   STOP.T
+
+3 LINE.NUM
+  &MixingValve   STOP.T
+
+4 LINE.NUM
+  &TestFlow   STOP.T
+
+5 LINE.NUM
+  &PumpIt   STOP.T
+0 JUMP ;
+: 45_19
+
+1 LINE.NUM
+  &Clear_Outputs   CALL.T
+  ^iChartStatus_Tmp @! 
+
+2 LINE.NUM
+  -1  
+  ^nRunRecipeIndex @!   
+
+3 LINE.NUM
+  -1  
+  ^nRunGroupIndex @!   
+
+4 LINE.NUM
+  " " 
+ 
+  *uoDispValveNum   $MOVE
+
+5 LINE.NUM
+  -1  
+  ^nRunValveIndex @!   
+
+6 LINE.NUM
+  -1  
+  ^nRunProgramIndex @!   
+
+7 LINE.NUM
+  " " 
+ 
+  *uoRunGroupName   $MOVE
+
+8 LINE.NUM
+  " " 
+ 
+  *uoRunProgramName   $MOVE
+
+9 LINE.NUM
+  " " 
+ 
+  *uoLogTrigger   $MOVE
+
+10 LINE.NUM
+  ^dtValveTimer   StopTimer
+
+11 LINE.NUM
+  ^utTotalTime   StopTimer
+
+12 LINE.NUM
+  0  
+  ^bInProgress @!   
+
+13 LINE.NUM
+  -1  
+  ^iRunProgramIndex @!   
+-3 JUMP ;
+: 45_10
+TRUE
+
+1 LINE.NUM
+  ^uiEditProgramNum @@ 
+  0    >=
+LAND
+
+2 LINE.NUM
+  ^uiEditProgramNum @@ 
+  ^cMaxPrograms @@   <
+LAND
+IF -3 ELSE -6 THEN JUMP ;
+T: T45
+DUMMY
+45_0
+45_5
+45_9
+45_11
+45_15
+45_18
+45_19
+45_10
+T;
+&ManualProgramStart ' T45 SETTASK

@@ -1,0 +1,90 @@
+: 112_0
+3 JUMP ;
+: 112_4
+
+1 LINE.NUM
+  ^fMixingValve_Tmp @@   FDELAY
+0 JUMP ;
+: 112_5
+1 LINE.NUM ^nRunProgramIndex @@ -1 > ^nRunProgramIndex @@ }tProgramMVOverride TABLE@ -1 = LAND  IF 
+2 LINE.NUM ^nRunProgramIndex @@ }tProgramMVOverride_SP TABLE@ ^iMixingValve_Tmp_SP @! 
+3 LINE.NUM ^nRunProgramIndex @@ }tProgramMVOverride_DB TABLE@ ^iMixingValve_Tmp_DB @! 
+4 LINE.NUM ELSE 
+5 LINE.NUM ^cOptMixECTargetIndex @@ }uiOptions TABLE@ ^iMixingValve_Tmp_SP F@! 
+6 LINE.NUM ^cOptMixECDeadbandIndex @@ }uiOptions TABLE@ ^iMixingValve_Tmp_DB F@! 
+7 LINE.NUM THEN 
+9 LINE.NUM ^fAuxEC @@ ^iMixingValve_Tmp_SP @@F F- ^iMixingValve_Tmp F@! 
+10 LINE.NUM ^iMixingValve_Tmp @@ ^iMixingValve_Tmp_DB @@ /  ^iMixingValve_Tmp3 @! 
+12 LINE.NUM ^nMixLast @@ 0 <> IF 
+13 LINE.NUM ^iMixingValve_Tmp3 @@ 0 = IF 
+14 LINE.NUM 0 ^nMixLast @! 
+15 LINE.NUM ELSE 
+15 LINE.NUM ^nMixLast @@ ^iMixingValve_Tmp3 @@ = IF 
+16 LINE.NUM 0 ^iMixingValve_Tmp3 @! 
+17 LINE.NUM THEN THEN 
+18 LINE.NUM THEN 
+20 LINE.NUM ^iMixingValve_Tmp @@  ABS ^iMixingValve_Tmp_DB @@ > IF 
+21 LINE.NUM ^iMixingValve_Tmp3 @@ ^nMixLast @! 
+23 LINE.NUM ^iMixingValve_Tmp @@ 0 > IF 
+25 LINE.NUM ^tOutMixValveOpenIndex @@ ^iMixingValve_Tmp2 @! 
+26 LINE.NUM 1 ^uoMixValve @! 
+27 LINE.NUM ELSE 
+29 LINE.NUM ^tOutMixValveCloseIndex @@ ^iMixingValve_Tmp2 @! 
+30 LINE.NUM -1 ^uoMixValve @! 
+31 LINE.NUM THEN 
+33 LINE.NUM ^cOptMixValveTimeIndex @@ }uiOptions TABLE@ 1 I>F F* ^cOptMixValveAdjustIndex @@ }uiOptions TABLE@ 100 I>F F/ F* ^iMixingValve_Tmp3 F@! 
+35 LINE.NUM ^iMixingValve_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doMixValve_Ptr 
+36 LINE.NUM PTR_doMixValve_Ptr  ON 
+37 LINE.NUM ^iMixingValve_Tmp3 @@  ABS I>F  1.25000000e+000 F+  FDELAY 
+38 LINE.NUM ^iMixingValve_Tmp3 @@  ABS I>F  ^fCurrentMixValveTime @! 
+39 LINE.NUM PTR_doMixValve_Ptr  OFF 
+41 LINE.NUM ^iMixingValve_Tmp @@ 0 > IF 
+42 LINE.NUM ^fValvePositionOpen @@ 100 I>F F<> IF 
+43 LINE.NUM 100 I>F ^cOptMixValveTimeIndex @@ }uiOptions TABLE@ F/ ^fMixValveTimePercentage @! 
+44 LINE.NUM ^fMixValveTimePercentage @@ ^fCurrentMixValveTime @@ F* ^fMixValveOpenTmp @@  FABS F+  FABS ^fValvePositionOpen @! 
+45 LINE.NUM ^fValvePositionOpen @@ ^fMixValveOpenTmp @! 
+46 LINE.NUM ^fValvePositionOpen @@ 100 I>F F>= IF 
+46 LINE.NUM 100 I>F ^fValvePositionOpen @! 
+46 LINE.NUM THEN 
+47 LINE.NUM ^fValvePositionOpen @@ 100 I>F F-  FABS ^fValvePositionClose @! 
+48 LINE.NUM THEN 
+49 LINE.NUM ELSE 
+49 LINE.NUM ^iMixingValve_Tmp @@ 0 < IF 
+50 LINE.NUM ^fValvePositionOpen @@ 0 I>F F<> IF 
+51 LINE.NUM 100 I>F ^cOptMixValveTimeIndex @@ }uiOptions TABLE@ F/ ^fMixValveTimePercentage @! 
+52 LINE.NUM ^fMixValveTimePercentage @@ ^fCurrentMixValveTime @@ F* ^fMixValveOpenTmp @@  FABS F-  FABS ^fValvePositionOpen @! 
+53 LINE.NUM ^fValvePositionOpen @@ ^fMixValveOpenTmp @! 
+54 LINE.NUM ^fValvePositionOpen @@ 0 I>F F<= IF 
+54 LINE.NUM 0 I>F ^fValvePositionOpen @! 
+54 LINE.NUM THEN 
+55 LINE.NUM ^fValvePositionOpen @@ 100 I>F F-  FABS ^fValvePositionClose @! 
+56 LINE.NUM THEN 
+57 LINE.NUM THEN THEN 
+61 LINE.NUM 0 ^iMixingValve_Tmp3 @! 
+62 LINE.NUM 0 ^iMixingValve_Tmp2 @! 
+63 LINE.NUM 0 ^uoMixValve @! 
+64 LINE.NUM THEN 
+66 LINE.NUM ^cOptMixValveDelayIndex @@ }uiOptions TABLE@ ^fMixingValve_Tmp @! 
+68 LINE.NUM 0 ^iMixingValve_Tmp @! 
+-2 JUMP ;
+: 112_8
+1 JUMP ;
+: 112_9
+TRUE
+
+1 LINE.NUM
+  0.0  
+  ^cOptUseMixValveIndex @@ 
+  }uiOptions TABLE@   F<>
+LAND
+IF -3 ELSE -2 THEN JUMP ;
+T: T112
+DUMMY
+112_0
+112_4
+112_5
+112_8
+112_9
+T;
+&MixingValve ' T112 SETTASK

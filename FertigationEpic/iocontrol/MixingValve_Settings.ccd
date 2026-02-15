@@ -1,0 +1,120 @@
+: 113_0
+5 JUMP ;
+: 113_4
+1 LINE.NUM 1 ^uoMixValve @! 
+3 LINE.NUM ^tOutMixValveCloseIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doMixValve_Ptr 
+4 LINE.NUM PTR_doMixValve_Ptr  OFF 
+6 LINE.NUM ^tOutMixValveOpenIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doMixValve_Ptr 
+7 LINE.NUM PTR_doMixValve_Ptr  ON 
+10 LINE.NUM 0 ^iMixingValveOpen @! 
+6 JUMP ;
+: 113_5
+1 LINE.NUM -1 ^uoMixValve @! 
+3 LINE.NUM ^tOutMixValveOpenIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doMixValve_Ptr 
+4 LINE.NUM PTR_doMixValve_Ptr  OFF 
+6 LINE.NUM ^tOutMixValveCloseIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doMixValve_Ptr 
+7 LINE.NUM PTR_doMixValve_Ptr  ON 
+9 LINE.NUM 0 ^iMixingValveClose @! 
+6 JUMP ;
+: 113_6
+1 LINE.NUM 0 ^uoMixValve @! 
+3 LINE.NUM ^tOutMixValveOpenIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doMixValve_Ptr 
+4 LINE.NUM PTR_doMixValve_Ptr  OFF 
+6 LINE.NUM ^tOutMixValveCloseIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doMixValve_Ptr 
+7 LINE.NUM PTR_doMixValve_Ptr  OFF 
+9 LINE.NUM 0 ^iMixingValveOff @! 
+6 JUMP ;
+: 113_14
+
+1 LINE.NUM
+  500    DELAY
+2 JUMP ;
+: 113_19
+
+1 LINE.NUM
+  0  
+  ^iMixingValveClose @!   
+
+2 LINE.NUM
+  0  
+  ^iMixingValveOff @!   
+
+3 LINE.NUM
+  0  
+  ^iCloseMixingValve @!   
+
+4 LINE.NUM
+  0  
+  ^iMixingValveOpen @!   
+5 JUMP ;
+: 113_26
+
+1 LINE.NUM
+  0  
+  ^iMixingValveClose @!   
+
+2 LINE.NUM
+  0  
+  ^iMixingValveOff @!   
+
+3 LINE.NUM
+  0  
+  ^iCloseMixingValve @!   
+
+4 LINE.NUM
+  0  
+  ^iMixingValveOpen @!   
+0 JUMP ;
+: 113_1
+TRUE
+
+1 LINE.NUM
+  ^iMixingValveOpen @@ 
+  1    =
+LAND
+IF -7 ELSE 0 THEN JUMP ;
+: 113_2
+TRUE
+
+1 LINE.NUM
+  ^iMixingValveClose @@ 
+  1    =
+LAND
+IF -7 ELSE 0 THEN JUMP ;
+: 113_3
+TRUE
+
+1 LINE.NUM
+  ^iMixingValveOff @@ 
+  1    =
+LAND
+IF -7 ELSE 0 THEN JUMP ;
+: 113_17
+TRUE
+
+1 LINE.NUM
+  ^iCloseMixingValve @@ 
+  1    =
+LAND
+IF -6 ELSE -7 THEN JUMP ;
+T: T113
+DUMMY
+113_0
+113_4
+113_5
+113_6
+113_14
+113_19
+113_26
+113_1
+113_2
+113_3
+113_17
+T;
+&MixingValve_Settings ' T113 SETTASK

@@ -1,0 +1,110 @@
+: 43_0
+0 JUMP ;
+: 43_1
+3 LINE.NUM ^nRunProgramIndex @@ 0 = IF 
+4 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+5 LINE.NUM ^dtTimeInterval_0  ContinueTimer 
+6 LINE.NUM THEN 
+7 LINE.NUM ELSE 
+7 LINE.NUM ^nRunProgramIndex @@ 1 = IF 
+8 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+9 LINE.NUM ^dtTimeInterval_1  ContinueTimer 
+10 LINE.NUM THEN 
+11 LINE.NUM ELSE 
+11 LINE.NUM ^nRunProgramIndex @@ 2 = IF 
+12 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+13 LINE.NUM ^dtTimeInterval_2  ContinueTimer 
+14 LINE.NUM THEN 
+15 LINE.NUM ELSE 
+15 LINE.NUM ^nRunProgramIndex @@ 3 = IF 
+16 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+17 LINE.NUM ^dtTimeInterval_3  ContinueTimer 
+18 LINE.NUM THEN 
+19 LINE.NUM ELSE 
+19 LINE.NUM ^nRunProgramIndex @@ 4 = IF 
+20 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+21 LINE.NUM ^dtTimeInterval_4  ContinueTimer 
+22 LINE.NUM THEN 
+23 LINE.NUM ELSE 
+23 LINE.NUM ^nRunProgramIndex @@ 5 = IF 
+24 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+25 LINE.NUM ^dtTimeInterval_5  ContinueTimer 
+26 LINE.NUM THEN 
+27 LINE.NUM ELSE 
+27 LINE.NUM ^nRunProgramIndex @@ 6 = IF 
+28 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+29 LINE.NUM ^dtTimeInterval_6  ContinueTimer 
+30 LINE.NUM THEN 
+31 LINE.NUM ELSE 
+31 LINE.NUM ^nRunProgramIndex @@ 7 = IF 
+32 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+33 LINE.NUM ^dtTimeInterval_7  ContinueTimer 
+34 LINE.NUM THEN 
+35 LINE.NUM ELSE 
+35 LINE.NUM ^nRunProgramIndex @@ 8 = IF 
+36 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+37 LINE.NUM ^dtTimeInterval_8  ContinueTimer 
+38 LINE.NUM THEN 
+39 LINE.NUM ELSE 
+39 LINE.NUM ^nRunProgramIndex @@ 9 = IF 
+40 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+41 LINE.NUM ^dtTimeInterval_9  ContinueTimer 
+42 LINE.NUM THEN 
+43 LINE.NUM ELSE 
+43 LINE.NUM ^nRunProgramIndex @@ 10 = IF 
+44 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+45 LINE.NUM ^dtTimeInterval_10  ContinueTimer 
+46 LINE.NUM THEN 
+47 LINE.NUM ELSE 
+47 LINE.NUM ^nRunProgramIndex @@ 11 = IF 
+48 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+49 LINE.NUM ^dtTimeInterval_11  ContinueTimer 
+50 LINE.NUM THEN 
+51 LINE.NUM ELSE 
+51 LINE.NUM ^nRunProgramIndex @@ 12 = IF 
+52 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+53 LINE.NUM ^dtTimeInterval_12  ContinueTimer 
+54 LINE.NUM THEN 
+55 LINE.NUM ELSE 
+55 LINE.NUM ^nRunProgramIndex @@ 13 = IF 
+56 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+57 LINE.NUM ^dtTimeInterval_13  ContinueTimer 
+58 LINE.NUM THEN 
+59 LINE.NUM ELSE 
+59 LINE.NUM ^nRunProgramIndex @@ 14 = IF 
+60 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+61 LINE.NUM ^dtTimeInterval_14  ContinueTimer 
+62 LINE.NUM THEN 
+63 LINE.NUM ELSE 
+63 LINE.NUM ^nRunProgramIndex @@ 15 = IF 
+64 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+65 LINE.NUM ^dtTimeInterval_15  ContinueTimer 
+66 LINE.NUM THEN 
+67 LINE.NUM ELSE 
+67 LINE.NUM ^nRunProgramIndex @@ 16 = IF 
+68 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+69 LINE.NUM ^dtTimeInterval_16  ContinueTimer 
+70 LINE.NUM THEN 
+71 LINE.NUM ELSE 
+71 LINE.NUM ^nRunProgramIndex @@ 17 = IF 
+72 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+73 LINE.NUM ^dtTimeInterval_17  ContinueTimer 
+74 LINE.NUM THEN 
+75 LINE.NUM ELSE 
+75 LINE.NUM ^nRunProgramIndex @@ 18 = IF 
+76 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+77 LINE.NUM ^dtTimeInterval_18  ContinueTimer 
+78 LINE.NUM THEN 
+79 LINE.NUM ELSE 
+79 LINE.NUM ^nRunProgramIndex @@ 19 = IF 
+80 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+81 LINE.NUM ^dtTimeInterval_19  ContinueTimer 
+82 LINE.NUM THEN 
+83 LINE.NUM THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN 
+0 JUMP ;
+T: T43
+DUMMY
+43_0
+43_1
+T;
+&TimerContinue ' T43 SETTASK

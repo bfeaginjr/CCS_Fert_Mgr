@@ -1,0 +1,308 @@
+: 20_0
+4 JUMP ;
+: 20_1
+
+1 LINE.NUM
+  -1  
+  ^nRunProgramIndex @!   
+5 JUMP ;
+: 20_2
+
+1 LINE.NUM
+  0.5    FDELAY
+2 JUMP ;
+: 20_4
+6 LINE.NUM -1 ^uoDispProgramRun @! 
+7 LINE.NUM 0 ^nProgramDataIndex @! 
+8 LINE.NUM -1 ^uoDispZoneRun @! 
+10 LINE.NUM 1 I>F ^fValveMultiplier @! 
+11 LINE.NUM 0 ^iAlarmSilence @! 
+1 14 LINE.NUM ^cMaxPrograms @@ 1 -  1 + 0 DO? I ^nRunProgramIndex @! 
+16 LINE.NUM ^nRunProgramIndex @@ }uiProgramValveGroup TABLE@ ^nRunGroupIndex @! 
+17 LINE.NUM ^nRunProgramIndex @@ }uiProgramRecipeIndex TABLE@ ^nRunRecipeIndex @! 
+19 LINE.NUM ^nRunProgramIndex @@ }uiProgramFlags TABLE@ 1 = IF 
+21 LINE.NUM ^nRunProgramIndex @@ }iQueueExt_ProgQueued TABLE@ 1 = IF 
+23 LINE.NUM 0 ^nRunProgramIndex @@ }iQueueExt_ProgQueued TABLE! 
+24 LINE.NUM ^cTT_External @@ ^nTriggerType @! 
+25 LINE.NUM 1 I>F ^fValveMultiplier @! 
+26 LINE.NUM &RunGroup  CALL.T ^iMain_Tmp @! 
+28 LINE.NUM ELSE 
+28 LINE.NUM ^nRunProgramIndex @@ }uiProgramDays TABLE@ 1  DOW@I SHIFT  AND  0 = IF 
+1 30 LINE.NUM ^cMaxZones @@ 1 -  1 + 0 DO? I ^nRunZoneIndex @! 
+32 LINE.NUM ^nRunProgramIndex @@ ^cMaxZones @@ *  ^nRunZoneIndex @@ +  ^nProgramDataIndex @! 
+34 LINE.NUM 1 I>F ^fValveMultiplier @! 
+36 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneFlags TABLE@ 0 > IF 
+38 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneStartTime TABLE@ 0 I>F F>= ^nProgramDataIndex @@ }uiProgramZoneStopTime TABLE@ 0 I>F F> LAND  IF 
+41 LINE.NUM 0 ^fMain_WC_Factor @! 
+42 LINE.NUM ^nRunProgramIndex @@ {tGS3ID_ProgramIndex $TABLE@  $LEN 0 > IF 
+43 LINE.NUM ^nRunProgramIndex @@ 3 *  }tCurGS3_VWC TABLE@ ^fMain_WC1 @! 
+44 LINE.NUM ^nRunProgramIndex @@ 3 *  1 +  }tCurGS3_VWC TABLE@ ^fMain_WC2 @! 
+45 LINE.NUM ^nRunProgramIndex @@ 3 *  2 +  }tCurGS3_VWC TABLE@ ^fMain_WC3 @! 
+47 LINE.NUM ^fMain_WC1 @@  $7F800000 AND $7F800000 <> ^fMain_WC1 @@ 0 I>F F> LAND  ^fMain_WC1 @@ ^nRunProgramIndex @@ }uiMoisterAlarm TABLE@ F< LAND  IF 
+48 LINE.NUM -1 ^uoMoisterAlarm @! 
+49 LINE.NUM 1 ^iMain_MoistureAlarm @! 
+50 LINE.NUM THEN 
+51 LINE.NUM ^fMain_WC2 @@  $7F800000 AND $7F800000 <> ^fMain_WC2 @@ 0 I>F F> LAND  ^fMain_WC2 @@ ^nRunProgramIndex @@ }uiMoisterAlarm TABLE@ F< LAND  IF 
+52 LINE.NUM -1 ^uoMoisterAlarm @! 
+53 LINE.NUM 1 ^iMain_MoistureAlarm @! 
+54 LINE.NUM THEN 
+55 LINE.NUM ^fMain_WC3 @@  $7F800000 AND $7F800000 <> ^fMain_WC3 @@ 0 I>F F> LAND  ^fMain_WC3 @@ ^nRunProgramIndex @@ }uiMoisterAlarm TABLE@ F< LAND  IF 
+56 LINE.NUM -1 ^uoMoisterAlarm @! 
+57 LINE.NUM 1 ^iMain_MoistureAlarm @! 
+58 LINE.NUM THEN 
+60 LINE.NUM ^fMain_WC1 @@  $7F800000 AND $7F800000 <> ^fMain_WC1 @@ 0 I>F F> LAND  IF 
+61 LINE.NUM ^fMain_WC_Factor @@ 1 +  ^fMain_WC_Factor @! 
+62 LINE.NUM THEN 
+63 LINE.NUM ^fMain_WC2 @@  $7F800000 AND $7F800000 <> ^fMain_WC2 @@ 0 I>F F> LAND  IF 
+64 LINE.NUM ^fMain_WC_Factor @@ 1 +  ^fMain_WC_Factor @! 
+65 LINE.NUM THEN 
+66 LINE.NUM ^fMain_WC3 @@  $7F800000 AND $7F800000 <> ^fMain_WC3 @@ 0 I>F F> LAND  IF 
+67 LINE.NUM ^fMain_WC_Factor @@ 1 +  ^fMain_WC_Factor @! 
+68 LINE.NUM THEN 
+69 LINE.NUM THEN 
+72 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneStopDays TABLE@ 0 < ^nProgramDataIndex @@ }uiProgramZoneStopDays TABLE@ ^nProgramDataIndex @@ }uiProgramZoneStartDays TABLE@ >= LOR  IF 
+74 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneStopDays TABLE@ 0 < ^iCurrentDay @@ ^nProgramDataIndex @@ }uiProgramZoneStartDays TABLE@ >= LOR  IF 
+76 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneStopDays TABLE@ 0 < ^iCurrentDay @@ ^nProgramDataIndex @@ }uiProgramZoneStopDays TABLE@ <= LOR  IF 
+78 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneStopTime TABLE@ ^nProgramDataIndex @@ }uiProgramZoneStartTime TABLE@ F> ^fCurrentTime @@ ^nProgramDataIndex @@ }uiProgramZoneStartTime TABLE@ F>= LAND  ^fCurrentTime @@ ^nProgramDataIndex @@ }uiProgramZoneStopTime TABLE@ F< LAND  ^nProgramDataIndex @@ }uiProgramZoneStopTime TABLE@ ^nProgramDataIndex @@ }uiProgramZoneStartTime TABLE@ F< ^fCurrentTime @@ ^nProgramDataIndex @@ }uiProgramZoneStartTime TABLE@ F>= ^fCurrentTime @@ ^nProgramDataIndex @@ }uiProgramZoneStopTime TABLE@ F< LOR  LAND  LOR  IF 
+86 LINE.NUM ^uoDispCurrentProgZone @@ ^uoDispZoneRun @! 
+88 LINE.NUM ^nRunProgramIndex @@ }uiProgramRecipeIndex TABLE@ ^nProgramDataIndex @@ }uiProgramZoneRecipeIndex TABLE@ <> IF 
+89 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneRecipeIndex TABLE@ ^nRunProgramIndex @@ }uiProgramRecipeIndex TABLE! 
+90 LINE.NUM ^nRunProgramIndex @@ }uiProgramRecipeIndex TABLE@ ^nRunRecipeIndex @! 
+91 LINE.NUM THEN 
+93 LINE.NUM 0 ^bMain_CheckTriggers @! 
+94 LINE.NUM ^nRunProgramIndex @@ PTBL_dtProgram_MinRest_PtrTable 
+TableMoveToPointer PTR_dtProgram_MinRest_Ptr 
+96 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneRestTime TABLE@ 0 I>F F= IF 
+97 LINE.NUM PTR_dtProgram_MinRest_Ptr  StopTimer 
+98 LINE.NUM 1 ^bMain_CheckTriggers @! 
+99 LINE.NUM ELSE 
+100 LINE.NUM PTR_dtProgram_MinRest_Ptr @@F 0 I>F F= IF 
+101 LINE.NUM 0 I>F PTR_dtProgram_MinRest_Ptr  SetTimer 
+102 LINE.NUM PTR_dtProgram_MinRest_Ptr  StartTimer 
+103 LINE.NUM THEN 
+104 LINE.NUM PTR_dtProgram_MinRest_Ptr  T0= IF 
+105 LINE.NUM PTR_dtProgram_MinRest_Ptr  StopTimer 
+106 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneRestTime TABLE@ 60 I>F F* PTR_dtProgram_MinRest_Ptr  SetTimer 
+107 LINE.NUM 1 ^bMain_CheckTriggers @! 
+108 LINE.NUM THEN 
+109 LINE.NUM THEN 
+111 LINE.NUM ^bMain_CheckTriggers @@ 1 = IF 
+113 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneSolarSP TABLE@ 0 I>F F> ^nRunProgramIndex @@ }fCurrentSolarAccum TABLE@ ^nProgramDataIndex @@ }uiProgramZoneSolarSP TABLE@ F> LAND  IF 
+114 LINE.NUM ^cTT_Solar @@ ^nTriggerType @! 
+115 LINE.NUM &RunGroup  CALL.T ^iMain_Tmp @! 
+116 LINE.NUM ELSE 
+116 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneAuxECSP TABLE@ 0 I>F F> ^fAuxEC @@ ^nProgramDataIndex @@ }uiProgramZoneAuxECSP TABLE@ F< LAND  IF 
+118 LINE.NUM ^cTT_Auxillary @@ ^nTriggerType @! 
+119 LINE.NUM &RunGroup  CALL.T ^iMain_Tmp @! 
+120 LINE.NUM ELSE 
+120 LINE.NUM ^fMain_WC_Factor @@ 0 > IF 
+122 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneMoisterSP TABLE@ 0 I>F F> ^fMain_WC1 @@ ^fMain_WC2 @@ F+ ^fMain_WC3 @@ F+ ^fMain_WC_Factor @@F F/ ^nProgramDataIndex @@ }uiProgramZoneMoisterSP TABLE@ ^nProgramDataIndex @@ }uiProgramZoneMoisterDB TABLE@ F- F< LAND  IF 
+123 LINE.NUM ^cTT_Moister @@ ^nTriggerType @! 
+124 LINE.NUM &RunGroup  CALL.T ^iMain_Tmp @! 
+125 LINE.NUM THEN 
+126 LINE.NUM THEN THEN THEN 
+129 LINE.NUM &CheckTimeExpired  CALL.T DROP  
+130 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> ^nTimeIntervalExpired @@ 0 > LAND  IF 
+131 LINE.NUM ^cTT_Timer @@ ^nTriggerType @! 
+132 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneValveMultiplier TABLE@ ^fValveMultiplier @! 
+133 LINE.NUM &RunGroup  CALL.T ^iMain_Tmp @! 
+134 LINE.NUM THEN 
+136 LINE.NUM THEN 
+137 LINE.NUM THEN 
+138 LINE.NUM THEN 
+139 LINE.NUM THEN 
+140 LINE.NUM THEN 
+141 LINE.NUM THEN 
+142 LINE.NUM THEN 
+144 LINE.NUM 1 +LOOP 
+146 LINE.NUM THEN THEN 
+147 LINE.NUM 0 ^nRunProgramIndex @@ }iQueueExt_ProgQueued TABLE! 
+149 LINE.NUM THEN 
+150 LINE.NUM 0 ^nRunProgramIndex @@ }iQueueExt_ProgQueued TABLE! 
+152 LINE.NUM 1 +LOOP 
+154 LINE.NUM ^iMain_MoistureAlarm @@ 0 > IF 
+155 LINE.NUM ^tOutAlarmIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doMain_Ptr 
+156 LINE.NUM PTR_doMain_Ptr  ON 
+157 LINE.NUM ELSE 
+158 LINE.NUM ^uoMoisterAlarm @@ 0 < ^uoFlowAlarm @@ 0 = LAND  ^uoECOutAlarm @@ 0 = LAND  ^uoPHAlarm @@ 0 = LAND  ^uoECInAlarm @@ 0 = LAND  ^uoTemperatureAlarm @@ 0 = LAND  ^uoPressureAlarm @@ 0 = LAND  IF 
+160 LINE.NUM ^tOutAlarmIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doMain_Ptr 
+161 LINE.NUM PTR_doMain_Ptr  OFF 
+162 LINE.NUM THEN 
+163 LINE.NUM 0 ^uoMoisterAlarm @! 
+164 LINE.NUM THEN 
+166 LINE.NUM -1 ^nRunProgramIndex @! 
+168 LINE.NUM -1 ^nRunGroupIndex @! 
+169 LINE.NUM -1 ^nRunRecipeIndex @! 
+170 LINE.NUM -1 ^uoDispZoneRun @! 
+172 LINE.NUM 0 ^bInProgress @! 
+173 LINE.NUM 0 ^iMainPumpStatus @! 
+174 LINE.NUM 0 ^uoDispValveNumber @! 
+175 LINE.NUM 1 I>F ^fValveMultiplier @! 
+3 JUMP ;
+: 20_100
+6 LINE.NUM -1 ^uoDispProgramRun @! 
+7 LINE.NUM 0 ^nProgramDataIndex @! 
+8 LINE.NUM -1 ^uoDispZoneRun @! 
+10 LINE.NUM 1 I>F ^fValveMultiplier @! 
+11 LINE.NUM 0 ^iAlarmSilence @! 
+14 LINE.NUM ^FIFO @@ }iQueueProgram TABLE@ -1 > IF 
+1 16 LINE.NUM ^cMaxPrograms @@ 1 -  1 + 0 DO? I ^nRunProgramIndex @! 
+18 LINE.NUM ^FIFO @@ }iQueueProgram TABLE@ ^nRunProgramIndex @@ = IF 
+19 LINE.NUM ^nRunProgramIndex @@ }uiProgramFlags TABLE@ 1 = IF 
+20 LINE.NUM ^nRunProgramIndex @@ }iQueueExt_ProgQueued TABLE@ 1 = IF 
+22 LINE.NUM ^nRunProgramIndex @@ }uiProgramValveGroup TABLE@ ^nRunGroupIndex @! 
+23 LINE.NUM ^nRunProgramIndex @@ }uiProgramRecipeIndex TABLE@ ^nRunRecipeIndex @! 
+25 LINE.NUM 0 ^nRunProgramIndex @@ }iQueueExt_ProgQueued TABLE! 
+26 LINE.NUM ^cTT_External @@ ^nTriggerType @! 
+27 LINE.NUM 1 I>F ^fValveMultiplier @! 
+28 LINE.NUM &RunGroup  CALL.T ^iMain_Tmp @! 
+29 LINE.NUM THEN 
+30 LINE.NUM THEN 
+31 LINE.NUM THEN 
+33 LINE.NUM 1 +LOOP 
+35 LINE.NUM THEN 
+39 LINE.NUM ^FIFO @@ }iQueueProgram TABLE@ -1 = IF 
+1 41 LINE.NUM ^cMaxPrograms @@ 1 -  1 + 0 DO? I ^nRunProgramIndex @! 
+43 LINE.NUM ^nRunProgramIndex @@ }uiProgramValveGroup TABLE@ ^nRunGroupIndex @! 
+44 LINE.NUM ^nRunProgramIndex @@ }uiProgramRecipeIndex TABLE@ ^nRunRecipeIndex @! 
+46 LINE.NUM ^nRunProgramIndex @@ }uiProgramFlags TABLE@ 1 = IF 
+48 LINE.NUM ^nRunProgramIndex @@ }uiProgramDays TABLE@ 1  DOW@I SHIFT  AND  0 = IF 
+1 50 LINE.NUM ^cMaxZones @@ 1 -  1 + 0 DO? I ^nRunZoneIndex @! 
+52 LINE.NUM ^nRunProgramIndex @@ ^cMaxZones @@ *  ^nRunZoneIndex @@ +  ^nProgramDataIndex @! 
+54 LINE.NUM 1 I>F ^fValveMultiplier @! 
+56 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneFlags TABLE@ 0 > IF 
+58 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneStartTime TABLE@ 0 I>F F>= ^nProgramDataIndex @@ }uiProgramZoneStopTime TABLE@ 0 I>F F> LAND  IF 
+61 LINE.NUM 0 ^fMain_WC_Factor @! 
+62 LINE.NUM ^nRunProgramIndex @@ {tGS3ID_ProgramIndex $TABLE@  $LEN 0 > IF 
+63 LINE.NUM ^nRunProgramIndex @@ 3 *  }tCurGS3_VWC TABLE@ ^fMain_WC1 @! 
+64 LINE.NUM ^nRunProgramIndex @@ 3 *  1 +  }tCurGS3_VWC TABLE@ ^fMain_WC2 @! 
+65 LINE.NUM ^nRunProgramIndex @@ 3 *  2 +  }tCurGS3_VWC TABLE@ ^fMain_WC3 @! 
+67 LINE.NUM ^fMain_WC1 @@  $7F800000 AND $7F800000 <> ^fMain_WC1 @@ 0 I>F F> LAND  ^fMain_WC1 @@ ^nRunProgramIndex @@ }uiMoisterAlarm TABLE@ F< LAND  IF 
+68 LINE.NUM -1 ^uoMoisterAlarm @! 
+69 LINE.NUM 1 ^iMain_MoistureAlarm @! 
+70 LINE.NUM THEN 
+71 LINE.NUM ^fMain_WC2 @@  $7F800000 AND $7F800000 <> ^fMain_WC2 @@ 0 I>F F> LAND  ^fMain_WC2 @@ ^nRunProgramIndex @@ }uiMoisterAlarm TABLE@ F< LAND  IF 
+72 LINE.NUM -1 ^uoMoisterAlarm @! 
+73 LINE.NUM 1 ^iMain_MoistureAlarm @! 
+74 LINE.NUM THEN 
+75 LINE.NUM ^fMain_WC3 @@  $7F800000 AND $7F800000 <> ^fMain_WC3 @@ 0 I>F F> LAND  ^fMain_WC3 @@ ^nRunProgramIndex @@ }uiMoisterAlarm TABLE@ F< LAND  IF 
+76 LINE.NUM -1 ^uoMoisterAlarm @! 
+77 LINE.NUM 1 ^iMain_MoistureAlarm @! 
+78 LINE.NUM THEN 
+80 LINE.NUM ^fMain_WC1 @@  $7F800000 AND $7F800000 <> ^fMain_WC1 @@ 0 I>F F> LAND  IF 
+81 LINE.NUM ^fMain_WC_Factor @@ 1 +  ^fMain_WC_Factor @! 
+82 LINE.NUM THEN 
+83 LINE.NUM ^fMain_WC2 @@  $7F800000 AND $7F800000 <> ^fMain_WC2 @@ 0 I>F F> LAND  IF 
+84 LINE.NUM ^fMain_WC_Factor @@ 1 +  ^fMain_WC_Factor @! 
+85 LINE.NUM THEN 
+86 LINE.NUM ^fMain_WC3 @@  $7F800000 AND $7F800000 <> ^fMain_WC3 @@ 0 I>F F> LAND  IF 
+87 LINE.NUM ^fMain_WC_Factor @@ 1 +  ^fMain_WC_Factor @! 
+88 LINE.NUM THEN 
+89 LINE.NUM THEN 
+92 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneStopDays TABLE@ 0 < ^nProgramDataIndex @@ }uiProgramZoneStopDays TABLE@ ^nProgramDataIndex @@ }uiProgramZoneStartDays TABLE@ >= LOR  IF 
+94 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneStopDays TABLE@ 0 < ^iCurrentDay @@ ^nProgramDataIndex @@ }uiProgramZoneStartDays TABLE@ >= LOR  IF 
+96 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneStopDays TABLE@ 0 < ^iCurrentDay @@ ^nProgramDataIndex @@ }uiProgramZoneStopDays TABLE@ <= LOR  IF 
+98 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneStopTime TABLE@ ^nProgramDataIndex @@ }uiProgramZoneStartTime TABLE@ F> ^fCurrentTime @@ ^nProgramDataIndex @@ }uiProgramZoneStartTime TABLE@ F>= LAND  ^fCurrentTime @@ ^nProgramDataIndex @@ }uiProgramZoneStopTime TABLE@ F< LAND  ^nProgramDataIndex @@ }uiProgramZoneStopTime TABLE@ ^nProgramDataIndex @@ }uiProgramZoneStartTime TABLE@ F< ^fCurrentTime @@ ^nProgramDataIndex @@ }uiProgramZoneStartTime TABLE@ F>= ^fCurrentTime @@ ^nProgramDataIndex @@ }uiProgramZoneStopTime TABLE@ F< LOR  LAND  LOR  IF 
+106 LINE.NUM ^uoDispCurrentProgZone @@ ^uoDispZoneRun @! 
+108 LINE.NUM ^nRunProgramIndex @@ }uiProgramRecipeIndex TABLE@ ^nProgramDataIndex @@ }uiProgramZoneRecipeIndex TABLE@ <> IF 
+109 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneRecipeIndex TABLE@ ^nRunProgramIndex @@ }uiProgramRecipeIndex TABLE! 
+110 LINE.NUM ^nRunProgramIndex @@ }uiProgramRecipeIndex TABLE@ ^nRunRecipeIndex @! 
+111 LINE.NUM THEN 
+113 LINE.NUM 0 ^bMain_CheckTriggers @! 
+114 LINE.NUM ^nRunProgramIndex @@ PTBL_dtProgram_MinRest_PtrTable 
+TableMoveToPointer PTR_dtProgram_MinRest_Ptr 
+116 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneRestTime TABLE@ 0 I>F F= IF 
+117 LINE.NUM PTR_dtProgram_MinRest_Ptr  StopTimer 
+118 LINE.NUM 1 ^bMain_CheckTriggers @! 
+119 LINE.NUM ELSE 
+120 LINE.NUM PTR_dtProgram_MinRest_Ptr @@F 0 I>F F= IF 
+121 LINE.NUM 0 I>F PTR_dtProgram_MinRest_Ptr  SetTimer 
+122 LINE.NUM PTR_dtProgram_MinRest_Ptr  StartTimer 
+123 LINE.NUM THEN 
+124 LINE.NUM PTR_dtProgram_MinRest_Ptr  T0= IF 
+125 LINE.NUM PTR_dtProgram_MinRest_Ptr  StopTimer 
+126 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneRestTime TABLE@ 60 I>F F* PTR_dtProgram_MinRest_Ptr  SetTimer 
+127 LINE.NUM 1 ^bMain_CheckTriggers @! 
+128 LINE.NUM THEN 
+129 LINE.NUM THEN 
+131 LINE.NUM ^bMain_CheckTriggers @@ 1 = IF 
+133 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneSolarSP TABLE@ 0 I>F F> ^nRunProgramIndex @@ }fCurrentSolarAccum TABLE@ ^nProgramDataIndex @@ }uiProgramZoneSolarSP TABLE@ F> LAND  IF 
+134 LINE.NUM ^cTT_Solar @@ ^nTriggerType @! 
+135 LINE.NUM &RunGroup  CALL.T ^iMain_Tmp @! 
+136 LINE.NUM ELSE 
+136 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneAuxECSP TABLE@ 0 I>F F> ^fAuxEC @@ ^nProgramDataIndex @@ }uiProgramZoneAuxECSP TABLE@ F< LAND  IF 
+138 LINE.NUM ^cTT_Auxillary @@ ^nTriggerType @! 
+139 LINE.NUM &RunGroup  CALL.T ^iMain_Tmp @! 
+140 LINE.NUM ELSE 
+140 LINE.NUM ^fMain_WC_Factor @@ 0 > IF 
+142 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneMoisterSP TABLE@ 0 I>F F> ^fMain_WC1 @@ ^fMain_WC2 @@ F+ ^fMain_WC3 @@ F+ ^fMain_WC_Factor @@F F/ ^nProgramDataIndex @@ }uiProgramZoneMoisterSP TABLE@ ^nProgramDataIndex @@ }uiProgramZoneMoisterDB TABLE@ F- F< LAND  IF 
+143 LINE.NUM ^cTT_Moister @@ ^nTriggerType @! 
+144 LINE.NUM &RunGroup  CALL.T ^iMain_Tmp @! 
+145 LINE.NUM THEN 
+146 LINE.NUM THEN THEN THEN 
+149 LINE.NUM &CheckTimeExpired  CALL.T DROP  
+150 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> ^nTimeIntervalExpired @@ 0 > LAND  IF 
+151 LINE.NUM ^cTT_Timer @@ ^nTriggerType @! 
+152 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneValveMultiplier TABLE@ ^fValveMultiplier @! 
+153 LINE.NUM &RunGroup  CALL.T ^iMain_Tmp @! 
+154 LINE.NUM THEN 
+156 LINE.NUM THEN 
+157 LINE.NUM THEN 
+158 LINE.NUM THEN 
+159 LINE.NUM THEN 
+160 LINE.NUM THEN 
+161 LINE.NUM THEN 
+162 LINE.NUM THEN 
+164 LINE.NUM 1 +LOOP 
+166 LINE.NUM THEN 
+168 LINE.NUM THEN 
+170 LINE.NUM 1 +LOOP 
+172 LINE.NUM ^iMain_MoistureAlarm @@ 0 > IF 
+173 LINE.NUM ^tOutAlarmIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doMain_Ptr 
+174 LINE.NUM PTR_doMain_Ptr  ON 
+175 LINE.NUM ELSE 
+176 LINE.NUM ^uoMoisterAlarm @@ 0 < ^uoFlowAlarm @@ 0 = LAND  ^uoECOutAlarm @@ 0 = LAND  ^uoPHAlarm @@ 0 = LAND  ^uoECInAlarm @@ 0 = LAND  ^uoTemperatureAlarm @@ 0 = LAND  ^uoPressureAlarm @@ 0 = LAND  IF 
+178 LINE.NUM ^tOutAlarmIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doMain_Ptr 
+179 LINE.NUM PTR_doMain_Ptr  OFF 
+180 LINE.NUM THEN 
+181 LINE.NUM 0 ^uoMoisterAlarm @! 
+182 LINE.NUM THEN 
+184 LINE.NUM THEN 
+186 LINE.NUM -1 ^nRunProgramIndex @! 
+188 LINE.NUM -1 ^nRunGroupIndex @! 
+189 LINE.NUM -1 ^nRunRecipeIndex @! 
+190 LINE.NUM -1 ^uoDispZoneRun @! 
+192 LINE.NUM 0 ^bInProgress @! 
+193 LINE.NUM 0 ^iMainPumpStatus @! 
+194 LINE.NUM 0 ^uoDispValveNumber @! 
+195 LINE.NUM 1 I>F ^fValveMultiplier @! 
+-3 JUMP ;
+: 20_3
+FALSE
+
+1 LINE.NUM
+  ^uoState @@   0<>
+LOR
+IF 0 ELSE -5 THEN JUMP ;
+: 20_16
+TRUE
+
+1 LINE.NUM
+  ^bInProgress @@   0<>
+LAND
+IF -5 ELSE -3 THEN JUMP ;
+T: T20
+DUMMY
+20_0
+20_1
+20_2
+20_4
+20_100
+20_3
+20_16
+T;
+&Main ' T20 SETTASK

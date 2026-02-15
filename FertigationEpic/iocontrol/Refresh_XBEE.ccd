@@ -1,0 +1,824 @@
+: 77_0
+3 JUMP ;
+: 77_44
+3 LINE.NUM " " *sRefXBEE_Tmp  $MOVE 
+4 LINE.NUM 1 ^iRefXBEE_StartIndex @! 
+5 LINE.NUM 0 ^iRefXBEE_Tmp @! 
+6 LINE.NUM 47 ^iRefXBEE_SplitChar @! 
+8 LINE.NUM *sXBEE_Message 3  SWAP $TRIM 
+10 LINE.NUM *sXBEE_Message 1 3 *sRefXBEE_Tmp  $SUB 
+12 LINE.NUM *sRefXBEE_Tmp " GS3" $= IF 
+13 LINE.NUM *sXBEE_Message 9 12 *sRefXBEE_Tmp  $SUB 
+17 LINE.NUM -1 ^iRefXBEE_SensorIndex @! 
+1 18 LINE.NUM ^cMaxGS3_Nodes @@ 1 -  1 + 0 DO? I ^iRefXBEE_Index @! 
+19 LINE.NUM *sRefXBEE_Tmp ^iRefXBEE_Index @@ {tGS3ID_ProgramIndex $TABLE@ $= IF 
+20 LINE.NUM ^iRefXBEE_Index @@ ^iRefXBEE_SensorIndex @! 
+21 LINE.NUM THEN 
+22 LINE.NUM 1 +LOOP 
+24 LINE.NUM ^iRefXBEE_SensorIndex @@ -1 = IF 
+25 LINE.NUM 0 ^iRefXBEE_Index @! 
+26 LINE.NUM *sRefXBEE_Tmp  $LEN 12 = IF 
+27 LINE.NUM BEGIN 
+28 LINE.NUM *sRefXBEE_Tmp ^iRefXBEE_Index @@ {tGS3ID_Unassigned $TABLE@ $= IF 
+29 LINE.NUM 99 ^iRefXBEE_Index @! 
+30 LINE.NUM THEN 
+31 LINE.NUM ^iRefXBEE_Index @@ 1 +  ^iRefXBEE_Index @! 
+32 LINE.NUM ^iRefXBEE_Index @@ 49 > UNTIL 
+34 LINE.NUM ^iRefXBEE_Index @@ 50 = IF 
+35 LINE.NUM 0 ^iRefXBEE_Index @! 
+36 LINE.NUM BEGIN 
+37 LINE.NUM ^iRefXBEE_Index @@ {tGS3ID_Unassigned $TABLE@ " " $= IF 
+38 LINE.NUM *sRefXBEE_Tmp ^iRefXBEE_Index @@ {tGS3ID_Unassigned $TABLE@  $MOVE 
+39 LINE.NUM 49 ^iRefXBEE_Index @! 
+40 LINE.NUM THEN 
+41 LINE.NUM ^iRefXBEE_Index @@ 1 +  ^iRefXBEE_Index @! 
+42 LINE.NUM ^iRefXBEE_Index @@ 49 > UNTIL 
+43 LINE.NUM THEN 
+44 LINE.NUM THEN 
+45 LINE.NUM ELSE 
+46 LINE.NUM BEGIN 
+47 LINE.NUM ^iRefXBEE_SplitChar @@ ^iRefXBEE_StartIndex @@ *sXBEE_Message  FindChar ^iRefXBEE_Index @! 
+49 LINE.NUM ^iRefXBEE_Index @@ 0 >= IF 
+50 LINE.NUM *sXBEE_Message ^iRefXBEE_StartIndex @@ ^iRefXBEE_Index @@ ^iRefXBEE_StartIndex @@ -  *sRefXBEE_Tmp  $SUB 
+51 LINE.NUM ^iRefXBEE_Index @@ 1 +  ^iRefXBEE_StartIndex @! 
+52 LINE.NUM ELSE 
+53 LINE.NUM *sXBEE_Message ^iRefXBEE_StartIndex @@ *sXBEE_Message  $LEN 1 -  *sRefXBEE_Tmp  $SUB 
+54 LINE.NUM THEN 
+56 LINE.NUM ^iRefXBEE_Tmp @@ CASE 
+57 LINE.NUM 0 OF 
+58 LINE.NUM ENDOF 
+59 LINE.NUM 1 OF 
+60 LINE.NUM ENDOF 
+61 LINE.NUM 2 OF 
+62 LINE.NUM ENDOF 
+63 LINE.NUM 3 OF 
+64 LINE.NUM  TIME@ -ROT DROP DROP *sTempHours  I>$ 
+65 LINE.NUM *sTempHours  $LEN 1 = IF 
+66 LINE.NUM *_HSV_SEMA Acquire1String " 0"  *_HSV_TEMP $MOVE *sTempHours  *_HSV_TEMP $CAT *_HSV_TEMP *sTempHours $MOVE Release1String 
+67 LINE.NUM THEN 
+68 LINE.NUM  TIME@ DROP SWAP DROP *sTempMins  I>$ 
+69 LINE.NUM *sTempMins  $LEN 1 = IF 
+70 LINE.NUM *_HSV_SEMA Acquire1String " 0"  *_HSV_TEMP $MOVE *sTempMins  *_HSV_TEMP $CAT *_HSV_TEMP *sTempMins $MOVE Release1String 
+71 LINE.NUM THEN 
+72 LINE.NUM  TIME@ DROP DROP *sTempSecs  I>$ 
+73 LINE.NUM *sTempSecs  $LEN 1 = IF 
+74 LINE.NUM *_HSV_SEMA Acquire1String " 0"  *_HSV_TEMP $MOVE *sTempSecs  *_HSV_TEMP $CAT *_HSV_TEMP *sTempSecs $MOVE Release1String 
+75 LINE.NUM THEN 
+76 LINE.NUM *_HSV_SEMA Acquire1String *sTempHours  *_HSV_TEMP $MOVE " :"  *_HSV_TEMP $CAT *sTempMins  *_HSV_TEMP $CAT " :"  *_HSV_TEMP $CAT *sTempSecs  *_HSV_TEMP $CAT *_HSV_TEMP ^iRefXBEE_SensorIndex @@ {tGS3_UpdateTime $TABLE@ $MOVE Release1String 
+77 LINE.NUM  SinceMidnight ^iRefXBEE_SensorIndex @@ }tCurGS3_UpdateTime TABLE! 
+79 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+80 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+81 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+82 LINE.NUM THEN 
+83 LINE.NUM ^fRefXBEE_Tmp @@ ^iRefXBEE_SensorIndex @@ }tCurGS3_Volts TABLE! 
+84 LINE.NUM ENDOF 
+85 LINE.NUM 4 OF 
+86 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+87 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+88 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+89 LINE.NUM THEN 
+90 LINE.NUM ^fRefXBEE_Tmp @@ ^iRefXBEE_SensorIndex @@ }tCurGS3_Charging FTABLE! 
+91 LINE.NUM ENDOF 
+92 LINE.NUM 5 OF 
+93 LINE.NUM ^iRefXBEE_SensorIndex @@ 3 *  ^iRefXBEE_ReadingIndex @! 
+94 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+95 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+96 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+97 LINE.NUM THEN 
+98 LINE.NUM ^cTempScale @@ 1 = IF 
+99 LINE.NUM 9.00000000e+000 5.00000000e+000 F/ ^fRefXBEE_Tmp @@ F* 3.20000000e+001 F+ ^iRefXBEE_ReadingIndex @@ }tCurGS3_Temp TABLE! 
+100 LINE.NUM ELSE 
+101 LINE.NUM ^fRefXBEE_Tmp @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_Temp TABLE! 
+102 LINE.NUM THEN 
+103 LINE.NUM ENDOF 
+104 LINE.NUM 6 OF 
+105 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+106 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+107 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+108 LINE.NUM THEN 
+109 LINE.NUM ^fRefXBEE_Tmp @@ 1000 I>F F* ^iRefXBEE_ReadingIndex @@ }tCurGS3_EC TABLE! 
+110 LINE.NUM ENDOF 
+111 LINE.NUM 7 OF 
+112 LINE.NUM ^iRefXBEE_SensorIndex @@ }tGS3_Mineral TABLE@ 0 = IF 
+113 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+114 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+115 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+116 LINE.NUM THEN 
+117 LINE.NUM ^fRefXBEE_Tmp @@ 100 I>F F* ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE! 
+118 LINE.NUM THEN 
+119 LINE.NUM ENDOF 
+120 LINE.NUM 8 OF 
+121 LINE.NUM ^iRefXBEE_SensorIndex @@ }tGS3_Mineral TABLE@ 1 = IF 
+122 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+123 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+124 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+125 LINE.NUM THEN 
+126 LINE.NUM ^fRefXBEE_Tmp @@ 100 I>F F* ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE! 
+127 LINE.NUM THEN 
+128 LINE.NUM ENDOF 
+129 LINE.NUM 9 OF 
+130 LINE.NUM ^iRefXBEE_ReadingIndex @@ 1 +  ^iRefXBEE_ReadingIndex @! 
+131 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+132 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+133 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+134 LINE.NUM THEN 
+135 LINE.NUM ^cTempScale @@ 1 = IF 
+136 LINE.NUM 9.00000000e+000 5.00000000e+000 F/ ^fRefXBEE_Tmp @@ F* 3.20000000e+001 F+ ^iRefXBEE_ReadingIndex @@ }tCurGS3_Temp TABLE! 
+137 LINE.NUM ELSE 
+138 LINE.NUM ^fRefXBEE_Tmp @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_Temp TABLE! 
+139 LINE.NUM THEN 
+140 LINE.NUM ENDOF 
+141 LINE.NUM 10 OF 
+142 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+143 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+144 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+145 LINE.NUM THEN 
+146 LINE.NUM ^fRefXBEE_Tmp @@ 1000 I>F F* ^iRefXBEE_ReadingIndex @@ }tCurGS3_EC TABLE! 
+147 LINE.NUM ENDOF 
+148 LINE.NUM 11 OF 
+149 LINE.NUM ^iRefXBEE_SensorIndex @@ }tGS3_Mineral TABLE@ 0 = IF 
+150 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+151 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+152 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+153 LINE.NUM THEN 
+154 LINE.NUM ^fRefXBEE_Tmp @@ 100 I>F F* ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE! 
+155 LINE.NUM THEN 
+156 LINE.NUM ENDOF 
+157 LINE.NUM 12 OF 
+158 LINE.NUM ^iRefXBEE_SensorIndex @@ }tGS3_Mineral TABLE@ 1 = IF 
+159 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+160 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+161 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+162 LINE.NUM THEN 
+163 LINE.NUM ^fRefXBEE_Tmp @@ 100 I>F F* ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE! 
+164 LINE.NUM THEN 
+165 LINE.NUM ENDOF 
+166 LINE.NUM 13 OF 
+167 LINE.NUM ^iRefXBEE_ReadingIndex @@ 1 +  ^iRefXBEE_ReadingIndex @! 
+168 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+169 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+170 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+171 LINE.NUM THEN 
+172 LINE.NUM ^cTempScale @@ 1 = IF 
+173 LINE.NUM 9.00000000e+000 5.00000000e+000 F/ ^fRefXBEE_Tmp @@ F* 3.20000000e+001 F+ ^iRefXBEE_ReadingIndex @@ }tCurGS3_Temp TABLE! 
+174 LINE.NUM ELSE 
+175 LINE.NUM ^fRefXBEE_Tmp @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_Temp TABLE! 
+176 LINE.NUM THEN 
+177 LINE.NUM ENDOF 
+178 LINE.NUM 14 OF 
+179 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+180 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+181 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+182 LINE.NUM THEN 
+183 LINE.NUM ^fRefXBEE_Tmp @@ 1000 I>F F* ^iRefXBEE_ReadingIndex @@ }tCurGS3_EC TABLE! 
+184 LINE.NUM ENDOF 
+185 LINE.NUM 15 OF 
+186 LINE.NUM ^iRefXBEE_SensorIndex @@ }tGS3_Mineral TABLE@ 0 = IF 
+187 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+188 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+189 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+190 LINE.NUM THEN 
+191 LINE.NUM ^fRefXBEE_Tmp @@ 100 I>F F* ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE! 
+192 LINE.NUM THEN 
+193 LINE.NUM ENDOF 
+194 LINE.NUM 16 OF 
+195 LINE.NUM ^iRefXBEE_SensorIndex @@ }tGS3_Mineral TABLE@ 1 = IF 
+196 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+197 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+198 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+199 LINE.NUM THEN 
+200 LINE.NUM ^fRefXBEE_Tmp @@ 100 I>F F* ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE! 
+201 LINE.NUM THEN 
+202 LINE.NUM ENDOF 
+203 LINE.NUM ENDCASE 
+205 LINE.NUM ^iRefXBEE_Tmp @@ 8 = ^iRefXBEE_Tmp @@ 12 = LOR  ^iRefXBEE_Tmp @@ 16 = LOR  IF 
+207 LINE.NUM ^iRefXBEE_ReadingIndex @@ }tCurGS3_EC TABLE@ 0 I>F F<= ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE@ 5 I>F F<= LAND  IF 
+209 LINE.NUM ^iRefXBEE_ReadingIndex @@ }tCurGS3_ProbeStatus TABLE@ 1 = IF 
+210 LINE.NUM 2 ^iRefXBEE_ReadingIndex @@ }tCurGS3_ProbeStatus TABLE! 
+211 LINE.NUM ELSE 
+211 LINE.NUM ^iRefXBEE_ReadingIndex @@ }tCurGS3_ProbeStatus TABLE@ 2 <> IF 
+212 LINE.NUM 0 ^iRefXBEE_ReadingIndex @@ }tCurGS3_ProbeStatus TABLE! 
+213 LINE.NUM THEN THEN 
+214 LINE.NUM ELSE 
+215 LINE.NUM 1 ^iRefXBEE_ReadingIndex @@ }tCurGS3_ProbeStatus TABLE! 
+216 LINE.NUM THEN 
+217 LINE.NUM THEN 
+219 LINE.NUM ^iRefXBEE_Tmp @@ 1 +  ^iRefXBEE_Tmp @! 
+220 LINE.NUM ^iRefXBEE_Index @@ 0 < UNTIL 
+222 LINE.NUM ^iRefXBEE_SensorIndex @@ 3 *  }tCurGS3_VWC TABLE@ ^fRefXBEE_WC1 @! 
+223 LINE.NUM ^iRefXBEE_SensorIndex @@ 3 *  1 +  }tCurGS3_VWC TABLE@ ^fRefXBEE_WC2 @! 
+224 LINE.NUM ^iRefXBEE_SensorIndex @@ 3 *  2 +  }tCurGS3_VWC TABLE@ ^fRefXBEE_WC3 @! 
+226 LINE.NUM 0 ^iRefXBEE_WC_Factor @! 
+227 LINE.NUM ^fRefXBEE_WC1 @@  $7F800000 AND $7F800000 <> ^fRefXBEE_WC1 @@ 0 I>F F> LAND  IF 
+228 LINE.NUM ^iRefXBEE_WC_Factor @@ 1 +  ^iRefXBEE_WC_Factor @! 
+229 LINE.NUM THEN 
+230 LINE.NUM ^fRefXBEE_WC2 @@  $7F800000 AND $7F800000 <> ^fRefXBEE_WC2 @@ 0 I>F F> LAND  IF 
+231 LINE.NUM ^iRefXBEE_WC_Factor @@ 1 +  ^iRefXBEE_WC_Factor @! 
+232 LINE.NUM THEN 
+233 LINE.NUM ^fRefXBEE_WC3 @@  $7F800000 AND $7F800000 <> ^fRefXBEE_WC3 @@ 0 I>F F> LAND  IF 
+234 LINE.NUM ^iRefXBEE_WC_Factor @@ 1 +  ^iRefXBEE_WC_Factor @! 
+235 LINE.NUM THEN 
+237 LINE.NUM ^iRefXBEE_WC_Factor @@ 0 > IF 
+238 LINE.NUM ^fRefXBEE_WC1 @@ ^fRefXBEE_WC2 @@ F+ ^fRefXBEE_WC3 @@ F+ ^iRefXBEE_WC_Factor @@F F/ ^iRefXBEE_SensorIndex @@ }tCurGS3_VWC_Avg TABLE! 
+239 LINE.NUM ELSE 
+240 LINE.NUM 0 I>F ^iRefXBEE_SensorIndex @@ }tCurGS3_VWC_Avg TABLE! 
+241 LINE.NUM THEN 
+243 LINE.NUM 1 ^iRefXBEE_SensorIndex @@ }tCurGS3_Status TABLE! 
+244 LINE.NUM THEN 
+245 LINE.NUM THEN 
+247 LINE.NUM 3 ^iRefXBEE_Tmp @! 
+1 248 LINE.NUM ^cMaxGS3_Nodes @@ 1 -  1 + 0 DO? I ^iRefXBEE_Index @! 
+249 LINE.NUM ^iRefXBEE_Index @@ {tGS3ID_ProgramIndex $TABLE@  $LEN 0 > IF 
+250 LINE.NUM ^iRefXBEE_Index @@ }tCurGS3_Volts TABLE@ 3.59999990e+000 F>= ^iRefXBEE_Tmp @@ 2 > LAND  IF 
+251 LINE.NUM 3 ^iRefXBEE_Tmp @! 
+252 LINE.NUM ELSE 
+252 LINE.NUM ^iRefXBEE_Index @@ }tCurGS3_Volts TABLE@ 3.45000005e+000 F>= ^iRefXBEE_Tmp @@ 1 > LAND  IF 
+253 LINE.NUM 2 ^iRefXBEE_Tmp @! 
+254 LINE.NUM ELSE 
+254 LINE.NUM ^iRefXBEE_Index @@ }tCurGS3_Volts TABLE@ 3.20000005e+000 F>= ^iRefXBEE_Tmp @@ 0 > LAND  IF 
+255 LINE.NUM 1 ^iRefXBEE_Tmp @! 
+256 LINE.NUM ELSE 
+257 LINE.NUM 0 ^iRefXBEE_Tmp @! 
+258 LINE.NUM THEN THEN THEN 
+259 LINE.NUM THEN 
+260 LINE.NUM 1 +LOOP 
+261 LINE.NUM ^iRefXBEE_Tmp @@ ^uiGS3_VoltageStatus @! 
+263 LINE.NUM 0 ^nXBEE_Message @! 
+264 LINE.NUM " " *sXBEE_Message  $MOVE 
+2 JUMP ;
+: 77_48
+1 LINE.NUM  SinceMidnight I>F  ^fRefXBEE_Time @! 
+3 LINE.NUM 0 ^iRefXBEE_LostTransmitterFound @! 
+1 6 LINE.NUM ^cMaxGS3_Nodes @@ 1 -  1 + 0 DO? I ^iRefXBEE_Index @! 
+7 LINE.NUM ^iRefXBEE_Index @@ }tCurGS3_UpdateTime TABLE@ 0 > IF 
+8 LINE.NUM ^fRefXBEE_Time @@ ^iRefXBEE_Index @@ }tCurGS3_UpdateTime TABLE@F F- 210 I>F F> IF 
+10 LINE.NUM ^iRefXBEE_Index @@ ^iRefXBEE_SensorIndex @! 
+12 LINE.NUM " " ^iRefXBEE_SensorIndex @@ {tGS3_UpdateTime $TABLE@  $MOVE 
+13 LINE.NUM 0 ^iRefXBEE_SensorIndex @@ }tCurGS3_UpdateTime TABLE! 
+15 LINE.NUM 0 I>F ^iRefXBEE_SensorIndex @@ }tCurGS3_Volts TABLE! 
+17 LINE.NUM ^iRefXBEE_SensorIndex @@ 3 *  ^iRefXBEE_SensorIndex @! 
+18 LINE.NUM 0 I>F ^iRefXBEE_SensorIndex @@ }tCurGS3_Temp TABLE! 
+19 LINE.NUM 0 I>F ^iRefXBEE_SensorIndex @@ }tCurGS3_EC TABLE! 
+20 LINE.NUM 0 I>F ^iRefXBEE_SensorIndex @@ }tCurGS3_VWC TABLE! 
+22 LINE.NUM ^iRefXBEE_SensorIndex @@ 1 +  ^iRefXBEE_SensorIndex @! 
+23 LINE.NUM 0 I>F ^iRefXBEE_SensorIndex @@ }tCurGS3_Temp TABLE! 
+24 LINE.NUM 0 I>F ^iRefXBEE_SensorIndex @@ }tCurGS3_EC TABLE! 
+25 LINE.NUM 0 I>F ^iRefXBEE_SensorIndex @@ }tCurGS3_VWC TABLE! 
+27 LINE.NUM ^iRefXBEE_SensorIndex @@ 1 +  ^iRefXBEE_SensorIndex @! 
+28 LINE.NUM 0 I>F ^iRefXBEE_SensorIndex @@ }tCurGS3_Temp TABLE! 
+29 LINE.NUM 0 I>F ^iRefXBEE_SensorIndex @@ }tCurGS3_EC TABLE! 
+30 LINE.NUM 0 I>F ^iRefXBEE_SensorIndex @@ }tCurGS3_VWC TABLE! 
+32 LINE.NUM 2 ^iRefXBEE_Index @@ }tCurGS3_Status TABLE! 
+33 LINE.NUM THEN 
+34 LINE.NUM THEN 
+36 LINE.NUM ^iRefXBEE_Index @@ }tCurGS3_Status TABLE@ 2 = IF 
+37 LINE.NUM 1 ^iRefXBEE_LostTransmitterFound @! 
+38 LINE.NUM THEN 
+40 LINE.NUM ^iRefXBEE_Index @@ }tCurGS3_ProbeStatus TABLE@ 2 = IF 
+41 LINE.NUM 2 ^iRefXBEE_LostTransmitterFound @! 
+42 LINE.NUM THEN 
+43 LINE.NUM 1 +LOOP 
+46 LINE.NUM ^iRefXBEE_ReceiverStatus @@ 3 = IF 
+47 LINE.NUM 0 ^uiTransmitters_Status @! 
+48 LINE.NUM ELSE 
+48 LINE.NUM ^iRefXBEE_LostTransmitterFound @@ 1 = IF 
+49 LINE.NUM 2 ^uiTransmitters_Status @! 
+50 LINE.NUM 0 ^uiGS3_VoltageStatus @! 
+51 LINE.NUM ELSE 
+51 LINE.NUM ^iRefXBEE_LostTransmitterFound @@ 2 = IF 
+52 LINE.NUM 3 ^uiTransmitters_Status @! 
+53 LINE.NUM ELSE 
+54 LINE.NUM 1 ^uiTransmitters_Status @! 
+55 LINE.NUM THEN THEN THEN 
+1 JUMP ;
+: 77_50
+3 LINE.NUM " " *sRefXBEE_Tmp  $MOVE 
+4 LINE.NUM 1 ^iRefXBEE_StartIndex @! 
+5 LINE.NUM 0 ^iRefXBEE_Tmp @! 
+6 LINE.NUM 47 ^iRefXBEE_SplitChar @! 
+8 LINE.NUM *sXBEE_Message 3  SWAP $TRIM 
+10 LINE.NUM *sXBEE_Message 1 3 *sRefXBEE_Tmp  $SUB 
+11 LINE.NUM *sRefXBEE_Tmp  HEX$>I ^iRefXBEE_Tmp @! 
+12 LINE.NUM *sRefXBEE_Tmp " GS3" $= IF 
+13 LINE.NUM *sXBEE_Message 9 12 *sRefXBEE_Tmp  $SUB 
+17 LINE.NUM -1 ^iRefXBEE_SensorIndex @! 
+1 18 LINE.NUM ^cMaxGS3_Nodes @@ 1 -  1 + 0 DO? I ^iRefXBEE_Index @! 
+19 LINE.NUM *sRefXBEE_Tmp ^iRefXBEE_Index @@ {tGS3ID_ProgramIndex $TABLE@ $= IF 
+20 LINE.NUM ^iRefXBEE_Index @@ ^iRefXBEE_SensorIndex @! 
+21 LINE.NUM THEN 
+22 LINE.NUM 1 +LOOP 
+24 LINE.NUM ^iRefXBEE_SensorIndex @@ -1 = IF 
+25 LINE.NUM 0 ^iRefXBEE_Index @! 
+26 LINE.NUM *sRefXBEE_Tmp  $LEN 12 = IF 
+27 LINE.NUM BEGIN 
+28 LINE.NUM *sRefXBEE_Tmp ^iRefXBEE_Index @@ {tGS3ID_Unassigned $TABLE@ $= IF 
+29 LINE.NUM 99 ^iRefXBEE_Index @! 
+30 LINE.NUM THEN 
+31 LINE.NUM ^iRefXBEE_Index @@ 1 +  ^iRefXBEE_Index @! 
+32 LINE.NUM ^iRefXBEE_Index @@ 49 > UNTIL 
+34 LINE.NUM ^iRefXBEE_Index @@ 50 = IF 
+35 LINE.NUM 0 ^iRefXBEE_Index @! 
+36 LINE.NUM BEGIN 
+37 LINE.NUM ^iRefXBEE_Index @@ {tGS3ID_Unassigned $TABLE@ " " $= IF 
+38 LINE.NUM *sRefXBEE_Tmp ^iRefXBEE_Index @@ {tGS3ID_Unassigned $TABLE@  $MOVE 
+39 LINE.NUM 49 ^iRefXBEE_Index @! 
+40 LINE.NUM THEN 
+41 LINE.NUM ^iRefXBEE_Index @@ 1 +  ^iRefXBEE_Index @! 
+42 LINE.NUM ^iRefXBEE_Index @@ 49 > UNTIL 
+43 LINE.NUM THEN 
+44 LINE.NUM THEN 
+45 LINE.NUM ELSE 
+46 LINE.NUM BEGIN 
+47 LINE.NUM ^iRefXBEE_SplitChar @@ ^iRefXBEE_StartIndex @@ *sXBEE_Message  FindChar ^iRefXBEE_Index @! 
+49 LINE.NUM ^iRefXBEE_Index @@ 0 >= IF 
+50 LINE.NUM *sXBEE_Message ^iRefXBEE_StartIndex @@ ^iRefXBEE_Index @@ ^iRefXBEE_StartIndex @@ -  *sRefXBEE_Tmp  $SUB 
+51 LINE.NUM ^iRefXBEE_Index @@ 1 +  ^iRefXBEE_StartIndex @! 
+52 LINE.NUM ELSE 
+53 LINE.NUM *sXBEE_Message ^iRefXBEE_StartIndex @@ *sXBEE_Message  $LEN 1 -  *sRefXBEE_Tmp  $SUB 
+54 LINE.NUM THEN 
+56 LINE.NUM ^iRefXBEE_Tmp @@ CASE 
+57 LINE.NUM 0 OF 
+58 LINE.NUM ENDOF 
+59 LINE.NUM 1 OF 
+60 LINE.NUM ENDOF 
+61 LINE.NUM 2 OF 
+62 LINE.NUM ENDOF 
+63 LINE.NUM 3 OF 
+64 LINE.NUM  TIME@ -ROT DROP DROP *sTempHours  I>$ 
+65 LINE.NUM *sTempHours  $LEN 1 = IF 
+66 LINE.NUM *_HSV_SEMA Acquire1String " 0"  *_HSV_TEMP $MOVE *sTempHours  *_HSV_TEMP $CAT *_HSV_TEMP *sTempHours $MOVE Release1String 
+67 LINE.NUM THEN 
+68 LINE.NUM  TIME@ DROP SWAP DROP *sTempMins  I>$ 
+69 LINE.NUM *sTempMins  $LEN 1 = IF 
+70 LINE.NUM *_HSV_SEMA Acquire1String " 0"  *_HSV_TEMP $MOVE *sTempMins  *_HSV_TEMP $CAT *_HSV_TEMP *sTempMins $MOVE Release1String 
+71 LINE.NUM THEN 
+72 LINE.NUM  TIME@ DROP DROP *sTempSecs  I>$ 
+73 LINE.NUM *sTempSecs  $LEN 1 = IF 
+74 LINE.NUM *_HSV_SEMA Acquire1String " 0"  *_HSV_TEMP $MOVE *sTempSecs  *_HSV_TEMP $CAT *_HSV_TEMP *sTempSecs $MOVE Release1String 
+75 LINE.NUM THEN 
+76 LINE.NUM *_HSV_SEMA Acquire1String *sTempHours  *_HSV_TEMP $MOVE " :"  *_HSV_TEMP $CAT *sTempMins  *_HSV_TEMP $CAT " :"  *_HSV_TEMP $CAT *sTempSecs  *_HSV_TEMP $CAT *_HSV_TEMP ^iRefXBEE_SensorIndex @@ {tGS3_UpdateTime $TABLE@ $MOVE Release1String 
+77 LINE.NUM  SinceMidnight ^iRefXBEE_SensorIndex @@ }tCurGS3_UpdateTime TABLE! 
+79 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+80 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+81 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+82 LINE.NUM THEN 
+83 LINE.NUM ^fRefXBEE_Tmp @@ ^iRefXBEE_SensorIndex @@ }tCurGS3_Volts TABLE! 
+84 LINE.NUM ENDOF 
+85 LINE.NUM 4 OF 
+86 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+87 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+88 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+89 LINE.NUM THEN 
+90 LINE.NUM ^fRefXBEE_Tmp @@ ^iRefXBEE_SensorIndex @@ }tCurGS3_Charging FTABLE! 
+91 LINE.NUM ENDOF 
+92 LINE.NUM 5 OF 
+93 LINE.NUM ^iRefXBEE_SensorIndex @@ 3 *  ^iRefXBEE_ReadingIndex @! 
+94 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+95 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+96 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+97 LINE.NUM THEN 
+98 LINE.NUM ^cTempScale @@ 1 = IF 
+99 LINE.NUM 9.00000000e+000 5.00000000e+000 F/ ^fNCD_Temperature1 @@ F* 3.20000000e+001 F+ ^iRefXBEE_ReadingIndex @@ }tCurGS3_Temp TABLE! 
+100 LINE.NUM ELSE 
+101 LINE.NUM ^fNCD_Temperature1 @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_Temp TABLE! 
+102 LINE.NUM THEN 
+103 LINE.NUM ENDOF 
+104 LINE.NUM 6 OF 
+105 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+106 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+107 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+108 LINE.NUM THEN 
+109 LINE.NUM ^fNCD_EC1 @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_EC TABLE! 
+110 LINE.NUM ENDOF 
+111 LINE.NUM 7 OF 
+112 LINE.NUM ^iRefXBEE_SensorIndex @@ }tGS3_Mineral TABLE@ 0 = IF 
+113 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+114 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+115 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+116 LINE.NUM THEN 
+117 LINE.NUM ^fNCD_Moisture1 @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE! 
+118 LINE.NUM THEN 
+119 LINE.NUM ENDOF 
+120 LINE.NUM 8 OF 
+121 LINE.NUM ^iRefXBEE_SensorIndex @@ }tGS3_Mineral TABLE@ 1 = IF 
+122 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+123 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+124 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+125 LINE.NUM THEN 
+126 LINE.NUM ^fNCD_Moisture1 @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE! 
+127 LINE.NUM THEN 
+128 LINE.NUM ENDOF 
+129 LINE.NUM 9 OF 
+130 LINE.NUM ^iRefXBEE_ReadingIndex @@ 1 +  ^iRefXBEE_ReadingIndex @! 
+131 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+132 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+133 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+134 LINE.NUM THEN 
+135 LINE.NUM ^cTempScale @@ 1 = IF 
+136 LINE.NUM 9.00000000e+000 5.00000000e+000 F/ ^fNCD_Temperature2 @@ F* 3.20000000e+001 F+ ^iRefXBEE_ReadingIndex @@ }tCurGS3_Temp TABLE! 
+137 LINE.NUM ELSE 
+138 LINE.NUM ^fNCD_Temperature2 @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_Temp TABLE! 
+139 LINE.NUM THEN 
+140 LINE.NUM ENDOF 
+141 LINE.NUM 10 OF 
+142 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+143 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+144 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+145 LINE.NUM THEN 
+146 LINE.NUM ^fNCD_EC2 @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_EC TABLE! 
+147 LINE.NUM ENDOF 
+148 LINE.NUM 11 OF 
+149 LINE.NUM ^iRefXBEE_SensorIndex @@ }tGS3_Mineral TABLE@ 0 = IF 
+150 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+151 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+152 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+153 LINE.NUM THEN 
+154 LINE.NUM ^fNCD_Moisture2 @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE! 
+155 LINE.NUM THEN 
+156 LINE.NUM ENDOF 
+157 LINE.NUM 12 OF 
+158 LINE.NUM ^iRefXBEE_SensorIndex @@ }tGS3_Mineral TABLE@ 1 = IF 
+159 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+160 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+161 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+162 LINE.NUM THEN 
+163 LINE.NUM ^fNCD_Moisture1 @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE! 
+164 LINE.NUM THEN 
+165 LINE.NUM ENDOF 
+166 LINE.NUM 13 OF 
+167 LINE.NUM ^iRefXBEE_ReadingIndex @@ 1 +  ^iRefXBEE_ReadingIndex @! 
+168 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+169 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+170 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+171 LINE.NUM THEN 
+172 LINE.NUM ^cTempScale @@ 1 = IF 
+173 LINE.NUM 9.00000000e+000 5.00000000e+000 F/ ^fNCD_Temperature3 @@ F* 3.20000000e+001 F+ ^iRefXBEE_ReadingIndex @@ }tCurGS3_Temp TABLE! 
+174 LINE.NUM ELSE 
+175 LINE.NUM ^fNCD_Temperature3 @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_Temp TABLE! 
+176 LINE.NUM THEN 
+177 LINE.NUM ENDOF 
+178 LINE.NUM 14 OF 
+179 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+180 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+181 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+182 LINE.NUM THEN 
+183 LINE.NUM ^fNCD_EC3 @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_EC TABLE! 
+184 LINE.NUM ENDOF 
+185 LINE.NUM 15 OF 
+186 LINE.NUM ^iRefXBEE_SensorIndex @@ }tGS3_Mineral TABLE@ 0 = IF 
+187 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+188 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+189 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+190 LINE.NUM THEN 
+191 LINE.NUM ^fNCD_Moisture3 @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE! 
+192 LINE.NUM THEN 
+193 LINE.NUM ENDOF 
+194 LINE.NUM 16 OF 
+195 LINE.NUM ^iRefXBEE_SensorIndex @@ }tGS3_Mineral TABLE@ 1 = IF 
+196 LINE.NUM *sRefXBEE_Tmp  $>F ^fRefXBEE_Tmp @! 
+197 LINE.NUM ^fRefXBEE_Tmp @@ 0 I>F F< IF 
+198 LINE.NUM 0 I>F ^fRefXBEE_Tmp @! 
+199 LINE.NUM THEN 
+200 LINE.NUM ^fNCD_Moisture3 @@ ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE! 
+201 LINE.NUM THEN 
+202 LINE.NUM ENDOF 
+203 LINE.NUM ENDCASE 
+205 LINE.NUM ^iRefXBEE_Tmp @@ 8 = ^iRefXBEE_Tmp @@ 12 = LOR  ^iRefXBEE_Tmp @@ 16 = LOR  IF 
+207 LINE.NUM ^iRefXBEE_ReadingIndex @@ }tCurGS3_EC TABLE@ 0 I>F F<= ^iRefXBEE_ReadingIndex @@ }tCurGS3_VWC TABLE@ 5 I>F F<= LAND  IF 
+209 LINE.NUM ^iRefXBEE_ReadingIndex @@ }tCurGS3_ProbeStatus TABLE@ 1 = IF 
+210 LINE.NUM 2 ^iRefXBEE_ReadingIndex @@ }tCurGS3_ProbeStatus TABLE! 
+211 LINE.NUM ELSE 
+211 LINE.NUM ^iRefXBEE_ReadingIndex @@ }tCurGS3_ProbeStatus TABLE@ 2 <> IF 
+212 LINE.NUM 0 ^iRefXBEE_ReadingIndex @@ }tCurGS3_ProbeStatus TABLE! 
+213 LINE.NUM THEN THEN 
+214 LINE.NUM ELSE 
+215 LINE.NUM 1 ^iRefXBEE_ReadingIndex @@ }tCurGS3_ProbeStatus TABLE! 
+216 LINE.NUM THEN 
+217 LINE.NUM THEN 
+219 LINE.NUM ^iRefXBEE_Tmp @@ 1 +  ^iRefXBEE_Tmp @! 
+220 LINE.NUM ^iRefXBEE_Index @@ 0 < UNTIL 
+222 LINE.NUM ^iRefXBEE_SensorIndex @@ 3 *  }tCurGS3_VWC TABLE@ ^fRefXBEE_WC1 @! 
+223 LINE.NUM ^iRefXBEE_SensorIndex @@ 3 *  1 +  }tCurGS3_VWC TABLE@ ^fRefXBEE_WC2 @! 
+224 LINE.NUM ^iRefXBEE_SensorIndex @@ 3 *  2 +  }tCurGS3_VWC TABLE@ ^fRefXBEE_WC3 @! 
+226 LINE.NUM 0 ^iRefXBEE_WC_Factor @! 
+227 LINE.NUM ^fRefXBEE_WC1 @@  $7F800000 AND $7F800000 <> ^fRefXBEE_WC1 @@ 0 I>F F> LAND  IF 
+228 LINE.NUM ^iRefXBEE_WC_Factor @@ 1 +  ^iRefXBEE_WC_Factor @! 
+229 LINE.NUM THEN 
+230 LINE.NUM ^fRefXBEE_WC2 @@  $7F800000 AND $7F800000 <> ^fRefXBEE_WC2 @@ 0 I>F F> LAND  IF 
+231 LINE.NUM ^iRefXBEE_WC_Factor @@ 1 +  ^iRefXBEE_WC_Factor @! 
+232 LINE.NUM THEN 
+233 LINE.NUM ^fRefXBEE_WC3 @@  $7F800000 AND $7F800000 <> ^fRefXBEE_WC3 @@ 0 I>F F> LAND  IF 
+234 LINE.NUM ^iRefXBEE_WC_Factor @@ 1 +  ^iRefXBEE_WC_Factor @! 
+235 LINE.NUM THEN 
+237 LINE.NUM ^iRefXBEE_WC_Factor @@ 0 > IF 
+238 LINE.NUM ^fRefXBEE_WC1 @@ ^fRefXBEE_WC2 @@ F+ ^fRefXBEE_WC3 @@ F+ ^iRefXBEE_WC_Factor @@F F/ ^iRefXBEE_SensorIndex @@ }tCurGS3_VWC_Avg TABLE! 
+239 LINE.NUM ELSE 
+240 LINE.NUM 0 I>F ^iRefXBEE_SensorIndex @@ }tCurGS3_VWC_Avg TABLE! 
+241 LINE.NUM THEN 
+243 LINE.NUM 1 ^iRefXBEE_SensorIndex @@ }tCurGS3_Status TABLE! 
+244 LINE.NUM THEN 
+245 LINE.NUM THEN 
+250 LINE.NUM 3 ^iRefXBEE_Tmp @! 
+1 251 LINE.NUM ^cMaxGS3_Nodes @@ 1 -  1 + 0 DO? I ^iRefXBEE_Index @! 
+252 LINE.NUM ^iRefXBEE_Index @@ {tGS3ID_ProgramIndex $TABLE@  $LEN 0 > IF 
+253 LINE.NUM ^iRefXBEE_Index @@ }tCurGS3_Volts TABLE@ 3.00000000e+000 F>= ^iRefXBEE_Tmp @@ 2 > LAND  IF 
+254 LINE.NUM 3 ^iRefXBEE_Tmp @! 
+255 LINE.NUM ELSE 
+255 LINE.NUM ^iRefXBEE_Index @@ }tCurGS3_Volts TABLE@ 2.75000000e+000 F>= ^iRefXBEE_Tmp @@ 1 > LAND  IF 
+256 LINE.NUM 2 ^iRefXBEE_Tmp @! 
+257 LINE.NUM ELSE 
+257 LINE.NUM ^iRefXBEE_Index @@ }tCurGS3_Volts TABLE@ 2.50000000e+000 F>= ^iRefXBEE_Tmp @@ 0 > LAND  IF 
+258 LINE.NUM 1 ^iRefXBEE_Tmp @! 
+259 LINE.NUM ELSE 
+260 LINE.NUM 0 ^iRefXBEE_Tmp @! 
+261 LINE.NUM THEN THEN THEN 
+262 LINE.NUM THEN 
+263 LINE.NUM 1 +LOOP 
+264 LINE.NUM ^iRefXBEE_Tmp @@ ^uiGS3_VoltageStatus @! 
+266 LINE.NUM 0 ^nXBEE_Message @! 
+267 LINE.NUM " " *sXBEE_Message  $MOVE 
+0 JUMP ;
+: 77_52
+1 LINE.NUM 0 ^nXBEE_Message @! 
+2 LINE.NUM " " *sXBEE_Message  $MOVE 
+6 LINE.NUM ^iTransmitter_Type @@ 1 = ^iTransmitter_Type @@ 2 = LOR  ^iTransmitter_Type @@ 3 = LOR  IF 
+8 LINE.NUM " ser:port=0,baud=115200,data=8,parity=n,stop=1,rts-cts=0" *hCom_NCD  $MOVE 
+10 LINE.NUM *hCom_XBEE  ?OPEN 0> IF 
+11 LINE.NUM *hCom_XBEE  CLOSE DROP  
+12 LINE.NUM THEN 
+14 LINE.NUM *hCom_NCD  OPEN ^iRefXBEE_CommOpenResult @! 
+16 LINE.NUM ^iRefXBEE_CommOpenResult @@ 0 <> IF 
+17 LINE.NUM 0 ^iRefXBEE_ReceiverStatus @! 
+18 LINE.NUM THEN 
+20 LINE.NUM *hCom_NCD  ?OPEN 0> IF 
+21 LINE.NUM 2 ^iRefXBEE_ReceiverStatus @! 
+22 LINE.NUM *hCom_NCD 13  S.!EOL 
+23 LINE.NUM 100  DELAY 
+25 LINE.NUM 18 0 }NCD_Data *hCom_NCD  S.GET#TABLE ^iNCD_Table_Status @! 
+1 29 LINE.NUM 17 1 + 0 DO? I ^iIndex_NCD_Data_To_Hex @! 
+30 LINE.NUM ^iIndex_NCD_Data_To_Hex @@ }NCD_Data TABLE@ ^iIndex_NCD_Data_To_Hex @@ {stNCD_Data_To_Hex $TABLE@  I>HEX$ 
+31 LINE.NUM ^iIndex_NCD_Data_To_Hex @@ {stNCD_Data_To_Hex $TABLE@  $LEN ^iIndex_NCD_Data_To_Hex @@ }iNCD_Lengths TABLE! 
+37 LINE.NUM ^iIndex_NCD_Data_To_Hex @@ }iNCD_Lengths TABLE@ 6 = IF 
+38 LINE.NUM ^iIndex_NCD_Data_To_Hex @@ {stNCD_Data_To_Hex $TABLE@ *stemporary_holder  $MOVE 
+39 LINE.NUM *_HSV_SEMA Acquire1String " 00"  *_HSV_TEMP $MOVE *stemporary_holder  *_HSV_TEMP $CAT *_HSV_TEMP ^iIndex_NCD_Data_To_Hex @@ {stNCD_Data_To_Hex $TABLE@ $MOVE Release1String 
+40 LINE.NUM THEN 
+42 LINE.NUM ^iIndex_NCD_Data_To_Hex @@ }iNCD_Lengths TABLE@ 7 = IF 
+43 LINE.NUM ^iIndex_NCD_Data_To_Hex @@ {stNCD_Data_To_Hex $TABLE@ *stemporary_holder  $MOVE 
+44 LINE.NUM *_HSV_SEMA Acquire1String " 0"  *_HSV_TEMP $MOVE *stemporary_holder  *_HSV_TEMP $CAT *_HSV_TEMP ^iIndex_NCD_Data_To_Hex @@ {stNCD_Data_To_Hex $TABLE@ $MOVE Release1String 
+45 LINE.NUM THEN 
+47 LINE.NUM 1 +LOOP 
+49 LINE.NUM 0 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte0  $SUB 
+50 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+51 LINE.NUM ^iNCD_Data_Byte0 @@ 126 = IF 
+56 LINE.NUM 1 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+57 LINE.NUM 1 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+58 LINE.NUM *_HSV_SEMA Acquire1String *sNCD_Data_Byte1  *_HSV_TEMP $MOVE *sNCD_Data_Byte0  *_HSV_TEMP $CAT *_HSV_TEMP *sNCD_ID $MOVE Release1String 
+59 LINE.NUM 2 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+60 LINE.NUM 2 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+61 LINE.NUM 2 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte2  $SUB 
+62 LINE.NUM 2 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte3  $SUB 
+63 LINE.NUM *_HSV_SEMA Acquire1String *sNCD_ID  *_HSV_TEMP $MOVE *sNCD_Data_Byte3  *_HSV_TEMP $CAT *sNCD_Data_Byte2  *_HSV_TEMP $CAT *sNCD_Data_Byte1  *_HSV_TEMP $CAT *sNCD_Data_Byte0  *_HSV_TEMP $CAT *_HSV_TEMP *sNCD_ID $MOVE Release1String 
+66 LINE.NUM 4 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+67 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+68 LINE.NUM 4 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+69 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+70 LINE.NUM 256 ^iNCD_Data_Byte1 @@ *  ^iNCD_Data_Byte0 @@ + I>F 3.22000007e-003 F* ^fNCD_Battery @! 
+71 LINE.NUM ^fNCD_Battery @@ 4 2 *sNCD_Battery  FF.R$ 
+73 LINE.NUM ^iTransmitter_Type @@ 2 = ^iTransmitter_Type @@ 3 = LOR  IF 
+76 LINE.NUM 7 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte0  $SUB 
+77 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+78 LINE.NUM 7 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+79 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+80 LINE.NUM 256 ^iNCD_Data_Byte1 @@ *  ^iNCD_Data_Byte0 @@ + I>F ^fNCD_EC1 @! 
+83 LINE.NUM 5 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+84 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+85 LINE.NUM 6 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte1  $SUB 
+86 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+87 LINE.NUM 256 ^iNCD_Data_Byte1 @@ *  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_Temperature1 @! 
+90 LINE.NUM 6 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte0  $SUB 
+91 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+92 LINE.NUM 6 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+93 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+94 LINE.NUM 256 ^iNCD_Data_Byte1 @@ *  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_Moisture1 @! 
+97 LINE.NUM ^iTransmitter_Type @@ 2 = IF 
+99 LINE.NUM 9 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+100 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+101 LINE.NUM 10 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte1  $SUB 
+102 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+103 LINE.NUM 256 ^iNCD_Data_Byte1 @@ *  ^iNCD_Data_Byte0 @@ + I>F ^fNCD_EC2 @! 
+106 LINE.NUM 8 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte0  $SUB 
+107 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+108 LINE.NUM 8 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+109 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+110 LINE.NUM 256 ^iNCD_Data_Byte1 @@ *  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_Temperature2 @! 
+113 LINE.NUM 8 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+114 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+115 LINE.NUM 9 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte1  $SUB 
+116 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+117 LINE.NUM 256 ^iNCD_Data_Byte1 @@ *  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_Moisture2 @! 
+120 LINE.NUM 12 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte0  $SUB 
+121 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+122 LINE.NUM 12 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+123 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+124 LINE.NUM 256 ^iNCD_Data_Byte1 @@ *  ^iNCD_Data_Byte0 @@ + I>F ^fNCD_EC3 @! 
+127 LINE.NUM 10 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+128 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+129 LINE.NUM 11 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte1  $SUB 
+130 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+131 LINE.NUM 256 ^iNCD_Data_Byte1 @@ *  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_Temperature3 @! 
+134 LINE.NUM 11 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte0  $SUB 
+135 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+136 LINE.NUM 11 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+137 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+138 LINE.NUM 256 ^iNCD_Data_Byte1 @@ *  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_Moisture3 @! 
+139 LINE.NUM THEN 
+143 LINE.NUM ELSE 
+143 LINE.NUM ^iTransmitter_Type @@ 1 = IF 
+146 LINE.NUM 8 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+147 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+148 LINE.NUM 8 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+149 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+150 LINE.NUM 8 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte2  $SUB 
+151 LINE.NUM *sNCD_Data_Byte2  HEX$>I ^iNCD_Data_Byte2 @! 
+152 LINE.NUM 8 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte3  $SUB 
+153 LINE.NUM *sNCD_Data_Byte3  HEX$>I ^iNCD_Data_Byte3 @! 
+155 LINE.NUM 16777216 ^iNCD_Data_Byte3 @@ *  65536 ^iNCD_Data_Byte2 @@ *  +  256 ^iNCD_Data_Byte1 @@ *  +  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_EC1 @! 
+161 LINE.NUM 12 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+162 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+163 LINE.NUM 12 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+164 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+165 LINE.NUM 12 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte2  $SUB 
+166 LINE.NUM *sNCD_Data_Byte2  HEX$>I ^iNCD_Data_Byte2 @! 
+167 LINE.NUM 12 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte3  $SUB 
+168 LINE.NUM *sNCD_Data_Byte3  HEX$>I ^iNCD_Data_Byte3 @! 
+170 LINE.NUM 16777216 ^iNCD_Data_Byte3 @@ *  65536 ^iNCD_Data_Byte2 @@ *  +  256 ^iNCD_Data_Byte1 @@ *  +  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_EC2 @! 
+176 LINE.NUM 16 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+177 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+178 LINE.NUM 16 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+179 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+180 LINE.NUM 16 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte2  $SUB 
+181 LINE.NUM *sNCD_Data_Byte2  HEX$>I ^iNCD_Data_Byte2 @! 
+182 LINE.NUM 16 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte3  $SUB 
+183 LINE.NUM *sNCD_Data_Byte3  HEX$>I ^iNCD_Data_Byte3 @! 
+185 LINE.NUM 16777216 ^iNCD_Data_Byte3 @@ *  65536 ^iNCD_Data_Byte2 @@ *  +  256 ^iNCD_Data_Byte1 @@ *  +  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_EC3 @! 
+191 LINE.NUM 7 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+192 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+193 LINE.NUM 7 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+194 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+195 LINE.NUM 7 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte2  $SUB 
+196 LINE.NUM *sNCD_Data_Byte2  HEX$>I ^iNCD_Data_Byte2 @! 
+197 LINE.NUM 7 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte3  $SUB 
+198 LINE.NUM *sNCD_Data_Byte3  HEX$>I ^iNCD_Data_Byte3 @! 
+200 LINE.NUM 16777216 ^iNCD_Data_Byte3 @@ *  65536 ^iNCD_Data_Byte2 @@ *  +  256 ^iNCD_Data_Byte1 @@ *  +  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_Temperature1 @! 
+206 LINE.NUM 11 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+207 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+208 LINE.NUM 11 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+209 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+210 LINE.NUM 11 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte2  $SUB 
+211 LINE.NUM *sNCD_Data_Byte2  HEX$>I ^iNCD_Data_Byte2 @! 
+212 LINE.NUM 11 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte3  $SUB 
+213 LINE.NUM *sNCD_Data_Byte3  HEX$>I ^iNCD_Data_Byte3 @! 
+215 LINE.NUM 16777216 ^iNCD_Data_Byte3 @@ *  65536 ^iNCD_Data_Byte2 @@ *  +  256 ^iNCD_Data_Byte1 @@ *  +  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_Temperature2 @! 
+220 LINE.NUM 15 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+221 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+222 LINE.NUM 15 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+223 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+224 LINE.NUM 15 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte2  $SUB 
+225 LINE.NUM *sNCD_Data_Byte2  HEX$>I ^iNCD_Data_Byte2 @! 
+226 LINE.NUM 15 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte3  $SUB 
+227 LINE.NUM *sNCD_Data_Byte3  HEX$>I ^iNCD_Data_Byte3 @! 
+229 LINE.NUM 16777216 ^iNCD_Data_Byte3 @@ *  65536 ^iNCD_Data_Byte2 @@ *  +  256 ^iNCD_Data_Byte1 @@ *  +  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_Temperature3 @! 
+235 LINE.NUM 6 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+236 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+237 LINE.NUM 6 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+238 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+239 LINE.NUM 6 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte2  $SUB 
+240 LINE.NUM *sNCD_Data_Byte2  HEX$>I ^iNCD_Data_Byte2 @! 
+241 LINE.NUM 6 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte3  $SUB 
+242 LINE.NUM *sNCD_Data_Byte3  HEX$>I ^iNCD_Data_Byte3 @! 
+244 LINE.NUM 16777216 ^iNCD_Data_Byte3 @@ *  65536 ^iNCD_Data_Byte2 @@ *  +  256 ^iNCD_Data_Byte1 @@ *  +  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_Moisture1 @! 
+250 LINE.NUM 10 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+251 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+252 LINE.NUM 10 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+253 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+254 LINE.NUM 10 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte2  $SUB 
+255 LINE.NUM *sNCD_Data_Byte2  HEX$>I ^iNCD_Data_Byte2 @! 
+256 LINE.NUM 10 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte3  $SUB 
+257 LINE.NUM *sNCD_Data_Byte3  HEX$>I ^iNCD_Data_Byte3 @! 
+259 LINE.NUM 16777216 ^iNCD_Data_Byte3 @@ *  65536 ^iNCD_Data_Byte2 @@ *  +  256 ^iNCD_Data_Byte1 @@ *  +  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_Moisture2 @! 
+265 LINE.NUM 14 {stNCD_Data_To_Hex $TABLE@ 0 2 *sNCD_Data_Byte0  $SUB 
+266 LINE.NUM *sNCD_Data_Byte0  HEX$>I ^iNCD_Data_Byte0 @! 
+267 LINE.NUM 14 {stNCD_Data_To_Hex $TABLE@ 2 2 *sNCD_Data_Byte1  $SUB 
+268 LINE.NUM *sNCD_Data_Byte1  HEX$>I ^iNCD_Data_Byte1 @! 
+269 LINE.NUM 14 {stNCD_Data_To_Hex $TABLE@ 4 2 *sNCD_Data_Byte2  $SUB 
+270 LINE.NUM *sNCD_Data_Byte2  HEX$>I ^iNCD_Data_Byte2 @! 
+271 LINE.NUM 14 {stNCD_Data_To_Hex $TABLE@ 6 2 *sNCD_Data_Byte3  $SUB 
+272 LINE.NUM *sNCD_Data_Byte3  HEX$>I ^iNCD_Data_Byte3 @! 
+274 LINE.NUM 16777216 ^iNCD_Data_Byte3 @@ *  65536 ^iNCD_Data_Byte2 @@ *  +  256 ^iNCD_Data_Byte1 @@ *  +  ^iNCD_Data_Byte0 @@ +  100 / I>F ^fNCD_Moisture3 @! 
+276 LINE.NUM THEN THEN 
+278 LINE.NUM ^fNCD_Moisture1 @@ 100 I>F F> ^fNCD_Moisture1 @@ 5 I>F F< LOR  IF 
+278 LINE.NUM 0 I>F ^fNCD_Moisture1 @! 
+278 LINE.NUM THEN 
+279 LINE.NUM ^fNCD_Moisture2 @@ 100 I>F F> ^fNCD_Moisture2 @@ 5 I>F F< LOR  IF 
+279 LINE.NUM 0 I>F ^fNCD_Moisture2 @! 
+279 LINE.NUM THEN 
+280 LINE.NUM ^fNCD_Moisture3 @@ 100 I>F F> ^fNCD_Moisture3 @@ 5 I>F F< LOR  IF 
+280 LINE.NUM 0 I>F ^fNCD_Moisture3 @! 
+280 LINE.NUM THEN 
+282 LINE.NUM ^fNCD_Temperature1 @@ 100 I>F F> ^fNCD_Temperature1 @@ 5 I>F F< LOR  IF 
+282 LINE.NUM 0 I>F ^fNCD_Temperature1 @! 
+282 LINE.NUM THEN 
+283 LINE.NUM ^fNCD_Temperature2 @@ 100 I>F F> ^fNCD_Temperature2 @@ 5 I>F F< LOR  IF 
+283 LINE.NUM 0 I>F ^fNCD_Temperature2 @! 
+283 LINE.NUM THEN 
+284 LINE.NUM ^fNCD_Temperature3 @@ 100 I>F F> ^fNCD_Temperature3 @@ 5 I>F F< LOR  IF 
+284 LINE.NUM 0 I>F ^fNCD_Temperature3 @! 
+284 LINE.NUM THEN 
+286 LINE.NUM ^fNCD_EC3 @@ 10000 I>F F> ^fNCD_EC3 @@ 5 I>F F< LOR  IF 
+286 LINE.NUM 0 I>F ^fNCD_EC3 @! 
+286 LINE.NUM THEN 
+287 LINE.NUM ^fNCD_EC3 @@ 10000 I>F F> ^fNCD_EC3 @@ 5 I>F F< LOR  IF 
+287 LINE.NUM 0 I>F ^fNCD_EC3 @! 
+287 LINE.NUM THEN 
+288 LINE.NUM ^fNCD_EC3 @@ 10000 I>F F> ^fNCD_EC3 @@ 5 I>F F< LOR  IF 
+288 LINE.NUM 0 I>F ^fNCD_EC3 @! 
+288 LINE.NUM THEN 
+293 LINE.NUM *_HSV_SEMA Acquire1String " |GS3/0.1/"  *_HSV_TEMP $MOVE *sNCD_ID  *_HSV_TEMP $CAT " /"  *_HSV_TEMP $CAT *sNCD_Battery  *_HSV_TEMP $CAT " /0/21.00/4.25/0.84/0.72/21.17/4.53/0.81/0.67/21.10/4.23/0.80/0.66"  *_HSV_TEMP $CAT *_HSV_TEMP *sXBEE_Message $MOVE Release1String 
+294 LINE.NUM 1 ^nXBEE_Message @! 
+1 296 LINE.NUM 17 1 + 0 DO? I ^iIndex_NCD_Data_To_Hex @! 
+297 LINE.NUM 0 ^iIndex_NCD_Data_To_Hex @@ }NCD_Data TABLE! 
+298 LINE.NUM 1 +LOOP 
+300 LINE.NUM THEN 
+301 LINE.NUM *hCom_NCD  CLOSE DROP  
+302 LINE.NUM THEN 
+303 LINE.NUM THEN 
+306 LINE.NUM ^iTransmitter_Type @@ 4 = IF 
+308 LINE.NUM " ser:0,9600,n,8,1" *hCom_XBEE  $MOVE 
+309 LINE.NUM *hCom_XBEE  OPEN ^iRefXBEE_CommOpenResult @! 
+310 LINE.NUM *hCom_XBEE  ?OPEN 0> IF 
+311 LINE.NUM *hCom_XBEE 13  S.!EOL 
+312 LINE.NUM 100  DELAY 
+314 LINE.NUM *sXBEE_Message *hCom_XBEE  GET$ ^nXBEE_Status @! 
+316 LINE.NUM *sXBEE_Message  $LEN 10 > IF 
+317 LINE.NUM 1 ^nXBEE_Message @! 
+318 LINE.NUM 3 ^iTransmitter_Type @! 
+319 LINE.NUM ELSE 
+320 LINE.NUM " OK" 0 *sXBEE_Message  FindSubString -1 > IF 
+321 LINE.NUM 2 ^iRefXBEE_ReceiverStatus @! 
+322 LINE.NUM *_HSV_SEMA Acquire1String " ATCN"  *_HSV_TEMP $MOVE 13  *_HSV_TEMP $APPEND *_HSV_TEMP *sXBEE_Message $MOVE Release1String 
+323 LINE.NUM *sXBEE_Message *hCom_XBEE  PRT$ DROP  
+324 LINE.NUM THEN 
+325 LINE.NUM THEN 
+327 LINE.NUM ^dtXBEE_ReceiverWatch  T0= IF 
+328 LINE.NUM ^iRefXBEE_ReceiverStatus @@ 2 <> IF 
+329 LINE.NUM 3 ^iRefXBEE_ReceiverStatus @! 
+330 LINE.NUM ELSE 
+331 LINE.NUM 1 ^iRefXBEE_ReceiverStatus @! 
+332 LINE.NUM THEN 
+335 LINE.NUM ^dtXBEE_ReceiverWatch  StartTimer 
+336 LINE.NUM " +++" *sXBEE_Message  $MOVE 
+337 LINE.NUM *sXBEE_Message *hCom_XBEE  PRT$ DROP  
+338 LINE.NUM THEN 
+339 LINE.NUM ELSE 
+340 LINE.NUM " ser:0,9600,n,8,1" *hCom_XBEE  $MOVE 
+341 LINE.NUM *hCom_XBEE  OPEN ^iRefXBEE_CommOpenResult @! 
+342 LINE.NUM ^iRefXBEE_CommOpenResult @@ 0 <> IF 
+343 LINE.NUM 0 ^iRefXBEE_ReceiverStatus @! 
+344 LINE.NUM THEN 
+346 LINE.NUM ^iRefXBEE_CommOpenResult @@ 0 = IF 
+347 LINE.NUM 30 I>F ^dtXBEE_ReceiverWatch  SetTimer 
+349 LINE.NUM ^dtXBEE_ReceiverWatch  StartTimer 
+350 LINE.NUM " +++" *sXBEE_Message  $MOVE 
+351 LINE.NUM *sXBEE_Message *hCom_XBEE  PRT$ DROP  
+352 LINE.NUM THEN 
+354 LINE.NUM 0 ^uiGS3_VoltageStatus @! 
+355 LINE.NUM THEN 
+359 LINE.NUM THEN 
+1 JUMP ;
+: 77_45
+TRUE
+
+1 LINE.NUM
+  ^iTransmitter_Type @@ 
+  0    =
+LAND
+IF -5 ELSE -3 THEN JUMP ;
+: 77_49
+TRUE
+
+1 LINE.NUM
+  ^nXBEE_Message @@ 
+  1    =
+LAND
+IF -2 ELSE -5 THEN JUMP ;
+T: T77
+DUMMY
+77_0
+77_44
+77_48
+77_50
+77_52
+77_45
+77_49
+T;
+&Refresh_XBEE ' T77 SETTASK

@@ -1,0 +1,110 @@
+: 105_0
+5 JUMP ;
+: 105_5
+1 LINE.NUM ^uoDispRecipeNum @@ ^uiEditRecipeNum @! 
+2 LINE.NUM &Recipe_Definition  CALL.T DROP  
+3 JUMP ;
+: 105_6
+2 LINE.NUM ^uoDispRecipeNum @@ ^cMaxRecipes @@ >= IF 
+3 LINE.NUM 0 ^uoDispRecipeNum @! 
+4 LINE.NUM ELSE 
+4 LINE.NUM ^uoDispRecipeNum @@ 0 < IF 
+5 LINE.NUM ^cMaxRecipes @@ 1 -  ^uoDispRecipeNum @! 
+6 LINE.NUM THEN THEN 
+8 LINE.NUM ^uoDispRecipeNum @@ {uiRecipeName $TABLE@ *uoDispRecipeName  $MOVE 
+2 JUMP ;
+: 105_7
+2 LINE.NUM ^uoZoneDispRecipeNum @@ ^cMaxRecipes @@ >= IF 
+3 LINE.NUM 0 ^uoZoneDispRecipeNum @! 
+4 LINE.NUM ELSE 
+4 LINE.NUM ^uoZoneDispRecipeNum @@ 0 < IF 
+5 LINE.NUM ^cMaxRecipes @@ 1 -  ^uoZoneDispRecipeNum @! 
+6 LINE.NUM THEN THEN 
+8 LINE.NUM ^uoZoneDispRecipeNum @@ {uiRecipeName $TABLE@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^uiZoneRecipeFlagNum @@ + {uiProgramZoneRecipe $TABLE@  $MOVE 
+9 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^uiZoneRecipeFlagNum @@ + {uiProgramZoneRecipe $TABLE@ ^uiZoneRecipeFlagNum @@ {uoDispCurrentZoneRecipes $TABLE@  $MOVE 
+13 LINE.NUM ^uiZoneRecipeFlagNum @@ }uiEditZoneFlags TABLE@ 0 = ^uiEditZoneRecipeCancel @@ 1 = LOR  IF 
+14 LINE.NUM " " ^uiZoneRecipeFlagNum @@ {uoDispCurrentZoneRecipes $TABLE@  $MOVE 
+15 LINE.NUM -1 ^uiEditProgramNum @@ ^cMaxZones @@ *  ^uiZoneRecipeFlagNum @@ +  }uiProgramZoneRecipeIndex TABLE! 
+16 LINE.NUM 0 ^uiZoneRecipeFlagNum @@ }uiEditZoneFlags TABLE! 
+17 LINE.NUM ELSE 
+18 LINE.NUM ^uiEditProgramNum @@ ^cMaxZones @@ *  ^uiZoneRecipeFlagNum @@ + {uiProgramZoneRecipe $TABLE@ ^uiZoneRecipeFlagNum @@ {uoDispCurrentZoneRecipes $TABLE@  $MOVE 
+19 LINE.NUM ^uoZoneDispRecipeNum @@ ^uiEditProgramNum @@ ^cMaxZones @@ *  ^uiZoneRecipeFlagNum @@ +  }uiProgramZoneRecipeIndex TABLE! 
+20 LINE.NUM THEN 
+22 LINE.NUM 0 ^uiEditZoneRecipeCancel @! 
+1 JUMP ;
+: 105_13
+
+1 LINE.NUM
+  250    DELAY
+2 JUMP ;
+: 105_21
+
+1 LINE.NUM
+  0  
+  ^iProgramRecipe @!   
+
+2 LINE.NUM
+  0  
+  ^iScheduleRecipe @!   
+
+3 LINE.NUM
+  0  
+  ^iRecipeClose @!   
+
+4 LINE.NUM
+  0  
+  ^iProgramRecipeEdit @!   
+5 JUMP ;
+: 105_31
+
+1 LINE.NUM
+  0  
+  ^iRecipeClose @!   
+0 JUMP ;
+: 105_1
+TRUE
+
+1 LINE.NUM
+  ^iProgramRecipeEdit @@ 
+  1    =
+LAND
+IF -7 ELSE 0 THEN JUMP ;
+: 105_3
+TRUE
+
+1 LINE.NUM
+  ^iProgramRecipe @@ 
+  1    =
+LAND
+IF -7 ELSE 0 THEN JUMP ;
+: 105_4
+TRUE
+
+1 LINE.NUM
+  ^iScheduleRecipe @@ 
+  1    =
+LAND
+IF -7 ELSE 0 THEN JUMP ;
+: 105_20
+TRUE
+
+1 LINE.NUM
+  ^iRecipeClose @@ 
+  1    =
+LAND
+IF -6 ELSE -7 THEN JUMP ;
+T: T105
+DUMMY
+105_0
+105_5
+105_6
+105_7
+105_13
+105_21
+105_31
+105_1
+105_3
+105_4
+105_20
+T;
+&Recipe ' T105 SETTASK

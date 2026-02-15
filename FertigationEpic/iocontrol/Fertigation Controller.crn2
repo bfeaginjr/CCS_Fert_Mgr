@@ -1,0 +1,1211 @@
+0 TASK  &_INIT_IO
+0 TASK &Agritech
+0 TASK &Alarms
+0 TASK &Auxiliary
+0 TASK &CheckTimeExpired
+0 TASK &Clear_Outputs
+0 TASK &Flow_Tracker
+0 TASK &InputSensor_Tracker
+0 TASK &Main
+0 TASK &Maintenance_Screen_Refresh
+0 TASK &ManualProgramStart
+0 TASK &MixingValve
+0 TASK &MixingValve_Settings
+0 TASK &MMP_ScratchPad
+0 TASK &OutputList
+0 TASK &Powerup
+0 TASK &PPM_Tracker
+0 TASK &PumpIt
+0 TASK &Queue_Program
+0 TASK &Recipe
+0 TASK &Recipe_Definition
+0 TASK &Refresh_XBEE
+0 TASK &RunGroup
+0 TASK &Schedule
+0 TASK &TankLevel_Tracker
+0 TASK &TestFlow
+0 TASK &TimerContinue
+0 TASK &TimerPause
+0 TASK &TimerRestart
+0 TASK &Timers
+0 TASK &Timers_Setup
+0 TASK &ValveGroup
+0 TASK &ValveGroup_Definition
+0 TASK &XBEE_AssignNode
+0 TASK &XBEE_ClearUnassigned
+0 TASK &XBEE_RemoveNode
+0 IVAR ^AllowTagUploadsForThisStrategy
+0 IVAR ^bAutomated_FirstPass
+0 IVAR ^bBitMask1
+0 IVAR ^bBitMask2
+0 2IVAR ^bBoardLayout1
+0 2IVAR ^bBoardLayout2
+0 IVAR ^bECINHighAlarm
+0 IVAR ^bECINLowAlarm
+0 IVAR ^bECOUTHighAlarm
+0 IVAR ^bECOUTLowAlarm
+0 IVAR ^bFlowHighAlarm
+0 IVAR ^bFlowLowAlarm
+0 IVAR ^bInProgress
+0 IVAR ^bMain_CheckTriggers
+0 IVAR ^bpHHighAlarm
+0 IVAR ^bpHLowAlarm
+0 IVAR ^bPressureHighAlarm
+0 IVAR ^bPressureLowAlarm
+0 IVAR ^bPressureShutDown
+0 IVAR ^bProportional_Program_Recipe
+0 IVAR ^bTempHighAlarm
+0 IVAR ^bTempLowAlarm
+0 FVAR ^cDefaultValveTime
+0 FVAR ^cFlowTimerInterval
+0 IVAR ^cMaxAGZones
+0 IVAR ^cMaxAuxiliaries
+0 IVAR ^cMaxCustoms
+0 IVAR ^cMaxDispList
+0 IVAR ^cMaxErrorCheck
+0 IVAR ^cMaxExternalStarts
+0 IVAR ^cMaxExtQueueTrigger
+0 IVAR ^cMaxGS3_Nodes
+0 IVAR ^cMaxInjectors
+0 IVAR ^cMaxInletValve1
+0 IVAR ^cMaxInletValve2
+0 IVAR ^cMaxLibraryMixes
+0 IVAR ^cMaxNutrients
+0 IVAR ^cMaxNutritions
+0 IVAR ^cMaxOutputRacks
+0 IVAR ^cMaxOutputs
+0 IVAR ^cMaxPrograms
+0 IVAR ^cMaxRecipes
+0 IVAR ^cMaxTanks
+0 IVAR ^cMaxTimers
+0 IVAR ^cMaxValveGroups
+0 IVAR ^cMaxValveIndex
+0 IVAR ^cMaxValves
+0 IVAR ^cMaxZoneDateVariables
+0 IVAR ^cMaxZones
+0 IVAR ^cNAN
+0 IVAR ^cOptAECHighAlarmIndex
+0 IVAR ^cOptAECLowAlarmIndex
+0 IVAR ^cOptAECmAMaxIndex
+0 IVAR ^cOptAECmAMinIndex
+0 IVAR ^cOptAECvalMaxIndex
+0 IVAR ^cOptAECvalMinIndex
+0 IVAR ^cOptAlarmCheckDelayIndex
+0 IVAR ^cOptAPHmAMaxIndex
+0 IVAR ^cOptAPHmAMinIndex
+0 IVAR ^cOptAPHvalMaxIndex
+0 IVAR ^cOptAPHvalMinIndex
+0 IVAR ^cOptAutomatedControlDelayIndex
+0 IVAR ^cOptAutomatedProportionalDelay
+0 IVAR ^cOptDefaultValveTimeIndex
+0 IVAR ^cOptECAlarmDelayIndex
+0 IVAR ^cOptECHighAlarmIndex
+0 IVAR ^cOptECLowAlarmIndex
+0 IVAR ^cOptECmAMaxIndex
+0 IVAR ^cOptECmAMinIndex
+0 IVAR ^cOptECvalMaxIndex
+0 IVAR ^cOptECvalMinIndex
+0 IVAR ^cOptExternalDelayIndex
+0 IVAR ^cOptFlowAlarmDelayIndex
+0 IVAR ^cOptFlowSPIndex
+0 IVAR ^cOptInjectorOffTime
+0 IVAR ^cOptInjectorOnTime
+0 IVAR ^cOptInjectorSPFlowRate
+0 IVAR ^cOptKFactorIndex
+0 IVAR ^cOptMixECDeadbandIndex
+0 IVAR ^cOptMixECTargetIndex
+0 IVAR ^cOptMixValveAdjustIndex
+0 IVAR ^cOptMixValveDelayIndex
+0 IVAR ^cOptMixValveTimeIndex
+0 IVAR ^cOptPHAlarmDelayIndex
+0 IVAR ^cOptPHHighAlarmIndex
+0 IVAR ^cOptpHInSolarToggle
+0 IVAR ^cOptPHLowAlarmIndex
+0 IVAR ^cOptPHmAMaxIndex
+0 IVAR ^cOptPHmaMinIndex
+0 IVAR ^cOptPHvalMaxIndex
+0 IVAR ^cOptPHvalMinIndex
+0 IVAR ^cOptPressureAlarmDelayIndex
+0 IVAR ^cOptPressureExtDelayIndex
+0 IVAR ^cOptPressureExtSPIndex
+0 IVAR ^cOptPressureHighAlarmIndex
+0 IVAR ^cOptPressureLowAlarmIndex
+0 IVAR ^cOptPressuremAMaxIndex
+0 IVAR ^cOptPressuremAMinIndex
+0 IVAR ^cOptPressurevalMaxIndex
+0 IVAR ^cOptPressurevalMinIndex
+0 IVAR ^cOptPumpDelayIndex
+0 IVAR ^cOptSolarCalibrationMultiplier
+0 IVAR ^cOptSolarCalOhmsIndex
+0 IVAR ^cOptSolarIntervalIndex
+0 IVAR ^cOptTempAlarmDelayIndex
+0 IVAR ^cOptTempHighAlarmIndex
+0 IVAR ^cOptTempLowAlarmIndex
+0 IVAR ^cOptTEMPmAMaxIndex
+0 IVAR ^cOptTEMPmAMinIndex
+0 IVAR ^cOptTEMPvalMaxIndex
+0 IVAR ^cOptTEMPvalMinIndex
+0 IVAR ^cOptUseMixValveIndex
+0 IVAR ^cOptWaterHighAlarmIndex
+0 IVAR ^cOptWaterLowAlarmIndex
+0 IVAR ^cOptWaterSensormAMaxIndex
+0 IVAR ^cOptWaterSensormAMinIndex
+0 IVAR ^cOptWaterSensorvalMaxIndex
+0 IVAR ^cOptWaterSensorvalMinIndex
+0 IVAR ^cOptWMvalMaxIndex
+0 IVAR ^cOT_AlarmIndex
+0 IVAR ^cOT_Auxiliary10Index
+0 IVAR ^cOT_Auxiliary11Index
+0 IVAR ^cOT_Auxiliary12Index
+0 IVAR ^cOT_Auxiliary13Index
+0 IVAR ^cOT_Auxiliary14Index
+0 IVAR ^cOT_Auxiliary15Index
+0 IVAR ^cOT_Auxiliary16Index
+0 IVAR ^cOT_Auxiliary17Index
+0 IVAR ^cOT_Auxiliary18Index
+0 IVAR ^cOT_Auxiliary19Index
+0 IVAR ^cOT_Auxiliary1Index
+0 IVAR ^cOT_Auxiliary20Index
+0 IVAR ^cOT_Auxiliary2Index
+0 IVAR ^cOT_Auxiliary3Index
+0 IVAR ^cOT_Auxiliary4Index
+0 IVAR ^cOT_Auxiliary5Index
+0 IVAR ^cOT_Auxiliary6Index
+0 IVAR ^cOT_Auxiliary7Index
+0 IVAR ^cOT_Auxiliary8Index
+0 IVAR ^cOT_Auxiliary9Index
+0 IVAR ^cOT_CustomIndex
+0 IVAR ^cOT_CycleTimerIndex
+0 IVAR ^cOT_Injector10Index
+0 IVAR ^cOT_Injector11Index
+0 IVAR ^cOT_Injector12Index
+0 IVAR ^cOT_Injector1Index
+0 IVAR ^cOT_Injector2Index
+0 IVAR ^cOT_Injector3Index
+0 IVAR ^cOT_Injector4Index
+0 IVAR ^cOT_Injector5Index
+0 IVAR ^cOT_Injector6Index
+0 IVAR ^cOT_Injector7Index
+0 IVAR ^cOT_Injector8Index
+0 IVAR ^cOT_Injector9Index
+0 IVAR ^cOT_InletValve1Index
+0 IVAR ^cOT_InletValve2Index
+0 IVAR ^cOT_MixValveCloseIndex
+0 IVAR ^cOT_MixValveOpenIndex
+0 IVAR ^cOT_PumpIndex
+0 IVAR ^cOT_TankIndex
+0 IVAR ^cOT_ValveIndex
+0 IVAR ^cPD_ZD_StartDateNdx
+0 IVAR ^cPD_ZD_StopDateNdx
+0 IVAR ^cPF_pHControlIndex_NOTUSED
+0 IVAR ^cPF_ProportionalIndex_NOTUSED
+0 IVAR ^cTT_Auxillary
+0 IVAR ^cTT_External
+0 IVAR ^cTT_Manual
+0 IVAR ^cTT_Moister
+0 IVAR ^cTT_Solar
+0 IVAR ^cTT_Testing
+0 IVAR ^cTT_Timer
+0 IVAR ^cTT_Tuning
+0 FVAR ^cVersion_Build
+0 FVAR ^cVersion_Major
+0 IVAR ^cWindowErrorMessage
+0 IVAR ^cWindowGroupDefinition
+0 IVAR ^cWindowInjectorDefinition
+0 IVAR ^cWindowNutritionInfromation
+0 IVAR ^cWindowProgramDefinition
+0 TVAR ^dt_AlarmSilence
+0 TVAR ^dt_TankCirgulation
+0 TVAR ^dt_TankLevelCheck
+0 TVAR ^dt_TuneValveTimer
+0 TVAR ^dtAECAlarmDelay
+0 TVAR ^dtAgritech_ZN1
+0 TVAR ^dtAgritech_ZN2
+0 TVAR ^dtAgritech_ZN3
+0 TVAR ^dtAgritech_ZN4
+0 TVAR ^dtAgritech_ZN5
+0 TVAR ^dtAutomatedProportionalDecideDelay
+0 TVAR ^dtCycleTimer_TimeOff_01
+0 TVAR ^dtCycleTimer_TimeOff_02
+0 TVAR ^dtCycleTimer_TimeOff_03
+0 TVAR ^dtCycleTimer_TimeOff_04
+0 TVAR ^dtCycleTimer_TimeOff_05
+0 TVAR ^dtCycleTimer_TimeOff_06
+0 TVAR ^dtCycleTimer_TimeOff_07
+0 TVAR ^dtCycleTimer_TimeOff_08
+0 TVAR ^dtCycleTimer_TimeOff_09
+0 TVAR ^dtCycleTimer_TimeOff_10
+0 TVAR ^dtECAlarmDelay
+0 TVAR ^dtFlowAlarmDelay
+0 TVAR ^dtMeterDisplay
+0 TVAR ^dtMixingTimer
+0 TVAR ^dtPHAlarmDelay
+0 TVAR ^dtPressureAlarmDelay
+0 TVAR ^dtPressureShutDownDelay
+0 TVAR ^dtProgram_MinRest_01
+0 TVAR ^dtProgram_MinRest_02
+0 TVAR ^dtProgram_MinRest_03
+0 TVAR ^dtProgram_MinRest_04
+0 TVAR ^dtProgram_MinRest_05
+0 TVAR ^dtProgram_MinRest_06
+0 TVAR ^dtProgram_MinRest_07
+0 TVAR ^dtProgram_MinRest_08
+0 TVAR ^dtProgram_MinRest_09
+0 TVAR ^dtProgram_MinRest_10
+0 TVAR ^dtProgram_MinRest_11
+0 TVAR ^dtProgram_MinRest_12
+0 TVAR ^dtProgram_MinRest_13
+0 TVAR ^dtProgram_MinRest_14
+0 TVAR ^dtProgram_MinRest_15
+0 TVAR ^dtProgram_MinRest_16
+0 TVAR ^dtProgram_MinRest_17
+0 TVAR ^dtProgram_MinRest_18
+0 TVAR ^dtProgram_MinRest_19
+0 TVAR ^dtProgram_MinRest_20
+0 TVAR ^dtPulseFactor_Delay
+0 TVAR ^dtTempAlarmDelay
+0 TVAR ^dtTimeInterval_0
+0 TVAR ^dtTimeInterval_1
+0 TVAR ^dtTimeInterval_10
+0 TVAR ^dtTimeInterval_11
+0 TVAR ^dtTimeInterval_12
+0 TVAR ^dtTimeInterval_13
+0 TVAR ^dtTimeInterval_14
+0 TVAR ^dtTimeInterval_15
+0 TVAR ^dtTimeInterval_16
+0 TVAR ^dtTimeInterval_17
+0 TVAR ^dtTimeInterval_18
+0 TVAR ^dtTimeInterval_19
+0 TVAR ^dtTimeInterval_2
+0 TVAR ^dtTimeInterval_3
+0 TVAR ^dtTimeInterval_4
+0 TVAR ^dtTimeInterval_5
+0 TVAR ^dtTimeInterval_6
+0 TVAR ^dtTimeInterval_7
+0 TVAR ^dtTimeInterval_8
+0 TVAR ^dtTimeInterval_9
+0 TVAR ^dtValveTimer
+0 TVAR ^dtXBEE_ReceiverWatch
+0 FVAR ^fAEcPerMaConstant
+0 FVAR ^fAlarmCheckDelay
+0 FVAR ^fAPHPerMaConstant
+0 FVAR ^fAuxEC
+0 FVAR ^fAuxEC_tmp
+0 FVAR ^fAuxPH
+0 FVAR ^fAuxPH_tmp
+0 FVAR ^fCurrentEC
+0 FVAR ^fCurrentEC_tmp
+0 FVAR ^fCurrentMinutes
+0 FVAR ^fCurrentMixValveTime
+0 FVAR ^fCurrentPH
+0 FVAR ^fCurrentPH_tmp
+0 FVAR ^fCurrentPHRef_tmp
+0 FVAR ^fCurrentPRESSURE_Ext
+0 FVAR ^fCurrentPRESSURE_Int
+0 FVAR ^fCurrentPressureExt_Tmp
+0 FVAR ^fCurrentPressureInt_Tmp
+0 FVAR ^fCurrentSolarValue
+0 FVAR ^fCurrentSolarValue_tmp
+0 FVAR ^fCurrentTankLevel
+0 FVAR ^fCurrentTEMP
+0 FVAR ^fCurrentTEMP_tmp
+0 FVAR ^fCurrentTime
+0 FVAR ^fDispSolarAccum
+0 FVAR ^fEcPerMaConstant
+0 FVAR ^fEditLibrarySolubRatio
+0 FVAR ^fEditLibrarySoluteAmt
+0 FVAR ^fEditLibraryTankSize
+0 FVAR ^fFlowRate
+0 FVAR ^fFlowRateTmp
+0 FVAR ^fGrandTotal_ppm
+0 IVAR ^FIFO
+0 FVAR ^fLastLiters
+0 FVAR ^fLiterCount
+0 FVAR ^fLitersPerPulse
+0 FVAR ^fMain_WC1
+0 FVAR ^fMain_WC2
+0 FVAR ^fMain_WC3
+0 IVAR ^fMain_WC_Factor
+0 FVAR ^fMixingValve_Tmp
+0 FVAR ^fMixValveTimePercentage
+0 FVAR ^fNCD_Battery
+0 FVAR ^fNCD_EC1
+0 FVAR ^fNCD_EC2
+0 FVAR ^fNCD_EC3
+0 FVAR ^fNCD_Moisture1
+0 FVAR ^fNCD_Moisture2
+0 FVAR ^fNCD_Moisture3
+0 FVAR ^fNCD_Temperature1
+0 FVAR ^fNCD_Temperature2
+0 FVAR ^fNCD_Temperature3
+0 IVAR ^found
+0 FVAR ^fPHPerMaConstant
+0 FVAR ^fppm_temp1
+0 FVAR ^fPRESSUREPerMaConstant
+0 FVAR ^fPumpDelay
+0 FVAR ^fPumpIt_MaxPulsesPerMIn
+0 FVAR ^fPumpIt_Tmp
+0 FVAR ^fPumpIt_Tmp2
+0 FVAR ^fPumpIt_TmpAuto
+0 FVAR ^fRecipeFlowRateDisplay
+0 FVAR ^fRefXBEE_Time
+0 FVAR ^fRefXBEE_Tmp
+0 FVAR ^fRefXBEE_WC1
+0 FVAR ^fRefXBEE_WC2
+0 FVAR ^fRefXBEE_WC3
+0 FVAR ^fSolar1mVWatts
+0 FVAR ^fSolarAccumulator
+0 FVAR ^fStartEditProgram_Temp1
+0 FVAR ^fStartEditProgram_Temp2
+0 FVAR ^fTank5_CalculatedVolume
+0 FVAR ^fTank6_CalculatedVolume
+0 FVAR ^fTank7_CalculatedVolume
+0 FVAR ^fTank8_CalculatedVolume
+0 FVAR ^fTargetPHRef_tmp
+0 FVAR ^fTEMPPerMaConstant
+0 FVAR ^fTimers_Temp
+0 FVAR ^fTimers_Time
+0 IVAR ^fTuneValveTimer
+0 IVAR ^fTuneValveVolume
+0 FVAR ^fValveMultiplier
+0 IVAR ^fValveVolumeCheck
+0 FVAR ^fWaterPressureExtOffset
+0 FVAR ^fWaterSensorPerMaConstant
+0 FVAR ^fWMPerMaConstant
+0 IVAR ^i
+0 IVAR ^i1
+0 IVAR ^i2
+0 IVAR ^iAG_Tmp
+0 IVAR ^iAG_Tmp1
+0 IVAR ^iAGZoneNum
+0 IVAR ^iAlarmChart_Tmp
+0 IVAR ^iAlarmSilence
+0 IVAR ^iAuxiliaryClose
+0 IVAR ^iCancelNutrientLibrary
+0 IVAR ^iChartStatus_Tmp
+0 IVAR ^iClearAllEditProgram
+0 IVAR ^iCloseEditProgram
+0 IVAR ^iCloseMixingValve
+0 IVAR ^iCloseTimers
+0 IVAR ^iCurrentDay
+0 IVAR ^iCurrentHour
+0 IVAR ^iEditNutrientLibrary
+0 IVAR ^iEditProgramError
+0 IVAR ^iEditWaterAnalysis
+0 IVAR ^iFlowResetPressed
+0 IVAR ^iFlowTrack_Tmp
+0 IVAR ^iGroupClose
+0 IVAR ^iIndex_NCD_Data_To_Hex
+0 IVAR ^iLastCollectionTankPump
+0 IVAR ^iLeachateTankReturnValve
+0 IVAR ^iLeachateTankSupplyValve
+0 IVAR ^iLeapYear
+0 IVAR ^iMain_MoistureAlarm
+1073741824 IVAR ^iMain_Tmp
+0 IVAR ^iMainPumpStatus
+0 IVAR ^iMainValveGroup
+0 IVAR ^iMixingValve_Tmp
+0 IVAR ^iMixingValve_Tmp2
+0 IVAR ^iMixingValve_Tmp3
+0 IVAR ^iMixingValve_Tmp_DB
+0 IVAR ^iMixingValve_Tmp_SP
+0 IVAR ^iMixingValveClose
+0 IVAR ^iMixingValveOff
+0 IVAR ^iMixingValveOpen
+0 IVAR ^iNCD_Data_Byte0
+0 IVAR ^iNCD_Data_Byte1
+0 IVAR ^iNCD_Data_Byte2
+0 IVAR ^iNCD_Data_Byte3
+0 IVAR ^iNCD_Table_Status
+0 IVAR ^index
+0 IVAR ^iOutputListCancel
+0 IVAR ^iOutputListDec
+0 IVAR ^iOutputListInc
+0 IVAR ^iOutputListSave
+0 IVAR ^iPower_Tmp
+0 IVAR ^iPower_Tmp2
+0 IVAR ^iPPM_Enable
+0 IVAR ^iPPM_LIVE
+0 IVAR ^iProgramAuxiliary
+0 IVAR ^iProgramGroup
+0 IVAR ^iProgramGroupEdit
+0 IVAR ^iProgramRecipe
+0 IVAR ^iProgramRecipeEdit
+0 IVAR ^iPumpIt_PulseRatesAllAtMax_EC
+0 IVAR ^iPumpIt_PulseRatesAllAtMax_pH
+0 IVAR ^iPumpIt_Tmp
+0 IVAR ^iPumpIt_Tmp2
+0 IVAR ^iQueue_front
+0 IVAR ^iQueue_Rear
+0 IVAR ^iQueueCount
+0 IVAR ^iQueueExt_ProgIndex
+0 IVAR ^iQueueProgram_Tmp
+0 IVAR ^iQueueProgram_Tmp1
+0 IVAR ^iQueueProgram_Tmp2
+0 IVAR ^iRecipeClose
+0 IVAR ^iRecipeDefinitionCancel
+0 IVAR ^iRecipeDefinitionSave
+0 IVAR ^iRecipeTankError
+0 IVAR ^iRefProgZone_Tmp
+0 IVAR ^iRefProgZone_Tmp2
+0 IVAR ^iRefreshFromLibrary
+0 IVAR ^iRefreshFromRecipe
+0 IVAR ^iRefreshFromWaterSource
+0 IVAR ^iRefreshInjectorDisplays
+0 IVAR ^iRefreshMaintenanceDisp_Tmp
+0 IVAR ^iRefreshOutputs_Tmp
+0 IVAR ^iRefreshOutputsDesc_Tmp
+0 IVAR ^iRefreshRecipeRequired
+0 IVAR ^iRefWC_Factor
+0 IVAR ^iRefXBEE_CommOpenResult
+0 IVAR ^iRefXBEE_Index
+0 IVAR ^iRefXBEE_LostTransmitterFound
+0 IVAR ^iRefXBEE_ReadingIndex
+0 IVAR ^iRefXBEE_ReceiverStatus
+0 IVAR ^iRefXBEE_SensorIndex
+0 IVAR ^iRefXBEE_SplitChar
+0 IVAR ^iRefXBEE_StartIndex
+0 IVAR ^iRefXBEE_Tmp
+0 IVAR ^iRefXBEE_WC_Factor
+0 IVAR ^iRunProgramIndex
+0 IVAR ^iSaveEditGroup_Tmp
+0 IVAR ^iSaveEditInj_Tmp
+0 IVAR ^iSaveEditInj_Tmp2
+0 IVAR ^iSaveEditNut_Tmp
+0 IVAR ^iSaveEditOverLap
+0 IVAR ^iSaveEditProg_Tmp
+0 IVAR ^iSaveEditProg_Tmp2
+0 IVAR ^iSaveEditProg_Tmp4
+0 IVAR ^iSaveEditProg_Tmp5
+0 IVAR ^iSaveEditProg_Tmp6
+0 IVAR ^iSaveEditProg_Tmp7
+0 IVAR ^iSaveEditProgErrorCheck
+0 IVAR ^iSaveEditProgErrorCheck1
+0 IVAR ^iSaveEditProgErrorDate
+0 IVAR ^iSaveEditProgram
+0 IVAR ^iSaveEditProgramValveGroup
+0 IVAR ^iSaveErrorProg_Tmp1
+0 IVAR ^iSaveErrorProg_Tmp2
+0 IVAR ^iSaveErrorProg_Tmp3
+0 IVAR ^iSaveInputSensor
+0 IVAR ^iSaveNutrientLibrary
+0 IVAR ^iSaveOutputs_Tmp
+0 IVAR ^iSaveOutputs_Tmp2
+0 IVAR ^iSaveTargetRecipePPM
+0 IVAR ^iSaveTimers
+0 IVAR ^iSaveWaterAnalysis
+0 IVAR ^iSchedulerChangeFlag
+0 IVAR ^iScheduleRecipe
+0 IVAR ^iSetDefValveTimes_Tmp
+0 IVAR ^iStartEditGroup_Tmp
+0 IVAR ^iStartEditGroup_Tmp2
+0 IVAR ^iStartEditInj_Tmp
+0 IVAR ^iStartEditInj_Tmp2
+0 IVAR ^iStartEditNut_Tmp
+0 IVAR ^iStartEditProg_Factor
+0 IVAR ^iStartEditProg_Tmp
+0 IVAR ^iStartEditProg_Tmp2
+0 IVAR ^iStartEditProg_Tmp3
+0 IVAR ^iStartEditProg_Tmp4
+0 IVAR ^iStartEditProg_Tmp5
+0 IVAR ^iStartEditProg_Tmp6
+0 IVAR ^iStartEditProgram_Tmp0
+0 IVAR ^iStartEditValves_Tmp
+0 IVAR ^iStartEditValves_Tmp2
+0 IVAR ^iStringCompare
+0 IVAR ^iSystemRestore
+0 IVAR ^iTank2_LevelSwitch_Bottom
+0 IVAR ^iTank_Alarm
+0 IVAR ^iTankAlarmActive
+0 IVAR ^iTankAlarmActiveTemp
+0 IVAR ^iTankCirgulationFlag_Tmp
+0 IVAR ^iTempProgramZone
+0 IVAR ^iTempStartDayNum
+0 IVAR ^iTempStartMonthNum
+0 IVAR ^iTempStartYearNum
+0 IVAR ^iTempStopDayNum
+0 IVAR ^iTempStopMonthNum
+0 IVAR ^iTempStopYearNum
+0 IVAR ^iTimers_Tmp
+0 IVAR ^iTimers_Tmp2
+0 IVAR ^iTimers_Tmp3
+0 IVAR ^iTuneValveNumber
+0 IVAR ^iUndoEditProgram
+0 IVAR ^iUndoInjectorSetpoint
+0 IVAR ^iValveDefinitionClose
+0 IVAR ^iValveDefinitionDefaultTime
+0 IVAR ^iValveDefinitionSave
+0 IVAR ^iXBEEClear_Tmp
+0 IVAR ^j
+0 IVAR ^n
+0 IVAR ^nCheckSum_InjectorDisplay_Tmp
+0 IVAR ^nControlEngineType
+0 IVAR ^nDispValveNum
+0 IVAR ^newFront
+0 IVAR ^newRear
+0 IVAR ^nFlowPulseCount
+0 IVAR ^nFlowResetIndex
+0 IVAR ^nFreshWaterIndex
+0 IVAR ^nInjectorDisplay_Inc_Dec
+0 IVAR ^nInjectorEditPtr
+0 IVAR ^nLibraryEditPtr
+0 IVAR ^nMaxValveIndex
+0 IVAR ^nMixLast
+0 IVAR ^nNextProgram
+0 IVAR ^nOutputDispNum
+0 IVAR ^nProgramDataIndex
+0 IVAR ^nRecipeNo_ppm
+0 IVAR ^nResults
+0 IVAR ^nRunCounter1
+0 IVAR ^nRunGroupIndex
+0 IVAR ^nRunProgramIndex
+0 IVAR ^nRunRecipeIndex
+0 IVAR ^nRunValveIndex
+0 IVAR ^nRunZoneIndex
+0 IVAR ^nSelectedNutrient
+0 IVAR ^nSolProgramIndex
+0 IVAR ^nTankAlarmIndex
+0 IVAR ^nTankIndex
+0 IVAR ^nTankLevelCheckIndex
+0 IVAR ^nTankOutputIndex
+0 IVAR ^nTankQueueIndex
+0 IVAR ^nTankWaterIndex
+0 IVAR ^nTargetNutrientPtr
+0 IVAR ^nTempRecipeNo
+0 IVAR ^nTimeInterval_Hour
+0 IVAR ^nTimeInterval_Mins
+0 IVAR ^nTimeInterval_Secs
+0 IVAR ^nTimeIntervalExpired
+0 IVAR ^nTriggerType
+0 IVAR ^nWaterAnalysis_Index
+0 IVAR ^nXBEE_Chars
+0 IVAR ^nXBEE_Message
+0 IVAR ^nXBEE_Status
+0 IVAR ^nZoneErrorIndex
+0 IVAR ^Status
+0 IVAR ^STRING_LEN
+0 IVAR ^tankNameindex
+0 IVAR ^tempValveMultiplier
+0 IVAR ^tmpAuxiliaryIndex
+0 IVAR ^ui_CancelEditProgram
+0 IVAR ^ui_FlowRateOffset
+0 IVAR ^ui_SaveEditProgram
+0 IVAR ^ui_StartEditProgram
+0 IVAR ^ui_WaterPressureExtOffset
+0 IVAR ^ui_WaterPressureIntOffset
+0 FVAR ^uiAlarmSnoozeTimer
+0 IVAR ^uiEditECTargetDB
+0 IVAR ^uiEditECTargetSP
+0 IVAR ^uiEditGroupNum
+0 IVAR ^uiEditGroupNumDisp
+0 IVAR ^uiEditGS3_AssignID
+0 IVAR ^uiEditGS3_AssignProgramID
+0 IVAR ^uiEditGS3_UnassignID
+0 IVAR ^uiEditInjectorNum
+0 IVAR ^uiEditInjectorPHFlag
+0 IVAR ^uiEditInjectorProportionalFlag
+0 FVAR ^uiEditInjectorSPFlowRate
+0 IVAR ^uiEditMaintenanceCardNum
+0 FVAR ^uiEditMoisterAlarm
+0 IVAR ^uiEditPH_UpDown
+0 FVAR ^uiEditPHTargetDB
+0 FVAR ^uiEditPHTargetSP
+0 IVAR ^uiEditPPMRecipe
+0 IVAR ^uiEditProgMVOverride
+0 IVAR ^uiEditProgMVOverride_DB
+0 IVAR ^uiEditProgMVOverride_SP
+0 IVAR ^uiEditProgramDays
+0 IVAR ^uiEditProgramNum
+0 IVAR ^uiEditProgramZoneNum
+0 IVAR ^uiEditRecipeNum
+0 IVAR ^uiEditValveSolarInfDB
+0 FVAR ^uiEditValveSolarInfPer
+0 IVAR ^uiEditValveSolarInfSP
+0 IVAR ^uiEditZoneRecipeCancel
+0 IVAR ^uiEStop
+0 FVAR ^uiFlowRate
+0 IVAR ^uiGS3_VoltageStatus
+0 FVAR ^uiMixValveTimeOpen
+0 IVAR ^uiPause
+0 IVAR ^uiPPMClose
+0 IVAR ^uiStart
+0 IVAR ^uiTempProgramNum
+0 IVAR ^uiTransmitters_Status
+0 IVAR ^uiTuningPause
+0 IVAR ^uiTuningStart
+0 IVAR ^uiZoneRecipeFlagNum
+0 IVAR ^uo_Overview_FT_screen
+0 IVAR ^uo_Overview_LeftIMG
+0 IVAR ^uo_Overview_RightIMG
+0 IVAR ^uoDispAuxNum
+0 IVAR ^uoDispCurrentDay
+0 IVAR ^uoDispCurrentProgZone
+0 IVAR ^uoDispGroupNum
+0 IVAR ^uoDispMainECDeadBand
+0 IVAR ^uoDispMainECTarget
+0 FVAR ^uoDispMainPHDeadBand
+0 FVAR ^uoDispMainPHTarget
+0 FVAR ^uoDispMoisterAverage
+0 IVAR ^uoDispProgramRun
+0 FVAR ^uoDispProgramTimer
+0 IVAR ^uoDispProgZoneDayNum
+0 IVAR ^uoDispRecipeNum
+0 IVAR ^uoDispValveflag
+0 IVAR ^uoDispValveNumber
+0 IVAR ^uoDispZoneRun
+0 IVAR ^uoECInAlarm
+0 IVAR ^uoECOutAlarm
+0 IVAR ^uoFlowAlarm
+0 IVAR ^uoHighAlarm
+0 IVAR ^uoHighECInAlarm
+0 IVAR ^uoHighECOutAlarm
+0 IVAR ^uoHighFlowAlarm
+0 IVAR ^uoHighpHAlarm
+0 IVAR ^uoHighPressureAlarm
+0 IVAR ^uoHighTempAlarm
+0 IVAR ^uoInjectorEditPtr
+0 FVAR ^uoLogLiters
+0 IVAR ^uoLogStart
+0 IVAR ^uoLogTimeZone
+0 IVAR ^uoLowAlarm
+0 IVAR ^uoLowECInAlarm
+0 IVAR ^uoLowECOutAlarm
+0 IVAR ^uoLowFlowAlarm
+0 IVAR ^uoLowpHAlarm
+0 IVAR ^uoLowPressureAlarm
+0 IVAR ^uoLowTempAlarm
+0 IVAR ^uoMixValve
+0 IVAR ^uoMoisterAlarm
+0 IVAR ^uoPHAlarm
+0 FVAR ^uopHSensor
+0 IVAR ^uoPopupWindow
+0 IVAR ^uoPressureAlarm
+0 FVAR ^uoPressureSensor
+0 IVAR ^uoPulseRateAlarm
+0 IVAR ^uoSelectedTankDisplay
+0 IVAR ^uoSelectedTankDisplay_Tmp
+0 IVAR ^uoState
+0 FVAR ^uoTank_AlarmMaxSP
+0 FVAR ^uoTank_AlarmMinSP
+0 IVAR ^uoTank_Application_UpDown
+0 FVAR ^uoTank_CalculatedVolume
+0 FVAR ^uoTank_Capacity
+0 FVAR ^uoTank_ControlMaxSP
+0 FVAR ^uoTank_ControlMinSP
+0 IVAR ^uoTank_Enable
+0 FVAR ^uoTank_Height
+0 IVAR ^uoTank_ManualControl
+0 IVAR ^uoTank_Output
+0 FVAR ^uoTank_PercentFull
+0 IVAR ^uoTankDisplayNumber
+0 IVAR ^uoTankIndex
+0 IVAR ^uoTemperatureAlarm
+0 IVAR ^uoTuningState
+0 IVAR ^uoZoneDispRecipeNum
+0 UTVAR ^utCycleTimer_TimeOn_01
+0 UTVAR ^utCycleTimer_TimeOn_02
+0 UTVAR ^utCycleTimer_TimeOn_03
+0 UTVAR ^utCycleTimer_TimeOn_04
+0 UTVAR ^utCycleTimer_TimeOn_05
+0 UTVAR ^utCycleTimer_TimeOn_06
+0 UTVAR ^utCycleTimer_TimeOn_07
+0 UTVAR ^utCycleTimer_TimeOn_08
+0 UTVAR ^utCycleTimer_TimeOn_09
+0 UTVAR ^utCycleTimer_TimeOn_10
+0 UTVAR ^utFlowCheck
+0 UTVAR ^utTotalTime
+22 0 $VAR *Date_and_Time 
+12 0 $VAR *Date_String 
+2 0 $VAR *sCelcius 
+50 0 $VAR *sController_Firmware 
+50 0 $VAR *sController_IPddress 
+32 0 $VAR *sEditNutrientMix 
+32 0 $VAR *sEditWater_ppm 
+25 0 $VAR *sErr 
+2 0 $VAR *sFahrenheit 
+5 0 $VAR *sNCD_Battery 
+10 0 $VAR *sNCD_Data_Byte0 
+10 0 $VAR *sNCD_Data_Byte1 
+10 0 $VAR *sNCD_Data_Byte2 
+10 0 $VAR *sNCD_Data_Byte3 
+20 0 $VAR *sNCD_ID 
+30 0 $VAR *sRecipeName_Active 
+255 0 $VAR *sRefXBEE_Tmp 
+30 0 $VAR *sSaveEditProgram 
+30 0 $VAR *sSaveOutputList 
+30 0 $VAR *sSaveRecipe 
+30 0 $VAR *sSaveTimer 
+30 0 $VAR *sSaveValveGroup 
+3 0 $VAR *sScale_GPM 
+3 0 $VAR *sScale_LPM 
+50 0 $VAR *sStrategy_Name 
+2 0 $VAR *sTemperatureScale 
+2 0 $VAR *sTempHours 
+2 0 $VAR *sTempMins 
+50 0 $VAR *stemporary_holder 
+2 0 $VAR *sTempSecs 
+2 0 $VAR *sTempStartDay 
+2 0 $VAR *sTempStartMonth 
+4 0 $VAR *sTempStartYear 
+2 0 $VAR *sTempStopDay 
+2 0 $VAR *sTempStopMonth 
+4 0 $VAR *sTempStopYear 
+255 0 $VAR *sXBEE_Message 
+30 0 $VAR *TestString 
+10 0 $VAR *Time_String 
+30 0 $VAR *tStartDate 
+10 0 $VAR *tStartTime 
+20 0 $VAR *uiEditGroupName 
+25 0 $VAR *uiEditProgramName 
+30 0 $VAR *uiEditRecipeName 
+30 0 $VAR *uiInjectorNutritionName 
+10 0 $VAR *uiTankNumber 
+20 0 $VAR *uoDispAuxName 
+20 0 $VAR *uoDispGroupName 
+4 0 $VAR *uoDispMainIrrigationMode 
+30 0 $VAR *uoDispRecipeName 
+10 0 $VAR *uoDispValveNum 
+100 0 $VAR *uoErrorMessage 
+100 0 $VAR *uoErrorMessageTmp 
+20 0 $VAR *uoLogEvent 
+20 0 $VAR *uoLogGroup 
+10 0 $VAR *uoLogIrrigationMode 
+30 0 $VAR *uoLogProgram 
+50 0 $VAR *uoLogRecipeName 
+30 0 $VAR *uoLogStartDate 
+10 0 $VAR *uoLogStartTime 
+50 0 $VAR *uoLogStopDate 
+10 0 $VAR *uoLogStopTime 
+15 0 $VAR *uoLogTrigger 
+10 0 $VAR *uoLogValves 
+20 0 $VAR *uoRunGroupName 
+30 0 $VAR *uoRunProgramName 
+30 0 $VAR *uoRunRecipeName 
+20 0 $VAR *uoTank_Description 
+1024 0 COMVAR *hCom_NCD 
+1024 0 COMVAR *hCom_XBEE 
+1024 0 COMVAR *imp_hCom_XBEE 
+12 0 ITABLE }bMaintenanceAutoFlag
+100 0 ITABLE }DateTimeStrTb1
+20 0 FTABLE }fCurrentSolarAccum
+20 0 FTABLE }fEditNutrientMix
+100 0 ITABLE }fEditValveVolume
+20 0 FTABLE }fEditWater_ppm
+10 0 FTABLE }fFlowRates
+12 0 FTABLE }fInjectorCalcMaxSolub
+12 0 FTABLE }fInjectorCalcMixRatio
+240 0 FTABLE }fInjectorInjected_ppm
+12 0 FTABLE }fInjectorMaxVolume
+12 0 FTABLE }fInjectorMinVolume
+240 1073741824 FTABLE }fInjectorNutrientMix
+12 0 FTABLE }fInjectorPulseRate
+12 0 FTABLE }fInjectorPulseSP
+12 0 FTABLE }fInjectorPulseTrigger
+12 0 FTABLE }fInjectorRecMix
+240 0 FTABLE }fInjectorTank_ppm
+12 0 FTABLE }fInjectorTimer
+12 0 FTABLE }fInjectorVolumeRate
+12 1073741824 FTABLE }fInjectorVolumeTotalizer
+12 1073741824 FTABLE }fInjectorVolumeTotalizer_Yesterday
+20 0 FTABLE }fInjectorWater_ppm
+24 0 FTABLE }fTank_CalculatedVolume
+24 0 FTABLE }fTank_PercentFull
+24 0 FTABLE }fTank_PercentFullTEMP
+20 0 FTABLE }fTargetPPM_Active
+20 0 FTABLE }fTargetPPM_Diff
+20 0 FTABLE }fTargetPPM_Diff100
+20 0 FTABLE }fTotalCalculated_ppm
+5 0 ITABLE }iAG_BatchTankActive
+5 0 ITABLE }iAG_LastRun
+5 0 ITABLE }iAG_PtrNumTmp
+5 0 ITABLE }iAGCurrentRunNum
+5 0 ITABLE }iAGPtrNumIndex
+5 0 ITABLE }iAGPumpStatus
+5 0 ITABLE }iAGTimerRunningFlag
+5 0 ITABLE }iAGTmpFlag
+5 0 ITABLE }iAGValveActive
+50 0 ITABLE }iAGValveOnBit
+5 0 ITABLE }iAGZoneActiveFlag
+100 0 ITABLE }iFlowTotalizerReset
+20 0 ITABLE }iNCD_Lengths
+20 0 ITABLE }iQueueExt_ProgQueued
+20 0 ITABLE }iQueueExt_Tmp
+20 0 ITABLE }iQueueProgram
+20 0 ITABLE }iQueueProgramIndex
+20 0 ITABLE }iQueueProgramIndex_Tmp
+20 0 ITABLE }iQueueTemp
+20 0 ITABLE }iStartTimeTmp
+20 0 ITABLE }iStopTimeTmp
+24 0 ITABLE }iTank_AlarmHI
+24 0 ITABLE }iTank_AlarmLO
+24 0 ITABLE }iTank_LevelSwitch_Bottom
+24 0 ITABLE }iTank_LevelSwitch_Top
+24 0 ITABLE }iTank_ManualControl
+24 0 ITABLE }iTank_Output
+20 0 ITABLE }NCD_Data
+6 1073741824 ITABLE }nInjectorDisplayNumber_Tmp
+6 1073741824 ITABLE }nInjectorDisplayPtr_Tmp
+12 0 FTABLE }nInjectorLitersToPulse
+12 0 ITABLE }nInjectorPulseCount
+12 0 ITABLE }nPulseCount
+20 0 FTABLE }nPulseFactor_EC
+20 0 FTABLE }nPulseFactor_PH
+12 0 ITABLE }nStartInjectorTimer
+10 0 ITABLE }tCurCycleTimerState
+20 0 ITABLE }tCurGS3_Charging
+60 0 FTABLE }tCurGS3_EC
+60 0 ITABLE }tCurGS3_ProbeStatus
+20 0 ITABLE }tCurGS3_Status
+60 0 FTABLE }tCurGS3_Temp
+20 0 ITABLE }tCurGS3_UpdateTime
+20 0 FTABLE }tCurGS3_Volts
+60 0 FTABLE }tCurGS3_VWC
+20 0 FTABLE }tCurGS3_VWC_Avg
+10 0 ITABLE }uiCycleTimer_Enabled
+10 0 FTABLE }uiCycleTimer_TimeEnd
+10 0 FTABLE }uiCycleTimer_TimeOFF
+10 0 FTABLE }uiCycleTimer_TimeON
+10 0 FTABLE }uiCycleTimer_TimeStart
+3 0 ITABLE }uiEditGS3_VWC
+12 0 FTABLE }uiEditInjectorSP
+20 0 ITABLE }uiEditProgramZoneRecipeNum
+100 0 ITABLE }uiEditValveGroups
+100 0 ITABLE }uiEditValvePairs
+100 0 FTABLE }uiEditValveTimes
+20 0 FTABLE }uiEditZoneAuxECSP
+400 0 ITABLE }uiEditZoneDays
+20 0 ITABLE }uiEditZoneExternalStart
+20 0 ITABLE }uiEditZoneFlags
+20 0 FTABLE }uiEditZoneMoisterDB
+20 0 FTABLE }uiEditZoneMoisterSP
+20 0 FTABLE }uiEditZoneRestTime
+20 0 FTABLE }uiEditZoneSolarSP
+20 0 ITABLE }uiEditZoneStartDay
+400 0 ITABLE }uiEditZoneStartDays
+20 0 FTABLE }uiEditZoneStartTime
+20 0 ITABLE }uiEditZoneStopDay
+400 0 ITABLE }uiEditZoneStopDays
+20 0 FTABLE }uiEditZoneStopTime
+20 0 FTABLE }uiEditZoneTriggerTime
+20 0 FTABLE }uiEditZoneValveMultiplier
+6 0 FTABLE }uiInjectorInjectVolume
+120 0 FTABLE }uiInjectorNutrientMix
+6 0 FTABLE }uiInjectorPulseRate
+6 0 FTABLE }uiInjectorSolTankSize
+6 0 FTABLE }uiInjectorSolubRatio
+6 0 FTABLE }uiInjectorSoluteAmt
+20 0 ITABLE }uiPH_UpDown
+20 1073741824 ITABLE }uiRecipeProportional
+16 0 ITABLE }uoDispOutputTypes
+20 0 ITABLE }uoDispProgramZoneDays
+6 0 FTABLE }uoInjectorCalcMaxSolub
+6 0 FTABLE }uoInjectorCalcMixRatio
+120 0 FTABLE }uoInjectorInjected_ppm
+120 0 FTABLE }uoInjectorTank_ppm
+6 0 FTABLE }uoInjectorTankCalcLevel
+6 0 FTABLE }uoInjectorTankPercentFull
+6 0 FTABLE }uoInjectorVolumeRate
+12 0 ITABLE }uoLogInjectorPulseCount
+12 0 FTABLE }uoLogInjectorStroke
+12 0 FTABLE }uoPulseRate
+6 0 FTABLE }uoPulseRateActual
+24 0 ITABLE }uoTank_Outputs
+35 1 0 $TABLE {imp_uoOutputDesc 
+18 255 0 $TABLE {stNCD_Data_To_Hex 
+20 25 0 $TABLE {tGS3_UpdateTime 
+50 12 0 $TABLE {tGS3ID_Unassigned 
+8 15 0 $TABLE {TriggerTypeDesc 
+800 10 0 $TABLE {uiEditZoneDates 
+nullAPointInput 0 POINTER PTR_aiTankLevelPTR
+nullAPointInput 0 POINTER PTR_aiTempPtr
+nullSPointInput 0 POINTER PTR_diExtStart_Tmp
+nullSPointOutput 0 POINTER PTR_doAgritechOutput_Ptr
+nullSPointOutput 0 POINTER PTR_doClearOutputs_Ptr
+nullSPointOutput 0 POINTER PTR_doMain_Ptr
+nullSPointOutput 0 POINTER PTR_doMixValve_Ptr
+nullSPointOutput 0 POINTER PTR_doPumpIt_Ptr
+nullSPointOutput 0 POINTER PTR_doReturnValve_Ptr
+nullSPointOutput 0 POINTER PTR_doRunGroup_Ptr
+nullSPointOutput 0 POINTER PTR_doSupplyValve_Ptr
+nullSPointOutput 0 POINTER PTR_doTankCirgulate_Ptr
+nullSPointOutput 0 POINTER PTR_doTankOutput_Ptr
+nullSPointOutput 0 POINTER PTR_doTestFlow_Ptr
+nullSPointOutput 0 POINTER PTR_doTimer_Ptr
+nullTVAR 0 POINTER PTR_dtCycleTimer_TimeOff_Ptr
+nullTVAR 0 POINTER PTR_dtProgram_MinRest_Ptr
+nullTVAR 0 POINTER PTR_dtProgram_MinRest_Ptr_Edit
+nullTVAR 0 POINTER PTR_dtTimeInterval_Ptr
+nullTVAR 0 POINTER PTR_dtTimeInterval_Ptr_Edit
+nullUTVAR 0 POINTER PTR_utCycleTimer_TimeOn_Ptr
+24 0 PTABLE PTBL_aiInputPtrTable
+8 0 PTABLE PTBL_aiMIOPtrTable
+20 0 PTABLE PTBL_diExtStart_PtrTable
+168 0 PTABLE PTBL_doOutputPtrTable
+20 0 PTABLE PTBL_dtCycleTimer_TimeOff_PtrTable
+20 0 PTABLE PTBL_dtProgram_MinRest_PtrTable
+20 0 PTABLE PTBL_dtTimeInterval_PtrTable
+20 0 PTABLE PTBL_utCycleTimer_TimeOn_PtrTable
+
+$FFFFFFFE $FFFFFFFE 16 32769 1.000000 0.010000 0.000000 2001 0 BOARD.GRV %Fertigation_Controller_Epic 127.0.0.1
+12 $80000005 $94000000 0.0 OUTPUT  0  0 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0000
+12 $80000005 $94000000 0.0 OUTPUT  1  0 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0001
+12 $80000005 $94000000 0.0 OUTPUT  2  0 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0002
+12 $80000005 $94000000 0.0 OUTPUT  3  0 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0003
+12 $80000005 $94000000 0.0 OUTPUT  4  0 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0004
+12 $80000005 $94000000 0.0 OUTPUT  5  0 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0005
+12 $80000005 $94000000 0.0 OUTPUT  6  0 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0006
+12 $80000005 $94000000 0.0 OUTPUT  7  0 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0007
+12 $80000005 $94000000 0.0 OUTPUT  8  0 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0008
+12 $80000005 $94000000 0.0 OUTPUT  9  0 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0009
+12 $80000005 $94000000 0.0 OUTPUT 10  0 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0010
+12 $80000005 $94000000 0.0 OUTPUT 11  0 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0011
+12 $80000005 $94000000 0.0 OUTPUT  0  1 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0100
+12 $80000005 $94000000 0.0 OUTPUT  1  1 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0101
+12 $80000005 $94000000 0.0 OUTPUT  2  1 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0102
+12 $80000005 $94000000 0.0 OUTPUT  3  1 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0103
+12 $80000005 $94000000 0.0 OUTPUT  4  1 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0104
+12 $80000005 $94000000 0.0 OUTPUT  5  1 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0105
+12 $80000005 $94000000 0.0 OUTPUT  6  1 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0106
+12 $80000005 $94000000 0.0 OUTPUT  7  1 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0107
+12 $80000005 $94000000 0.0 OUTPUT  8  1 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0108
+12 $80000005 $94000000 0.0 OUTPUT  9  1 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0109
+12 $80000005 $94000000 0.0 OUTPUT 10  1 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0110
+12 $80000005 $94000000 0.0 OUTPUT 11  1 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0111
+12 $80000005 $94000000 0.0 OUTPUT  0  2 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0200
+12 $80000005 $94000000 0.0 OUTPUT  1  2 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0201
+12 $80000005 $94000000 0.0 OUTPUT  2  2 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0202
+12 $80000005 $94000000 0.0 OUTPUT  3  2 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0203
+12 $80000005 $94000000 0.0 OUTPUT  4  2 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0204
+12 $80000005 $94000000 0.0 OUTPUT  5  2 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0205
+12 $80000005 $94000000 0.0 OUTPUT  6  2 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0206
+12 $80000005 $94000000 0.0 OUTPUT  7  2 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0207
+12 $80000005 $94000000 0.0 OUTPUT  8  2 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0208
+12 $80000005 $94000000 0.0 OUTPUT  9  2 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0209
+12 $80000005 $94000000 0.0 OUTPUT 10  2 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0210
+12 $80000005 $94000000 0.0 OUTPUT 11  2 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0211
+12 $80000005 $94000000 0.0 OUTPUT  0  3 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0300
+12 $80000005 $94000000 0.0 OUTPUT  1  3 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0301
+12 $80000005 $94000000 0.0 OUTPUT  2  3 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0302
+12 $80000005 $94000000 0.0 OUTPUT  3  3 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0303
+12 $80000005 $94000000 0.0 OUTPUT  4  3 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0304
+12 $80000005 $94000000 0.0 OUTPUT  5  3 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0305
+12 $80000005 $94000000 0.0 OUTPUT  6  3 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0306
+12 $80000005 $94000000 0.0 OUTPUT  7  3 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0307
+12 $80000005 $94000000 0.0 OUTPUT  8  3 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0308
+12 $80000005 $94000000 0.0 OUTPUT  9  3 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0309
+12 $80000005 $94000000 0.0 OUTPUT 10  3 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0310
+12 $80000005 $94000000 0.0 OUTPUT 11  3 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0311
+12 $80000005 $94000000 0.0 OUTPUT  0  4 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0400
+12 $80000005 $94000000 0.0 OUTPUT  1  4 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0401
+12 $80000005 $94000000 0.0 OUTPUT  2  4 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0402
+12 $80000005 $94000000 0.0 OUTPUT  3  4 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0403
+12 $80000005 $94000000 0.0 OUTPUT  4  4 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0404
+12 $80000005 $94000000 0.0 OUTPUT  5  4 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0405
+12 $80000005 $94000000 0.0 OUTPUT  6  4 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0406
+12 $80000005 $94000000 0.0 OUTPUT  7  4 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0407
+12 $80000005 $94000000 0.0 OUTPUT  8  4 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0408
+12 $80000005 $94000000 0.0 OUTPUT  9  4 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0409
+12 $80000005 $94000000 0.0 OUTPUT 10  4 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0410
+12 $80000005 $94000000 0.0 OUTPUT 11  4 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0411
+12 $80000005 $94000000 0.0 OUTPUT  0  5 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0500
+12 $80000005 $94000000 0.0 OUTPUT  1  5 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0501
+12 $80000005 $94000000 0.0 OUTPUT  2  5 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0502
+12 $80000005 $94000000 0.0 OUTPUT  3  5 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0503
+12 $80000005 $94000000 0.0 OUTPUT  4  5 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0504
+12 $80000005 $94000000 0.0 OUTPUT  5  5 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0505
+12 $80000005 $94000000 0.0 OUTPUT  6  5 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0506
+12 $80000005 $94000000 0.0 OUTPUT  7  5 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0507
+12 $80000005 $94000000 0.0 OUTPUT  8  5 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0508
+12 $80000005 $94000000 0.0 OUTPUT  9  5 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0509
+12 $80000005 $94000000 0.0 OUTPUT 10  5 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0510
+12 $80000005 $94000000 0.0 OUTPUT 11  5 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0511
+12 $80000005 $94000000 0.0 OUTPUT  0  6 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0600
+12 $80000005 $94000000 0.0 OUTPUT  1  6 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0601
+12 $80000005 $94000000 0.0 OUTPUT  2  6 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0602
+12 $80000005 $94000000 0.0 OUTPUT  3  6 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0603
+12 $80000005 $94000000 0.0 OUTPUT  4  6 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0604
+12 $80000005 $94000000 0.0 OUTPUT  5  6 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0605
+12 $80000005 $94000000 0.0 OUTPUT  6  6 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0606
+12 $80000005 $94000000 0.0 OUTPUT  7  6 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0607
+12 $80000005 $94000000 0.0 OUTPUT  8  6 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0608
+12 $80000005 $94000000 0.0 OUTPUT  9  6 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0609
+12 $80000005 $94000000 0.0 OUTPUT 10  6 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0610
+12 $80000005 $94000000 0.0 OUTPUT 11  6 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0611
+12 $80000005 $94000000 0.0 OUTPUT  0  7 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0700
+12 $80000005 $94000000 0.0 OUTPUT  1  7 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0701
+12 $80000005 $94000000 0.0 OUTPUT  2  7 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0702
+12 $80000005 $94000000 0.0 OUTPUT  3  7 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0703
+12 $80000005 $94000000 0.0 OUTPUT  4  7 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0704
+12 $80000005 $94000000 0.0 OUTPUT  5  7 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0705
+12 $80000005 $94000000 0.0 OUTPUT  6  7 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0706
+12 $80000005 $94000000 0.0 OUTPUT  7  7 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0707
+12 $80000005 $94000000 0.0 OUTPUT  8  7 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0708
+12 $80000005 $94000000 0.0 OUTPUT  9  7 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0709
+12 $80000005 $94000000 0.0 OUTPUT 10  7 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0710
+12 $80000005 $94000000 0.0 OUTPUT 11  7 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0711
+12 $80000005 $94000000 0.0 OUTPUT  0  8 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0800
+12 $80000005 $94000000 0.0 OUTPUT  1  8 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0801
+12 $80000005 $94000000 0.0 OUTPUT  2  8 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0802
+12 $80000005 $94000000 0.0 OUTPUT  3  8 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0803
+12 $80000005 $94000000 0.0 OUTPUT  4  8 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0804
+12 $80000005 $94000000 0.0 OUTPUT  5  8 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0805
+12 $80000005 $94000000 0.0 OUTPUT  6  8 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0806
+12 $80000005 $94000000 0.0 OUTPUT  7  8 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0807
+12 $80000005 $94000000 0.0 OUTPUT  8  8 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0808
+12 $80000005 $94000000 0.0 OUTPUT  9  8 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0809
+12 $80000005 $94000000 0.0 OUTPUT 10  8 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0810
+12 $80000005 $94000000 0.0 OUTPUT 11  8 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0811
+12 $80000005 $94000000 0.0 OUTPUT  0  9 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0900
+12 $80000005 $94000000 0.0 OUTPUT  1  9 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0901
+12 $80000005 $94000000 0.0 OUTPUT  2  9 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0902
+12 $80000005 $94000000 0.0 OUTPUT  3  9 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0903
+12 $80000005 $94000000 0.0 OUTPUT  4  9 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0904
+12 $80000005 $94000000 0.0 OUTPUT  5  9 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0905
+12 $80000005 $94000000 0.0 OUTPUT  6  9 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0906
+12 $80000005 $94000000 0.0 OUTPUT  7  9 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0907
+12 $80000005 $94000000 0.0 OUTPUT  8  9 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0908
+12 $80000005 $94000000 0.0 OUTPUT  9  9 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0909
+12 $80000005 $94000000 0.0 OUTPUT 10  9 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0910
+12 $80000005 $94000000 0.0 OUTPUT 11  9 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_0911
+12 $80000005 $94000000 0.0 OUTPUT  0 10 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1000
+12 $80000005 $94000000 0.0 OUTPUT  1 10 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1001
+12 $80000005 $94000000 0.0 OUTPUT  2 10 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1002
+12 $80000005 $94000000 0.0 OUTPUT  3 10 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1003
+12 $80000005 $94000000 0.0 OUTPUT  4 10 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1004
+12 $80000005 $94000000 0.0 OUTPUT  5 10 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1005
+12 $80000005 $94000000 0.0 OUTPUT  6 10 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1006
+12 $80000005 $94000000 0.0 OUTPUT  7 10 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1007
+12 $80000005 $94000000 0.0 OUTPUT  8 10 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1008
+12 $80000005 $94000000 0.0 OUTPUT  9 10 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1009
+12 $80000005 $94000000 0.0 OUTPUT 10 10 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1010
+12 $80000005 $94000000 0.0 OUTPUT 11 10 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1011
+12 $80000005 $94000000 0.0 OUTPUT  0 11 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1100
+12 $80000005 $94000000 0.0 OUTPUT  1 11 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1101
+12 $80000005 $94000000 0.0 OUTPUT  2 11 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1102
+12 $80000005 $94000000 0.0 OUTPUT  3 11 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1103
+12 $80000005 $94000000 0.0 OUTPUT  4 11 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1104
+12 $80000005 $94000000 0.0 OUTPUT  5 11 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1105
+12 $80000005 $94000000 0.0 OUTPUT  6 11 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1106
+12 $80000005 $94000000 0.0 OUTPUT  7 11 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1107
+12 $80000005 $94000000 0.0 OUTPUT  8 11 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1108
+12 $80000005 $94000000 0.0 OUTPUT  9 11 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1109
+12 $80000005 $94000000 0.0 OUTPUT 10 11 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1110
+12 $80000005 $94000000 0.0 OUTPUT 11 11 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_1111
+10 $40000005 APOINT    4.0000 $60000016  0 12 %Fertigation_Controller_Epic 0 POINT.TNG ~ai12_MIO_00
+~ai12_MIO_00 SET.UNITS mA
+10 $40000005 APOINT    4.0000 $60000016  1 12 %Fertigation_Controller_Epic 0 POINT.TNG ~ai12_MIO_01
+~ai12_MIO_01 SET.UNITS mA
+10 $40000005 APOINT    4.0000 $60000016  2 12 %Fertigation_Controller_Epic 0 POINT.TNG ~ai12_MIO_02
+~ai12_MIO_02 SET.UNITS mA
+10 $40000005 APOINT    4.0000 $60000016  3 12 %Fertigation_Controller_Epic 0 POINT.TNG ~ai12_MIO_03
+~ai12_MIO_03 SET.UNITS mA
+10 $80000005 $9000007B 0.0 OUTPUT  4 12 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_MIO_00
+10 $80000005 $9000007B 0.0 OUTPUT  5 12 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_MIO_01
+10 $80000005 $9000007B 0.0 OUTPUT  6 12 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_MIO_02
+10 $80000005 $9000007B 0.0 OUTPUT  7 12 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_MIO_03
+10 $80000005 $94000078 0.0 OUTPUT  8 12 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_MIO_04
+10 $80000005 $94000078 0.0 OUTPUT  9 12 %Fertigation_Controller_Epic 0 POINT.TNG ~do12_MIO_05
+10 $40000005 APOINT    4.0000 $60000016  0 13 %Fertigation_Controller_Epic 0 POINT.TNG ~ai13_MIO_00
+~ai13_MIO_00 SET.UNITS mA
+10 $40000005 APOINT    4.0000 $60000016  1 13 %Fertigation_Controller_Epic 0 POINT.TNG ~ai13_MIO_01
+~ai13_MIO_01 SET.UNITS mA
+10 $40000005 APOINT    4.0000 $60000016  2 13 %Fertigation_Controller_Epic 0 POINT.TNG ~ai13_MIO_02
+~ai13_MIO_02 SET.UNITS mA
+10 $40000005 APOINT    4.0000 $60000016  3 13 %Fertigation_Controller_Epic 0 POINT.TNG ~ai13_MIO_03
+~ai13_MIO_03 SET.UNITS mA
+10 $80000005 $9000007B 0.0 OUTPUT  4 13 %Fertigation_Controller_Epic 0 POINT.TNG ~do13_MIO_00
+10 $80000005 $9000007B 0.0 OUTPUT  5 13 %Fertigation_Controller_Epic 0 POINT.TNG ~do13_MIO_01
+10 $80000005 $9000007B 0.0 OUTPUT  6 13 %Fertigation_Controller_Epic 0 POINT.TNG ~do13_MIO_02
+10 $80000005 $9000007B 0.0 OUTPUT  7 13 %Fertigation_Controller_Epic 0 POINT.TNG ~do13_MIO_03
+10 $80000005 $94000078 0.0 OUTPUT  8 13 %Fertigation_Controller_Epic 0 POINT.TNG ~do13_MIO_04
+10 $80000005 $94000078 0.0 OUTPUT  9 13 %Fertigation_Controller_Epic 0 POINT.TNG ~do13_MIO_05
+24 $40000005 APOINT    0.0000 $60000016  0 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T1_LevelMeter
+ 100.0000    0.0000 ~T1_LevelMeter SET.SCALE
+~T1_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016  1 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T2_LevelMeter
+ 100.0000    0.0000 ~T2_LevelMeter SET.SCALE
+~T2_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016  2 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T3_LevelMeter
+ 100.0000    0.0000 ~T3_LevelMeter SET.SCALE
+~T3_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016  3 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T4_LevelMeter
+ 100.0000    0.0000 ~T4_LevelMeter SET.SCALE
+~T4_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016  4 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T5_LevelMeter
+ 100.0000    0.0000 ~T5_LevelMeter SET.SCALE
+~T5_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016  5 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T6_LevelMeter
+ 100.0000    0.0000 ~T6_LevelMeter SET.SCALE
+~T6_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016  6 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T7_LevelMeter
+ 100.0000    0.0000 ~T7_LevelMeter SET.SCALE
+~T7_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016  7 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T8_LevelMeter
+ 100.0000    0.0000 ~T8_LevelMeter SET.SCALE
+~T8_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016  8 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T9_LevelMeter
+ 100.0000    0.0000 ~T9_LevelMeter SET.SCALE
+~T9_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016  9 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T10_LevelMeter
+ 100.0000    0.0000 ~T10_LevelMeter SET.SCALE
+~T10_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 10 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T11_LevelMeter
+ 100.0000    0.0000 ~T11_LevelMeter SET.SCALE
+~T11_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 11 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T12_LevelMeter
+ 100.0000    0.0000 ~T12_LevelMeter SET.SCALE
+~T12_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 12 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T13_LevelMeter
+ 100.0000    0.0000 ~T13_LevelMeter SET.SCALE
+~T13_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 13 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T14_LevelMeter
+ 100.0000    0.0000 ~T14_LevelMeter SET.SCALE
+~T14_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 14 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T15_LevelMeter
+ 100.0000    0.0000 ~T15_LevelMeter SET.SCALE
+~T15_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 15 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T16_LevelMeter
+ 100.0000    0.0000 ~T16_LevelMeter SET.SCALE
+~T16_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 16 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T17_LevelMeter
+ 100.0000    0.0000 ~T17_LevelMeter SET.SCALE
+~T17_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 17 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T18_LevelMeter
+ 100.0000    0.0000 ~T18_LevelMeter SET.SCALE
+~T18_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 18 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T19_LevelMeter
+ 100.0000    0.0000 ~T19_LevelMeter SET.SCALE
+~T19_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 19 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T20_LevelMeter
+ 100.0000    0.0000 ~T20_LevelMeter SET.SCALE
+~T20_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 20 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T21_LevelMeter
+ 100.0000    0.0000 ~T21_LevelMeter SET.SCALE
+~T21_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 21 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T22_LevelMeter
+ 100.0000    0.0000 ~T22_LevelMeter SET.SCALE
+~T22_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 22 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T23_LevelMeter
+ 100.0000    0.0000 ~T23_LevelMeter SET.SCALE
+~T23_LevelMeter SET.UNITS %
+24 $40000005 APOINT    0.0000 $60000016 23 14 %Fertigation_Controller_Epic 0 POINT.TNG ~T24_LevelMeter
+ 100.0000    0.0000 ~T24_LevelMeter SET.SCALE
+~T24_LevelMeter SET.UNITS %
+ 8 $40000005 APOINT    4.0000 $60000016  0 15 %Fertigation_Controller_Epic 0 POINT.TNG ~EC_Out
+~EC_Out SET.UNITS mA
+ 8 $40000005 APOINT    4.0000 $60000016  1 15 %Fertigation_Controller_Epic 0 POINT.TNG ~pH_Out
+~pH_Out SET.UNITS mA
+ 8 $40000005 APOINT    4.0000 $60000016  2 15 %Fertigation_Controller_Epic 0 POINT.TNG ~EC_In
+~EC_In SET.UNITS mA
+ 8 $40000005 APOINT    4.0000 $60000016  3 15 %Fertigation_Controller_Epic 0 POINT.TNG ~Temperature
+~Temperature SET.UNITS mA
+ 8 $40000005 APOINT    4.0000 $60000016  4 15 %Fertigation_Controller_Epic 0 POINT.TNG ~pH_In_Solar
+~pH_In_Solar SET.UNITS mA
+ 8 $40000005 APOINT    4.0000 $60000016  5 15 %Fertigation_Controller_Epic 0 POINT.TNG ~WaterFlowSensor
+~WaterFlowSensor SET.UNITS mA
+ 8 $40000005 APOINT    0.0000 $60000016  6 15 %Fertigation_Controller_Epic 0 POINT.TNG ~Pressure_Internal
+ 100.0000    0.0000 ~Pressure_Internal SET.SCALE
+~Pressure_Internal SET.UNITS PSI
+ 8 $40000005 APOINT    0.0000 $60000016  7 15 %Fertigation_Controller_Epic 0 POINT.TNG ~Pressure_External
+ 100.0000    0.0000 ~Pressure_External SET.SCALE
+~Pressure_External SET.UNITS PSI

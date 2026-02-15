@@ -1,0 +1,89 @@
+: 111_0
+0 JUMP ;
+: 111_1
+
+1 LINE.NUM
+  0  
+  ^iSaveTimers @!   
+
+2 LINE.NUM
+  0  
+  ^iCloseTimers @!   
+0 JUMP ;
+: 111_2
+1 2 LINE.NUM ^cMaxTimers @@ 1 -  1 + 0 DO? I ^iTimers_Tmp @! 
+3 LINE.NUM ^iTimers_Tmp @@ }tCycleTimerEnabled TABLE@ ^iTimers_Tmp @@ }uiCycleTimer_Enabled TABLE! 
+4 LINE.NUM ^iTimers_Tmp @@ }tCycleTimerTimeON TABLE@ ^iTimers_Tmp @@ }uiCycleTimer_TimeON TABLE! 
+5 LINE.NUM ^iTimers_Tmp @@ }tCycleTimerTimeOFF TABLE@ ^iTimers_Tmp @@ }uiCycleTimer_TimeOFF TABLE! 
+6 LINE.NUM ^iTimers_Tmp @@ }tCycleTimerTimeStart TABLE@ ^iTimers_Tmp @@ }uiCycleTimer_TimeStart TABLE! 
+7 LINE.NUM ^iTimers_Tmp @@ }tCycleTimerTimeEnd TABLE@ ^iTimers_Tmp @@ }uiCycleTimer_TimeEnd TABLE! 
+8 LINE.NUM 1 +LOOP 
+10 LINE.NUM " " *sSaveTimer  $MOVE 
+4 JUMP ;
+: 111_3
+1 1 LINE.NUM ^cMaxTimers @@ 1 -  1 + 0 DO? I ^iTimers_Tmp @! 
+2 LINE.NUM ^iTimers_Tmp @@ }uiCycleTimer_Enabled TABLE@ ^iTimers_Tmp @@ }tCycleTimerEnabled TABLE! 
+3 LINE.NUM ^iTimers_Tmp @@ }uiCycleTimer_TimeON TABLE@ ^iTimers_Tmp @@ }tCycleTimerTimeON TABLE! 
+4 LINE.NUM ^iTimers_Tmp @@ }uiCycleTimer_TimeOFF TABLE@ ^iTimers_Tmp @@ }tCycleTimerTimeOFF TABLE! 
+5 LINE.NUM ^iTimers_Tmp @@ }uiCycleTimer_TimeStart TABLE@ ^iTimers_Tmp @@ }tCycleTimerTimeStart TABLE! 
+6 LINE.NUM ^iTimers_Tmp @@ }uiCycleTimer_TimeEnd TABLE@ ^iTimers_Tmp @@ }tCycleTimerTimeEnd TABLE! 
+7 LINE.NUM 1 +LOOP 
+1 JUMP ;
+: 111_9
+
+1 LINE.NUM
+  500    DELAY
+2 JUMP ;
+: 111_14
+
+1 LINE.NUM
+  " Saved Successfully" 
+ 
+  *sSaveTimer   $MOVE
+
+2 LINE.NUM
+  0  
+  ^iSaveTimers @!   
+
+3 LINE.NUM
+  1000    DELAY
+-4 JUMP ;
+: 111_20
+
+1 LINE.NUM
+  0  
+  ^iSaveTimers @!   
+
+2 LINE.NUM
+  0  
+  ^iCloseTimers @!   
+2 JUMP ;
+: 111_4
+TRUE
+
+1 LINE.NUM
+  ^iSaveTimers @@ 
+  1    =
+LAND
+IF -5 ELSE 0 THEN JUMP ;
+: 111_5
+TRUE
+
+1 LINE.NUM
+  ^iCloseTimers @@ 
+  1    =
+LAND
+IF -3 ELSE -5 THEN JUMP ;
+T: T111
+DUMMY
+111_0
+111_1
+111_2
+111_3
+111_9
+111_14
+111_20
+111_4
+111_5
+T;
+&Timers_Setup ' T111 SETTASK

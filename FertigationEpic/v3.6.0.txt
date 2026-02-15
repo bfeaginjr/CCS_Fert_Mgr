@@ -1,0 +1,87 @@
+Release Notes
+
+## v3.6.0
+1. **New Feature**: FIFO (First In First Out)-based queue program. 
+   - Programs can be queued in sequence and execute according to the sequence. 
+   - Programs can be enqueued and dequeued from the list anytime, with automatic updates to the queue list.
+2. **New Feature**: New Mixed I/O card (GRV-MM1001-10) can be added to modules 12 and 13.
+   - Inputs and outputs can be assigned to the same card.
+   - Channels 0 to 3 on both cards can be used as 4-20mA inputs, and channels 4 to 9 can be used as digital outputs.
+3. Added custom zone control script: manages zones 1-5 and irrigation valves 1-9 with timers; activates VFD for pressure/flow; deactivates under specified conditions.
+
+## Version History
+
+## v3.5.3
+1. Typo/Bug fixes on Tank Cirgulation control.
+2. Added pH In data to pH graph.
+
+## v3.5.2
+1. **New Feature**: Tank Cirgulation. 
+   - Fill/circulate/maintain the tank's EC and pH*
+2. Added pressure, pH, and tank level parameters to the Modbus register table.
+3. Moved pH up and down settings from recipe definition to main settings.
+4. Fixed the issue where the restore/stop button was clearing all down timers of the program.
+5. Increased the high alarm setpoint for the internal pressure sensor from 99 to 200.
+6. The outgoing EC values low alarm setpoint can now be set below 0. The outgoing EC sensor value will be zeroed when it goes below zero.
+7. Tank outputs and timer outputs can now be controlled from the maintenance screen.
+8. Added min and max scale for the water sensor.
+
+### v3.5.1
+1. Fixed the recipe saving issue in the scheduler.
+
+### v3.5.0
+1. **New Feature**: External water pressure shutdown control.
+   - A new external water pressure sensor can be added on module 15 - channel 7.
+   - The fertigation cycle will end if the external water pressure exceeds the setpoint.
+2. Added a new water pressure graph for both internal and external sensors.
+3. Replaced the flow alarm delay with a new alarm check delay timer.
+4. The Backup/Restore button will be greyed out when the system is running.
+5. Added help hints across the main screen for a better user experience.
+6. Resolved the leap year bug.
+
+### v3.3.6
+1. Prevented manual start when the system is in irrigation mode.
+
+### v3.3.5
+1. Fixed the active program (Date/Time) bug.
+
+### v3.3.4
+1. Added a new valve graphic on the PPM screen.
+
+### v3.3.3
+1. Added a recipe save button in the PPM window.
+
+### v3.3.2
+1. Scheduler start time can now be set to 0.
+2. Increased I/O modules for tank level sensors from 8 to 24.
+3. Corrected the water analysis error on the PPM screen.
+
+### v3.3.1
+1. Changed all alarm variables from binary to decimal.
+2. Added live error check in the scheduler.
+3. Added an undo button in the scheduler.
+
+### v3.3.0
+1. Added Modbus feature.
+2. Added a clear all button in the scheduler.
+
+### v3.2.0
+1. Made minor UI changes on the PPM screen.
+2. Increased the accuracy of the mix valve On/Off percentage.
+3. Corrected the backup file.
+
+### v3.1.0
+1. Added auto-scaling for LPM (0 - 500) and GPM (0 - 100).
+2. Fixed the pause button bug.
+3. Improved tank queue trigger logic.
+4. Added an alarm silence button.
+5. Added valves and recipes icons back to the main window.
+
+### v3.0.1
+1. Reduced the number of flow charts from 68 to 36.
+2. Removed the subroutine for averaging input data.
+3. Removed all external files that run charts.
+4. Increased the backup file data from 123KB (12,153 lines) to 136KB (22,840 lines).
+
+### v3.0.0
+1. Added 10 schedules to the fertigation scheduler.

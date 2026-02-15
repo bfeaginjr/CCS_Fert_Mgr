@@ -1,0 +1,1384 @@
+: 7_0
+
+1 LINE.NUM
+  0.0  
+  ^fLiterCount @!   
+
+2 LINE.NUM
+  ^dtValveTimer   StartTimer
+
+3 LINE.NUM
+  0  
+  ^nNextProgram @!   
+
+4 LINE.NUM
+  0  
+  ^iAlarmSilence @!   
+
+5 LINE.NUM
+  0  
+  ^uiPause @!   
+
+6 LINE.NUM
+  -1  
+  ^bProportional_Program_Recipe @!   
+4 JUMP ;
+: 7_672
+3 LINE.NUM 0 I>D ^bBoardLayout1 @! 
+4 LINE.NUM 0 I>D ^bBoardLayout2 @! 
+6 LINE.NUM ^fLastLiters @@ ^fPumpIt_Tmp2 @! 
+7 LINE.NUM 0 I>F ^fLastLiters @! 
+9 LINE.NUM ^nRunRecipeIndex @@ ^cMaxInjectors @@ *  ^iPumpIt_Tmp @! 
+1 11 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+13 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseSP TABLE@ 0 I>F F> IF 
+14 LINE.NUM ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }uiInjectorSetpoints TABLE@ ^nRunCounter1 @@ }fInjectorPulseSP TABLE! 
+15 LINE.NUM THEN 
+17 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE@ ^fPumpIt_Tmp2 @@ F- ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE! 
+19 LINE.NUM ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ 0 > ^utTotalTime @@F ^nRunCounter1 @@ }fInjectorTimer TABLE@ F> LAND  IF 
+21 LINE.NUM -1 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+22 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ 0 >= IF 
+23 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+24 LINE.NUM PTR_doPumpIt_Ptr  OFF 
+25 LINE.NUM THEN 
+26 LINE.NUM ELSE 
+26 LINE.NUM ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ 0 < ^utTotalTime @@F ^nRunCounter1 @@ }fInjectorTimer TABLE@ F> LAND  IF 
+28 LINE.NUM 0 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+29 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE@ ^nRunCounter1 @@ }nInjectorLitersToPulse TABLE@ F+ ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE! 
+30 LINE.NUM THEN THEN 
+32 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseSP TABLE@ 0 I>F F> ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE@ 1 I>F F< LAND  ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ 0 = LAND  IF 
+34 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ 0 >= IF 
+35 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+36 LINE.NUM PTR_doPumpIt_Ptr  ON 
+37 LINE.NUM THEN 
+38 LINE.NUM ^nRunCounter1 @@ }nInjectorPulseCount TABLE@ 1 +  ^nRunCounter1 @@ }nInjectorPulseCount TABLE! 
+39 LINE.NUM 1 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+43 LINE.NUM ^nRunCounter1 @@ }fInjectorTankCalcLevel TABLE@ ^nRunCounter1 @@ }fInjectorInjectVolume TABLE@ 1000 I>F F/ F- ^nRunCounter1 @@ }fInjectorTankCalcLevel TABLE! 
+44 LINE.NUM ^nRunCounter1 @@ }fInjectorTankCalcLevel TABLE@ ^nRunCounter1 @@ }fInjectorSolTankSize TABLE@ F/ 100 I>F F* ^nRunCounter1 @@ }fInjectorTankPercentFull TABLE! 
+46 LINE.NUM THEN 
+47 LINE.NUM 1 +LOOP 
+50 LINE.NUM ^bBoardLayout1 @@ -1 I>D DAND ^bBitMask1  -ROT D>I SWAP @!
+51 LINE.NUM ^bBoardLayout2 @@ -1 I>D DAND ^bBitMask2  -ROT D>I SWAP @!
+1 54 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+55 LINE.NUM ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ 1 = IF 
+56 LINE.NUM 2 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+57 LINE.NUM ^utTotalTime @@F ^cOptInjectorOnTime @@ }uiOptions TABLE@ F+ ^nRunCounter1 @@ }fInjectorTimer TABLE! 
+58 LINE.NUM THEN 
+59 LINE.NUM ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ -1 = IF 
+60 LINE.NUM -2 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+61 LINE.NUM ^utTotalTime @@F ^cOptInjectorOffTime @@ }uiOptions TABLE@ F+ ^nRunCounter1 @@ }fInjectorTimer TABLE! 
+62 LINE.NUM THEN 
+63 LINE.NUM 1 +LOOP 
+51 JUMP ;
+: 7_674
+1 LINE.NUM ^dtPulseFactor_Delay  T0= IF 
+2 LINE.NUM ^nRunProgramIndex @@ ^cMaxInjectors @@ *  ^iPumpIt_Tmp @! 
+4 LINE.NUM " Auto" *uoDispMainIrrigationMode  $MOVE 
+6 LINE.NUM ^nRunRecipeIndex @@ }uiECTargetSP TABLE@ ^uoDispMainECTarget @! 
+7 LINE.NUM ^nRunRecipeIndex @@ }uiECTargetDB TABLE@ ^uoDispMainECDeadBand @! 
+8 LINE.NUM ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^uoDispMainPHTarget @! 
+9 LINE.NUM ^nRunRecipeIndex @@ }uiPHTargetDB TABLE@ ^uoDispMainPHDeadBand @! 
+11 LINE.NUM ^bAutomated_FirstPass @@ 0 = IF 
+13 LINE.NUM ^fCurrentPH @@ ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^nRunRecipeIndex @@ }uiPHTargetDB TABLE@ F- F< IF 
+14 LINE.NUM ^uipH_UpDownButton @@ 1 = IF 
+15 LINE.NUM ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^fCurrentPH @@ F/ ^nRunProgramIndex @@ }nPulseFactor_PH TABLE! 
+16 LINE.NUM ELSE 
+17 LINE.NUM ^fCurrentPH @@ ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ F/ ^nRunProgramIndex @@ }nPulseFactor_PH TABLE! 
+18 LINE.NUM THEN 
+19 LINE.NUM ELSE 
+19 LINE.NUM ^fCurrentPH @@ ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^nRunRecipeIndex @@ }uiPHTargetDB TABLE@ F+ F> IF 
+20 LINE.NUM ^uipH_UpDownButton @@ 1 = IF 
+21 LINE.NUM ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^fCurrentPH @@ F/ ^nRunProgramIndex @@ }nPulseFactor_PH TABLE! 
+22 LINE.NUM ELSE 
+23 LINE.NUM ^fCurrentPH @@ ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ F/ ^nRunProgramIndex @@ }nPulseFactor_PH TABLE! 
+24 LINE.NUM THEN 
+25 LINE.NUM THEN THEN 
+28 LINE.NUM ^fCurrentEC @@ ^nRunRecipeIndex @@ }uiECTargetSP TABLE@ ^nRunRecipeIndex @@ }uiECTargetDB TABLE@ - I>F F< IF 
+29 LINE.NUM ^nRunRecipeIndex @@ }uiECTargetSP TABLE@F ^fCurrentEC @@ F/ ^nRunProgramIndex @@ }nPulseFactor_EC TABLE! 
+30 LINE.NUM ELSE 
+30 LINE.NUM ^fCurrentEC @@ ^nRunRecipeIndex @@ }uiECTargetSP TABLE@ ^nRunRecipeIndex @@ }uiECTargetDB TABLE@ + I>F F> IF 
+31 LINE.NUM ^nRunRecipeIndex @@ }uiECTargetSP TABLE@F ^fCurrentEC @@ F/ ^nRunProgramIndex @@ }nPulseFactor_EC TABLE! 
+32 LINE.NUM THEN THEN 
+35 LINE.NUM ^nRunProgramIndex @@ }nPulseFactor_PH TABLE@ 0 I>F F> IF 
+36 LINE.NUM 0 }fInjectorPulseSP TABLE@ 0 I>F F> IF 
+38 LINE.NUM ^nRunProgramIndex @@ }nPulseFactor_PH TABLE@ ^iPumpIt_Tmp @@ }nInjectorSetpoints_Auto TABLE@ F* ^fPumpIt_TmpAuto @! 
+39 LINE.NUM ^iPumpIt_PulseRatesAllAtMax_pH @@ 0 = ^iPumpIt_PulseRatesAllAtMax_pH @@ 1 = ^fPumpIt_TmpAuto @@ ^iPumpIt_Tmp @@ }nInjectorSetpoints_Auto TABLE@ F< LAND  LOR  IF 
+40 LINE.NUM ^fPumpIt_TmpAuto @@ ^iPumpIt_Tmp @@ }nInjectorSetpoints_Auto TABLE! 
+41 LINE.NUM THEN 
+43 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE@ ^iPumpIt_Tmp @@ }nInjectorSetpoints_Auto TABLE@ F/ 0 }nInjectorLitersToPulse TABLE! 
+44 LINE.NUM THEN 
+45 LINE.NUM THEN 
+47 LINE.NUM ^nRunProgramIndex @@ }nPulseFactor_EC TABLE@ 0 I>F F> IF 
+48 LINE.NUM 1 ^nRunCounter1 @! 
+49 LINE.NUM BEGIN ^nRunCounter1 @@ ^cMaxInjectors @@ < WHILE 
+50 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseSP TABLE@ 0 I>F F> IF 
+52 LINE.NUM ^nRunProgramIndex @@ }nPulseFactor_EC TABLE@ ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }nInjectorSetpoints_Auto TABLE@ F* ^fPumpIt_TmpAuto @! 
+53 LINE.NUM ^iPumpIt_PulseRatesAllAtMax_EC @@ 0 = IF 
+54 LINE.NUM ^fPumpIt_TmpAuto @@ ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }nInjectorSetpoints_Auto TABLE! 
+55 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE@ ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }nInjectorSetpoints_Auto TABLE@ F/ ^nRunCounter1 @@ }nInjectorLitersToPulse TABLE! 
+56 LINE.NUM ELSE 
+56 LINE.NUM ^fPumpIt_TmpAuto @@ ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }nInjectorSetpoints_Auto TABLE@ F< IF 
+57 LINE.NUM 0 ^iPumpIt_PulseRatesAllAtMax_EC @! 
+58 LINE.NUM 0 ^nRunCounter1 @! 
+59 LINE.NUM THEN THEN 
+61 LINE.NUM THEN 
+62 LINE.NUM ^nRunCounter1 @@ 1 +  ^nRunCounter1 @! 
+63 LINE.NUM REPEAT 
+64 LINE.NUM THEN 
+65 LINE.NUM ELSE 
+67 LINE.NUM 0 }fInjectorPulseSP TABLE@ 0 I>F F> IF 
+68 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE@ ^iPumpIt_Tmp @@ }nInjectorSetpoints_Auto TABLE@ F/ 0 }nInjectorLitersToPulse TABLE! 
+69 LINE.NUM THEN 
+1 71 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 1 DO? I ^nRunCounter1 @! 
+72 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseSP TABLE@ 0 I>F F> IF 
+73 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE@ ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }nInjectorSetpoints_Auto TABLE@ F/ ^nRunCounter1 @@ }nInjectorLitersToPulse TABLE! 
+74 LINE.NUM THEN 
+75 LINE.NUM 1 +LOOP 
+77 LINE.NUM 0 ^bAutomated_FirstPass @! 
+78 LINE.NUM THEN 
+80 LINE.NUM ^cOptAutomatedControlDelayIndex @@ }uiOptions TABLE@ ^dtPulseFactor_Delay  SetTimer 
+81 LINE.NUM ^dtPulseFactor_Delay  StartTimer 
+83 LINE.NUM 0 I>F ^nRunProgramIndex @@ }nPulseFactor_PH TABLE! 
+84 LINE.NUM 0 I>F ^nRunProgramIndex @@ }nPulseFactor_EC TABLE! 
+85 LINE.NUM THEN 
+39 JUMP ;
+: 7_676
+0 JUMP ;
+: 7_678
+1 LINE.NUM 1 ^nRunProgramIndex @@ SHIFT  ^nRunCounter1 @! 
+2 LINE.NUM ^nRunProgramIndex @@ }uiProgramRecipeIndex TABLE@ }uiRecipeProportional TABLE@ ^bProportional_Program_Recipe @! 
+40 JUMP ;
+: 7_689
+1 LINE.NUM ^nTriggerType @@ ^cTT_Testing @@ = IF 
+2 LINE.NUM 999999 I>F ^dtValveTimer  SetTimer 
+4 LINE.NUM ELSE 
+4 LINE.NUM ^nRunValveIndex @@ ^cMaxValveIndex @@ < ^nRunValveIndex @@ }uiValveTimes TABLE@ 0 I>F F> LAND  IF 
+6 LINE.NUM 0 I>F ^fPumpIt_Tmp @! 
+7 LINE.NUM ^fCurrentSolarValue @@ ^nRunGroupIndex @@ }uiValveSolarInfSP TABLE@F F> ^nRunGroupIndex @@ }uiValveSolarInfSP TABLE@ 0 > LAND  IF 
+8 LINE.NUM ^fCurrentSolarValue @@ ^nRunGroupIndex @@ }uiValveSolarInfSP TABLE@F F- ^nRunGroupIndex @@ }uiValveSolarInfDB TABLE@F F/ ^fPumpIt_Tmp2 @! 
+9 LINE.NUM ^nRunValveIndex @@ }uiValveTimes TABLE@ ^nRunValveIndex @@ }uiValveTimes TABLE@ ^nRunGroupIndex @@ }uiValveSolarInfPer TABLE@ F* ^fPumpIt_Tmp2 @@ F* F+ ^fPumpIt_Tmp @! 
+10 LINE.NUM ELSE 
+11 LINE.NUM ^nRunValveIndex @@ }uiValveTimes TABLE@ ^fValveMultiplier @@ F* ^fPumpIt_Tmp @! 
+12 LINE.NUM THEN 
+13 LINE.NUM ^fPumpIt_Tmp @@ 60 I>F F* ^dtValveTimer  SetTimer 
+18 LINE.NUM ELSE 
+19 LINE.NUM ^cDefaultValveTime @@ 60 I>F F* ^dtValveTimer  SetTimer 
+20 LINE.NUM THEN THEN 
+23 LINE.NUM 60 I>F ^cOptInjectorOnTime @@ }uiOptions TABLE@ ^cOptInjectorOffTime @@ }uiOptions TABLE@ F+ F/ ^fPumpIt_MaxPulsesPerMIn @! 
+25 LINE.NUM ^dtValveTimer  StartTimer 
+36 LINE.NUM 0 ^fValveVolumeCheck @! 
+38 LINE.NUM ^nRunValveIndex @@ ^cMaxValveIndex @@ < ^nRunValveIndex @@ }fValveVolume TABLE@ 0 > LAND  IF 
+40 LINE.NUM ^fCurrentSolarValue @@ ^nRunGroupIndex @@ }uiValveSolarInfSP TABLE@F F> ^nRunGroupIndex @@ }uiValveSolarInfSP TABLE@ 0 > LAND  IF 
+41 LINE.NUM ^fCurrentSolarValue @@ ^nRunGroupIndex @@ }uiValveSolarInfSP TABLE@F F- ^nRunGroupIndex @@ }uiValveSolarInfDB TABLE@F F/ ^fPumpIt_Tmp2 @! 
+42 LINE.NUM ^nRunValveIndex @@ }fValveVolume TABLE@F ^nRunValveIndex @@ }fValveVolume TABLE@F ^nRunGroupIndex @@ }uiValveSolarInfPer TABLE@ F* ^fPumpIt_Tmp2 @@ F* F+ ^fPumpIt_Tmp @! 
+43 LINE.NUM ELSE 
+44 LINE.NUM ^nRunValveIndex @@ }fValveVolume TABLE@F ^fPumpIt_Tmp @! 
+45 LINE.NUM THEN 
+47 LINE.NUM ^fPumpIt_Tmp @@ ^fValveVolumeCheck F@! 
+48 LINE.NUM THEN 
+50 LINE.NUM 0 ^bPressureShutDown @! 
+52 LINE.NUM ^cOptAutomatedProportionalDelay @@ }uiOptions TABLE@ ^dtAutomatedProportionalDecideDelay  SetTimer 
+53 LINE.NUM ^dtAutomatedProportionalDecideDelay  StartTimer 
+54 JUMP ;
+: 7_693
+
+1 LINE.NUM
+  1.0    FDELAY
+39 JUMP ;
+: 7_697
+4 JUMP ;
+: 7_698
+
+1 LINE.NUM
+  &Clear_Outputs   CALL.T
+  ^iChartStatus_Tmp @! 
+
+2 LINE.NUM
+  &TimerPause   CALL.T
+  ^iChartStatus_Tmp @! 
+
+3 LINE.NUM
+  ^dtValveTimer   PauseTimer
+
+4 LINE.NUM
+  ^utTotalTime   PauseTimer
+
+5 LINE.NUM
+  3  
+  ^uoState @!   
+37 JUMP ;
+: 7_702
+2 LINE.NUM ^tOutAlarmIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+3 LINE.NUM Pointer=Null? PTR_doPumpIt_Ptr  IF 
+4 LINE.NUM 0 
+MoveToPointer PTR_doPumpIt_Ptr 
+5 LINE.NUM ELSE 
+6 LINE.NUM PTR_doPumpIt_Ptr  ON 
+7 LINE.NUM THEN 
+9 LINE.NUM ^utTotalTime  PauseTimer 
+10 LINE.NUM 2 ^uoState @! 
+11 LINE.NUM 0 ^iAlarmSilence @! 
+12 LINE.NUM 0 I>F ^dt_AlarmSilence @! 
+0 JUMP ;
+: 7_709
+
+1 LINE.NUM
+  1.0    FDELAY
+24 JUMP ;
+: 7_714
+43 JUMP ;
+: 7_716
+
+1 LINE.NUM
+  0  
+  ^uiPause @!   
+
+2 LINE.NUM
+  0  
+  ^uiStart @!   
+
+3 LINE.NUM
+  1  
+  ^uoState @!   
+
+4 LINE.NUM
+  &TimerContinue   CALL.T
+  ^iChartStatus_Tmp @! 
+
+5 LINE.NUM
+  ^dtValveTimer   ContinueTimer
+
+6 LINE.NUM
+  ^utTotalTime   ContinueTimer
+
+7 LINE.NUM
+  0  
+  ^iAlarmSilence @!   
+23 JUMP ;
+: 7_721
+39 JUMP ;
+: 7_722
+40 JUMP ;
+: 7_728
+20 LINE.NUM 0 I>D ^bBoardLayout1 @! 
+21 LINE.NUM 0 I>D ^bBoardLayout2 @! 
+1 24 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+26 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ 0 >= IF 
+27 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+28 LINE.NUM PTR_doPumpIt_Ptr  OFF 
+29 LINE.NUM THEN 
+30 LINE.NUM 1 +LOOP 
+32 LINE.NUM ^bBoardLayout1 @@ -1 I>D DAND ^bBitMask1  -ROT D>I SWAP @!
+33 LINE.NUM ^bBoardLayout2 @@ -1 I>D DAND ^bBitMask2  -ROT D>I SWAP @!
+39 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }tOutValveIndex TABLE@ -1 > IF 
+40 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }tOutValveIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+41 LINE.NUM PTR_doPumpIt_Ptr  OFF 
+42 LINE.NUM THEN 
+46 LINE.NUM ^nRunValveIndex @@ }uiValvePairs TABLE@ 1 -  0 > IF 
+47 LINE.NUM ^nRunValveIndex @@ }uiValvePairs TABLE@ 1 -  }tOutValveIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+48 LINE.NUM PTR_doPumpIt_Ptr  OFF 
+49 LINE.NUM THEN 
+51 LINE.NUM ^dtValveTimer  StopTimer 
+54 LINE.NUM ^dtPulseFactor_Delay  StopTimer 
+62 LINE.NUM ^dtPressureShutDownDelay  StopTimer 
+64 LINE.NUM 0 ^uoPulseRateAlarm @! 
+4 JUMP ;
+: 7_730
+1 LINE.NUM ^fLastLiters @@ ^fFlowRate @@ 60 I>F F/ ^cFlowTimerInterval @@ F* F+ ^fLastLiters @! 
+2 LINE.NUM ^fLiterCount @@ ^fFlowRate @@ 60 I>F F/ ^cFlowTimerInterval @@ F* F+ ^fLiterCount @! 
+4 LINE.NUM ^fLiterCount @@ 0 I>F F< IF 
+4 LINE.NUM 0 I>F ^fLiterCount @! 
+4 LINE.NUM THEN 
+5 LINE.NUM ^fLastLiters @@ 0 I>F F< IF 
+5 LINE.NUM 0 I>F ^fLiterCount @! 
+5 LINE.NUM THEN 
+7 LINE.NUM ^cFlowTimerInterval @@ ^utFlowCheck  SetTimer 
+8 LINE.NUM ^utFlowCheck  StartTimer 
+11 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE@ 0 I>F F= IF 
+12 LINE.NUM ^nRunRecipeIndex @@ }uiInjectorSPFlowRate TABLE@ ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE! 
+13 LINE.NUM ELSE 
+14 LINE.NUM 8.00000012e-001 ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE@ F* 2.00000003e-001 ^fFlowRate @@ F* F+ ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE! 
+15 LINE.NUM THEN 
+20 LINE.NUM 1 ^iPumpIt_PulseRatesAllAtMax_pH @! 
+22 LINE.NUM 0 }nInjectorLitersToPulse TABLE@ 0 I>F F> IF 
+23 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE@ 0 }nInjectorLitersToPulse TABLE@ F/ 0 }uoPulseRate TABLE! 
+25 LINE.NUM 0 }uoPulseRate TABLE@ ^fPumpIt_MaxPulsesPerMIn @@ F> IF 
+26 LINE.NUM ^fPumpIt_MaxPulsesPerMIn @@ 0 }uoPulseRate TABLE! 
+27 LINE.NUM ^uoPulseRateAlarm @@ 0  >MASK OR ^uoPulseRateAlarm @! 
+28 LINE.NUM ELSE 
+29 LINE.NUM ^uoPulseRateAlarm @@ 0  >MASK NOT AND ^uoPulseRateAlarm @! 
+30 LINE.NUM 0 ^iPumpIt_PulseRatesAllAtMax_pH @! 
+31 LINE.NUM THEN 
+32 LINE.NUM THEN 
+37 LINE.NUM 1 ^iPumpIt_PulseRatesAllAtMax_EC @! 
+1 39 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 1 DO? I ^nRunCounter1 @! 
+40 LINE.NUM ^nRunCounter1 @@ }nInjectorLitersToPulse TABLE@ 0 I>F F> IF 
+41 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE@ ^nRunCounter1 @@ }nInjectorLitersToPulse TABLE@ F/ ^nRunCounter1 @@ }uoPulseRate TABLE! 
+43 LINE.NUM ^nRunCounter1 @@ }uoPulseRate TABLE@ ^fPumpIt_MaxPulsesPerMIn @@ F> IF 
+44 LINE.NUM ^fPumpIt_MaxPulsesPerMIn @@ ^nRunCounter1 @@ }uoPulseRate TABLE! 
+45 LINE.NUM ^uoPulseRateAlarm @@ ^nRunCounter1 @@  >MASK OR ^uoPulseRateAlarm @! 
+46 LINE.NUM ELSE 
+47 LINE.NUM ^uoPulseRateAlarm @@ ^nRunCounter1 @@  >MASK NOT AND ^uoPulseRateAlarm @! 
+48 LINE.NUM 0 ^iPumpIt_PulseRatesAllAtMax_EC @! 
+49 LINE.NUM THEN 
+50 LINE.NUM THEN 
+51 LINE.NUM 1 +LOOP 
+35 JUMP ;
+: 7_733
+3 LINE.NUM 0 I>D ^bBoardLayout1 @! 
+4 LINE.NUM 0 I>D ^bBoardLayout2 @! 
+6 LINE.NUM ^fLastLiters @@ ^fPumpIt_Tmp2 @! 
+7 LINE.NUM 0 I>F ^fLastLiters @! 
+9 LINE.NUM " Prop" *uoDispMainIrrigationMode  $MOVE 
+11 LINE.NUM 0 ^uoDispMainECTarget @! 
+12 LINE.NUM 0 ^uoDispMainECDeadBand @! 
+13 LINE.NUM 0 I>F ^uoDispMainPHTarget @! 
+14 LINE.NUM 0 I>F ^uoDispMainPHDeadBand @! 
+16 LINE.NUM ^nRunRecipeIndex @@ ^cMaxInjectors @@ *  ^iPumpIt_Tmp @! 
+1 18 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+19 LINE.NUM ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }uiInjectorSetpoints TABLE@ ^nRunCounter1 @@ }fInjectorPulseSP TABLE! 
+20 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE@ ^fPumpIt_Tmp2 @@ F- ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE! 
+22 LINE.NUM ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ 0 > ^utTotalTime @@F ^nRunCounter1 @@ }fInjectorTimer TABLE@ F> LAND  IF 
+24 LINE.NUM -1 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+25 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ 0 >= IF 
+26 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+27 LINE.NUM PTR_doPumpIt_Ptr  OFF 
+28 LINE.NUM THEN 
+29 LINE.NUM ELSE 
+29 LINE.NUM ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ 0 < ^utTotalTime @@F ^nRunCounter1 @@ }fInjectorTimer TABLE@ F> LAND  IF 
+31 LINE.NUM 0 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+32 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE@ ^nRunCounter1 @@ }nInjectorLitersToPulse TABLE@ F+ ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE! 
+33 LINE.NUM THEN THEN 
+35 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseSP TABLE@ 0 I>F F> ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE@ 1 I>F F< LAND  ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ 0 = LAND  IF 
+36 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ 0 >= IF 
+37 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+38 LINE.NUM PTR_doPumpIt_Ptr  ON 
+39 LINE.NUM THEN 
+40 LINE.NUM ^nRunCounter1 @@ }nInjectorPulseCount TABLE@ 1 +  ^nRunCounter1 @@ }nInjectorPulseCount TABLE! 
+41 LINE.NUM 1 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+45 LINE.NUM ^nRunCounter1 @@ }fInjectorTankCalcLevel TABLE@ ^nRunCounter1 @@ }fInjectorInjectVolume TABLE@ 1000 I>F F/ F- ^nRunCounter1 @@ }fInjectorTankCalcLevel TABLE! 
+46 LINE.NUM ^nRunCounter1 @@ }fInjectorTankCalcLevel TABLE@ ^nRunCounter1 @@ }fInjectorSolTankSize TABLE@ F/ 100 I>F F* ^nRunCounter1 @@ }fInjectorTankPercentFull TABLE! 
+48 LINE.NUM THEN 
+49 LINE.NUM 1 +LOOP 
+52 LINE.NUM ^bBoardLayout1 @@ -1 I>D DAND ^bBitMask1  -ROT D>I SWAP @!
+53 LINE.NUM ^bBoardLayout2 @@ -1 I>D DAND ^bBitMask2  -ROT D>I SWAP @!
+1 56 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+57 LINE.NUM ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ 1 = IF 
+58 LINE.NUM 2 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+59 LINE.NUM ^utTotalTime @@F ^cOptInjectorOnTime @@ }uiOptions TABLE@ F+ ^nRunCounter1 @@ }fInjectorTimer TABLE! 
+60 LINE.NUM THEN 
+61 LINE.NUM ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ -1 = IF 
+62 LINE.NUM -2 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+63 LINE.NUM ^utTotalTime @@F ^cOptInjectorOffTime @@ }uiOptions TABLE@ F+ ^nRunCounter1 @@ }fInjectorTimer TABLE! 
+64 LINE.NUM THEN 
+65 LINE.NUM 1 +LOOP 
+35 JUMP ;
+: 7_736
+1 LINE.NUM 0 ^uoPulseRateAlarm @! 
+4 LINE.NUM ^utTotalTime @@F ^cOptAlarmCheckDelayIndex @@ }uiOptions TABLE@ F+ ^fAlarmCheckDelay @! 
+8 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }tOutValveIndex TABLE@ -1 <> IF 
+9 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }tOutValveIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+10 LINE.NUM PTR_doPumpIt_Ptr  ON 
+11 LINE.NUM THEN 
+14 LINE.NUM ^nRunValveIndex @@ }uiValvePairs TABLE@ 0 > IF 
+15 LINE.NUM ^nRunValveIndex @@ }uiValvePairs TABLE@ 1 -  }tOutValveIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+16 LINE.NUM PTR_doPumpIt_Ptr  ON 
+17 LINE.NUM THEN 
+20 LINE.NUM ^tOutPumpIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+22 LINE.NUM PTR_doPumpIt_Ptr  ?OFF IF 
+24 LINE.NUM 1 ^iMainPumpStatus @! 
+25 LINE.NUM ^dtValveTimer  PauseTimer 
+26 LINE.NUM ^fPumpDelay @@  FDELAY 
+29 LINE.NUM PTR_doPumpIt_Ptr  ON 
+32 LINE.NUM 2 ^iMainPumpStatus @! 
+34 LINE.NUM THEN 
+36 LINE.NUM ^dtValveTimer  ContinueTimer 
+38 LINE.NUM 1 ^bAutomated_FirstPass @! 
+2 JUMP ;
+: 7_737
+
+1 LINE.NUM
+  &Clear_Outputs   CALL.T
+  ^iChartStatus_Tmp @! 
+
+2 LINE.NUM
+  &TimerPause   CALL.T
+  ^iChartStatus_Tmp @! 
+
+3 LINE.NUM
+  ^dtValveTimer   PauseTimer
+
+4 LINE.NUM
+  ^utTotalTime   PauseTimer
+-11 JUMP ;
+: 7_739
+46 JUMP ;
+: 7_742
+
+1 LINE.NUM
+  0.0  
+  ^utFlowCheck   SetTimer
+
+2 LINE.NUM
+  ^utFlowCheck   StartTimer
+33 JUMP ;
+: 7_746
+37 JUMP ;
+: 7_761
+6 LINE.NUM ^tOutPumpIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+7 LINE.NUM PTR_doPumpIt_Ptr  ON 
+8 LINE.NUM 2 ^iMainPumpStatus @! 
+1 11 LINE.NUM ^cMaxOutputs @@ 1 -  1 + 0 DO? I ^iPumpIt_Tmp2 @! 
+12 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ 0 > IF 
+13 LINE.NUM ^iPumpIt_Tmp2 @@ }doOutputs TABLE@ CASE 
+14 LINE.NUM ^cOT_Auxiliary1Index @@ OF 
+15 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary1Index @@ = IF 
+16 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+17 LINE.NUM PTR_doPumpIt_Ptr  ON 
+18 LINE.NUM THEN 
+19 LINE.NUM ENDOF 
+20 LINE.NUM ^cOT_Auxiliary2Index @@ OF 
+21 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary2Index @@ = IF 
+22 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+23 LINE.NUM PTR_doPumpIt_Ptr  ON 
+24 LINE.NUM THEN 
+25 LINE.NUM ENDOF 
+26 LINE.NUM ^cOT_Auxiliary3Index @@ OF 
+27 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary3Index @@ = IF 
+28 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+29 LINE.NUM PTR_doPumpIt_Ptr  ON 
+30 LINE.NUM THEN 
+31 LINE.NUM ENDOF 
+32 LINE.NUM ^cOT_Auxiliary4Index @@ OF 
+33 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary4Index @@ = IF 
+34 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+35 LINE.NUM PTR_doPumpIt_Ptr  ON 
+36 LINE.NUM THEN 
+37 LINE.NUM ENDOF 
+38 LINE.NUM ^cOT_Auxiliary5Index @@ OF 
+39 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary5Index @@ = IF 
+40 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+41 LINE.NUM PTR_doPumpIt_Ptr  ON 
+42 LINE.NUM THEN 
+43 LINE.NUM ENDOF 
+44 LINE.NUM ^cOT_Auxiliary6Index @@ OF 
+45 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary6Index @@ = IF 
+46 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+47 LINE.NUM PTR_doPumpIt_Ptr  ON 
+48 LINE.NUM THEN 
+49 LINE.NUM ENDOF 
+50 LINE.NUM ^cOT_Auxiliary7Index @@ OF 
+51 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary7Index @@ = IF 
+52 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+53 LINE.NUM PTR_doPumpIt_Ptr  ON 
+54 LINE.NUM THEN 
+55 LINE.NUM ENDOF 
+56 LINE.NUM ^cOT_Auxiliary8Index @@ OF 
+57 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary8Index @@ = IF 
+58 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+59 LINE.NUM PTR_doPumpIt_Ptr  ON 
+60 LINE.NUM THEN 
+61 LINE.NUM ENDOF 
+62 LINE.NUM ^cOT_Auxiliary9Index @@ OF 
+63 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary9Index @@ = IF 
+64 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+65 LINE.NUM PTR_doPumpIt_Ptr  ON 
+66 LINE.NUM THEN 
+67 LINE.NUM ENDOF 
+68 LINE.NUM ^cOT_Auxiliary10Index @@ OF 
+69 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary10Index @@ = IF 
+70 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+71 LINE.NUM PTR_doPumpIt_Ptr  ON 
+72 LINE.NUM THEN 
+73 LINE.NUM ENDOF 
+74 LINE.NUM ^cOT_Auxiliary11Index @@ OF 
+75 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary11Index @@ = IF 
+76 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+77 LINE.NUM PTR_doPumpIt_Ptr  ON 
+78 LINE.NUM THEN 
+79 LINE.NUM ENDOF 
+80 LINE.NUM ^cOT_Auxiliary12Index @@ OF 
+81 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary12Index @@ = IF 
+82 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+83 LINE.NUM PTR_doPumpIt_Ptr  ON 
+84 LINE.NUM THEN 
+85 LINE.NUM ENDOF 
+86 LINE.NUM ^cOT_Auxiliary13Index @@ OF 
+87 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary13Index @@ = IF 
+88 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+89 LINE.NUM PTR_doPumpIt_Ptr  ON 
+90 LINE.NUM THEN 
+91 LINE.NUM ENDOF 
+92 LINE.NUM ^cOT_Auxiliary14Index @@ OF 
+93 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary14Index @@ = IF 
+94 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+95 LINE.NUM PTR_doPumpIt_Ptr  ON 
+96 LINE.NUM THEN 
+97 LINE.NUM ENDOF 
+98 LINE.NUM ^cOT_Auxiliary15Index @@ OF 
+99 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary15Index @@ = IF 
+100 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+101 LINE.NUM PTR_doPumpIt_Ptr  ON 
+102 LINE.NUM THEN 
+103 LINE.NUM ENDOF 
+104 LINE.NUM ^cOT_Auxiliary16Index @@ OF 
+105 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary16Index @@ = IF 
+106 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+107 LINE.NUM PTR_doPumpIt_Ptr  ON 
+108 LINE.NUM THEN 
+109 LINE.NUM ENDOF 
+110 LINE.NUM ^cOT_Auxiliary17Index @@ OF 
+111 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary17Index @@ = IF 
+112 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+113 LINE.NUM PTR_doPumpIt_Ptr  ON 
+114 LINE.NUM THEN 
+115 LINE.NUM ENDOF 
+116 LINE.NUM ^cOT_Auxiliary18Index @@ OF 
+117 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary18Index @@ = IF 
+118 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+119 LINE.NUM PTR_doPumpIt_Ptr  ON 
+120 LINE.NUM THEN 
+121 LINE.NUM ENDOF 
+122 LINE.NUM ^cOT_Auxiliary19Index @@ OF 
+123 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary19Index @@ = IF 
+124 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+125 LINE.NUM PTR_doPumpIt_Ptr  ON 
+126 LINE.NUM THEN 
+127 LINE.NUM ENDOF 
+128 LINE.NUM ^cOT_Auxiliary20Index @@ OF 
+129 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary20Index @@ = IF 
+130 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+131 LINE.NUM PTR_doPumpIt_Ptr  ON 
+132 LINE.NUM THEN 
+133 LINE.NUM ENDOF 
+134 LINE.NUM ENDCASE 
+135 LINE.NUM THEN 
+136 LINE.NUM 1 +LOOP 
+-2 JUMP ;
+: 7_818
+3 LINE.NUM ^fValveVolumeCheck @@ IF 
+5 LINE.NUM ^fLiterCount @@ ^fValveVolumeCheck @@F F> IF 
+7 LINE.NUM 0 I>F ^dtValveTimer @! 
+9 LINE.NUM THEN 
+10 LINE.NUM THEN 
+13 LINE.NUM ^cOptPressureExtSPIndex @@ }uiOptionsTempPressure TABLE@ 0 I>F F> ^bPressureShutDown @@ LAND  IF 
+14 LINE.NUM ^dtPressureShutDownDelay  T0= ^bPressureHighAlarm @@ LNOT  LAND  ^bPressureLowAlarm @@ LNOT  LAND  ^uoPressureAlarm @@ LNOT  LAND  IF 
+15 LINE.NUM ^fCurrentPRESSURE_Ext @@ ^cOptPressureExtSPIndex @@ }uiOptionsTempPressure TABLE@ F> IF 
+16 LINE.NUM 0 I>F ^dtValveTimer @! 
+17 LINE.NUM THEN 
+18 LINE.NUM THEN 
+19 LINE.NUM THEN 
+24 LINE.NUM ^iTankOutput_QueueTrigger @@ 1 = ^iTankCirgulationMode @@ 0 = LAND  IF 
+25 LINE.NUM ^dtValveTimer @@F 10 I>F F> IF 
+1 26 LINE.NUM ^cMaxTankQueueTrigger @@ 1 + 0 DO? I ^nTankLevelCheckIndex @! 
+27 LINE.NUM ^nRunProgramIndex @@ ^nTankLevelCheckIndex @@ = ^nTankLevelCheckIndex @@ }iTank_LevelSwitch_Top TABLE@ LAND  IF 
+28 LINE.NUM 10 I>F ^dtValveTimer @! 
+29 LINE.NUM THEN 
+30 LINE.NUM 1 +LOOP 
+31 LINE.NUM THEN 
+32 LINE.NUM THEN 
+36 JUMP ;
+: 7_847
+-11 JUMP ;
+: 7_851
+
+1 LINE.NUM
+  ^nRunValveIndex @@ 
+  ^nMaxValveIndex @!   
+
+2 LINE.NUM
+  0  
+  ^nNextProgram @!   
+-2 JUMP ;
+: 7_905
+1 LINE.NUM ^uoLowFlowAlarm @@ ^uoHighFlowAlarm @@ LOR  IF 
+1 LINE.NUM 1 ^uoFlowAlarm @! 
+1 LINE.NUM ELSE 
+1 LINE.NUM 0 ^uoFlowAlarm @! 
+1 LINE.NUM THEN 
+3 LINE.NUM ^uoLowECOutAlarm @@ ^uoHighECOutAlarm @@ LOR  IF 
+3 LINE.NUM 1 ^uoECOutAlarm @! 
+3 LINE.NUM ELSE 
+3 LINE.NUM 0 ^uoECOutAlarm @! 
+3 LINE.NUM THEN 
+5 LINE.NUM ^uoLowpHAlarm @@ ^uoHighpHAlarm @@ LOR  IF 
+5 LINE.NUM 1 ^uoPHAlarm @! 
+5 LINE.NUM ELSE 
+5 LINE.NUM 0 ^uoPHAlarm @! 
+5 LINE.NUM THEN 
+7 LINE.NUM ^uoLowECInAlarm @@ ^uoHighECInAlarm @@ LOR  IF 
+7 LINE.NUM 1 ^uoECInAlarm @! 
+7 LINE.NUM ELSE 
+7 LINE.NUM 0 ^uoECInAlarm @! 
+7 LINE.NUM THEN 
+9 LINE.NUM ^uoLowTempAlarm @@ ^uoHighTempAlarm @@ LOR  IF 
+9 LINE.NUM 1 ^uoTemperatureAlarm @! 
+9 LINE.NUM ELSE 
+9 LINE.NUM 0 ^uoTemperatureAlarm @! 
+9 LINE.NUM THEN 
+11 LINE.NUM ^uoLowPressureAlarm @@ ^uoHighPressureAlarm @@ LOR  IF 
+11 LINE.NUM 1 ^uoPressureAlarm @! 
+11 LINE.NUM ELSE 
+11 LINE.NUM 0 ^uoPressureAlarm @! 
+11 LINE.NUM THEN 
+31 JUMP ;
+: 7_943
+2 LINE.NUM ^tOutAlarmIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+3 LINE.NUM Pointer=Null? PTR_doPumpIt_Ptr  IF 
+3 LINE.NUM 0 
+MoveToPointer PTR_doPumpIt_Ptr 
+3 LINE.NUM THEN 
+5 LINE.NUM ^iAlarmSilence @@ IF 
+7 LINE.NUM ^dt_AlarmSilence  T0= IF 
+8 LINE.NUM PTR_doPumpIt_Ptr  ON 
+9 LINE.NUM 1000  DELAY 
+10 LINE.NUM PTR_doPumpIt_Ptr  OFF 
+11 LINE.NUM THEN 
+13 LINE.NUM ^dt_AlarmSilence @@F 0.00000000e+000 F<= IF 
+14 LINE.NUM 60 I>F ^dt_AlarmSilence  SetTimer 
+15 LINE.NUM ^dt_AlarmSilence  StartTimer 
+16 LINE.NUM THEN 
+18 LINE.NUM THEN 
+27 JUMP ;
+: 7_950
+2 LINE.NUM ^fFlowRate @@ ^cOptWaterHighAlarmIndex @@ }uiOptions TABLE@ F> IF 
+3 LINE.NUM ^uoHighFlowAlarm @@ 0 = ^bFlowHighAlarm @@ 0 = LAND  IF 
+4 LINE.NUM ^cOptFlowAlarmDelayIndex @@ }uiOptions TABLE@ ^dtFlowAlarmDelay  SetTimer 
+5 LINE.NUM ^dtFlowAlarmDelay  StartTimer 
+6 LINE.NUM 1 ^bFlowHighAlarm @! 
+7 LINE.NUM THEN 
+8 LINE.NUM ELSE 
+9 LINE.NUM 0 ^uoHighFlowAlarm @! 
+10 LINE.NUM 0 ^bFlowHighAlarm @! 
+11 LINE.NUM THEN 
+13 LINE.NUM ^dtFlowAlarmDelay  T0= ^bFlowHighAlarm @@ LAND  IF 
+14 LINE.NUM 1 ^uoHighFlowAlarm @! 
+15 LINE.NUM THEN 
+18 LINE.NUM ^fFlowRate @@ ^cOptWaterLowAlarmIndex @@ }uiOptions TABLE@ F< IF 
+19 LINE.NUM ^uoLowFlowAlarm @@ 0 = ^bFlowLowAlarm @@ 0 = LAND  IF 
+20 LINE.NUM ^cOptFlowAlarmDelayIndex @@ }uiOptions TABLE@ ^dtFlowAlarmDelay  SetTimer 
+21 LINE.NUM ^dtFlowAlarmDelay  StartTimer 
+22 LINE.NUM 1 ^bFlowLowAlarm @! 
+23 LINE.NUM THEN 
+24 LINE.NUM ELSE 
+25 LINE.NUM 0 ^uoLowFlowAlarm @! 
+26 LINE.NUM 0 ^bFlowLowAlarm @! 
+27 LINE.NUM THEN 
+29 LINE.NUM ^dtFlowAlarmDelay  T0= ^bFlowLowAlarm @@ LAND  IF 
+30 LINE.NUM 1 ^uoLowFlowAlarm @! 
+31 LINE.NUM THEN 
+0 JUMP ;
+: 7_951
+2 LINE.NUM ^fCurrentEC @@ ^cOptECHighAlarmIndex @@ }uiOptions TABLE@ F> IF 
+3 LINE.NUM ^uoHighECOutAlarm @@ 0 = ^bECOUTHighAlarm @@ 0 = LAND  IF 
+4 LINE.NUM ^cOptECAlarmDelayIndex @@ }uiOptions TABLE@ ^dtECAlarmDelay  SetTimer 
+5 LINE.NUM ^dtECAlarmDelay  StartTimer 
+6 LINE.NUM 1 ^bECOUTHighAlarm @! 
+7 LINE.NUM THEN 
+8 LINE.NUM ELSE 
+9 LINE.NUM 0 ^uoHighECOutAlarm @! 
+10 LINE.NUM 0 ^bECOUTHighAlarm @! 
+11 LINE.NUM THEN 
+13 LINE.NUM ^dtECAlarmDelay  T0= ^bECOUTHighAlarm @@ LAND  IF 
+14 LINE.NUM 1 ^uoHighECOutAlarm @! 
+15 LINE.NUM THEN 
+17 LINE.NUM ^fCurrentEC @@ ^cOptECLowAlarmIndex @@ }uiOptions TABLE@ F< IF 
+18 LINE.NUM ^uoLowECOutAlarm @@ 0 = ^bECOUTLowAlarm @@ 0 = LAND  IF 
+19 LINE.NUM ^cOptECAlarmDelayIndex @@ }uiOptions TABLE@ ^dtECAlarmDelay  SetTimer 
+20 LINE.NUM ^dtECAlarmDelay  StartTimer 
+21 LINE.NUM 1 ^bECOUTLowAlarm @! 
+22 LINE.NUM THEN 
+23 LINE.NUM ELSE 
+24 LINE.NUM 0 ^uoLowECOutAlarm @! 
+25 LINE.NUM 0 ^bECOUTLowAlarm @! 
+26 LINE.NUM THEN 
+28 LINE.NUM ^dtECAlarmDelay  T0= ^bECOUTLowAlarm @@ LAND  IF 
+29 LINE.NUM 1 ^uoLowECOutAlarm @! 
+30 LINE.NUM THEN 
+0 JUMP ;
+: 7_952
+2 LINE.NUM ^fAuxEC @@ ^cOptAECHighAlarmIndex @@ }uiOptions TABLE@ F> IF 
+3 LINE.NUM ^uoHighECInAlarm @@ 0 = ^bECINHighAlarm @@ 0 = LAND  IF 
+4 LINE.NUM ^cOptAutomatedProportionalDelay @@ }uiOptions TABLE@ ^dtAECAlarmDelay  SetTimer 
+5 LINE.NUM ^dtAECAlarmDelay  StartTimer 
+6 LINE.NUM 1 ^bECINHighAlarm @! 
+7 LINE.NUM THEN 
+8 LINE.NUM ELSE 
+9 LINE.NUM 0 ^uoHighECInAlarm @! 
+10 LINE.NUM 0 ^bECINHighAlarm @! 
+11 LINE.NUM THEN 
+13 LINE.NUM ^dtAECAlarmDelay  T0= ^bECINHighAlarm @@ LAND  IF 
+14 LINE.NUM 1 ^uoHighECInAlarm @! 
+15 LINE.NUM THEN 
+18 LINE.NUM ^fAuxEC @@ ^cOptAECLowAlarmIndex @@ }uiOptions TABLE@ F< IF 
+19 LINE.NUM ^uoLowECInAlarm @@ 0 = ^bECINLowAlarm @@ 0 = LAND  IF 
+20 LINE.NUM ^cOptAutomatedProportionalDelay @@ }uiOptions TABLE@ ^dtAECAlarmDelay  SetTimer 
+21 LINE.NUM ^dtAECAlarmDelay  StartTimer 
+22 LINE.NUM 1 ^bECINLowAlarm @! 
+23 LINE.NUM THEN 
+24 LINE.NUM ELSE 
+25 LINE.NUM 0 ^uoLowECInAlarm @! 
+26 LINE.NUM 0 ^bECINLowAlarm @! 
+27 LINE.NUM THEN 
+29 LINE.NUM ^dtAECAlarmDelay  T0= ^bECINLowAlarm @@ LAND  IF 
+30 LINE.NUM 1 ^uoLowECInAlarm @! 
+31 LINE.NUM THEN 
+0 JUMP ;
+: 7_953
+2 LINE.NUM ^fCurrentPH @@ ^cOptPHHighAlarmIndex @@ }uiOptions TABLE@ F> IF 
+3 LINE.NUM ^uoHighpHAlarm @@ 0 = ^bpHHighAlarm @@ 0 = LAND  IF 
+4 LINE.NUM ^cOptPHAlarmDelayIndex @@ }uiOptions TABLE@ ^dtPHAlarmDelay  SetTimer 
+5 LINE.NUM ^dtPHAlarmDelay  StartTimer 
+6 LINE.NUM 1 ^bpHHighAlarm @! 
+7 LINE.NUM THEN 
+8 LINE.NUM ELSE 
+9 LINE.NUM 0 ^uoHighpHAlarm @! 
+10 LINE.NUM 0 ^bpHHighAlarm @! 
+11 LINE.NUM THEN 
+13 LINE.NUM ^dtPHAlarmDelay  T0= ^bpHHighAlarm @@ LAND  IF 
+14 LINE.NUM 1 ^uoHighpHAlarm @! 
+15 LINE.NUM THEN 
+18 LINE.NUM ^fCurrentPH @@ ^cOptPHLowAlarmIndex @@ }uiOptions TABLE@ F< IF 
+19 LINE.NUM ^uoLowpHAlarm @@ 0 = ^bpHLowAlarm @@ 0 = LAND  IF 
+20 LINE.NUM ^cOptPHAlarmDelayIndex @@ }uiOptions TABLE@ ^dtPHAlarmDelay  SetTimer 
+21 LINE.NUM ^dtPHAlarmDelay  StartTimer 
+22 LINE.NUM 1 ^bpHLowAlarm @! 
+23 LINE.NUM THEN 
+24 LINE.NUM ELSE 
+25 LINE.NUM 0 ^uoLowpHAlarm @! 
+26 LINE.NUM 0 ^bpHLowAlarm @! 
+27 LINE.NUM THEN 
+29 LINE.NUM ^dtPHAlarmDelay  T0= ^bpHLowAlarm @@ LAND  IF 
+30 LINE.NUM 1 ^uoLowpHAlarm @! 
+31 LINE.NUM THEN 
+0 JUMP ;
+: 7_954
+2 LINE.NUM ^fCurrentTEMP @@ ^cOptTempHighAlarmIndex @@ }uiOptionsTempPressure TABLE@ F> IF 
+3 LINE.NUM ^uoHighTempAlarm @@ 0 = ^bTempHighAlarm @@ 0 = LAND  IF 
+4 LINE.NUM ^cOptTempAlarmDelayIndex @@ }uiOptionsTempPressure TABLE@ ^dtTempAlarmDelay  SetTimer 
+5 LINE.NUM ^dtTempAlarmDelay  StartTimer 
+6 LINE.NUM 1 ^bTempHighAlarm @! 
+7 LINE.NUM THEN 
+8 LINE.NUM ELSE 
+9 LINE.NUM 0 ^uoHighTempAlarm @! 
+10 LINE.NUM 0 ^bTempHighAlarm @! 
+11 LINE.NUM THEN 
+13 LINE.NUM ^dtTempAlarmDelay  T0= ^bTempHighAlarm @@ LAND  IF 
+14 LINE.NUM 1 ^uoHighTempAlarm @! 
+15 LINE.NUM THEN 
+18 LINE.NUM ^fCurrentTEMP @@ ^cOptTempLowAlarmIndex @@ }uiOptionsTempPressure TABLE@ F< IF 
+19 LINE.NUM ^uoLowTempAlarm @@ 0 = ^bTempLowAlarm @@ 0 = LAND  IF 
+20 LINE.NUM ^cOptTempAlarmDelayIndex @@ }uiOptionsTempPressure TABLE@ ^dtTempAlarmDelay  SetTimer 
+21 LINE.NUM ^dtTempAlarmDelay  StartTimer 
+22 LINE.NUM 1 ^bTempLowAlarm @! 
+23 LINE.NUM THEN 
+24 LINE.NUM ELSE 
+25 LINE.NUM 0 ^uoLowTempAlarm @! 
+26 LINE.NUM 0 ^bTempLowAlarm @! 
+27 LINE.NUM THEN 
+29 LINE.NUM ^dtTempAlarmDelay  T0= ^bTempLowAlarm @@ LAND  IF 
+30 LINE.NUM 1 ^uoLowTempAlarm @! 
+31 LINE.NUM THEN 
+0 JUMP ;
+: 7_955
+2 LINE.NUM ^fCurrentPRESSURE_Int @@ ^cOptPressureHighAlarmIndex @@ }uiOptionsTempPressure TABLE@ F> IF 
+3 LINE.NUM ^uoHighPressureAlarm @@ 0 = ^bPressureHighAlarm @@ 0 = LAND  IF 
+4 LINE.NUM ^cOptPressureAlarmDelayIndex @@ }uiOptionsTempPressure TABLE@ ^dtPressureAlarmDelay  SetTimer 
+5 LINE.NUM ^dtPressureAlarmDelay  StartTimer 
+6 LINE.NUM 1 ^bPressureHighAlarm @! 
+7 LINE.NUM THEN 
+8 LINE.NUM ELSE 
+9 LINE.NUM 0 ^uoHighPressureAlarm @! 
+10 LINE.NUM 0 ^bPressureHighAlarm @! 
+11 LINE.NUM THEN 
+13 LINE.NUM ^dtPressureAlarmDelay  T0= ^bPressureHighAlarm @@ LAND  IF 
+14 LINE.NUM 1 ^uoHighPressureAlarm @! 
+15 LINE.NUM THEN 
+18 LINE.NUM ^fCurrentPRESSURE_Int @@ ^cOptPressureLowAlarmIndex @@ }uiOptionsTempPressure TABLE@ F< IF 
+19 LINE.NUM ^uoLowPressureAlarm @@ 0 = ^bPressureLowAlarm @@ 0 = LAND  IF 
+20 LINE.NUM ^cOptPressureAlarmDelayIndex @@ }uiOptionsTempPressure TABLE@ ^dtPressureAlarmDelay  SetTimer 
+21 LINE.NUM ^dtPressureAlarmDelay  StartTimer 
+22 LINE.NUM 1 ^bPressureLowAlarm @! 
+23 LINE.NUM THEN 
+24 LINE.NUM ELSE 
+25 LINE.NUM 0 ^uoLowPressureAlarm @! 
+26 LINE.NUM 0 ^bPressureLowAlarm @! 
+27 LINE.NUM THEN 
+29 LINE.NUM ^dtPressureAlarmDelay  T0= ^bPressureLowAlarm @@ LAND  IF 
+30 LINE.NUM 1 ^uoLowPressureAlarm @! 
+31 LINE.NUM THEN 
+34 LINE.NUM ^cOptPressureExtSPIndex @@ }uiOptionsTempPressure TABLE@ 0 I>F F> ^bPressureLowAlarm @@ LNOT  LAND  ^bPressureHighAlarm @@ LNOT  LAND  ^uoPressureAlarm @@ LNOT  LAND  IF 
+35 LINE.NUM ^dtPressureShutDownDelay  T0= ^bPressureShutDown @@ LNOT  LAND  IF 
+36 LINE.NUM ^cOptPressureExtDelayIndex @@ }uiOptionsTempPressure TABLE@ ^dtPressureShutDownDelay  SetTimer 
+37 LINE.NUM ^dtPressureShutDownDelay  StartTimer 
+38 LINE.NUM 1 ^bPressureShutDown @! 
+39 LINE.NUM THEN 
+40 LINE.NUM ELSE 
+41 LINE.NUM ^dtPressureShutDownDelay  StopTimer 
+42 LINE.NUM 0 ^bPressureShutDown @! 
+43 LINE.NUM THEN 
+-8 JUMP ;
+: 7_970
+-7 JUMP ;
+: 7_978
+2 LINE.NUM 0 ^uoLowFlowAlarm @! 
+3 LINE.NUM 0 ^uoHighFlowAlarm @! 
+4 LINE.NUM 0 ^uoFlowAlarm @! 
+5 LINE.NUM 0 ^bFlowHighAlarm @! 
+6 LINE.NUM 0 ^bFlowLowAlarm @! 
+8 LINE.NUM 0 ^uoLowECOutAlarm @! 
+9 LINE.NUM 0 ^uoLowECOutAlarm @! 
+10 LINE.NUM 0 ^uoECOutAlarm @! 
+11 LINE.NUM 0 ^bECOUTHighAlarm @! 
+12 LINE.NUM 0 ^bECOUTLowAlarm @! 
+14 LINE.NUM 0 ^uoLowpHAlarm @! 
+15 LINE.NUM 0 ^uoHighpHAlarm @! 
+16 LINE.NUM 0 ^uoPHAlarm @! 
+17 LINE.NUM 0 ^bpHHighAlarm @! 
+18 LINE.NUM 0 ^bpHLowAlarm @! 
+21 LINE.NUM 0 ^uoLowECInAlarm @! 
+22 LINE.NUM 0 ^uoHighECInAlarm @! 
+23 LINE.NUM 0 ^uoECInAlarm @! 
+24 LINE.NUM 0 ^bECINHighAlarm @! 
+25 LINE.NUM 0 ^bECINLowAlarm @! 
+27 LINE.NUM 0 ^uoLowTempAlarm @! 
+28 LINE.NUM 0 ^uoHighTempAlarm @! 
+29 LINE.NUM 0 ^uoTemperatureAlarm @! 
+30 LINE.NUM 0 ^bTempHighAlarm @! 
+31 LINE.NUM 0 ^bTempLowAlarm @! 
+33 LINE.NUM 0 ^uoLowPressureAlarm @! 
+34 LINE.NUM 0 ^uoHighPressureAlarm @! 
+35 LINE.NUM 0 ^uoPressureAlarm @! 
+36 LINE.NUM 0 ^bPressureHighAlarm @! 
+37 LINE.NUM 0 ^bPressureLowAlarm @! 
+39 LINE.NUM 0 ^bPressureShutDown @! 
+42 LINE.NUM ^tOutAlarmIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+43 LINE.NUM Pointer=Null? PTR_doPumpIt_Ptr  IF 
+44 LINE.NUM 0 
+MoveToPointer PTR_doPumpIt_Ptr 
+45 LINE.NUM ELSE 
+46 LINE.NUM PTR_doPumpIt_Ptr  OFF 
+47 LINE.NUM THEN 
+-14 JUMP ;
+: 7_1022
+1 LINE.NUM ^bProportional_Program_Recipe @@ 0 = ^dtAutomatedProportionalDecideDelay @@F 0 I>F F= LAND  IF 
+3 LINE.NUM ^fAuxPH @@ ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^nRunRecipeIndex @@ }uiPHTargetDB TABLE@ F- F>= ^uipH_UpDownButton @@ 1 = LAND  ^fAuxPH @@ ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^nRunRecipeIndex @@ }uiPHTargetDB TABLE@ F+ F<= ^uipH_UpDownButton @@ 2 = LAND  LOR  ^fAuxEC @@ ^nRunRecipeIndex @@ }uiECTargetSP TABLE@ ^nRunRecipeIndex @@ }uiECTargetDB TABLE@ - I>F F>= LAND  IF 
+8 LINE.NUM ^iTankCirgulationFlag_Tmp @@ 0 = IF 
+9 LINE.NUM 15 I>F ^dt_TankCirgulation  SetTimer 
+10 LINE.NUM ^dt_TankCirgulation  StartTimer 
+11 LINE.NUM 1 ^iTankCirgulationFlag_Tmp @! 
+12 LINE.NUM THEN 
+15 LINE.NUM ^dt_TankCirgulation  T0= IF 
+16 LINE.NUM 10 I>F ^dtValveTimer @! 
+17 LINE.NUM 0 ^iTankCirgulationFlag_Tmp @! 
+18 LINE.NUM THEN 
+20 LINE.NUM ELSE 
+21 LINE.NUM 0 ^iTankCirgulationFlag_Tmp @! 
+23 LINE.NUM ^dt_TankCirgulation @@F 0 I>F F> IF 
+24 LINE.NUM 0 I>F ^dt_TankCirgulation @! 
+25 LINE.NUM THEN 
+26 LINE.NUM THEN 
+27 LINE.NUM THEN 
+16 JUMP ;
+: 7_1127
+2 LINE.NUM ^nTankWaterIndex @@ }tOutInletValve2Index TABLE@ 0 >= IF 
+4 LINE.NUM ^nTankWaterIndex @@ }tOutInletValve2Index TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTankCirgulate_Ptr 
+5 LINE.NUM PTR_doTankCirgulate_Ptr  ?ON IF 
+7 LINE.NUM PTR_doTankCirgulate_Ptr  OFF 
+8 LINE.NUM THEN 
+9 LINE.NUM THEN 
+12 LINE.NUM ^nFreshWaterIndex @@ }tOutInletValve1Index TABLE@ 0 >= IF 
+14 LINE.NUM ^nFreshWaterIndex @@ }tOutInletValve1Index TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTankCirgulate_Ptr 
+15 LINE.NUM PTR_doTankCirgulate_Ptr  ?OFF IF 
+17 LINE.NUM PTR_doTankCirgulate_Ptr  ON 
+18 LINE.NUM THEN 
+19 LINE.NUM THEN 
+-21 JUMP ;
+: 7_1132
+2 LINE.NUM ^nFreshWaterIndex @@ }tOutInletValve1Index TABLE@ 0 >= IF 
+4 LINE.NUM ^nFreshWaterIndex @@ }tOutInletValve1Index TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTankCirgulate_Ptr 
+5 LINE.NUM PTR_doTankCirgulate_Ptr  ?ON IF 
+7 LINE.NUM PTR_doTankCirgulate_Ptr  OFF 
+8 LINE.NUM THEN 
+9 LINE.NUM THEN 
+12 LINE.NUM ^nTankWaterIndex @@ }tOutInletValve2Index TABLE@ 0 >= IF 
+14 LINE.NUM ^nTankWaterIndex @@ }tOutInletValve2Index TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTankCirgulate_Ptr 
+15 LINE.NUM PTR_doTankCirgulate_Ptr  ?OFF IF 
+17 LINE.NUM PTR_doTankCirgulate_Ptr  ON 
+18 LINE.NUM THEN 
+19 LINE.NUM THEN 
+-3 JUMP ;
+: 7_1142
+2 LINE.NUM ^nFreshWaterIndex @@ }tOutInletValve1Index TABLE@ 0 >= IF 
+4 LINE.NUM ^nFreshWaterIndex @@ }tOutInletValve1Index TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTankCirgulate_Ptr 
+5 LINE.NUM PTR_doTankCirgulate_Ptr  ?ON IF 
+7 LINE.NUM PTR_doTankCirgulate_Ptr  OFF 
+8 LINE.NUM THEN 
+9 LINE.NUM THEN 
+12 LINE.NUM ^nTankWaterIndex @@ }tOutInletValve2Index TABLE@ 0 >= IF 
+14 LINE.NUM ^nTankWaterIndex @@ }tOutInletValve2Index TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTankCirgulate_Ptr 
+15 LINE.NUM PTR_doTankCirgulate_Ptr  ?OFF IF 
+17 LINE.NUM PTR_doTankCirgulate_Ptr  ON 
+18 LINE.NUM THEN 
+19 LINE.NUM THEN 
+-23 JUMP ;
+: 7_1154
+1 LINE.NUM ^dtPulseFactor_Delay  T0= IF 
+2 LINE.NUM ^nRunProgramIndex @@ ^cMaxInjectors @@ *  ^iPumpIt_Tmp @! 
+4 LINE.NUM " Auto" *uoDispMainIrrigationMode  $MOVE 
+6 LINE.NUM ^nRunRecipeIndex @@ }uiECTargetSP TABLE@ ^uoDispMainECTarget @! 
+7 LINE.NUM ^nRunRecipeIndex @@ }uiECTargetDB TABLE@ ^uoDispMainECDeadBand @! 
+8 LINE.NUM ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^uoDispMainPHTarget @! 
+9 LINE.NUM ^nRunRecipeIndex @@ }uiPHTargetDB TABLE@ ^uoDispMainPHDeadBand @! 
+11 LINE.NUM ^bAutomated_FirstPass @@ 0 = IF 
+13 LINE.NUM ^fCurrentPH @@ ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^nRunRecipeIndex @@ }uiPHTargetDB TABLE@ F- F< IF 
+14 LINE.NUM ^uipH_UpDownButton @@ 1 = IF 
+15 LINE.NUM ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^fCurrentPH @@ F/ ^nRunProgramIndex @@ }nPulseFactor_PH TABLE! 
+16 LINE.NUM ELSE 
+17 LINE.NUM ^fCurrentPH @@ ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ F/ ^nRunProgramIndex @@ }nPulseFactor_PH TABLE! 
+18 LINE.NUM THEN 
+19 LINE.NUM ELSE 
+19 LINE.NUM ^fCurrentPH @@ ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^nRunRecipeIndex @@ }uiPHTargetDB TABLE@ F+ F> IF 
+20 LINE.NUM ^uipH_UpDownButton @@ 2 = IF 
+21 LINE.NUM ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^fCurrentPH @@ F/ ^nRunProgramIndex @@ }nPulseFactor_PH TABLE! 
+22 LINE.NUM ELSE 
+23 LINE.NUM ^fCurrentPH @@ ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ F/ ^nRunProgramIndex @@ }nPulseFactor_PH TABLE! 
+24 LINE.NUM THEN 
+25 LINE.NUM THEN THEN 
+28 LINE.NUM ^fCurrentEC @@ ^nRunRecipeIndex @@ }uiECTargetSP TABLE@ ^nRunRecipeIndex @@ }uiECTargetDB TABLE@ - I>F F< IF 
+29 LINE.NUM ^nRunRecipeIndex @@ }uiECTargetSP TABLE@F ^fCurrentEC @@ F/ ^nRunProgramIndex @@ }nPulseFactor_EC TABLE! 
+30 LINE.NUM ELSE 
+30 LINE.NUM ^fCurrentEC @@ ^nRunRecipeIndex @@ }uiECTargetSP TABLE@ ^nRunRecipeIndex @@ }uiECTargetDB TABLE@ + I>F F> IF 
+31 LINE.NUM ^nRunRecipeIndex @@ }uiECTargetSP TABLE@F ^fCurrentEC @@ F/ ^nRunProgramIndex @@ }nPulseFactor_EC TABLE! 
+32 LINE.NUM THEN THEN 
+35 LINE.NUM ^fAuxPH @@ ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^nRunRecipeIndex @@ }uiPHTargetDB TABLE@ F- F>= ^uipH_UpDownButton @@ 1 = LAND  ^fAuxPH @@ ^nRunRecipeIndex @@ }uiPHTargetSP TABLE@ ^nRunRecipeIndex @@ }uiPHTargetDB TABLE@ F+ F<= ^uipH_UpDownButton @@ 2 = LAND  LOR  IF 
+38 LINE.NUM 0 I>F 0 }fInjectorPulseSP TABLE! 
+40 LINE.NUM ELSE 
+42 LINE.NUM ^nRunRecipeIndex @@ ^cMaxInjectors @@ *  0 +  }uiInjectorSetpoints TABLE@ 0 }fInjectorPulseSP TABLE! 
+45 LINE.NUM ^nRunProgramIndex @@ }nPulseFactor_PH TABLE@ 0 I>F F> IF 
+46 LINE.NUM 0 }fInjectorPulseSP TABLE@ 0 I>F F> IF 
+48 LINE.NUM ^nRunProgramIndex @@ }nPulseFactor_PH TABLE@ ^iPumpIt_Tmp @@ }nInjectorSetpoints_Auto TABLE@ F* ^fPumpIt_TmpAuto @! 
+49 LINE.NUM ^iPumpIt_PulseRatesAllAtMax_pH @@ 0 = ^iPumpIt_PulseRatesAllAtMax_pH @@ 1 = ^fPumpIt_TmpAuto @@ ^iPumpIt_Tmp @@ }nInjectorSetpoints_Auto TABLE@ F< LAND  LOR  IF 
+50 LINE.NUM ^fPumpIt_TmpAuto @@ ^iPumpIt_Tmp @@ }nInjectorSetpoints_Auto TABLE! 
+51 LINE.NUM THEN 
+53 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE@ ^iPumpIt_Tmp @@ }nInjectorSetpoints_Auto TABLE@ F/ 0 }nInjectorLitersToPulse TABLE! 
+54 LINE.NUM THEN 
+55 LINE.NUM THEN 
+57 LINE.NUM THEN 
+59 LINE.NUM ^nRunProgramIndex @@ }nPulseFactor_EC TABLE@ 0 I>F F> IF 
+60 LINE.NUM 1 ^nRunCounter1 @! 
+61 LINE.NUM BEGIN ^nRunCounter1 @@ ^cMaxInjectors @@ < WHILE 
+63 LINE.NUM ^fAuxEC @@ ^nRunRecipeIndex @@ }uiECTargetSP TABLE@ ^nRunRecipeIndex @@ }uiECTargetDB TABLE@ - I>F F>= IF 
+64 LINE.NUM 0 I>F ^nRunCounter1 @@ }fInjectorPulseSP TABLE! 
+65 LINE.NUM ELSE 
+66 LINE.NUM ^nRunRecipeIndex @@ ^cMaxInjectors @@ *  ^nRunCounter1 @@ +  }uiInjectorSetpoints TABLE@ ^nRunCounter1 @@ }fInjectorPulseSP TABLE! 
+67 LINE.NUM THEN 
+69 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseSP TABLE@ 0 I>F F> IF 
+71 LINE.NUM ^nRunProgramIndex @@ }nPulseFactor_EC TABLE@ ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }nInjectorSetpoints_Auto TABLE@ F* ^fPumpIt_TmpAuto @! 
+72 LINE.NUM ^iPumpIt_PulseRatesAllAtMax_EC @@ 0 = IF 
+73 LINE.NUM ^fPumpIt_TmpAuto @@ ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }nInjectorSetpoints_Auto TABLE! 
+74 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE@ ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }nInjectorSetpoints_Auto TABLE@ F/ ^nRunCounter1 @@ }nInjectorLitersToPulse TABLE! 
+75 LINE.NUM ELSE 
+75 LINE.NUM ^fPumpIt_TmpAuto @@ ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }nInjectorSetpoints_Auto TABLE@ F< IF 
+76 LINE.NUM 0 ^iPumpIt_PulseRatesAllAtMax_EC @! 
+77 LINE.NUM 0 ^nRunCounter1 @! 
+78 LINE.NUM THEN THEN 
+80 LINE.NUM THEN 
+81 LINE.NUM ^nRunCounter1 @@ 1 +  ^nRunCounter1 @! 
+82 LINE.NUM REPEAT 
+83 LINE.NUM THEN 
+84 LINE.NUM ELSE 
+86 LINE.NUM 0 }fInjectorPulseSP TABLE@ 0 I>F F> IF 
+87 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE@ ^iPumpIt_Tmp @@ }nInjectorSetpoints_Auto TABLE@ F/ 0 }nInjectorLitersToPulse TABLE! 
+88 LINE.NUM THEN 
+1 90 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 1 DO? I ^nRunCounter1 @! 
+91 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseSP TABLE@ 0 I>F F> IF 
+92 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }nValve_AverageFlow TABLE@ ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }nInjectorSetpoints_Auto TABLE@ F/ ^nRunCounter1 @@ }nInjectorLitersToPulse TABLE! 
+93 LINE.NUM THEN 
+94 LINE.NUM 1 +LOOP 
+96 LINE.NUM 0 ^bAutomated_FirstPass @! 
+97 LINE.NUM THEN 
+99 LINE.NUM ^cOptAutomatedControlDelayIndex @@ }uiOptions TABLE@ ^dtPulseFactor_Delay  SetTimer 
+100 LINE.NUM ^dtPulseFactor_Delay  StartTimer 
+102 LINE.NUM 0 I>F ^nRunProgramIndex @@ }nPulseFactor_PH TABLE! 
+103 LINE.NUM 0 I>F ^nRunProgramIndex @@ }nPulseFactor_EC TABLE! 
+104 LINE.NUM THEN 
+-41 JUMP ;
+: 7_1161
+3 LINE.NUM 0 I>D ^bBoardLayout1 @! 
+4 LINE.NUM 0 I>D ^bBoardLayout2 @! 
+6 LINE.NUM ^fLastLiters @@ ^fPumpIt_Tmp2 @! 
+7 LINE.NUM 0 I>F ^fLastLiters @! 
+9 LINE.NUM ^nRunRecipeIndex @@ ^cMaxInjectors @@ *  ^iPumpIt_Tmp @! 
+1 11 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+12 LINE.NUM ^iPumpIt_Tmp @@ ^nRunCounter1 @@ +  }uiInjectorSetpoints TABLE@ ^nRunCounter1 @@ }fInjectorPulseSP TABLE! 
+13 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE@ ^fPumpIt_Tmp2 @@ F- ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE! 
+15 LINE.NUM ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ 0 > ^utTotalTime @@F ^nRunCounter1 @@ }fInjectorTimer TABLE@ F> LAND  IF 
+17 LINE.NUM -1 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+18 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ 0 >= IF 
+19 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+20 LINE.NUM PTR_doPumpIt_Ptr  OFF 
+21 LINE.NUM THEN 
+22 LINE.NUM ELSE 
+22 LINE.NUM ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ 0 < ^utTotalTime @@F ^nRunCounter1 @@ }fInjectorTimer TABLE@ F> LAND  IF 
+24 LINE.NUM 0 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+25 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE@ ^nRunCounter1 @@ }nInjectorLitersToPulse TABLE@ F+ ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE! 
+26 LINE.NUM THEN THEN 
+28 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseSP TABLE@ 0 I>F F> ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE@ 1 I>F F< LAND  ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ 0 = LAND  IF 
+30 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ 0 >= IF 
+31 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doPumpIt_Ptr 
+32 LINE.NUM PTR_doPumpIt_Ptr  ON 
+33 LINE.NUM THEN 
+34 LINE.NUM ^nRunCounter1 @@ }nInjectorPulseCount TABLE@ 1 +  ^nRunCounter1 @@ }nInjectorPulseCount TABLE! 
+35 LINE.NUM 1 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+39 LINE.NUM ^nRunCounter1 @@ }fInjectorTankCalcLevel TABLE@ ^nRunCounter1 @@ }fInjectorInjectVolume TABLE@ 1000 I>F F/ F- ^nRunCounter1 @@ }fInjectorTankCalcLevel TABLE! 
+40 LINE.NUM ^nRunCounter1 @@ }fInjectorTankCalcLevel TABLE@ ^nRunCounter1 @@ }fInjectorSolTankSize TABLE@ F/ 100 I>F F* ^nRunCounter1 @@ }fInjectorTankPercentFull TABLE! 
+42 LINE.NUM THEN 
+43 LINE.NUM 1 +LOOP 
+46 LINE.NUM ^bBoardLayout1 @@ -1 I>D DAND ^bBitMask1  -ROT D>I SWAP @!
+47 LINE.NUM ^bBoardLayout2 @@ -1 I>D DAND ^bBitMask2  -ROT D>I SWAP @!
+1 50 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+51 LINE.NUM ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ 1 = IF 
+52 LINE.NUM 2 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+53 LINE.NUM ^utTotalTime @@F ^cOptInjectorOnTime @@ }uiOptions TABLE@ F+ ^nRunCounter1 @@ }fInjectorTimer TABLE! 
+54 LINE.NUM THEN 
+55 LINE.NUM ^nRunCounter1 @@ }nStartInjectorTimer TABLE@ -1 = IF 
+56 LINE.NUM -2 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+57 LINE.NUM ^utTotalTime @@F ^cOptInjectorOffTime @@ }uiOptions TABLE@ F+ ^nRunCounter1 @@ }fInjectorTimer TABLE! 
+58 LINE.NUM THEN 
+59 LINE.NUM 1 +LOOP 
+10 JUMP ;
+: 7_1184
+-27 JUMP ;
+: 7_1193
+
+1 LINE.NUM
+  0  
+  ^bAutomated_FirstPass @!   
+8 JUMP ;
+: 7_679
+TRUE
+
+1 LINE.NUM
+  ^dtAutomatedProportionalDecideDelay   T0=
+LAND
+
+2 LINE.NUM
+  ^bProportional_Program_Recipe @@ 
+  0    =
+LAND
+IF 16 ELSE 20 THEN JUMP ;
+: 7_694
+FALSE
+
+1 LINE.NUM
+  ^uiStart @@   0<>
+LOR
+IF -40 ELSE -41 THEN JUMP ;
+: 7_699
+FALSE
+
+1 LINE.NUM
+  ^uiPause @@ 
+  0    <>
+LOR
+IF -40 ELSE -34 THEN JUMP ;
+: 7_717
+FALSE
+
+1 LINE.NUM
+  ^uoState @@ I>D 
+  2..    D=
+LOR
+IF -21 ELSE -30 THEN JUMP ;
+: 7_718
+FALSE
+
+1 LINE.NUM
+  ^uoState @@ I>D 
+  2..    D=
+LOR
+IF -38 ELSE -39 THEN JUMP ;
+: 7_726
+FALSE
+
+1 LINE.NUM
+  ^fLiterCount @@ 
+  ^cOptFlowSPIndex @@ 
+  }uiOptions TABLE@   F>=
+LOR
+IF -36 ELSE 2 THEN JUMP ;
+: 7_729
+FALSE
+
+1 LINE.NUM
+  ^nTriggerType @@ 
+  ^cTT_Testing @@   =
+LOR
+IF -2 ELSE -49 THEN JUMP ;
+: 7_731
+FALSE
+
+1 LINE.NUM
+  ^nTriggerType @@ 
+  ^cTT_Testing @@   =
+LOR
+
+2 LINE.NUM
+  ^utTotalTime @@F 
+  ^fAlarmCheckDelay @@   F<
+LOR
+IF 4 ELSE -24 THEN JUMP ;
+: 7_735
+FALSE
+
+1 LINE.NUM
+  ^uoState @@   0<>
+LOR
+
+2 LINE.NUM
+  ^nTriggerType @@ 
+  ^cTT_Testing @@   =
+LOR
+IF -30 ELSE -39 THEN JUMP ;
+: 7_741
+TRUE
+
+1 LINE.NUM
+  ^dtValveTimer   T0=
+LAND
+IF -40 ELSE -8 THEN JUMP ;
+: 7_743
+TRUE
+
+1 LINE.NUM
+  ^utFlowCheck   T0=
+LAND
+IF 2 ELSE 1 THEN JUMP ;
+: 7_745
+FALSE
+
+1 LINE.NUM
+  ^uiStart @@   0<>
+LOR
+IF -45 ELSE -47 THEN JUMP ;
+: 7_747
+TRUE
+
+1 LINE.NUM
+  ^fFlowRate @@ 
+  0 I>F   F>
+LAND
+IF -7 ELSE -45 THEN JUMP ;
+: 7_832
+TRUE
+
+1 LINE.NUM
+  ^nNextProgram @@ 
+  1    =
+LAND
+IF -33 ELSE -43 THEN JUMP ;
+: 7_959
+FALSE
+
+1 LINE.NUM
+  ^uoFlowAlarm @@ 
+  1    =
+LOR
+
+2 LINE.NUM
+  ^uoECOutAlarm @@ 
+  1    =
+LOR
+
+3 LINE.NUM
+  ^uoPHAlarm @@ 
+  1    =
+LOR
+
+4 LINE.NUM
+  ^uoECInAlarm @@ 
+  1    =
+LOR
+
+5 LINE.NUM
+  ^uoTemperatureAlarm @@ 
+  1    =
+LOR
+
+6 LINE.NUM
+  ^uoPressureAlarm @@ 
+  1    =
+LOR
+IF -12 ELSE -11 THEN JUMP ;
+: 7_1041
+TRUE
+
+1 LINE.NUM
+  ^iTankCirgulationMode @@ 
+  1    =
+LAND
+IF 2 ELSE -43 THEN JUMP ;
+: 7_1100
+TRUE
+
+1 LINE.NUM
+  ^iTankCirgulationMode @@ 
+  1    =
+LAND
+IF 3 ELSE -8 THEN JUMP ;
+: 7_1107
+TRUE
+
+1 LINE.NUM
+  ^iTankCirgulationMode @@ 
+  1    =
+LAND
+IF 1 ELSE -61 THEN JUMP ;
+: 7_1141
+TRUE
+
+1 LINE.NUM
+  1  
+  ^nRunProgramIndex @@ 
+  }iTank_Output TABLE@   =
+LAND
+IF -26 ELSE -24 THEN JUMP ;
+: 7_1174
+TRUE
+
+1 LINE.NUM
+  1  
+  ^nRunProgramIndex @@ 
+  }iTank_Output TABLE@   =
+LAND
+IF -22 ELSE -24 THEN JUMP ;
+: 7_1180
+TRUE
+
+1 LINE.NUM
+  1  
+  ^nRunProgramIndex @@ 
+  }iTank_Output TABLE@   =
+LAND
+IF -29 ELSE -27 THEN JUMP ;
+: 7_1190
+TRUE
+
+1 LINE.NUM
+  ^iTankCirgulationMode @@ 
+  1    =
+LAND
+IF -23 ELSE -50 THEN JUMP ;
+T: T7
+DUMMY
+7_0
+7_672
+7_674
+7_676
+7_678
+7_689
+7_693
+7_697
+7_698
+7_702
+7_709
+7_714
+7_716
+7_721
+7_722
+7_728
+7_730
+7_733
+7_736
+7_737
+7_739
+7_742
+7_746
+7_761
+7_818
+7_847
+7_851
+7_905
+7_943
+7_950
+7_951
+7_952
+7_953
+7_954
+7_955
+7_970
+7_978
+7_1022
+7_1127
+7_1132
+7_1142
+7_1154
+7_1161
+7_1184
+7_1193
+7_679
+7_694
+7_699
+7_717
+7_718
+7_726
+7_729
+7_731
+7_735
+7_741
+7_743
+7_745
+7_747
+7_832
+7_959
+7_1041
+7_1100
+7_1107
+7_1141
+7_1174
+7_1180
+7_1190
+T;
+&PumpIt ' T7 SETTASK

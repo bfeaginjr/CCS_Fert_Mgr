@@ -1,0 +1,169 @@
+: 106_0
+8 JUMP ;
+: 106_3
+1 LINE.NUM ^uiEditGroupNum @@ {uiGroupName $TABLE@ *uiEditGroupName  $MOVE 
+2 LINE.NUM ^uiEditGroupNum @@ 1 +  ^uiEditGroupNumDisp @! 
+4 LINE.NUM }uiValveTimes ^uiEditGroupNum @@ ^cMaxValves @@ *  }uiEditValveTimes 0 ^cMaxValves @@  CopyTable  
+5 LINE.NUM }fValveVolume ^uiEditGroupNum @@ ^cMaxValves @@ *  }fEditValveVolume 0 ^cMaxValves @@  CopyTable  
+1 8 LINE.NUM ^cMaxValves @@ 1 -  1 + 0 DO? I ^iStartEditGroup_Tmp2 @! 
+9 LINE.NUM ^iStartEditGroup_Tmp2 @@ }uiValveGroups TABLE@ 1 ^uiEditGroupNum @@ SHIFT  AND  IF 
+10 LINE.NUM 1 ^iStartEditGroup_Tmp2 @@ }uiEditValveGroups TABLE! 
+11 LINE.NUM ELSE 
+12 LINE.NUM 0 ^iStartEditGroup_Tmp2 @@ }uiEditValveGroups TABLE! 
+13 LINE.NUM THEN 
+14 LINE.NUM ^iStartEditGroup_Tmp2 @@ ^uiEditGroupNum @@ ^cMaxValves @@ *  +  }uiValvePairs TABLE@ ^iStartEditGroup_Tmp @! 
+15 LINE.NUM ^iStartEditGroup_Tmp @@  ABS ^iStartEditGroup_Tmp2 @@ }uiEditValvePairs TABLE! 
+16 LINE.NUM 1 +LOOP 
+18 LINE.NUM ^uiEditGroupNum @@ }uiValveSolarInfPer TABLE@ 100 I>F F* ^uiEditValveSolarInfPer @! 
+19 LINE.NUM ^uiEditGroupNum @@ }uiValveSolarInfDB TABLE@ ^uiEditValveSolarInfDB @! 
+20 LINE.NUM ^uiEditGroupNum @@ }uiValveSolarInfSP TABLE@ ^uiEditValveSolarInfSP @! 
+6 JUMP ;
+: 106_6
+
+1 LINE.NUM
+  1.0    FDELAY
+7 JUMP ;
+: 106_10
+3 LINE.NUM *uiEditGroupName ^uiEditGroupNum @@ {uiGroupName $TABLE@  $MOVE 
+1 5 LINE.NUM ^cMaxValves @@ 1 -  1 + 0 DO? I ^iSaveEditGroup_Tmp @! 
+6 LINE.NUM ^iSaveEditGroup_Tmp @@ }uiEditValveGroups TABLE@ 1 = IF 
+7 LINE.NUM ^iSaveEditGroup_Tmp @@ }uiValveGroups TABLE@ 1 ^uiEditGroupNum @@ SHIFT  OR  ^iSaveEditGroup_Tmp @@ }uiValveGroups TABLE! 
+8 LINE.NUM ELSE 
+9 LINE.NUM ^iSaveEditGroup_Tmp @@ }uiValveGroups TABLE@ 1 ^uiEditGroupNum @@ SHIFT  NOT  AND  ^iSaveEditGroup_Tmp @@ }uiValveGroups TABLE! 
+10 LINE.NUM THEN 
+12 LINE.NUM ^iSaveEditGroup_Tmp @@ }uiEditValveTimes TABLE@ ^iSaveEditGroup_Tmp @@ ^uiEditGroupNum @@ ^cMaxValves @@ *  +  }uiValveTimes TABLE! 
+13 LINE.NUM ^iSaveEditGroup_Tmp @@ }fEditValveVolume TABLE@ ^iSaveEditGroup_Tmp @@ ^uiEditGroupNum @@ ^cMaxValves @@ *  +  }fValveVolume TABLE! 
+16 LINE.NUM ^iSaveEditGroup_Tmp @@ }uiEditValvePairs TABLE@ 0 > ^iSaveEditGroup_Tmp @@ }uiEditValvePairs TABLE@ ^cMaxValves @@ <= LAND  IF 
+17 LINE.NUM ^iSaveEditGroup_Tmp @@ }uiEditValvePairs TABLE@ 1 -  }uiEditValveGroups TABLE@ 1 = IF 
+18 LINE.NUM ^iSaveEditGroup_Tmp @@ }uiEditValvePairs TABLE@ ^iSaveEditGroup_Tmp @@ ^uiEditGroupNum @@ ^cMaxValves @@ *  +  }uiValvePairs TABLE! 
+19 LINE.NUM ^iSaveEditGroup_Tmp @@ 1 +  -1 *  ^iSaveEditGroup_Tmp @@ }uiEditValvePairs TABLE@ 1 -  }uiEditValvePairs TABLE! 
+20 LINE.NUM ^iSaveEditGroup_Tmp @@ 1 +  -1 *  ^iSaveEditGroup_Tmp @@ }uiValvePairs TABLE@ 1 -  }uiValvePairs TABLE! 
+21 LINE.NUM ELSE 
+22 LINE.NUM 0 ^iSaveEditGroup_Tmp @@ ^uiEditGroupNum @@ ^cMaxValves @@ *  +  }uiValvePairs TABLE! 
+23 LINE.NUM 0 ^iSaveEditGroup_Tmp @@ }uiEditValvePairs TABLE@ 1 -  }uiEditValvePairs TABLE! 
+24 LINE.NUM 0 ^iSaveEditGroup_Tmp @@ }uiEditValvePairs TABLE@ 1 -  }uiValvePairs TABLE! 
+25 LINE.NUM THEN 
+26 LINE.NUM ELSE 
+27 LINE.NUM ^iSaveEditGroup_Tmp @@ }uiEditValvePairs TABLE@ ^iSaveEditGroup_Tmp @@ ^uiEditGroupNum @@ ^cMaxValves @@ *  +  }uiValvePairs TABLE! 
+28 LINE.NUM THEN 
+33 LINE.NUM 1 +LOOP 
+35 LINE.NUM ^uiEditValveSolarInfPer @@ 100 I>F F/ ^uiEditGroupNum @@ }uiValveSolarInfPer TABLE! 
+36 LINE.NUM ^uiEditValveSolarInfDB @@ ^uiEditGroupNum @@ }uiValveSolarInfDB TABLE! 
+37 LINE.NUM ^uiEditValveSolarInfSP @@ ^uiEditGroupNum @@ }uiValveSolarInfSP TABLE! 
+3 JUMP ;
+: 106_13
+
+1 LINE.NUM
+  -1  
+  ^uiEditGroupNum @!   
+
+2 LINE.NUM
+  0  
+  ^iValveDefinitionSave @!   
+
+3 LINE.NUM
+  0  
+  ^iValveDefinitionClose @!   
+
+4 LINE.NUM
+  0  
+  ^iValveDefinitionDefaultTime @!   
+9 JUMP ;
+: 106_14
+1 2 LINE.NUM ^cMaxValves @@ 1 -  1 + 0 DO? I ^iSetDefValveTimes_Tmp @! 
+3 LINE.NUM ^iSetDefValveTimes_Tmp @@ }uiEditValveGroups TABLE@ 1 = IF 
+4 LINE.NUM ^cOptDefaultValveTimeIndex @@ }uiOptions TABLE@ ^iSetDefValveTimes_Tmp @@ }uiEditValveTimes TABLE! 
+5 LINE.NUM THEN 
+6 LINE.NUM 1 +LOOP 
+8 LINE.NUM 0 ^iValveDefinitionDefaultTime @! 
+0 JUMP ;
+: 106_18
+
+1 LINE.NUM
+  500    DELAY
+4 JUMP ;
+: 106_31
+
+1 LINE.NUM
+  0  
+  ^iValveDefinitionSave @!   
+
+2 LINE.NUM
+  " Saved Successfully" 
+ 
+  *sSaveValveGroup   $MOVE
+
+3 LINE.NUM
+  1000    DELAY
+-7 JUMP ;
+: 106_34
+
+1 LINE.NUM
+  "  " 
+ 
+  *sSaveValveGroup   $MOVE
+2 JUMP ;
+: 106_43
+
+1 LINE.NUM
+  0  
+  ^iValveDefinitionSave @!   
+
+2 LINE.NUM
+  0  
+  ^iValveDefinitionClose @!   
+
+3 LINE.NUM
+  0  
+  ^iValveDefinitionDefaultTime @!   
+0 JUMP ;
+: 106_7
+TRUE
+
+1 LINE.NUM
+  ^uiEditGroupNum @@ 
+  0    >=
+LAND
+IF -10 ELSE -9 THEN JUMP ;
+: 106_15
+TRUE
+
+1 LINE.NUM
+  ^iValveDefinitionDefaultTime @@ 
+  1    =
+LAND
+IF -7 ELSE 0 THEN JUMP ;
+: 106_16
+TRUE
+
+1 LINE.NUM
+  ^iValveDefinitionSave @@ 
+  1    =
+LAND
+IF -10 ELSE 0 THEN JUMP ;
+: 106_17
+TRUE
+
+1 LINE.NUM
+  ^iValveDefinitionClose @@ 
+  1    =
+LAND
+IF -10 ELSE -8 THEN JUMP ;
+T: T106
+DUMMY
+106_0
+106_3
+106_6
+106_10
+106_13
+106_14
+106_18
+106_31
+106_34
+106_43
+106_7
+106_15
+106_16
+106_17
+T;
+&ValveGroup_Definition ' T106 SETTASK

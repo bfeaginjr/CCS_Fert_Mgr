@@ -1,0 +1,480 @@
+: 100_0
+7 JUMP ;
+: 100_3
+2 LINE.NUM ^uiMIOnum @@ 0 > IF 
+3 LINE.NUM 13 ^cOptLastOutputRackIndex @@ -  ^iMIOnumIndex @! 
+4 LINE.NUM ELSE 
+5 LINE.NUM 0 ^iMIOnumIndex @! 
+6 LINE.NUM THEN 
+8 LINE.NUM ^nOutputDispNum @@ ^cOptLastOutputRackIndex @@ ^iMIOnumIndex @@ +  > IF 
+9 LINE.NUM 0 ^nOutputDispNum @! 
+10 LINE.NUM ELSE 
+10 LINE.NUM ^nOutputDispNum @@ 0 < IF 
+11 LINE.NUM ^cOptLastOutputRackIndex @@ ^iMIOnumIndex @@ +  ^nOutputDispNum @! 
+12 LINE.NUM THEN THEN 
+14 LINE.NUM ^iRefreshOutputs_Tmp @@ 0 = IF 
+1 15 LINE.NUM ^cMaxDispList @@ 1 -  1 + 0 DO? I ^iRefreshOutputs_Tmp @! 
+16 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iRefreshOutputs_Tmp @@ +  }doOutputs TABLE@ ^iRefreshOutputs_Tmp @@ }uoDispOutputTypes TABLE! 
+18 LINE.NUM 1 +LOOP 
+19 LINE.NUM 0 ^iRefreshOutputs_Tmp @! 
+20 LINE.NUM THEN 
+1 22 LINE.NUM ^cMaxDispList @@ 1 -  1 + 0 DO? I ^iRefreshOutputsDesc_Tmp @! 
+23 LINE.NUM ^iRefreshOutputsDesc_Tmp @@ }uoDispOutputTypes TABLE@ ^cMaxOutputs @@ >= IF 
+24 LINE.NUM 0 ^iRefreshOutputsDesc_Tmp @@ }uoDispOutputTypes TABLE! 
+25 LINE.NUM THEN 
+26 LINE.NUM ^iRefreshOutputsDesc_Tmp @@ }uoDispOutputTypes TABLE@  ABS {uoOutputDesc $TABLE@ ^iRefreshOutputsDesc_Tmp @@ {uoDispOutputListDesc $TABLE@  $MOVE 
+27 LINE.NUM 1 +LOOP 
+29 LINE.NUM 0 ^iRefreshOutputsDesc_Tmp @! 
+31 LINE.NUM 100  DELAY 
+13 JUMP ;
+: 100_5
+1 LINE.NUM ^iSaveOutputs_Tmp2 @@ 0 = IF 
+1 2 LINE.NUM ^cMaxDispList @@ 1 -  1 + 0 DO? I ^iSaveOutputs_Tmp2 @! 
+3 LINE.NUM ^iSaveOutputs_Tmp2 @@ }uoDispOutputTypes TABLE@ ^cMaxOutputs @@ <= IF 
+4 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  ^iSaveOutputs_Tmp @! 
+7 LINE.NUM ^iSaveOutputs_Tmp @@ }doOutputs TABLE@ CASE 
+8 LINE.NUM ^cOT_AlarmIndex @@ OF 
+9 LINE.NUM -1 ^tOutAlarmIndex @! 
+10 LINE.NUM ENDOF 
+11 LINE.NUM ^cOT_PumpIndex @@ OF 
+12 LINE.NUM -1 ^tOutPumpIndex @! 
+13 LINE.NUM ENDOF 
+14 LINE.NUM ^cOT_MixValveOpenIndex @@ OF 
+15 LINE.NUM -1 ^tOutMixValveOpenIndex @! 
+16 LINE.NUM ENDOF 
+17 LINE.NUM ^cOT_MixValveCloseIndex @@ OF 
+18 LINE.NUM -1 ^tOutMixValveCloseIndex @! 
+19 LINE.NUM ENDOF 
+20 LINE.NUM ^cOT_Injector1Index @@ OF 
+21 LINE.NUM -1 0 }tOutInjectorIndex TABLE! 
+22 LINE.NUM ENDOF 
+23 LINE.NUM ^cOT_Injector2Index @@ OF 
+24 LINE.NUM -1 1 }tOutInjectorIndex TABLE! 
+25 LINE.NUM ENDOF 
+26 LINE.NUM ^cOT_Injector3Index @@ OF 
+27 LINE.NUM -1 2 }tOutInjectorIndex TABLE! 
+28 LINE.NUM ENDOF 
+29 LINE.NUM ^cOT_Injector4Index @@ OF 
+30 LINE.NUM -1 3 }tOutInjectorIndex TABLE! 
+31 LINE.NUM ENDOF 
+32 LINE.NUM ^cOT_Injector5Index @@ OF 
+33 LINE.NUM -1 4 }tOutInjectorIndex TABLE! 
+34 LINE.NUM ENDOF 
+35 LINE.NUM ^cOT_Injector6Index @@ OF 
+36 LINE.NUM -1 5 }tOutInjectorIndex TABLE! 
+37 LINE.NUM ENDOF 
+38 LINE.NUM ^cOT_Injector7Index @@ OF 
+39 LINE.NUM -1 6 }tOutInjectorIndex TABLE! 
+40 LINE.NUM ENDOF 
+41 LINE.NUM ^cOT_Injector8Index @@ OF 
+42 LINE.NUM -1 7 }tOutInjectorIndex TABLE! 
+43 LINE.NUM ENDOF 
+44 LINE.NUM ^cOT_Injector9Index @@ OF 
+45 LINE.NUM -1 8 }tOutInjectorIndex TABLE! 
+46 LINE.NUM ENDOF 
+47 LINE.NUM ^cOT_Injector10Index @@ OF 
+48 LINE.NUM -1 9 }tOutInjectorIndex TABLE! 
+49 LINE.NUM ENDOF 
+50 LINE.NUM ^cOT_Injector11Index @@ OF 
+51 LINE.NUM -1 10 }tOutInjectorIndex TABLE! 
+52 LINE.NUM ENDOF 
+53 LINE.NUM ^cOT_Injector12Index @@ OF 
+54 LINE.NUM -1 11 }tOutInjectorIndex TABLE! 
+55 LINE.NUM ENDOF 
+56 LINE.NUM ^cOT_Auxiliary1Index @@ OF 
+57 LINE.NUM -1 0 }tOutAuxiliaryIndex TABLE! 
+58 LINE.NUM ENDOF 
+59 LINE.NUM ^cOT_Auxiliary2Index @@ OF 
+60 LINE.NUM -1 1 }tOutAuxiliaryIndex TABLE! 
+61 LINE.NUM ENDOF 
+62 LINE.NUM ^cOT_Auxiliary3Index @@ OF 
+63 LINE.NUM -1 2 }tOutAuxiliaryIndex TABLE! 
+64 LINE.NUM ENDOF 
+65 LINE.NUM ^cOT_Auxiliary4Index @@ OF 
+66 LINE.NUM -1 3 }tOutAuxiliaryIndex TABLE! 
+67 LINE.NUM ENDOF 
+68 LINE.NUM ^cOT_Auxiliary5Index @@ OF 
+69 LINE.NUM -1 4 }tOutAuxiliaryIndex TABLE! 
+70 LINE.NUM ENDOF 
+71 LINE.NUM ^cOT_Auxiliary6Index @@ OF 
+72 LINE.NUM -1 5 }tOutAuxiliaryIndex TABLE! 
+73 LINE.NUM ENDOF 
+74 LINE.NUM ^cOT_Auxiliary7Index @@ OF 
+75 LINE.NUM -1 6 }tOutAuxiliaryIndex TABLE! 
+76 LINE.NUM ENDOF 
+77 LINE.NUM ^cOT_Auxiliary8Index @@ OF 
+78 LINE.NUM -1 7 }tOutAuxiliaryIndex TABLE! 
+79 LINE.NUM ENDOF 
+80 LINE.NUM ^cOT_Auxiliary9Index @@ OF 
+81 LINE.NUM -1 8 }tOutAuxiliaryIndex TABLE! 
+82 LINE.NUM ENDOF 
+83 LINE.NUM ^cOT_Auxiliary10Index @@ OF 
+84 LINE.NUM -1 9 }tOutAuxiliaryIndex TABLE! 
+85 LINE.NUM ENDOF 
+86 LINE.NUM ^cOT_Auxiliary11Index @@ OF 
+87 LINE.NUM -1 10 }tOutAuxiliaryIndex TABLE! 
+88 LINE.NUM ENDOF 
+89 LINE.NUM ^cOT_Auxiliary12Index @@ OF 
+90 LINE.NUM -1 11 }tOutAuxiliaryIndex TABLE! 
+91 LINE.NUM ENDOF 
+92 LINE.NUM ^cOT_Auxiliary13Index @@ OF 
+93 LINE.NUM -1 12 }tOutAuxiliaryIndex TABLE! 
+94 LINE.NUM ENDOF 
+95 LINE.NUM ^cOT_Auxiliary14Index @@ OF 
+96 LINE.NUM -1 13 }tOutAuxiliaryIndex TABLE! 
+97 LINE.NUM ENDOF 
+98 LINE.NUM ^cOT_Auxiliary15Index @@ OF 
+99 LINE.NUM -1 14 }tOutAuxiliaryIndex TABLE! 
+100 LINE.NUM ENDOF 
+101 LINE.NUM ^cOT_Auxiliary16Index @@ OF 
+102 LINE.NUM -1 15 }tOutAuxiliaryIndex TABLE! 
+103 LINE.NUM ENDOF 
+104 LINE.NUM ^cOT_Auxiliary17Index @@ OF 
+105 LINE.NUM -1 16 }tOutAuxiliaryIndex TABLE! 
+106 LINE.NUM ENDOF 
+107 LINE.NUM ^cOT_Auxiliary18Index @@ OF 
+108 LINE.NUM -1 17 }tOutAuxiliaryIndex TABLE! 
+109 LINE.NUM ENDOF 
+110 LINE.NUM ^cOT_Auxiliary19Index @@ OF 
+111 LINE.NUM -1 18 }tOutAuxiliaryIndex TABLE! 
+112 LINE.NUM ENDOF 
+113 LINE.NUM ^cOT_Auxiliary20Index @@ OF 
+114 LINE.NUM -1 19 }tOutAuxiliaryIndex TABLE! 
+115 LINE.NUM ENDOF 
+116 LINE.NUM ENDCASE 
+117 LINE.NUM THEN 
+118 LINE.NUM 1 +LOOP 
+1 120 LINE.NUM ^cMaxTimers @@ 1 -  1 + 0 DO? I ^iSaveOutputs_Tmp2 @! 
+121 LINE.NUM -1 ^iSaveOutputs_Tmp2 @@ }tOutCycleTimerIndex TABLE! 
+122 LINE.NUM 1 +LOOP 
+1 124 LINE.NUM ^cMaxValves @@ 1 -  1 + 0 DO? I ^iSaveOutputs_Tmp2 @! 
+125 LINE.NUM -1 ^iSaveOutputs_Tmp2 @@ }tOutValveIndex TABLE! 
+126 LINE.NUM 1 +LOOP 
+1 128 LINE.NUM ^cMaxDispList @@ 1 -  1 + 0 DO? I ^iSaveOutputs_Tmp2 @! 
+129 LINE.NUM ^iSaveOutputs_Tmp2 @@ }uoDispOutputTypes TABLE@ ^cMaxOutputs @@ <= IF 
+130 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  ^iSaveOutputs_Tmp @! 
+132 LINE.NUM ^iSaveOutputs_Tmp2 @@ }uoDispOutputTypes TABLE@ ^iSaveOutputs_Tmp @@ }doOutputs TABLE! 
+135 LINE.NUM ^iSaveOutputs_Tmp2 @@ }uoDispOutputTypes TABLE@ CASE 
+136 LINE.NUM ^cOT_AlarmIndex @@ OF 
+137 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  ^tOutAlarmIndex @! 
+138 LINE.NUM ENDOF 
+139 LINE.NUM ^cOT_PumpIndex @@ OF 
+140 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  ^tOutPumpIndex @! 
+141 LINE.NUM ENDOF 
+142 LINE.NUM ^cOT_Injector1Index @@ OF 
+143 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  0 }tOutInjectorIndex TABLE! 
+144 LINE.NUM ENDOF 
+145 LINE.NUM ^cOT_Injector2Index @@ OF 
+146 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  1 }tOutInjectorIndex TABLE! 
+147 LINE.NUM ENDOF 
+148 LINE.NUM ^cOT_Injector3Index @@ OF 
+149 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  2 }tOutInjectorIndex TABLE! 
+150 LINE.NUM ENDOF 
+151 LINE.NUM ^cOT_Injector4Index @@ OF 
+152 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  3 }tOutInjectorIndex TABLE! 
+153 LINE.NUM ENDOF 
+154 LINE.NUM ^cOT_Injector5Index @@ OF 
+155 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  4 }tOutInjectorIndex TABLE! 
+156 LINE.NUM ENDOF 
+157 LINE.NUM ^cOT_Injector6Index @@ OF 
+158 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  5 }tOutInjectorIndex TABLE! 
+159 LINE.NUM ENDOF 
+160 LINE.NUM ^cOT_Injector7Index @@ OF 
+161 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  6 }tOutInjectorIndex TABLE! 
+162 LINE.NUM ENDOF 
+163 LINE.NUM ^cOT_Injector8Index @@ OF 
+164 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  7 }tOutInjectorIndex TABLE! 
+165 LINE.NUM ENDOF 
+166 LINE.NUM ^cOT_Injector9Index @@ OF 
+167 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  8 }tOutInjectorIndex TABLE! 
+168 LINE.NUM ENDOF 
+169 LINE.NUM ^cOT_Injector10Index @@ OF 
+170 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  9 }tOutInjectorIndex TABLE! 
+171 LINE.NUM ENDOF 
+172 LINE.NUM ^cOT_Injector11Index @@ OF 
+173 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  10 }tOutInjectorIndex TABLE! 
+174 LINE.NUM ENDOF 
+175 LINE.NUM ^cOT_Injector12Index @@ OF 
+176 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  11 }tOutInjectorIndex TABLE! 
+177 LINE.NUM ENDOF 
+178 LINE.NUM ^cOT_MixValveOpenIndex @@ OF 
+179 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  ^tOutMixValveOpenIndex @! 
+180 LINE.NUM ENDOF 
+181 LINE.NUM ^cOT_MixValveCloseIndex @@ OF 
+182 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  ^tOutMixValveCloseIndex @! 
+183 LINE.NUM ENDOF 
+184 LINE.NUM ^cOT_Auxiliary1Index @@ OF 
+185 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  0 }tOutAuxiliaryIndex TABLE! 
+186 LINE.NUM ENDOF 
+187 LINE.NUM ^cOT_Auxiliary2Index @@ OF 
+188 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  1 }tOutAuxiliaryIndex TABLE! 
+189 LINE.NUM ENDOF 
+190 LINE.NUM ^cOT_Auxiliary3Index @@ OF 
+191 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  2 }tOutAuxiliaryIndex TABLE! 
+192 LINE.NUM ENDOF 
+193 LINE.NUM ^cOT_Auxiliary4Index @@ OF 
+194 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  3 }tOutAuxiliaryIndex TABLE! 
+195 LINE.NUM ENDOF 
+196 LINE.NUM ^cOT_Auxiliary5Index @@ OF 
+197 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  4 }tOutAuxiliaryIndex TABLE! 
+198 LINE.NUM ENDOF 
+199 LINE.NUM ^cOT_Auxiliary6Index @@ OF 
+200 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  5 }tOutAuxiliaryIndex TABLE! 
+201 LINE.NUM ENDOF 
+202 LINE.NUM ^cOT_Auxiliary7Index @@ OF 
+203 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  6 }tOutAuxiliaryIndex TABLE! 
+204 LINE.NUM ENDOF 
+205 LINE.NUM ^cOT_Auxiliary8Index @@ OF 
+206 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  7 }tOutAuxiliaryIndex TABLE! 
+207 LINE.NUM ENDOF 
+208 LINE.NUM ^cOT_Auxiliary9Index @@ OF 
+209 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  8 }tOutAuxiliaryIndex TABLE! 
+210 LINE.NUM ENDOF 
+211 LINE.NUM ^cOT_Auxiliary10Index @@ OF 
+212 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  9 }tOutAuxiliaryIndex TABLE! 
+213 LINE.NUM ENDOF 
+214 LINE.NUM ^cOT_Auxiliary11Index @@ OF 
+215 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  10 }tOutAuxiliaryIndex TABLE! 
+216 LINE.NUM ENDOF 
+217 LINE.NUM ^cOT_Auxiliary12Index @@ OF 
+218 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  11 }tOutAuxiliaryIndex TABLE! 
+219 LINE.NUM ENDOF 
+220 LINE.NUM ^cOT_Auxiliary13Index @@ OF 
+221 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  12 }tOutAuxiliaryIndex TABLE! 
+222 LINE.NUM ENDOF 
+223 LINE.NUM ^cOT_Auxiliary14Index @@ OF 
+224 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  13 }tOutAuxiliaryIndex TABLE! 
+225 LINE.NUM ENDOF 
+226 LINE.NUM ^cOT_Auxiliary15Index @@ OF 
+227 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  14 }tOutAuxiliaryIndex TABLE! 
+228 LINE.NUM ENDOF 
+229 LINE.NUM ^cOT_Auxiliary16Index @@ OF 
+230 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  15 }tOutAuxiliaryIndex TABLE! 
+231 LINE.NUM ENDOF 
+232 LINE.NUM ^cOT_Auxiliary17Index @@ OF 
+233 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  16 }tOutAuxiliaryIndex TABLE! 
+234 LINE.NUM ENDOF 
+235 LINE.NUM ^cOT_Auxiliary18Index @@ OF 
+236 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  17 }tOutAuxiliaryIndex TABLE! 
+237 LINE.NUM ENDOF 
+238 LINE.NUM ^cOT_Auxiliary19Index @@ OF 
+239 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  18 }tOutAuxiliaryIndex TABLE! 
+240 LINE.NUM ENDOF 
+241 LINE.NUM ^cOT_Auxiliary20Index @@ OF 
+242 LINE.NUM ^nOutputDispNum @@ ^cMaxDispList @@ *  ^iSaveOutputs_Tmp2 @@ +  19 }tOutAuxiliaryIndex TABLE! 
+243 LINE.NUM ENDOF 
+244 LINE.NUM ENDCASE 
+245 LINE.NUM THEN 
+246 LINE.NUM 1 +LOOP 
+248 LINE.NUM 0 ^iSaveOutputs_Tmp @! 
+1 249 LINE.NUM ^cMaxOutputs @@ 1 -  1 + 0 DO? I ^iSaveOutputs_Tmp2 @! 
+251 LINE.NUM ^iSaveOutputs_Tmp2 @@ }doOutputs TABLE@ ^cOT_ValveIndex @@ = IF 
+252 LINE.NUM ^iSaveOutputs_Tmp2 @@ ^iSaveOutputs_Tmp @@ }tOutValveIndex TABLE! 
+253 LINE.NUM ^iSaveOutputs_Tmp @@ 1 +  ^iSaveOutputs_Tmp @! 
+254 LINE.NUM THEN 
+255 LINE.NUM 1 +LOOP 
+258 LINE.NUM BEGIN ^iSaveOutputs_Tmp @@ ^cMaxValves @@ < WHILE 
+259 LINE.NUM -1 ^iSaveOutputs_Tmp @@ }tOutValveIndex TABLE! 
+260 LINE.NUM ^iSaveOutputs_Tmp @@ 1 +  ^iSaveOutputs_Tmp @! 
+261 LINE.NUM REPEAT 
+263 LINE.NUM 0 ^iSaveOutputs_Tmp @! 
+1 264 LINE.NUM ^cMaxOutputs @@ 1 -  1 + 0 DO? I ^iSaveOutputs_Tmp2 @! 
+266 LINE.NUM ^iSaveOutputs_Tmp2 @@ }doOutputs TABLE@ ^cOT_CycleTimerIndex @@ = IF 
+267 LINE.NUM ^iSaveOutputs_Tmp2 @@ ^iSaveOutputs_Tmp @@ }tOutCycleTimerIndex TABLE! 
+268 LINE.NUM ^iSaveOutputs_Tmp @@ 1 +  ^iSaveOutputs_Tmp @! 
+269 LINE.NUM THEN 
+270 LINE.NUM 1 +LOOP 
+273 LINE.NUM BEGIN ^iSaveOutputs_Tmp @@ ^cMaxTimers @@ < WHILE 
+274 LINE.NUM -1 ^iSaveOutputs_Tmp @@ }tOutCycleTimerIndex TABLE! 
+275 LINE.NUM ^iSaveOutputs_Tmp @@ 1 +  ^iSaveOutputs_Tmp @! 
+276 LINE.NUM REPEAT 
+278 LINE.NUM 0 ^iSaveOutputs_Tmp @! 
+1 279 LINE.NUM ^cMaxOutputs @@ 1 -  1 + 0 DO? I ^iSaveOutputs_Tmp2 @! 
+281 LINE.NUM ^iSaveOutputs_Tmp2 @@ }doOutputs TABLE@ ^cOT_TankIndex @@ = IF 
+282 LINE.NUM ^iSaveOutputs_Tmp2 @@ ^iSaveOutputs_Tmp @@ }tOutTankIndex TABLE! 
+283 LINE.NUM ^iSaveOutputs_Tmp @@ 1 +  ^iSaveOutputs_Tmp @! 
+284 LINE.NUM THEN 
+285 LINE.NUM 1 +LOOP 
+288 LINE.NUM BEGIN ^iSaveOutputs_Tmp @@ ^cMaxTanks @@ < WHILE 
+289 LINE.NUM -1 ^iSaveOutputs_Tmp @@ }tOutTankIndex TABLE! 
+290 LINE.NUM ^iSaveOutputs_Tmp @@ 1 +  ^iSaveOutputs_Tmp @! 
+291 LINE.NUM REPEAT 
+293 LINE.NUM 0 ^iSaveOutputs_Tmp2 @! 
+295 LINE.NUM 0 ^iSaveOutputs_Tmp @! 
+1 296 LINE.NUM ^cMaxOutputs @@ 1 -  1 + 0 DO? I ^iSaveOutputs_Tmp2 @! 
+298 LINE.NUM ^iSaveOutputs_Tmp2 @@ }doOutputs TABLE@ ^cOT_CustomIndex @@ = IF 
+299 LINE.NUM ^iSaveOutputs_Tmp2 @@ ^iSaveOutputs_Tmp @@ }tOutCustomIndex TABLE! 
+300 LINE.NUM ^iSaveOutputs_Tmp @@ 1 +  ^iSaveOutputs_Tmp @! 
+301 LINE.NUM THEN 
+302 LINE.NUM 1 +LOOP 
+305 LINE.NUM BEGIN ^iSaveOutputs_Tmp @@ ^cMaxCustoms @@ < WHILE 
+306 LINE.NUM -1 ^iSaveOutputs_Tmp @@ }tOutCustomIndex TABLE! 
+307 LINE.NUM ^iSaveOutputs_Tmp @@ 1 +  ^iSaveOutputs_Tmp @! 
+308 LINE.NUM REPEAT 
+310 LINE.NUM 0 ^iSaveOutputs_Tmp2 @! 
+312 LINE.NUM 0 ^iSaveOutputs_Tmp @! 
+1 313 LINE.NUM ^cMaxOutputs @@ 1 -  1 + 0 DO? I ^iSaveOutputs_Tmp2 @! 
+315 LINE.NUM ^iSaveOutputs_Tmp2 @@ }doOutputs TABLE@ ^cOT_InletValve1Index @@ = IF 
+316 LINE.NUM ^iSaveOutputs_Tmp2 @@ ^iSaveOutputs_Tmp @@ }tOutInletValve1Index TABLE! 
+317 LINE.NUM ^iSaveOutputs_Tmp @@ 1 +  ^iSaveOutputs_Tmp @! 
+318 LINE.NUM THEN 
+319 LINE.NUM 1 +LOOP 
+322 LINE.NUM BEGIN ^iSaveOutputs_Tmp @@ ^cMaxInletValve1 @@ < WHILE 
+323 LINE.NUM -1 ^iSaveOutputs_Tmp @@ }tOutInletValve1Index TABLE! 
+324 LINE.NUM ^iSaveOutputs_Tmp @@ 1 +  ^iSaveOutputs_Tmp @! 
+325 LINE.NUM REPEAT 
+327 LINE.NUM 0 ^iSaveOutputs_Tmp2 @! 
+329 LINE.NUM 0 ^iSaveOutputs_Tmp @! 
+1 330 LINE.NUM ^cMaxOutputs @@ 1 -  1 + 0 DO? I ^iSaveOutputs_Tmp2 @! 
+332 LINE.NUM ^iSaveOutputs_Tmp2 @@ }doOutputs TABLE@ ^cOT_InletValve2Index @@ = IF 
+333 LINE.NUM ^iSaveOutputs_Tmp2 @@ ^iSaveOutputs_Tmp @@ }tOutInletValve2Index TABLE! 
+334 LINE.NUM ^iSaveOutputs_Tmp @@ 1 +  ^iSaveOutputs_Tmp @! 
+335 LINE.NUM THEN 
+336 LINE.NUM 1 +LOOP 
+339 LINE.NUM BEGIN ^iSaveOutputs_Tmp @@ ^cMaxInletValve2 @@ < WHILE 
+340 LINE.NUM -1 ^iSaveOutputs_Tmp @@ }tOutInletValve2Index TABLE! 
+341 LINE.NUM ^iSaveOutputs_Tmp @@ 1 +  ^iSaveOutputs_Tmp @! 
+342 LINE.NUM REPEAT 
+344 LINE.NUM 0 ^iSaveOutputs_Tmp2 @! 
+346 LINE.NUM THEN 
+7 JUMP ;
+: 100_6
+1 LINE.NUM ^nOutputDispNum @@ 1 +  ^nOutputDispNum @! 
+4 LINE.NUM 0 ^iOutputListInc @! 
+6 LINE.NUM 100  DELAY 
+-3 JUMP ;
+: 100_7
+1 LINE.NUM ^nOutputDispNum @@ 1 -  ^nOutputDispNum @! 
+4 LINE.NUM 0 ^iOutputListDec @! 
+6 LINE.NUM 100  DELAY 
+-4 JUMP ;
+: 100_52
+
+1 LINE.NUM
+  500    DELAY
+0 JUMP ;
+: 100_54
+8 JUMP ;
+: 100_56
+1 LINE.NUM ^nOutputDispNum @@ ^cOptLastOutputRackIndex @@ ^iMIOnumIndex @@ +  > IF 
+2 LINE.NUM 0 ^nOutputDispNum @! 
+3 LINE.NUM ELSE 
+3 LINE.NUM ^nOutputDispNum @@ 0 < IF 
+4 LINE.NUM ^cOptLastOutputRackIndex @@ ^iMIOnumIndex @@ +  ^nOutputDispNum @! 
+5 LINE.NUM THEN THEN 
+1 7 LINE.NUM ^cMaxDispList @@ 1 -  1 + 0 DO? I ^iRefreshOutputsDesc_Tmp @! 
+8 LINE.NUM ^iRefreshOutputsDesc_Tmp @@ }uoDispOutputTypes TABLE@ ^cMaxOutputs @@ >= IF 
+9 LINE.NUM 0 ^iRefreshOutputsDesc_Tmp @@ }uoDispOutputTypes TABLE! 
+10 LINE.NUM THEN 
+11 LINE.NUM ^iRefreshOutputsDesc_Tmp @@ }uoDispOutputTypes TABLE@  ABS {uoOutputDesc $TABLE@ ^iRefreshOutputsDesc_Tmp @@ {uoDispOutputListDesc $TABLE@  $MOVE 
+12 LINE.NUM 1 +LOOP 
+14 LINE.NUM 0 ^iRefreshOutputsDesc_Tmp @! 
+3 JUMP ;
+: 100_65
+
+1 LINE.NUM
+  0  
+  ^iOutputListInc @!   
+
+2 LINE.NUM
+  0  
+  ^iOutputListDec @!   
+
+3 LINE.NUM
+  0  
+  ^iOutputListSave @!   
+
+4 LINE.NUM
+  0  
+  ^iOutputListCancel @!   
+3 JUMP ;
+: 100_83
+8 JUMP ;
+: 100_85
+
+1 LINE.NUM
+  0  
+  ^iOutputListSave @!   
+
+2 LINE.NUM
+  " Saved Successfully" 
+ 
+  *sSaveOutputList   $MOVE
+
+3 LINE.NUM
+  1000    DELAY
+-10 JUMP ;
+: 100_88
+
+1 LINE.NUM
+  " " 
+ 
+  *sSaveOutputList   $MOVE
+2 JUMP ;
+: 100_97
+1 LINE.NUM &Maintenance_Screen_Refresh  ?RUNNING IF 
+2 LINE.NUM &Maintenance_Screen_Refresh  STOP.T 
+3 LINE.NUM THEN 
+-12 JUMP ;
+: 100_102
+2 LINE.NUM 0 ^iOutputListInc @! 
+3 LINE.NUM 0 ^iOutputListDec @! 
+4 LINE.NUM 0 ^iOutputListSave @! 
+5 LINE.NUM 0 ^iOutputListCancel @! 
+7 LINE.NUM 0 ^nOutputDispNum @! 
+9 LINE.NUM " " 0 ^cMaxDispList @@ 1 -  {uoDispOutputListDesc  Init$Table 
+-5 JUMP ;
+: 100_8
+TRUE
+
+1 LINE.NUM
+  ^iOutputListSave @@ 
+  1    =
+LAND
+IF -13 ELSE 2 THEN JUMP ;
+: 100_11
+TRUE
+
+1 LINE.NUM
+  ^iOutputListInc @@ 
+  1    =
+LAND
+IF -13 ELSE 0 THEN JUMP ;
+: 100_12
+TRUE
+
+1 LINE.NUM
+  ^iOutputListDec @@ 
+  1    =
+LAND
+IF -13 ELSE -10 THEN JUMP ;
+: 100_78
+TRUE
+
+1 LINE.NUM
+  ^iOutputListCancel @@ 
+  1    =
+LAND
+IF -5 ELSE -13 THEN JUMP ;
+T: T100
+DUMMY
+100_0
+100_3
+100_5
+100_6
+100_7
+100_52
+100_54
+100_56
+100_65
+100_83
+100_85
+100_88
+100_97
+100_102
+100_8
+100_11
+100_12
+100_78
+T;
+&OutputList ' T100 SETTASK

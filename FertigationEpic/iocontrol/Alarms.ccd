@@ -1,0 +1,254 @@
+: 1_0
+9 JUMP ;
+: 1_2
+
+1 LINE.NUM
+  &Clear_Outputs   CALL.T
+  ^iChartStatus_Tmp @! 
+
+2 LINE.NUM
+  -1  
+  ^nRunGroupIndex @!   
+
+3 LINE.NUM
+  " " 
+ 
+  *uoDispValveNum   $MOVE
+
+4 LINE.NUM
+  -1  
+  ^nRunValveIndex @!   
+
+5 LINE.NUM
+  -1  
+  ^nRunRecipeIndex @!   
+
+6 LINE.NUM
+  -1  
+  ^nRunProgramIndex @!   
+
+7 LINE.NUM
+  " " 
+ 
+  *uoRunGroupName   $MOVE
+
+8 LINE.NUM
+  " " 
+ 
+  *uoRunProgramName   $MOVE
+
+9 LINE.NUM
+  " " 
+ 
+  *uoLogTrigger   $MOVE
+
+10 LINE.NUM
+  ^dtValveTimer   StopTimer
+
+11 LINE.NUM
+  ^utTotalTime   StopTimer
+
+12 LINE.NUM
+  0  
+  ^bInProgress @!   
+
+13 LINE.NUM
+  " " 
+ 
+  *uoRunRecipeName   $MOVE
+
+14 LINE.NUM
+  -1  
+  ^iRunProgramIndex @!   
+6 JUMP ;
+: 1_3
+
+1 LINE.NUM
+  0  
+  ^uiEStop @!   
+
+2 LINE.NUM
+  0  
+  ^uoState @!   
+
+3 LINE.NUM
+  &Main   STOP.T
+
+4 LINE.NUM
+  &RunGroup   STOP.T
+
+5 LINE.NUM
+  &MixingValve   STOP.T
+
+6 LINE.NUM
+  &PumpIt   STOP.T
+
+7 LINE.NUM
+  &TestFlow   STOP.T
+-2 JUMP ;
+: 1_28
+-4 JUMP ;
+: 1_50
+
+1 LINE.NUM
+  1.0    FDELAY
+1 JUMP ;
+: 1_53
+
+1 LINE.NUM
+  1.0    FDELAY
+1 JUMP ;
+: 1_93
+1 LINE.NUM *Time_String  TIME>$ 
+2 LINE.NUM *Date_String  0 DATE>$ 
+4 LINE.NUM *_HSV_SEMA Acquire1String *Date_String  *_HSV_TEMP $MOVE "  "  *_HSV_TEMP $CAT *Time_String  *_HSV_TEMP $CAT *_HSV_TEMP *Date_and_Time $MOVE Release1String 
+7 LINE.NUM  TIME@ -ROT DROP DROP ^iCurrentHour @! 
+8 LINE.NUM  TIME@ DROP SWAP DROP I>F  ^fCurrentMinutes @! 
+9 LINE.NUM ^iCurrentHour @@F ^fCurrentMinutes @@ 100 I>F F/ F+ ^fCurrentTime @! 
+10 LINE.NUM  DATE@ DROP DROP ^iCurrentYear @! 
+12 LINE.NUM ^iCurrentYear @@ 2020 - I>F 3.65250000e+002 F*  GetJulianDay I>F  F+ ^iCurrentDay F@! 
+3 JUMP ;
+: 1_96
+1 LINE.NUM *Time_String  TIME>$ 
+2 LINE.NUM *Date_String  0 DATE>$ 
+4 LINE.NUM *_HSV_SEMA Acquire1String *Date_String  *_HSV_TEMP $MOVE "  "  *_HSV_TEMP $CAT *Time_String  *_HSV_TEMP $CAT *_HSV_TEMP *Date_and_Time $MOVE Release1String 
+7 LINE.NUM  TIME@ -ROT DROP DROP ^iCurrentHour @! 
+8 LINE.NUM  TIME@ DROP SWAP DROP I>F  ^fCurrentMinutes @! 
+9 LINE.NUM ^iCurrentHour @@F ^fCurrentMinutes @@ 100 I>F F/ F+ ^fCurrentTime @! 
+10 LINE.NUM  DATE@ DROP DROP ^iCurrentYear @! 
+11 LINE.NUM ^iCurrentYear @@ 2020 - I>F 3.65250000e+002 F*  GetJulianDay I>F  F+ ^iCurrentDay F@! 
+3 JUMP ;
+: 1_99
+2 LINE.NUM 0 ^uoLowFlowAlarm @! 
+3 LINE.NUM 0 ^uoHighFlowAlarm @! 
+4 LINE.NUM 0 ^uoFlowAlarm @! 
+5 LINE.NUM 0 ^bFlowHighAlarm @! 
+6 LINE.NUM 0 ^bFlowLowAlarm @! 
+8 LINE.NUM 0 ^uoLowECOutAlarm @! 
+9 LINE.NUM 0 ^uoLowECOutAlarm @! 
+10 LINE.NUM 0 ^uoECOutAlarm @! 
+11 LINE.NUM 0 ^bECOUTHighAlarm @! 
+12 LINE.NUM 0 ^bECOUTLowAlarm @! 
+14 LINE.NUM 0 ^uoLowpHAlarm @! 
+15 LINE.NUM 0 ^uoHighpHAlarm @! 
+16 LINE.NUM 0 ^uoPHAlarm @! 
+17 LINE.NUM 0 ^bpHHighAlarm @! 
+18 LINE.NUM 0 ^bpHLowAlarm @! 
+21 LINE.NUM 0 ^uoLowECInAlarm @! 
+22 LINE.NUM 0 ^uoHighECInAlarm @! 
+23 LINE.NUM 0 ^uoECInAlarm @! 
+24 LINE.NUM 0 ^bECINHighAlarm @! 
+25 LINE.NUM 0 ^bECINLowAlarm @! 
+27 LINE.NUM 0 ^uoLowTempAlarm @! 
+28 LINE.NUM 0 ^uoHighTempAlarm @! 
+29 LINE.NUM 0 ^uoTemperatureAlarm @! 
+30 LINE.NUM 0 ^bTempHighAlarm @! 
+31 LINE.NUM 0 ^bTempLowAlarm @! 
+33 LINE.NUM 0 ^uoLowPressureAlarm @! 
+34 LINE.NUM 0 ^uoHighPressureAlarm @! 
+35 LINE.NUM 0 ^uoPressureAlarm @! 
+36 LINE.NUM 0 ^bPressureHighAlarm @! 
+37 LINE.NUM 0 ^bPressureLowAlarm @! 
+39 LINE.NUM 0 ^iAlarmSilence @! 
+41 LINE.NUM 0 ^uoPulseRateAlarm @! 
+1 44 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^iAlarmChart_Tmp @! 
+45 LINE.NUM 0 ^iAlarmChart_Tmp @@ }nInjectorPulseCount TABLE! 
+46 LINE.NUM 0 I>F ^iAlarmChart_Tmp @@ }fInjectorTimer TABLE! 
+47 LINE.NUM 0 I>F ^iAlarmChart_Tmp @@ }uoPulseRate TABLE! 
+48 LINE.NUM 0 ^iAlarmChart_Tmp @@ }nStartInjectorTimer TABLE! 
+49 LINE.NUM 1 +LOOP 
+2 JUMP ;
+: 1_110
+
+1 LINE.NUM
+  0  
+  ^uiStart @!   
+
+2 LINE.NUM
+  1  
+  ^uoState @!   
+
+3 LINE.NUM
+  0  
+  ^uoLowAlarm @!   
+
+4 LINE.NUM
+  0  
+  ^uoHighAlarm @!   
+
+5 LINE.NUM
+  0  
+  ^uoMoisterAlarm @!   
+
+6 LINE.NUM
+  &Alarms   START.T
+  ^iChartStatus_Tmp @! 
+
+7 LINE.NUM
+  &InputSensor_Tracker   START.T
+  ^iChartStatus_Tmp @! 
+
+8 LINE.NUM
+  &TankLevel_Tracker   START.T
+  ^iChartStatus_Tmp @! 
+
+9 LINE.NUM
+  &Timers   START.T
+  ^iChartStatus_Tmp @! 
+
+10 LINE.NUM
+  &Flow_Tracker   START.T
+  ^iChartStatus_Tmp @! 
+
+11 LINE.NUM
+  &Refresh_XBEE   START.T
+  ^iChartStatus_Tmp @! 
+
+12 LINE.NUM
+  &Main   START.T
+  ^iChartStatus_Tmp @! 
+
+13 LINE.NUM
+  &PPM_Tracker   START.T
+  ^iChartStatus_Tmp @! 
+
+14 LINE.NUM
+  &MMP_ScratchPad   START.T
+  ^iChartStatus_Tmp @! 
+
+15 LINE.NUM
+  &Agritech   START.T
+  ^iChartStatus_Tmp @! 
+-7 JUMP ;
+: 1_7
+FALSE
+
+1 LINE.NUM
+  ^uiEStop @@ 
+  0    <>
+LOR
+IF -9 ELSE -7 THEN JUMP ;
+: 1_21
+FALSE
+
+1 LINE.NUM
+  ^uiStart @@ 
+  0    <>
+LOR
+IF -3 ELSE -7 THEN JUMP ;
+T: T1
+DUMMY
+1_0
+1_2
+1_3
+1_28
+1_50
+1_53
+1_93
+1_96
+1_99
+1_110
+1_7
+1_21
+T;
+&Alarms ' T1 SETTASK

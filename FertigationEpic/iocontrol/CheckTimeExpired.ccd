@@ -1,0 +1,111 @@
+: 55_0
+0 JUMP ;
+: 55_1
+2 LINE.NUM 0 ^nTimeIntervalExpired @! 
+3 LINE.NUM ^nRunProgramIndex @@ 0 = IF 
+4 LINE.NUM ^dtTimeInterval_0  T0= IF 
+5 LINE.NUM 1 ^nTimeIntervalExpired @! 
+6 LINE.NUM THEN 
+7 LINE.NUM ELSE 
+7 LINE.NUM ^nRunProgramIndex @@ 1 = IF 
+8 LINE.NUM ^dtTimeInterval_1  T0= IF 
+9 LINE.NUM 1 ^nTimeIntervalExpired @! 
+10 LINE.NUM THEN 
+11 LINE.NUM ELSE 
+11 LINE.NUM ^nRunProgramIndex @@ 2 = IF 
+12 LINE.NUM ^dtTimeInterval_2  T0= IF 
+13 LINE.NUM 1 ^nTimeIntervalExpired @! 
+14 LINE.NUM THEN 
+15 LINE.NUM ELSE 
+15 LINE.NUM ^nRunProgramIndex @@ 3 = IF 
+16 LINE.NUM ^dtTimeInterval_3  T0= IF 
+17 LINE.NUM 1 ^nTimeIntervalExpired @! 
+18 LINE.NUM THEN 
+19 LINE.NUM ELSE 
+19 LINE.NUM ^nRunProgramIndex @@ 4 = IF 
+20 LINE.NUM ^dtTimeInterval_4  T0= IF 
+21 LINE.NUM 1 ^nTimeIntervalExpired @! 
+22 LINE.NUM THEN 
+23 LINE.NUM ELSE 
+23 LINE.NUM ^nRunProgramIndex @@ 5 = IF 
+24 LINE.NUM ^dtTimeInterval_5  T0= IF 
+25 LINE.NUM 1 ^nTimeIntervalExpired @! 
+26 LINE.NUM THEN 
+27 LINE.NUM ELSE 
+27 LINE.NUM ^nRunProgramIndex @@ 6 = IF 
+28 LINE.NUM ^dtTimeInterval_6  T0= IF 
+29 LINE.NUM 1 ^nTimeIntervalExpired @! 
+30 LINE.NUM THEN 
+31 LINE.NUM ELSE 
+31 LINE.NUM ^nRunProgramIndex @@ 7 = IF 
+32 LINE.NUM ^dtTimeInterval_7  T0= IF 
+33 LINE.NUM 1 ^nTimeIntervalExpired @! 
+34 LINE.NUM THEN 
+35 LINE.NUM ELSE 
+35 LINE.NUM ^nRunProgramIndex @@ 8 = IF 
+36 LINE.NUM ^dtTimeInterval_8  T0= IF 
+37 LINE.NUM 1 ^nTimeIntervalExpired @! 
+38 LINE.NUM THEN 
+39 LINE.NUM ELSE 
+39 LINE.NUM ^nRunProgramIndex @@ 9 = IF 
+40 LINE.NUM ^dtTimeInterval_9  T0= IF 
+41 LINE.NUM 1 ^nTimeIntervalExpired @! 
+42 LINE.NUM THEN 
+43 LINE.NUM ELSE 
+43 LINE.NUM ^nRunProgramIndex @@ 10 = IF 
+44 LINE.NUM ^dtTimeInterval_10  T0= IF 
+45 LINE.NUM 1 ^nTimeIntervalExpired @! 
+46 LINE.NUM THEN 
+47 LINE.NUM ELSE 
+47 LINE.NUM ^nRunProgramIndex @@ 11 = IF 
+48 LINE.NUM ^dtTimeInterval_11  T0= IF 
+49 LINE.NUM 1 ^nTimeIntervalExpired @! 
+50 LINE.NUM THEN 
+51 LINE.NUM ELSE 
+51 LINE.NUM ^nRunProgramIndex @@ 12 = IF 
+52 LINE.NUM ^dtTimeInterval_12  T0= IF 
+53 LINE.NUM 1 ^nTimeIntervalExpired @! 
+54 LINE.NUM THEN 
+55 LINE.NUM ELSE 
+55 LINE.NUM ^nRunProgramIndex @@ 13 = IF 
+56 LINE.NUM ^dtTimeInterval_13  T0= IF 
+57 LINE.NUM 1 ^nTimeIntervalExpired @! 
+58 LINE.NUM THEN 
+59 LINE.NUM ELSE 
+59 LINE.NUM ^nRunProgramIndex @@ 14 = IF 
+60 LINE.NUM ^dtTimeInterval_14  T0= IF 
+61 LINE.NUM 1 ^nTimeIntervalExpired @! 
+62 LINE.NUM THEN 
+63 LINE.NUM ELSE 
+63 LINE.NUM ^nRunProgramIndex @@ 15 = IF 
+64 LINE.NUM ^dtTimeInterval_15  T0= IF 
+65 LINE.NUM 1 ^nTimeIntervalExpired @! 
+66 LINE.NUM THEN 
+67 LINE.NUM ELSE 
+67 LINE.NUM ^nRunProgramIndex @@ 16 = IF 
+68 LINE.NUM ^dtTimeInterval_16  T0= IF 
+69 LINE.NUM 1 ^nTimeIntervalExpired @! 
+70 LINE.NUM THEN 
+71 LINE.NUM ELSE 
+71 LINE.NUM ^nRunProgramIndex @@ 17 = IF 
+72 LINE.NUM ^dtTimeInterval_17  T0= IF 
+73 LINE.NUM 1 ^nTimeIntervalExpired @! 
+74 LINE.NUM THEN 
+75 LINE.NUM ELSE 
+75 LINE.NUM ^nRunProgramIndex @@ 18 = IF 
+76 LINE.NUM ^dtTimeInterval_18  T0= IF 
+77 LINE.NUM 1 ^nTimeIntervalExpired @! 
+78 LINE.NUM THEN 
+79 LINE.NUM ELSE 
+79 LINE.NUM ^nRunProgramIndex @@ 19 = IF 
+80 LINE.NUM ^dtTimeInterval_19  T0= IF 
+81 LINE.NUM 1 ^nTimeIntervalExpired @! 
+82 LINE.NUM THEN 
+83 LINE.NUM THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN 
+0 JUMP ;
+T: T55
+DUMMY
+55_0
+55_1
+T;
+&CheckTimeExpired ' T55 SETTASK

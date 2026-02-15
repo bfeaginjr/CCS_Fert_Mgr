@@ -1,0 +1,42 @@
+: 63_0
+1 JUMP ;
+: 63_9
+
+1 LINE.NUM
+  1000    DELAY
+0 JUMP ;
+: 63_11
+6 LINE.NUM ^iFlowTotalizerResetOnOff @@ 1 = IF 
+7 LINE.NUM ^iFlowResetPressed @@ 1 = IF 
+1 8 LINE.NUM 99 1 + 0 DO? I ^nFlowResetIndex @! 
+9 LINE.NUM ^nFlowResetIndex @@ }iFlowTotalizerReset TABLE@ 1 = IF 
+10 LINE.NUM ^nFlowResetIndex @@ }fLitersTotal TABLE@ ^nFlowResetIndex @@ }fLitersTotal_Yesterday TABLE! 
+11 LINE.NUM 0 I>F ^nFlowResetIndex @@ }fLitersTotal TABLE! 
+12 LINE.NUM 0 ^nFlowResetIndex @@ }iFlowTotalizerReset TABLE! 
+13 LINE.NUM THEN 
+14 LINE.NUM 1 +LOOP 
+15 LINE.NUM 0 ^iFlowResetPressed @! 
+16 LINE.NUM THEN 
+17 LINE.NUM THEN 
+19 LINE.NUM ^nTemp_JulianDay @@  GetJulianDay <> IF 
+21 LINE.NUM ^fLitersGrandTotal @@ ^fLitersGrandTotal_Yesterday @! 
+23 LINE.NUM 0 I>F ^fLitersGrandTotal @! 
+26 LINE.NUM }fInjectorVolumeTotalizer 0 }fInjectorVolumeTotalizer_Yesterday 0 12  CopyTable  
+27 LINE.NUM 0 I>F 0 11 }fInjectorVolumeTotalizer  InitTable 
+32 LINE.NUM }nInjectorPulseCountTotalizer 0 }nInjectorPulseCountTotalizer_Yesterday 0 12  CopyTable  
+33 LINE.NUM 0 0 11 }nInjectorPulseCountTotalizer  InitTable 
+35 LINE.NUM ^iFlowTotalizerResetOnOff @@ 0 = IF 
+36 LINE.NUM }fLitersTotal 0 }fLitersTotal_Yesterday 0 100  CopyTable  
+38 LINE.NUM 0 I>F 0 99 }fLitersTotal  InitTable 
+40 LINE.NUM THEN 
+42 LINE.NUM  GetJulianDay ^nTemp_JulianDay @! 
+44 LINE.NUM THEN 
+47 LINE.NUM 0 ^nFlowResetIndex @! 
+-2 JUMP ;
+T: T63
+DUMMY
+63_0
+63_9
+63_11
+T;
+&Flow_Tracker ' T63 SETTASK

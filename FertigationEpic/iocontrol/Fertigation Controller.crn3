@@ -1,0 +1,2541 @@
+CREATE T.ARRAY
+&Agritech ,
+&Alarms ,
+&Auxiliary ,
+&CheckTimeExpired ,
+&Clear_Outputs ,
+&Flow_Tracker ,
+&InputSensor_Tracker ,
+&Main ,
+&Maintenance_Screen_Refresh ,
+&ManualProgramStart ,
+&MixingValve ,
+&MixingValve_Settings ,
+&MMP_ScratchPad ,
+&OutputList ,
+&Powerup ,
+&PPM_Tracker ,
+&PumpIt ,
+&Queue_Program ,
+&Recipe ,
+&Recipe_Definition ,
+&Refresh_XBEE ,
+&RunGroup ,
+&Schedule ,
+&TankLevel_Tracker ,
+&TestFlow ,
+&TimerContinue ,
+&TimerPause ,
+&TimerRestart ,
+&Timers ,
+&Timers_Setup ,
+&ValveGroup ,
+&ValveGroup_Definition ,
+&XBEE_AssignNode ,
+&XBEE_ClearUnassigned ,
+&XBEE_RemoveNode ,
+ 0 ,
+CREATE V.ARRAY
+^AllowTagUploadsForThisStrategy ,
+^bAutomated_FirstPass ,
+^bBitMask1 ,
+^bBitMask2 ,
+^bBoardLayout1 ,
+^bBoardLayout2 ,
+^bConverted_Solar ,
+^bECINHighAlarm ,
+^bECINLowAlarm ,
+^bECOUTHighAlarm ,
+^bECOUTLowAlarm ,
+^bFlowHighAlarm ,
+^bFlowLowAlarm ,
+^bInProgress ,
+^bMain_CheckTriggers ,
+^bpHHighAlarm ,
+^bpHLowAlarm ,
+^bPressureHighAlarm ,
+^bPressureLowAlarm ,
+^bPressureShutDown ,
+^bProportional_Program_Recipe ,
+^bTempHighAlarm ,
+^bTempLowAlarm ,
+^cDefaultValveTime ,
+^cFlowTimerInterval ,
+^cMaxAGZones ,
+^cMaxAuxiliaries ,
+^cMaxCustoms ,
+^cMaxDispList ,
+^cMaxErrorCheck ,
+^cMaxExternalStarts ,
+^cMaxExtQueueTrigger ,
+^cMaxGS3_Nodes ,
+^cMaxInjectors ,
+^cMaxInletValve1 ,
+^cMaxInletValve2 ,
+^cMaxLibraryMixes ,
+^cMaxNutrients ,
+^cMaxNutritions ,
+^cMaxOutputRacks ,
+^cMaxOutputs ,
+^cMaxPrograms ,
+^cMaxRecipes ,
+^cMaxTankQueueTrigger ,
+^cMaxTanks ,
+^cMaxTimers ,
+^cMaxValveGroups ,
+^cMaxValveIndex ,
+^cMaxValves ,
+^cMaxZoneDateVariables ,
+^cMaxZones ,
+^cNAN ,
+^cOptAECHighAlarmIndex ,
+^cOptAECLowAlarmIndex ,
+^cOptAECmAMaxIndex ,
+^cOptAECmAMinIndex ,
+^cOptAECvalMaxIndex ,
+^cOptAECvalMinIndex ,
+^cOptAlarmCheckDelayIndex ,
+^cOptAPHmAMaxIndex ,
+^cOptAPHmAMinIndex ,
+^cOptAPHvalMaxIndex ,
+^cOptAPHvalMinIndex ,
+^cOptAutomatedControlDelayIndex ,
+^cOptAutomatedProportionalDelay ,
+^cOptDefaultValveTimeIndex ,
+^cOptECAlarmDelayIndex ,
+^cOptECHighAlarmIndex ,
+^cOptECLowAlarmIndex ,
+^cOptECmAMaxIndex ,
+^cOptECmAMinIndex ,
+^cOptECvalMaxIndex ,
+^cOptECvalMinIndex ,
+^cOptExternalDelayIndex ,
+^cOptFlowAlarmDelayIndex ,
+^cOptFlowSPIndex ,
+^cOptInjectorOffTime ,
+^cOptInjectorOnTime ,
+^cOptInjectorSPFlowRate ,
+^cOptKFactorIndex ,
+^cOptLastOutputRackIndex ,
+^cOptMixECDeadbandIndex ,
+^cOptMixECTargetIndex ,
+^cOptMixValveAdjustIndex ,
+^cOptMixValveDelayIndex ,
+^cOptMixValveTimeIndex ,
+^cOptPHAlarmDelayIndex ,
+^cOptPHHighAlarmIndex ,
+^cOptpHInSolarToggle ,
+^cOptPHLowAlarmIndex ,
+^cOptPHmAMaxIndex ,
+^cOptPHmaMinIndex ,
+^cOptPHvalMaxIndex ,
+^cOptPHvalMinIndex ,
+^cOptPressureAlarmDelayIndex ,
+^cOptPressureExtDelayIndex ,
+^cOptPressureExtSPIndex ,
+^cOptPressureHighAlarmIndex ,
+^cOptPressureLowAlarmIndex ,
+^cOptPressuremAMaxIndex ,
+^cOptPressuremAMinIndex ,
+^cOptPressurevalMaxIndex ,
+^cOptPressurevalMinIndex ,
+^cOptPumpDelayIndex ,
+^cOptSolarCalibrationMultiplier ,
+^cOptSolarCalOhmsIndex ,
+^cOptSolarIntervalIndex ,
+^cOptTempAlarmDelayIndex ,
+^cOptTempHighAlarmIndex ,
+^cOptTempLowAlarmIndex ,
+^cOptTEMPmAMaxIndex ,
+^cOptTEMPmAMinIndex ,
+^cOptTEMPvalMaxIndex ,
+^cOptTEMPvalMinIndex ,
+^cOptUseMixValveIndex ,
+^cOptWaterHighAlarmIndex ,
+^cOptWaterLowAlarmIndex ,
+^cOptWaterSensormAMaxIndex ,
+^cOptWaterSensormAMinIndex ,
+^cOptWaterSensorvalMaxIndex ,
+^cOptWaterSensorvalMinIndex ,
+^cOptWMvalMaxIndex ,
+^cOT_AlarmIndex ,
+^cOT_Auxiliary10Index ,
+^cOT_Auxiliary11Index ,
+^cOT_Auxiliary12Index ,
+^cOT_Auxiliary13Index ,
+^cOT_Auxiliary14Index ,
+^cOT_Auxiliary15Index ,
+^cOT_Auxiliary16Index ,
+^cOT_Auxiliary17Index ,
+^cOT_Auxiliary18Index ,
+^cOT_Auxiliary19Index ,
+^cOT_Auxiliary1Index ,
+^cOT_Auxiliary20Index ,
+^cOT_Auxiliary2Index ,
+^cOT_Auxiliary3Index ,
+^cOT_Auxiliary4Index ,
+^cOT_Auxiliary5Index ,
+^cOT_Auxiliary6Index ,
+^cOT_Auxiliary7Index ,
+^cOT_Auxiliary8Index ,
+^cOT_Auxiliary9Index ,
+^cOT_CustomIndex ,
+^cOT_CycleTimerIndex ,
+^cOT_Injector10Index ,
+^cOT_Injector11Index ,
+^cOT_Injector12Index ,
+^cOT_Injector1Index ,
+^cOT_Injector2Index ,
+^cOT_Injector3Index ,
+^cOT_Injector4Index ,
+^cOT_Injector5Index ,
+^cOT_Injector6Index ,
+^cOT_Injector7Index ,
+^cOT_Injector8Index ,
+^cOT_Injector9Index ,
+^cOT_InletValve1Index ,
+^cOT_InletValve2Index ,
+^cOT_MixValveCloseIndex ,
+^cOT_MixValveOpenIndex ,
+^cOT_PumpIndex ,
+^cOT_TankIndex ,
+^cOT_ValveIndex ,
+^cPD_ZD_StartDateNdx ,
+^cPD_ZD_StopDateNdx ,
+^cPF_pHControlIndex_NOTUSED ,
+^cPF_ProportionalIndex_NOTUSED ,
+^cTempScale ,
+^cTT_Auxillary ,
+^cTT_External ,
+^cTT_Manual ,
+^cTT_Moister ,
+^cTT_Solar ,
+^cTT_Testing ,
+^cTT_Timer ,
+^cTT_Tuning ,
+^cVersion_Build ,
+^cVersion_Major ,
+^cWindowErrorMessage ,
+^cWindowGroupDefinition ,
+^cWindowInjectorDefinition ,
+^cWindowNutritionInfromation ,
+^cWindowProgramDefinition ,
+^fAEcPerMaConstant ,
+^fAlarmCheckDelay ,
+^fAPHPerMaConstant ,
+^fAuxEC ,
+^fAuxEC_tmp ,
+^fAuxPH ,
+^fAuxPH_tmp ,
+^fCurrentEC ,
+^fCurrentEC_tmp ,
+^fCurrentMinutes ,
+^fCurrentMixValveTime ,
+^fCurrentPH ,
+^fCurrentPH_tmp ,
+^fCurrentPHRef_tmp ,
+^fCurrentPRESSURE_Ext ,
+^fCurrentPRESSURE_Int ,
+^fCurrentPressureExt_Tmp ,
+^fCurrentPressureInt_Tmp ,
+^fCurrentSolarValue ,
+^fCurrentSolarValue_tmp ,
+^fCurrentTankLevel ,
+^fCurrentTEMP ,
+^fCurrentTEMP_tmp ,
+^fCurrentTime ,
+^fDispSolarAccum ,
+^fEcPerMaConstant ,
+^fEditLibrarySolubRatio ,
+^fEditLibrarySoluteAmt ,
+^fEditLibraryTankSize ,
+^fFlowRate ,
+^fFlowRateOffset ,
+^fFlowRateTmp ,
+^fGrandTotal_ppm ,
+^FIFO ,
+^fLastLiters ,
+^fLiterCount ,
+^fLitersGrandTotal ,
+^fLitersGrandTotal_Yesterday ,
+^fLitersPerPulse ,
+^fMain_WC1 ,
+^fMain_WC2 ,
+^fMain_WC3 ,
+^fMain_WC_Factor ,
+^fMixingTankSize ,
+^fMixingValve_Tmp ,
+^fMixValveCloseTmp ,
+^fMixValveOpenTmp ,
+^fMixValveTimePercentage ,
+^fNCD_Battery ,
+^fNCD_EC1 ,
+^fNCD_EC2 ,
+^fNCD_EC3 ,
+^fNCD_Moisture1 ,
+^fNCD_Moisture2 ,
+^fNCD_Moisture3 ,
+^fNCD_Temperature1 ,
+^fNCD_Temperature2 ,
+^fNCD_Temperature3 ,
+^found ,
+^fPHPerMaConstant ,
+^fppm_temp1 ,
+^fPRESSUREPerMaConstant ,
+^fPumpDelay ,
+^fPumpIt_MaxPulsesPerMIn ,
+^fPumpIt_Tmp ,
+^fPumpIt_Tmp2 ,
+^fPumpIt_TmpAuto ,
+^fRecipeFlowRateDisplay ,
+^fRefXBEE_Time ,
+^fRefXBEE_Tmp ,
+^fRefXBEE_WC1 ,
+^fRefXBEE_WC2 ,
+^fRefXBEE_WC3 ,
+^fSolar1mVWatts ,
+^fSolarAccumulator ,
+^fStartEditProgram_Temp1 ,
+^fStartEditProgram_Temp2 ,
+^fTank5_CalculatedVolume ,
+^fTank5_Capacity ,
+^fTank6_CalculatedVolume ,
+^fTank6_Capacity ,
+^fTank7_CalculatedVolume ,
+^fTank7_Capacity ,
+^fTank8_CalculatedVolume ,
+^fTank8_Capacity ,
+^fTankLevelSensors_HTConstant ,
+^fTargetPHRef_tmp ,
+^fTEMPPerMaConstant ,
+^fTimers_Temp ,
+^fTimers_Time ,
+^fTotalSolarAccum ,
+^fTuneValveTimer ,
+^fTuneValveVolume ,
+^fValveMultiplier ,
+^fValvePositionClose ,
+^fValvePositionOpen ,
+^fValveVolumeCheck ,
+^fWaterPressureExtOffset ,
+^fWaterPressureIntOffset ,
+^fWaterSensorPerMaConstant ,
+^fWMPerMaConstant ,
+^i ,
+^i1 ,
+^i2 ,
+^iAG_Tmp ,
+^iAG_Tmp1 ,
+^iAgritechOnOff ,
+^iAGZoneNum ,
+^iAlarmChart_Tmp ,
+^iAlarmSilence ,
+^iAuxiliaryClose ,
+^iBatchTankCirulation ,
+^iCancelNutrientLibrary ,
+^iChartStatus_Tmp ,
+^iClearAllEditProgram ,
+^iCloseEditProgram ,
+^iCloseMixingValve ,
+^iCloseTimers ,
+^iCollectionTankPump ,
+^iCurrentDay ,
+^iCurrentHour ,
+^iCurrentYear ,
+^iEditNutrientLibrary ,
+^iEditProgramError ,
+^iEditWaterAnalysis ,
+^iFlowResetPressed ,
+^iFlowScale ,
+^iFlowTotalizerResetOnOff ,
+^iFlowTrack_Tmp ,
+^iGroupClose ,
+^iIndex_NCD_Data_To_Hex ,
+^iLastCollectionTankPump ,
+^iLastLeachateTankReturn ,
+^iLeachateTankReturnValve ,
+^iLeachateTankSupplyValve ,
+^iLeapYear ,
+^iMain_MoistureAlarm ,
+^iMain_Tmp ,
+^iMainPumpStatus ,
+^iMainValveGroup ,
+^iMIOnumIndex ,
+^iMixingValve_Tmp ,
+^iMixingValve_Tmp2 ,
+^iMixingValve_Tmp3 ,
+^iMixingValve_Tmp_DB ,
+^iMixingValve_Tmp_SP ,
+^iMixingValveClose ,
+^iMixingValveOff ,
+^iMixingValveOpen ,
+^iNCD_Data_Byte0 ,
+^iNCD_Data_Byte1 ,
+^iNCD_Data_Byte2 ,
+^iNCD_Data_Byte3 ,
+^iNCD_Table_Status ,
+^index ,
+^iOutputListCancel ,
+^iOutputListDec ,
+^iOutputListInc ,
+^iOutputListSave ,
+^iPower_Tmp ,
+^iPower_Tmp2 ,
+^iPPM_Enable ,
+^iPPM_LIVE ,
+^iPressureToggle ,
+^iProgramAuxiliary ,
+^iProgramGroup ,
+^iProgramGroupEdit ,
+^iProgramRecipe ,
+^iProgramRecipeEdit ,
+^iPumpIt_PulseRatesAllAtMax_EC ,
+^iPumpIt_PulseRatesAllAtMax_pH ,
+^iPumpIt_Tmp ,
+^iPumpIt_Tmp2 ,
+^iPureBlueOnOff ,
+^iQueue_front ,
+^iQueue_Rear ,
+^iQueueCount ,
+^iQueueExt_ProgIndex ,
+^iQueueProgram_Tmp ,
+^iQueueProgram_Tmp1 ,
+^iQueueProgram_Tmp2 ,
+^iRecipeClose ,
+^iRecipeDefinitionCancel ,
+^iRecipeDefinitionSave ,
+^iRecipeTankError ,
+^iRefProgZone_Tmp ,
+^iRefProgZone_Tmp2 ,
+^iRefreshFromLibrary ,
+^iRefreshFromRecipe ,
+^iRefreshFromWaterSource ,
+^iRefreshInjectorDisplays ,
+^iRefreshMaintenanceDisp_Tmp ,
+^iRefreshOutputs_Tmp ,
+^iRefreshOutputsDesc_Tmp ,
+^iRefreshRecipeRequired ,
+^iRefWC_Factor ,
+^iRefXBEE_CommOpenResult ,
+^iRefXBEE_Index ,
+^iRefXBEE_LostTransmitterFound ,
+^iRefXBEE_ReadingIndex ,
+^iRefXBEE_ReceiverStatus ,
+^iRefXBEE_SensorIndex ,
+^iRefXBEE_SplitChar ,
+^iRefXBEE_StartIndex ,
+^iRefXBEE_Tmp ,
+^iRefXBEE_WC_Factor ,
+^iRunProgramIndex ,
+^iSaveEditGroup_Tmp ,
+^iSaveEditInj_Tmp ,
+^iSaveEditInj_Tmp2 ,
+^iSaveEditNut_Tmp ,
+^iSaveEditOverLap ,
+^iSaveEditProg_Tmp ,
+^iSaveEditProg_Tmp2 ,
+^iSaveEditProg_Tmp4 ,
+^iSaveEditProg_Tmp5 ,
+^iSaveEditProg_Tmp6 ,
+^iSaveEditProg_Tmp7 ,
+^iSaveEditProgErrorCheck ,
+^iSaveEditProgErrorCheck1 ,
+^iSaveEditProgErrorDate ,
+^iSaveEditProgram ,
+^iSaveEditProgramValveGroup ,
+^iSaveErrorProg_Tmp1 ,
+^iSaveErrorProg_Tmp2 ,
+^iSaveErrorProg_Tmp3 ,
+^iSaveInputSensor ,
+^iSaveNutrientLibrary ,
+^iSaveOutputs_Tmp ,
+^iSaveOutputs_Tmp2 ,
+^iSaveTargetRecipePPM ,
+^iSaveTimers ,
+^iSaveWaterAnalysis ,
+^iSchedulerChangeFlag ,
+^iScheduleRecipe ,
+^iScratchPadEnable ,
+^iSetDefValveTimes_Tmp ,
+^iStartEditGroup_Tmp ,
+^iStartEditGroup_Tmp2 ,
+^iStartEditInj_Tmp ,
+^iStartEditInj_Tmp2 ,
+^iStartEditNut_Tmp ,
+^iStartEditProg_Factor ,
+^iStartEditProg_Tmp ,
+^iStartEditProg_Tmp2 ,
+^iStartEditProg_Tmp3 ,
+^iStartEditProg_Tmp4 ,
+^iStartEditProg_Tmp5 ,
+^iStartEditProg_Tmp6 ,
+^iStartEditProgram_Tmp0 ,
+^iStartEditValves_Tmp ,
+^iStartEditValves_Tmp2 ,
+^iStringCompare ,
+^iSystemRestore ,
+^iTank2_LevelSwitch_Bottom ,
+^iTank_Alarm ,
+^iTankAlarmActive ,
+^iTankAlarmActiveTemp ,
+^iTankCirgulationFlag_Tmp ,
+^iTankCirgulationMode ,
+^iTankOutput_QueueTrigger ,
+^iTempProgramZone ,
+^iTempStartDayNum ,
+^iTempStartMonthNum ,
+^iTempStartYearNum ,
+^iTempStopDayNum ,
+^iTempStopMonthNum ,
+^iTempStopYearNum ,
+^iTimers_Tmp ,
+^iTimers_Tmp2 ,
+^iTimers_Tmp3 ,
+^iTransmitter_Type ,
+^iTuneValveNumber ,
+^iUndoEditProgram ,
+^iUndoInjectorSetpoint ,
+^iValveDefinitionClose ,
+^iValveDefinitionDefaultTime ,
+^iValveDefinitionSave ,
+^iWaterSensorHighScale ,
+^iXBEEClear_Tmp ,
+^j ,
+^n ,
+^nCheckSum_InjectorDisplay ,
+^nCheckSum_InjectorDisplay_Tmp ,
+^nControlEngineType ,
+^nDispValveNum ,
+^newFront ,
+^newRear ,
+^nFlowPulseCount ,
+^nFlowResetIndex ,
+^nFreshWaterIndex ,
+^nInjectorDisplay_Inc_Dec ,
+^nInjectorEditPtr ,
+^nLibraryEditPtr ,
+^nMaxValveIndex ,
+^nMixLast ,
+^nNextProgram ,
+^nOutputDispNum ,
+^nProgramDataIndex ,
+^nRecipeNo_ppm ,
+^nResults ,
+^nRunCounter1 ,
+^nRunGroupIndex ,
+^nRunProgramIndex ,
+^nRunRecipeIndex ,
+^nRunValveIndex ,
+^nRunZoneIndex ,
+^nSelectedNutrient ,
+^nSimulationMode ,
+^nSolProgramIndex ,
+^nTankAlarmIndex ,
+^nTankIndex ,
+^nTankLevelCheckIndex ,
+^nTankOutputIndex ,
+^nTankQueueIndex ,
+^nTankWaterIndex ,
+^nTargetNutrientPtr ,
+^nTemp_JulianDay ,
+^nTempRecipeNo ,
+^nTimeInterval_Hour ,
+^nTimeInterval_Mins ,
+^nTimeInterval_Secs ,
+^nTimeIntervalExpired ,
+^nTriggerType ,
+^nWaterAnalysis_Index ,
+^nXBEE_Chars ,
+^nXBEE_Message ,
+^nXBEE_Status ,
+^nZoneErrorIndex ,
+^Status ,
+^STRING_LEN ,
+^tankNameindex ,
+^tempValveMultiplier ,
+^tmpAuxiliaryIndex ,
+^tOutAlarmIndex ,
+^tOutMixValveCloseIndex ,
+^tOutMixValveOpenIndex ,
+^tOutPumpIndex ,
+^ui_CancelEditProgram ,
+^ui_FlowRateOffset ,
+^ui_SaveEditProgram ,
+^ui_StartEditProgram ,
+^ui_WaterPressureExtOffset ,
+^ui_WaterPressureIntOffset ,
+^uiAlarmSnoozeTimer ,
+^uiEditECTargetDB ,
+^uiEditECTargetSP ,
+^uiEditGroupNum ,
+^uiEditGroupNumDisp ,
+^uiEditGS3_AssignID ,
+^uiEditGS3_AssignProgramID ,
+^uiEditGS3_UnassignID ,
+^uiEditInjectorNum ,
+^uiEditInjectorPHFlag ,
+^uiEditInjectorProportionalFlag ,
+^uiEditInjectorSPFlowRate ,
+^uiEditMaintenanceCardNum ,
+^uiEditMoisterAlarm ,
+^uiEditPH_UpDown ,
+^uiEditPHTargetDB ,
+^uiEditPHTargetSP ,
+^uiEditPPMRecipe ,
+^uiEditProgMVOverride ,
+^uiEditProgMVOverride_DB ,
+^uiEditProgMVOverride_SP ,
+^uiEditProgramDays ,
+^uiEditProgramNum ,
+^uiEditProgramZoneNum ,
+^uiEditRecipeNum ,
+^uiEditValveSolarInfDB ,
+^uiEditValveSolarInfPer ,
+^uiEditValveSolarInfSP ,
+^uiEditZoneRecipeCancel ,
+^uiEStop ,
+^uiFlowRate ,
+^uiFlowScale ,
+^uiGS3_VoltageStatus ,
+^uiMaxTankQueueNum ,
+^uiMIOnum ,
+^uiMixValveTimeOpen ,
+^uiPause ,
+^uipH_UpDownButton ,
+^uiPPMClose ,
+^uiStart ,
+^uiTankQueueIndex ,
+^uiTemperatureScale ,
+^uiTempProgramNum ,
+^uiTransmitters_Status ,
+^uiTuningPause ,
+^uiTuningStart ,
+^uiZoneRecipeFlagNum ,
+^uo_Overview_FT_screen ,
+^uo_Overview_LeftIMG ,
+^uo_Overview_RightIMG ,
+^uoDispAuxNum ,
+^uoDispCurrentDay ,
+^uoDispCurrentProgZone ,
+^uoDispGroupNum ,
+^uoDispMainECDeadBand ,
+^uoDispMainECTarget ,
+^uoDispMainPHDeadBand ,
+^uoDispMainPHTarget ,
+^uoDispMoisterAverage ,
+^uoDispProgramRun ,
+^uoDispProgramTimer ,
+^uoDispProgZoneDayNum ,
+^uoDispRecipeNum ,
+^uoDispValveflag ,
+^uoDispValveNumber ,
+^uoDispZoneRun ,
+^uoECInAlarm ,
+^uoECOutAlarm ,
+^uoFlowAlarm ,
+^uoHighAlarm ,
+^uoHighECInAlarm ,
+^uoHighECOutAlarm ,
+^uoHighFlowAlarm ,
+^uoHighpHAlarm ,
+^uoHighPressureAlarm ,
+^uoHighTempAlarm ,
+^uoInjectorEditPtr ,
+^uoLogLiters ,
+^uoLogStart ,
+^uoLogTimeZone ,
+^uoLowAlarm ,
+^uoLowECInAlarm ,
+^uoLowECOutAlarm ,
+^uoLowFlowAlarm ,
+^uoLowpHAlarm ,
+^uoLowPressureAlarm ,
+^uoLowTempAlarm ,
+^uoMixValve ,
+^uoMoisterAlarm ,
+^uoPHAlarm ,
+^uopHSensor ,
+^uoPopupWindow ,
+^uoPressureAlarm ,
+^uoPressureSensor ,
+^uoPulseRateAlarm ,
+^uoSelectedTankDisplay ,
+^uoSelectedTankDisplay_Tmp ,
+^uoState ,
+^uoTank_AlarmMaxSP ,
+^uoTank_AlarmMinSP ,
+^uoTank_Application_UpDown ,
+^uoTank_CalculatedVolume ,
+^uoTank_Capacity ,
+^uoTank_ControlMaxSP ,
+^uoTank_ControlMinSP ,
+^uoTank_Enable ,
+^uoTank_Height ,
+^uoTank_ManualControl ,
+^uoTank_Output ,
+^uoTank_PercentFull ,
+^uoTankDisplayNumber ,
+^uoTankIndex ,
+^uoTemperatureAlarm ,
+^uoTuningState ,
+^uoZoneDispRecipeNum ,
+*Date_and_Time ,
+*Date_String ,
+*sCelcius ,
+*sController_Firmware ,
+*sController_IPddress ,
+*sEditNutrientMix ,
+*sEditWater_ppm ,
+*sErr ,
+*sFahrenheit ,
+*sNCD_Battery ,
+*sNCD_Data_Byte0 ,
+*sNCD_Data_Byte1 ,
+*sNCD_Data_Byte2 ,
+*sNCD_Data_Byte3 ,
+*sNCD_ID ,
+*sRecipeName_Active ,
+*sRefXBEE_Tmp ,
+*sSaveEditProgram ,
+*sSaveOutputList ,
+*sSaveRecipe ,
+*sSaveTimer ,
+*sSaveValveGroup ,
+*sScale_GPM ,
+*sScale_LPM ,
+*sScaleFlow ,
+*sStrategy_Name ,
+*sTemperatureScale ,
+*sTempHours ,
+*sTempMins ,
+*stemporary_holder ,
+*sTempSecs ,
+*sTempStartDay ,
+*sTempStartMonth ,
+*sTempStartYear ,
+*sTempStopDay ,
+*sTempStopMonth ,
+*sTempStopYear ,
+*sWaterAnalysisActive ,
+*sXBEE_Message ,
+*TestString ,
+*Time_String ,
+*tStartDate ,
+*tStartTime ,
+*uiEditGroupName ,
+*uiEditProgramName ,
+*uiEditRecipeName ,
+*uiInjectorNutritionName ,
+*uiTankNumber ,
+*uoDispAuxName ,
+*uoDispGroupName ,
+*uoDispMainIrrigationMode ,
+*uoDispRecipeName ,
+*uoDispValveNum ,
+*uoErrorMessage ,
+*uoErrorMessageTmp ,
+*uoLogEvent ,
+*uoLogGroup ,
+*uoLogIrrigationMode ,
+*uoLogProgram ,
+*uoLogRecipeName ,
+*uoLogStartDate ,
+*uoLogStartTime ,
+*uoLogStopDate ,
+*uoLogStopTime ,
+*uoLogTrigger ,
+*uoLogValves ,
+*uoRunGroupName ,
+*uoRunProgramName ,
+*uoRunRecipeName ,
+*uoTank_Description ,
+*_HSV_SEMA ,
+*_HSV_TEMP ,
+*hCom_NCD ,
+*hCom_XBEE ,
+*imp_hCom_XBEE ,
+ 0 ,
+CREATE TI.ARRAY
+^dt_AlarmSilence ,
+^dt_TankCirgulation ,
+^dt_TankLevelCheck ,
+^dt_TuneValveTimer ,
+^dtAECAlarmDelay ,
+^dtAgritech_ZN1 ,
+^dtAgritech_ZN2 ,
+^dtAgritech_ZN3 ,
+^dtAgritech_ZN4 ,
+^dtAgritech_ZN5 ,
+^dtAutomatedProportionalDecideDelay ,
+^dtCycleTimer_TimeOff_01 ,
+^dtCycleTimer_TimeOff_02 ,
+^dtCycleTimer_TimeOff_03 ,
+^dtCycleTimer_TimeOff_04 ,
+^dtCycleTimer_TimeOff_05 ,
+^dtCycleTimer_TimeOff_06 ,
+^dtCycleTimer_TimeOff_07 ,
+^dtCycleTimer_TimeOff_08 ,
+^dtCycleTimer_TimeOff_09 ,
+^dtCycleTimer_TimeOff_10 ,
+^dtECAlarmDelay ,
+^dtFlowAlarmDelay ,
+^dtMeterDisplay ,
+^dtMixingTimer ,
+^dtPHAlarmDelay ,
+^dtPressureAlarmDelay ,
+^dtPressureShutDownDelay ,
+^dtProgram_MinRest_01 ,
+^dtProgram_MinRest_02 ,
+^dtProgram_MinRest_03 ,
+^dtProgram_MinRest_04 ,
+^dtProgram_MinRest_05 ,
+^dtProgram_MinRest_06 ,
+^dtProgram_MinRest_07 ,
+^dtProgram_MinRest_08 ,
+^dtProgram_MinRest_09 ,
+^dtProgram_MinRest_10 ,
+^dtProgram_MinRest_11 ,
+^dtProgram_MinRest_12 ,
+^dtProgram_MinRest_13 ,
+^dtProgram_MinRest_14 ,
+^dtProgram_MinRest_15 ,
+^dtProgram_MinRest_16 ,
+^dtProgram_MinRest_17 ,
+^dtProgram_MinRest_18 ,
+^dtProgram_MinRest_19 ,
+^dtProgram_MinRest_20 ,
+^dtPulseFactor_Delay ,
+^dtTempAlarmDelay ,
+^dtTimeInterval_0 ,
+^dtTimeInterval_1 ,
+^dtTimeInterval_10 ,
+^dtTimeInterval_11 ,
+^dtTimeInterval_12 ,
+^dtTimeInterval_13 ,
+^dtTimeInterval_14 ,
+^dtTimeInterval_15 ,
+^dtTimeInterval_16 ,
+^dtTimeInterval_17 ,
+^dtTimeInterval_18 ,
+^dtTimeInterval_19 ,
+^dtTimeInterval_2 ,
+^dtTimeInterval_3 ,
+^dtTimeInterval_4 ,
+^dtTimeInterval_5 ,
+^dtTimeInterval_6 ,
+^dtTimeInterval_7 ,
+^dtTimeInterval_8 ,
+^dtTimeInterval_9 ,
+^dtValveTimer ,
+^dtXBEE_ReceiverWatch ,
+^utCycleTimer_TimeOn_01 ,
+^utCycleTimer_TimeOn_02 ,
+^utCycleTimer_TimeOn_03 ,
+^utCycleTimer_TimeOn_04 ,
+^utCycleTimer_TimeOn_05 ,
+^utCycleTimer_TimeOn_06 ,
+^utCycleTimer_TimeOn_07 ,
+^utCycleTimer_TimeOn_08 ,
+^utCycleTimer_TimeOn_09 ,
+^utCycleTimer_TimeOn_10 ,
+^utFlowCheck ,
+^utTotalTime ,
+ 0 ,
+CREATE PTR.ARRAY
+Ptr' PTR_aiTankLevelPTR ,
+Ptr' PTR_aiTempPtr ,
+Ptr' PTR_diExtStart_Tmp ,
+Ptr' PTR_doAgritechOutput_Ptr ,
+Ptr' PTR_doClearOutputs_Ptr ,
+Ptr' PTR_doMain_Ptr ,
+Ptr' PTR_doMixValve_Ptr ,
+Ptr' PTR_doPumpIt_Ptr ,
+Ptr' PTR_doReturnValve_Ptr ,
+Ptr' PTR_doRunGroup_Ptr ,
+Ptr' PTR_doSupplyValve_Ptr ,
+Ptr' PTR_doTankCirgulate_Ptr ,
+Ptr' PTR_doTankOutput_Ptr ,
+Ptr' PTR_doTestFlow_Ptr ,
+Ptr' PTR_doTimer_Ptr ,
+Ptr' PTR_dtCycleTimer_TimeOff_Ptr ,
+Ptr' PTR_dtProgram_MinRest_Ptr ,
+Ptr' PTR_dtProgram_MinRest_Ptr_Edit ,
+Ptr' PTR_dtTimeInterval_Ptr ,
+Ptr' PTR_dtTimeInterval_Ptr_Edit ,
+Ptr' PTR_utCycleTimer_TimeOn_Ptr ,
+ 0 ,
+CREATE TA.ARRAY 
+}bMaintenanceAutoFlag ,
+}DateTimeStrTb1 ,
+}doOutputs ,
+}fCurrentSolarAccum ,
+}fEditNutrientMix ,
+}fEditValveVolume ,
+}fEditWater_ppm ,
+}fFlowRates ,
+}fInjectorCalcMaxSolub ,
+}fInjectorCalcMixRatio ,
+}fInjectorInjected_ppm ,
+}fInjectorInjectVolume ,
+}fInjectorMaxVolume ,
+}fInjectorMinVolume ,
+}fInjectorNutrientMix ,
+}fInjectorPulseRate ,
+}fInjectorPulseSP ,
+}fInjectorPulseTrigger ,
+}fInjectorRecMix ,
+}fInjectorSolTankSize ,
+}fInjectorSolubRatio ,
+}fInjectorSoluteAmt ,
+}fInjectorTank_ppm ,
+}fInjectorTankCalcLevel ,
+}fInjectorTankPercentFull ,
+}fInjectorTankPercentTotalizer ,
+}fInjectorTimer ,
+}fInjectorVolumeRate ,
+}fInjectorVolumeTotalizer ,
+}fInjectorVolumeTotalizer_Yesterday ,
+}fInjectorWater_ppm ,
+}fLibrarySolTankSize ,
+}fLibrarySoluteAmt ,
+}fLitersTotal ,
+}fLitersTotal_Yesterday ,
+}fNutrientLibrary ,
+}fNutrientLibRecMix ,
+}fNutrientLibSolubRatio ,
+}fTank_AlarmMaxSP ,
+}fTank_AlarmMinSP ,
+}fTank_CalculatedVolume ,
+}fTank_Capacity ,
+}fTank_ControlMaxSP ,
+}fTank_ControlMinSP ,
+}fTank_Height ,
+}fTank_PercentFull ,
+}fTank_PercentFullTEMP ,
+}fTargetPPM ,
+}fTargetPPM_Active ,
+}fTargetPPM_Diff ,
+}fTargetPPM_Diff100 ,
+}fTotalCalculated_ppm ,
+}fValveVolume ,
+}fWaterAnalysis_ppm ,
+}iAG_BatchTankActive ,
+}iAG_DownTimer ,
+}iAG_LastRun ,
+}iAG_PtrNumTmp ,
+}iAGCurrentRunNum ,
+}iAGPtrNumIndex ,
+}iAGPumpStatus ,
+}iAGTimerRunningFlag ,
+}iAGTmpFlag ,
+}iAGValveActive ,
+}iAGValveOnBit ,
+}iAGZoneActiveFlag ,
+}iFlowTotalizerReset ,
+}iNCD_Lengths ,
+}iQueueExt_ProgQueued ,
+}iQueueExt_Tmp ,
+}iQueueProgram ,
+}iQueueProgramIndex ,
+}iQueueProgramIndex_Tmp ,
+}iQueueTemp ,
+}iStartTimeTmp ,
+}iStopTimeTmp ,
+}iTank_AlarmHI ,
+}iTank_AlarmLO ,
+}iTank_Application_UpDown ,
+}iTank_LevelSwitch_Bottom ,
+}iTank_LevelSwitch_Top ,
+}iTank_ManualControl ,
+}iTank_Output ,
+}MonthToDays ,
+}NCD_Data ,
+}nInjectorDisplayNumber ,
+}nInjectorDisplayNumber_Tmp ,
+}nInjectorDisplayPtr ,
+}nInjectorDisplayPtr_Tmp ,
+}nInjectorLibPtrIndex ,
+}nInjectorLitersToPulse ,
+}nInjectorPulseCount ,
+}nInjectorPulseCountTotalizer ,
+}nInjectorPulseCountTotalizer_Yesterday ,
+}nInjectorSetpoints_Auto ,
+}nInjectorSetPoints_AutoTmp ,
+}nPulseCount ,
+}nPulseFactor_EC ,
+}nPulseFactor_PH ,
+}nStartInjectorTimer ,
+}nValve_AverageFlow ,
+}tCurCycleTimerState ,
+}tCurGS3_Charging ,
+}tCurGS3_EC ,
+}tCurGS3_ProbeStatus ,
+}tCurGS3_Status ,
+}tCurGS3_Temp ,
+}tCurGS3_UpdateTime ,
+}tCurGS3_Volts ,
+}tCurGS3_VWC ,
+}tCurGS3_VWC_Avg ,
+}tCycleTimerEnabled ,
+}tCycleTimerTimeEnd ,
+}tCycleTimerTimeOFF ,
+}tCycleTimerTimeON ,
+}tCycleTimerTimeStart ,
+}tGS3_Mineral ,
+}tOutAuxiliaryIndex ,
+}tOutCustomIndex ,
+}tOutCycleTimerIndex ,
+}tOutInjectorIndex ,
+}tOutInletValve1Index ,
+}tOutInletValve2Index ,
+}tOutputTableInitialized ,
+}tOutTankIndex ,
+}tOutValveIndex ,
+}tProgramMVOverride ,
+}tProgramMVOverride_DB ,
+}tProgramMVOverride_SP ,
+}uiAGEndtime ,
+}uiAGStartTime ,
+}uiAGValveTimeEn_ZN1 ,
+}uiAGValveTimeEn_ZN2 ,
+}uiAGValveTimeEn_ZN3 ,
+}uiAGValveTimeEn_ZN4 ,
+}uiAGValveTimeEn_ZN5 ,
+}uiAGValveTimeSP_ZN1 ,
+}uiAGValveTimeSP_ZN2 ,
+}uiAGValveTimeSP_ZN3 ,
+}uiAGValveTimeSP_ZN4 ,
+}uiAGValveTimeSP_ZN5 ,
+}uiAGZoneEnable ,
+}uiCycleTimer_Enabled ,
+}uiCycleTimer_TimeEnd ,
+}uiCycleTimer_TimeOFF ,
+}uiCycleTimer_TimeON ,
+}uiCycleTimer_TimeStart ,
+}uiECTargetDB ,
+}uiECTargetSP ,
+}uiEditGS3_VWC ,
+}uiEditInjectorSP ,
+}uiEditOutputDiagnosisEnable ,
+}uiEditProgramZoneRecipeNum ,
+}uiEditValveGroups ,
+}uiEditValvePairs ,
+}uiEditValveTimes ,
+}uiEditZoneAuxECSP ,
+}uiEditZoneDays ,
+}uiEditZoneExternalStart ,
+}uiEditZoneFlags ,
+}uiEditZoneMoisterDB ,
+}uiEditZoneMoisterSP ,
+}uiEditZoneRestTime ,
+}uiEditZoneSolarSP ,
+}uiEditZoneStartDay ,
+}uiEditZoneStartDays ,
+}uiEditZoneStartTime ,
+}uiEditZoneStopDay ,
+}uiEditZoneStopDays ,
+}uiEditZoneStopTime ,
+}uiEditZoneTriggerTime ,
+}uiEditZoneValveMultiplier ,
+}uiInjectorInjectVolume ,
+}uiInjectorNutrientMix ,
+}uiInjectorPulseRate ,
+}uiInjectorSetpoints ,
+}uiInjectorSolTankSize ,
+}uiInjectorSolubRatio ,
+}uiInjectorSoluteAmt ,
+}uiInjectorSPFlowRate ,
+}uiMoisterAlarm ,
+}uiMoisterSensor1Index ,
+}uiMoisterSensor2Index ,
+}uiOptions ,
+}uiOptionsTempPressure ,
+}uiPH_UpDown ,
+}uiPHTargetDB ,
+}uiPHTargetSP ,
+}uiProgram_Auxiliaries ,
+}uiProgramDays ,
+}uiProgramFlags ,
+}uiProgramRecipeIndex ,
+}uiProgramValveGroup ,
+}uiProgramZoneAuxECSP ,
+}uiProgramZoneDays ,
+}uiProgramZoneExternalStart ,
+}uiProgramZoneFlags ,
+}uiProgramZoneMoisterDB ,
+}uiProgramZoneMoisterSP ,
+}uiProgramZoneRecipeIndex ,
+}uiProgramZoneRestTime ,
+}uiProgramZoneSolarSP ,
+}uiProgramZoneStartDays ,
+}uiProgramZoneStartTime ,
+}uiProgramZoneStopDays ,
+}uiProgramZoneStopTime ,
+}uiProgramZoneTriggerTime ,
+}uiProgramZoneValveMultiplier ,
+}uiRecipeProportional ,
+}uiTank_Enable ,
+}uiValveGroups ,
+}uiValvePairs ,
+}uiValveSolarInfDB ,
+}uiValveSolarInfPer ,
+}uiValveSolarInfSP ,
+}uiValveTimes ,
+}uoDispCurrentZoneRecipe ,
+}uoDispOutputTypes ,
+}uoDispProgramZoneDays ,
+}uoInjectorCalcMaxSolub ,
+}uoInjectorCalcMixRatio ,
+}uoInjectorInjected_ppm ,
+}uoInjectorTank_ppm ,
+}uoInjectorTankCalcLevel ,
+}uoInjectorTankPercentFull ,
+}uoInjectorVolumeRate ,
+}uoLogInjectorPulseCount ,
+}uoLogInjectorStroke ,
+}uoPulseRate ,
+}uoPulseRateActual ,
+}uoTank_Outputs ,
+{imp_uoOutputDesc ,
+{sFertilizerTankName ,
+{sNutrientLibraryName ,
+{sNutrientName ,
+{sNutrientSymbol ,
+{sNutrientTankName ,
+{sTank_Description ,
+{stNCD_Data_To_Hex ,
+{sWaterAnalysisLibrary ,
+{tGS3_Descriptions ,
+{tGS3_UpdateTime ,
+{tGS3ID_ProgramIndex ,
+{tGS3ID_Unassigned ,
+{TriggerTypeDesc ,
+{uiAGZoneNames ,
+{uiEditZoneDates ,
+{uiEditZoneStartDate ,
+{uiEditZoneStopDate ,
+{uiGroupName ,
+{uiInjectorName ,
+{uiProgramName ,
+{uiProgramZoneDates ,
+{uiProgramZoneRecipe ,
+{uiRecipeName ,
+{uiZoneRecipeName ,
+{uoCompanyName ,
+{uoDispCurrentZoneRecipes ,
+{uoDispOutputListDesc ,
+{uoNutrientTankName ,
+{uoOutputDesc ,
+ 0 ,
+CREATE PTRTABLE.ARRAY 
+PTBL_aiInputPtrTable ,
+PTBL_aiMIOPtrTable ,
+PTBL_diExtStart_PtrTable ,
+PTBL_doOutputPtrTable ,
+PTBL_dtCycleTimer_TimeOff_PtrTable ,
+PTBL_dtProgram_MinRest_PtrTable ,
+PTBL_dtTimeInterval_PtrTable ,
+PTBL_utCycleTimer_TimeOn_PtrTable ,
+ 0 ,
+CREATE B.ARRAY
+%Fertigation_Controller_Epic ,
+ 0 ,
+CREATE P.ARRAY
+~do12_0000 ,
+~do12_0001 ,
+~do12_0002 ,
+~do12_0003 ,
+~do12_0004 ,
+~do12_0005 ,
+~do12_0006 ,
+~do12_0007 ,
+~do12_0008 ,
+~do12_0009 ,
+~do12_0010 ,
+~do12_0011 ,
+~do12_0100 ,
+~do12_0101 ,
+~do12_0102 ,
+~do12_0103 ,
+~do12_0104 ,
+~do12_0105 ,
+~do12_0106 ,
+~do12_0107 ,
+~do12_0108 ,
+~do12_0109 ,
+~do12_0110 ,
+~do12_0111 ,
+~do12_0200 ,
+~do12_0201 ,
+~do12_0202 ,
+~do12_0203 ,
+~do12_0204 ,
+~do12_0205 ,
+~do12_0206 ,
+~do12_0207 ,
+~do12_0208 ,
+~do12_0209 ,
+~do12_0210 ,
+~do12_0211 ,
+~do12_0300 ,
+~do12_0301 ,
+~do12_0302 ,
+~do12_0303 ,
+~do12_0304 ,
+~do12_0305 ,
+~do12_0306 ,
+~do12_0307 ,
+~do12_0308 ,
+~do12_0309 ,
+~do12_0310 ,
+~do12_0311 ,
+~do12_0400 ,
+~do12_0401 ,
+~do12_0402 ,
+~do12_0403 ,
+~do12_0404 ,
+~do12_0405 ,
+~do12_0406 ,
+~do12_0407 ,
+~do12_0408 ,
+~do12_0409 ,
+~do12_0410 ,
+~do12_0411 ,
+~do12_0500 ,
+~do12_0501 ,
+~do12_0502 ,
+~do12_0503 ,
+~do12_0504 ,
+~do12_0505 ,
+~do12_0506 ,
+~do12_0507 ,
+~do12_0508 ,
+~do12_0509 ,
+~do12_0510 ,
+~do12_0511 ,
+~do12_0600 ,
+~do12_0601 ,
+~do12_0602 ,
+~do12_0603 ,
+~do12_0604 ,
+~do12_0605 ,
+~do12_0606 ,
+~do12_0607 ,
+~do12_0608 ,
+~do12_0609 ,
+~do12_0610 ,
+~do12_0611 ,
+~do12_0700 ,
+~do12_0701 ,
+~do12_0702 ,
+~do12_0703 ,
+~do12_0704 ,
+~do12_0705 ,
+~do12_0706 ,
+~do12_0707 ,
+~do12_0708 ,
+~do12_0709 ,
+~do12_0710 ,
+~do12_0711 ,
+~do12_0800 ,
+~do12_0801 ,
+~do12_0802 ,
+~do12_0803 ,
+~do12_0804 ,
+~do12_0805 ,
+~do12_0806 ,
+~do12_0807 ,
+~do12_0808 ,
+~do12_0809 ,
+~do12_0810 ,
+~do12_0811 ,
+~do12_0900 ,
+~do12_0901 ,
+~do12_0902 ,
+~do12_0903 ,
+~do12_0904 ,
+~do12_0905 ,
+~do12_0906 ,
+~do12_0907 ,
+~do12_0908 ,
+~do12_0909 ,
+~do12_0910 ,
+~do12_0911 ,
+~do12_1000 ,
+~do12_1001 ,
+~do12_1002 ,
+~do12_1003 ,
+~do12_1004 ,
+~do12_1005 ,
+~do12_1006 ,
+~do12_1007 ,
+~do12_1008 ,
+~do12_1009 ,
+~do12_1010 ,
+~do12_1011 ,
+~do12_1100 ,
+~do12_1101 ,
+~do12_1102 ,
+~do12_1103 ,
+~do12_1104 ,
+~do12_1105 ,
+~do12_1106 ,
+~do12_1107 ,
+~do12_1108 ,
+~do12_1109 ,
+~do12_1110 ,
+~do12_1111 ,
+~do12_MIO_00 ,
+~do12_MIO_01 ,
+~do12_MIO_02 ,
+~do12_MIO_03 ,
+~do12_MIO_04 ,
+~do12_MIO_05 ,
+~do13_MIO_00 ,
+~do13_MIO_01 ,
+~do13_MIO_02 ,
+~do13_MIO_03 ,
+~do13_MIO_04 ,
+~do13_MIO_05 ,
+~ai12_MIO_00 ,
+~ai12_MIO_01 ,
+~ai12_MIO_02 ,
+~ai12_MIO_03 ,
+~ai13_MIO_00 ,
+~ai13_MIO_01 ,
+~ai13_MIO_02 ,
+~ai13_MIO_03 ,
+~EC_In ,
+~EC_Out ,
+~pH_In_Solar ,
+~pH_Out ,
+~Pressure_External ,
+~Pressure_Internal ,
+~T10_LevelMeter ,
+~T11_LevelMeter ,
+~T12_LevelMeter ,
+~T13_LevelMeter ,
+~T14_LevelMeter ,
+~T15_LevelMeter ,
+~T16_LevelMeter ,
+~T17_LevelMeter ,
+~T18_LevelMeter ,
+~T19_LevelMeter ,
+~T1_LevelMeter ,
+~T20_LevelMeter ,
+~T21_LevelMeter ,
+~T22_LevelMeter ,
+~T23_LevelMeter ,
+~T24_LevelMeter ,
+~T2_LevelMeter ,
+~T3_LevelMeter ,
+~T4_LevelMeter ,
+~T5_LevelMeter ,
+~T6_LevelMeter ,
+~T7_LevelMeter ,
+~T8_LevelMeter ,
+~T9_LevelMeter ,
+~Temperature ,
+~WaterFlowSensor ,
+ 0 ,
+CREATE PID.ARRAY
+ 0 ,
+CREATE E/R.ARRAY
+ 0 ,
+CREATE E/RGROUP.ARRAY
+ 0 ,
+: CONFIG_PORTS
+;
+: W_INIT_IO
+CONFIG_PORTS
+" %Fertigation_Controller_Epic  (1/1)" *_HSV_INIT_IO $MOVE 0 ^_HNV_INIT_IO @!
+%Fertigation_Controller_Epic ENABLE
+ " Initializing variables" *_HSV_INIT_IO $MOVE
+0 ^AllowTagUploadsForThisStrategy @!
+0 ^bAutomated_FirstPass @!
+0 ^bBitMask1 @!
+0 ^bBitMask2 @!
+0.. ^bBoardLayout1 @!
+0.. ^bBoardLayout2 @!
+0 ^bECINHighAlarm @!
+0 ^bECINLowAlarm @!
+0 ^bECOUTHighAlarm @!
+0 ^bECOUTLowAlarm @!
+0 ^bFlowHighAlarm @!
+0 ^bFlowLowAlarm @!
+0 ^bInProgress @!
+0 ^bMain_CheckTriggers @!
+0 ^bpHHighAlarm @!
+0 ^bpHLowAlarm @!
+0 ^bPressureHighAlarm @!
+0 ^bPressureLowAlarm @!
+0 ^bPressureShutDown @!
+0 ^bProportional_Program_Recipe @!
+0 ^bTempHighAlarm @!
+0 ^bTempLowAlarm @!
+3.0000000 ^cDefaultValveTime @!
+1.0000000 ^cFlowTimerInterval @!
+5 ^cMaxAGZones @!
+20 ^cMaxAuxiliaries @!
+100 ^cMaxCustoms @!
+12 ^cMaxDispList @!
+0 ^cMaxErrorCheck @!
+3 ^cMaxExternalStarts @!
+20 ^cMaxExtQueueTrigger @!
+20 ^cMaxGS3_Nodes @!
+12 ^cMaxInjectors @!
+1 ^cMaxInletValve1 @!
+1 ^cMaxInletValve2 @!
+50 ^cMaxLibraryMixes @!
+20 ^cMaxNutrients @!
+13 ^cMaxNutritions @!
+12 ^cMaxOutputRacks @!
+168 ^cMaxOutputs @!
+20 ^cMaxPrograms @!
+20 ^cMaxRecipes @!
+24 ^cMaxTanks @!
+10 ^cMaxTimers @!
+20 ^cMaxValveGroups @!
+2000 ^cMaxValveIndex @!
+100 ^cMaxValves @!
+2 ^cMaxZoneDateVariables @!
+20 ^cMaxZones @!
+0 ^cNAN @!
+39 ^cOptAECHighAlarmIndex @!
+38 ^cOptAECLowAlarmIndex @!
+27 ^cOptAECmAMaxIndex @!
+26 ^cOptAECmAMinIndex @!
+29 ^cOptAECvalMaxIndex @!
+28 ^cOptAECvalMinIndex @!
+49 ^cOptAlarmCheckDelayIndex @!
+56 ^cOptAPHmAMaxIndex @!
+55 ^cOptAPHmAMinIndex @!
+58 ^cOptAPHvalMaxIndex @!
+57 ^cOptAPHvalMinIndex @!
+43 ^cOptAutomatedControlDelayIndex @!
+42 ^cOptAutomatedProportionalDelay @!
+32 ^cOptDefaultValveTimeIndex @!
+40 ^cOptECAlarmDelayIndex @!
+35 ^cOptECHighAlarmIndex @!
+34 ^cOptECLowAlarmIndex @!
+11 ^cOptECmAMaxIndex @!
+10 ^cOptECmAMinIndex @!
+13 ^cOptECvalMaxIndex @!
+12 ^cOptECvalMinIndex @!
+6 ^cOptExternalDelayIndex @!
+31 ^cOptFlowAlarmDelayIndex @!
+0 ^cOptFlowSPIndex @!
+20 ^cOptInjectorOffTime @!
+19 ^cOptInjectorOnTime @!
+21 ^cOptInjectorSPFlowRate @!
+4 ^cOptKFactorIndex @!
+23 ^cOptMixECDeadbandIndex @!
+22 ^cOptMixECTargetIndex @!
+24 ^cOptMixValveAdjustIndex @!
+44 ^cOptMixValveDelayIndex @!
+5 ^cOptMixValveTimeIndex @!
+41 ^cOptPHAlarmDelayIndex @!
+37 ^cOptPHHighAlarmIndex @!
+54 ^cOptpHInSolarToggle @!
+36 ^cOptPHLowAlarmIndex @!
+15 ^cOptPHmAMaxIndex @!
+14 ^cOptPHmaMinIndex @!
+17 ^cOptPHvalMaxIndex @!
+16 ^cOptPHvalMinIndex @!
+5 ^cOptPressureAlarmDelayIndex @!
+11 ^cOptPressureExtDelayIndex @!
+10 ^cOptPressureExtSPIndex @!
+2 ^cOptPressureHighAlarmIndex @!
+3 ^cOptPressureLowAlarmIndex @!
+8 ^cOptPressuremAMaxIndex @!
+9 ^cOptPressuremAMinIndex @!
+6 ^cOptPressurevalMaxIndex @!
+7 ^cOptPressurevalMinIndex @!
+3 ^cOptPumpDelayIndex @!
+7 ^cOptSolarCalibrationMultiplier @!
+8 ^cOptSolarCalOhmsIndex @!
+9 ^cOptSolarIntervalIndex @!
+4 ^cOptTempAlarmDelayIndex @!
+0 ^cOptTempHighAlarmIndex @!
+1 ^cOptTempLowAlarmIndex @!
+45 ^cOptTEMPmAMaxIndex @!
+46 ^cOptTEMPmAMinIndex @!
+47 ^cOptTEMPvalMaxIndex @!
+48 ^cOptTEMPvalMinIndex @!
+33 ^cOptUseMixValveIndex @!
+2 ^cOptWaterHighAlarmIndex @!
+1 ^cOptWaterLowAlarmIndex @!
+51 ^cOptWaterSensormAMaxIndex @!
+50 ^cOptWaterSensormAMinIndex @!
+53 ^cOptWaterSensorvalMaxIndex @!
+52 ^cOptWaterSensorvalMinIndex @!
+25 ^cOptWMvalMaxIndex @!
+1 ^cOT_AlarmIndex @!
+40 ^cOT_Auxiliary10Index @!
+52 ^cOT_Auxiliary11Index @!
+53 ^cOT_Auxiliary12Index @!
+54 ^cOT_Auxiliary13Index @!
+55 ^cOT_Auxiliary14Index @!
+56 ^cOT_Auxiliary15Index @!
+57 ^cOT_Auxiliary16Index @!
+58 ^cOT_Auxiliary17Index @!
+59 ^cOT_Auxiliary18Index @!
+60 ^cOT_Auxiliary19Index @!
+31 ^cOT_Auxiliary1Index @!
+61 ^cOT_Auxiliary20Index @!
+32 ^cOT_Auxiliary2Index @!
+33 ^cOT_Auxiliary3Index @!
+34 ^cOT_Auxiliary4Index @!
+35 ^cOT_Auxiliary5Index @!
+36 ^cOT_Auxiliary6Index @!
+37 ^cOT_Auxiliary7Index @!
+38 ^cOT_Auxiliary8Index @!
+39 ^cOT_Auxiliary9Index @!
+62 ^cOT_CustomIndex @!
+41 ^cOT_CycleTimerIndex @!
+14 ^cOT_Injector10Index @!
+15 ^cOT_Injector11Index @!
+16 ^cOT_Injector12Index @!
+5 ^cOT_Injector1Index @!
+6 ^cOT_Injector2Index @!
+7 ^cOT_Injector3Index @!
+8 ^cOT_Injector4Index @!
+9 ^cOT_Injector5Index @!
+10 ^cOT_Injector6Index @!
+11 ^cOT_Injector7Index @!
+12 ^cOT_Injector8Index @!
+13 ^cOT_Injector9Index @!
+17 ^cOT_InletValve1Index @!
+18 ^cOT_InletValve2Index @!
+26 ^cOT_MixValveCloseIndex @!
+25 ^cOT_MixValveOpenIndex @!
+2 ^cOT_PumpIndex @!
+50 ^cOT_TankIndex @!
+51 ^cOT_ValveIndex @!
+0 ^cPD_ZD_StartDateNdx @!
+1 ^cPD_ZD_StopDateNdx @!
+2 ^cPF_pHControlIndex_NOTUSED @!
+1 ^cPF_ProportionalIndex_NOTUSED @!
+4 ^cTT_Auxillary @!
+5 ^cTT_External @!
+6 ^cTT_Manual @!
+7 ^cTT_Moister @!
+3 ^cTT_Solar @!
+1 ^cTT_Testing @!
+2 ^cTT_Timer @!
+10 ^cTT_Tuning @!
+6.0000000 ^cVersion_Build @!
+10.500000 ^cVersion_Major @!
+3 ^cWindowErrorMessage @!
+1 ^cWindowGroupDefinition @!
+4 ^cWindowInjectorDefinition @!
+5 ^cWindowNutritionInfromation @!
+2 ^cWindowProgramDefinition @!
+0.0 ^dt_AlarmSilence @!
+0.0 ^dt_TankCirgulation @!
+0.0 ^dt_TankLevelCheck @!
+0.0 ^dt_TuneValveTimer @!
+0.0 ^dtAECAlarmDelay @!
+0.0 ^dtAgritech_ZN1 @!
+0.0 ^dtAgritech_ZN2 @!
+0.0 ^dtAgritech_ZN3 @!
+0.0 ^dtAgritech_ZN4 @!
+0.0 ^dtAgritech_ZN5 @!
+0.0 ^dtAutomatedProportionalDecideDelay @!
+0.0 ^dtCycleTimer_TimeOff_01 @!
+0.0 ^dtCycleTimer_TimeOff_02 @!
+0.0 ^dtCycleTimer_TimeOff_03 @!
+0.0 ^dtCycleTimer_TimeOff_04 @!
+0.0 ^dtCycleTimer_TimeOff_05 @!
+0.0 ^dtCycleTimer_TimeOff_06 @!
+0.0 ^dtCycleTimer_TimeOff_07 @!
+0.0 ^dtCycleTimer_TimeOff_08 @!
+0.0 ^dtCycleTimer_TimeOff_09 @!
+0.0 ^dtCycleTimer_TimeOff_10 @!
+0.0 ^dtECAlarmDelay @!
+0.0 ^dtFlowAlarmDelay @!
+0.0 ^dtMeterDisplay @!
+0.0 ^dtMixingTimer @!
+0.0 ^dtPHAlarmDelay @!
+0.0 ^dtPressureAlarmDelay @!
+0.0 ^dtPressureShutDownDelay @!
+0.0 ^dtProgram_MinRest_01 @!
+0.0 ^dtProgram_MinRest_02 @!
+0.0 ^dtProgram_MinRest_03 @!
+0.0 ^dtProgram_MinRest_04 @!
+0.0 ^dtProgram_MinRest_05 @!
+0.0 ^dtProgram_MinRest_06 @!
+0.0 ^dtProgram_MinRest_07 @!
+0.0 ^dtProgram_MinRest_08 @!
+0.0 ^dtProgram_MinRest_09 @!
+0.0 ^dtProgram_MinRest_10 @!
+0.0 ^dtProgram_MinRest_11 @!
+0.0 ^dtProgram_MinRest_12 @!
+0.0 ^dtProgram_MinRest_13 @!
+0.0 ^dtProgram_MinRest_14 @!
+0.0 ^dtProgram_MinRest_15 @!
+0.0 ^dtProgram_MinRest_16 @!
+0.0 ^dtProgram_MinRest_17 @!
+0.0 ^dtProgram_MinRest_18 @!
+0.0 ^dtProgram_MinRest_19 @!
+0.0 ^dtProgram_MinRest_20 @!
+0.0 ^dtPulseFactor_Delay @!
+0.0 ^dtTempAlarmDelay @!
+0.0 ^dtTimeInterval_0 @!
+0.0 ^dtTimeInterval_1 @!
+0.0 ^dtTimeInterval_10 @!
+0.0 ^dtTimeInterval_11 @!
+0.0 ^dtTimeInterval_12 @!
+0.0 ^dtTimeInterval_13 @!
+0.0 ^dtTimeInterval_14 @!
+0.0 ^dtTimeInterval_15 @!
+0.0 ^dtTimeInterval_16 @!
+0.0 ^dtTimeInterval_17 @!
+0.0 ^dtTimeInterval_18 @!
+0.0 ^dtTimeInterval_19 @!
+0.0 ^dtTimeInterval_2 @!
+0.0 ^dtTimeInterval_3 @!
+0.0 ^dtTimeInterval_4 @!
+0.0 ^dtTimeInterval_5 @!
+0.0 ^dtTimeInterval_6 @!
+0.0 ^dtTimeInterval_7 @!
+0.0 ^dtTimeInterval_8 @!
+0.0 ^dtTimeInterval_9 @!
+0.0 ^dtValveTimer @!
+0.0 ^dtXBEE_ReceiverWatch @!
+0.00000000 ^fAEcPerMaConstant @!
+0.00000000 ^fAlarmCheckDelay @!
+0.00000000 ^fAPHPerMaConstant @!
+0.00000000 ^fAuxEC @!
+0.00000000 ^fAuxEC_tmp @!
+0.00000000 ^fAuxPH @!
+0.00000000 ^fAuxPH_tmp @!
+0.00000000 ^fCurrentEC @!
+0.00000000 ^fCurrentEC_tmp @!
+0.00000000 ^fCurrentMinutes @!
+0.00000000 ^fCurrentMixValveTime @!
+0.00000000 ^fCurrentPH @!
+0.00000000 ^fCurrentPH_tmp @!
+0.00000000 ^fCurrentPHRef_tmp @!
+0.00000000 ^fCurrentPRESSURE_Ext @!
+0.00000000 ^fCurrentPRESSURE_Int @!
+0.00000000 ^fCurrentPressureExt_Tmp @!
+0.00000000 ^fCurrentPressureInt_Tmp @!
+0.00000000 ^fCurrentSolarValue @!
+0.00000000 ^fCurrentSolarValue_tmp @!
+0.00000000 ^fCurrentTankLevel @!
+0.00000000 ^fCurrentTEMP @!
+0.00000000 ^fCurrentTEMP_tmp @!
+0.00000000 ^fCurrentTime @!
+0.00000000 ^fDispSolarAccum @!
+0.00000000 ^fEcPerMaConstant @!
+0.00000000 ^fEditLibrarySolubRatio @!
+0.00000000 ^fEditLibrarySoluteAmt @!
+0.00000000 ^fEditLibraryTankSize @!
+0.00000000 ^fFlowRate @!
+0.00000000 ^fFlowRateTmp @!
+0.00000000 ^fGrandTotal_ppm @!
+0 ^FIFO @!
+0.00000000 ^fLastLiters @!
+0.00000000 ^fLiterCount @!
+0.00000000 ^fLitersPerPulse @!
+0.00000000 ^fMain_WC1 @!
+0.00000000 ^fMain_WC2 @!
+0.00000000 ^fMain_WC3 @!
+0 ^fMain_WC_Factor @!
+0.00000000 ^fMixingValve_Tmp @!
+0.00000000 ^fMixValveTimePercentage @!
+0.00000000 ^fNCD_Battery @!
+0.00000000 ^fNCD_EC1 @!
+0.00000000 ^fNCD_EC2 @!
+0.00000000 ^fNCD_EC3 @!
+0.00000000 ^fNCD_Moisture1 @!
+0.00000000 ^fNCD_Moisture2 @!
+0.00000000 ^fNCD_Moisture3 @!
+0.00000000 ^fNCD_Temperature1 @!
+0.00000000 ^fNCD_Temperature2 @!
+0.00000000 ^fNCD_Temperature3 @!
+0 ^found @!
+0.00000000 ^fPHPerMaConstant @!
+0.00000000 ^fppm_temp1 @!
+0.00000000 ^fPRESSUREPerMaConstant @!
+0.00000000 ^fPumpDelay @!
+0.00000000 ^fPumpIt_MaxPulsesPerMIn @!
+0.00000000 ^fPumpIt_Tmp @!
+0.00000000 ^fPumpIt_Tmp2 @!
+0.00000000 ^fPumpIt_TmpAuto @!
+0.00000000 ^fRecipeFlowRateDisplay @!
+0.00000000 ^fRefXBEE_Time @!
+0.00000000 ^fRefXBEE_Tmp @!
+0.00000000 ^fRefXBEE_WC1 @!
+0.00000000 ^fRefXBEE_WC2 @!
+0.00000000 ^fRefXBEE_WC3 @!
+0.00000000 ^fSolar1mVWatts @!
+0.00000000 ^fSolarAccumulator @!
+0.00000000 ^fStartEditProgram_Temp1 @!
+0.00000000 ^fStartEditProgram_Temp2 @!
+0.00000000 ^fTank5_CalculatedVolume @!
+0.00000000 ^fTank6_CalculatedVolume @!
+0.00000000 ^fTank7_CalculatedVolume @!
+0.00000000 ^fTank8_CalculatedVolume @!
+0.00000000 ^fTargetPHRef_tmp @!
+0.00000000 ^fTEMPPerMaConstant @!
+0.00000000 ^fTimers_Temp @!
+0.00000000 ^fTimers_Time @!
+-1 ^fTuneValveTimer @!
+0 ^fTuneValveVolume @!
+1.0000000 ^fValveMultiplier @!
+0 ^fValveVolumeCheck @!
+0.00000000 ^fWaterPressureExtOffset @!
+0.00000000 ^fWaterSensorPerMaConstant @!
+0.00000000 ^fWMPerMaConstant @!
+0 ^i @!
+0 ^i1 @!
+0 ^i2 @!
+0 ^iAG_Tmp @!
+0 ^iAG_Tmp1 @!
+0 ^iAGZoneNum @!
+0 ^iAlarmChart_Tmp @!
+0 ^iAlarmSilence @!
+0 ^iAuxiliaryClose @!
+0 ^iCancelNutrientLibrary @!
+0 ^iChartStatus_Tmp @!
+0 ^iClearAllEditProgram @!
+0 ^iCloseEditProgram @!
+0 ^iCloseMixingValve @!
+0 ^iCloseTimers @!
+0 ^iCurrentDay @!
+0 ^iCurrentHour @!
+0 ^iEditNutrientLibrary @!
+0 ^iEditProgramError @!
+0 ^iEditWaterAnalysis @!
+0 ^iFlowResetPressed @!
+0 ^iFlowTrack_Tmp @!
+0 ^iGroupClose @!
+0 ^iIndex_NCD_Data_To_Hex @!
+0 ^iLastCollectionTankPump @!
+1 ^iLeachateTankReturnValve @!
+-1 ^iLeachateTankSupplyValve @!
+0 ^iLeapYear @!
+0 ^iMain_MoistureAlarm @!
+0 ^iMainPumpStatus @!
+0 ^iMainValveGroup @!
+0 ^iMixingValve_Tmp @!
+0 ^iMixingValve_Tmp2 @!
+0 ^iMixingValve_Tmp3 @!
+0 ^iMixingValve_Tmp_DB @!
+0 ^iMixingValve_Tmp_SP @!
+0 ^iMixingValveClose @!
+0 ^iMixingValveOff @!
+0 ^iMixingValveOpen @!
+0 ^iNCD_Data_Byte0 @!
+0 ^iNCD_Data_Byte1 @!
+0 ^iNCD_Data_Byte2 @!
+0 ^iNCD_Data_Byte3 @!
+0 ^iNCD_Table_Status @!
+0 ^index @!
+0 ^iOutputListCancel @!
+0 ^iOutputListDec @!
+0 ^iOutputListInc @!
+0 ^iOutputListSave @!
+0 ^iPower_Tmp @!
+0 ^iPower_Tmp2 @!
+1 ^iPPM_Enable @!
+0 ^iPPM_LIVE @!
+0 ^iProgramAuxiliary @!
+0 ^iProgramGroup @!
+0 ^iProgramGroupEdit @!
+0 ^iProgramRecipe @!
+0 ^iProgramRecipeEdit @!
+0 ^iPumpIt_PulseRatesAllAtMax_EC @!
+0 ^iPumpIt_PulseRatesAllAtMax_pH @!
+0 ^iPumpIt_Tmp @!
+0 ^iPumpIt_Tmp2 @!
+0 ^iQueue_front @!
+0 ^iQueue_Rear @!
+0 ^iQueueCount @!
+0 ^iQueueExt_ProgIndex @!
+0 ^iQueueProgram_Tmp @!
+0 ^iQueueProgram_Tmp1 @!
+0 ^iQueueProgram_Tmp2 @!
+0 ^iRecipeClose @!
+0 ^iRecipeDefinitionCancel @!
+0 ^iRecipeDefinitionSave @!
+0 ^iRecipeTankError @!
+0 ^iRefProgZone_Tmp @!
+0 ^iRefProgZone_Tmp2 @!
+0 ^iRefreshFromLibrary @!
+0 ^iRefreshFromRecipe @!
+0 ^iRefreshFromWaterSource @!
+0 ^iRefreshInjectorDisplays @!
+0 ^iRefreshMaintenanceDisp_Tmp @!
+0 ^iRefreshOutputs_Tmp @!
+0 ^iRefreshOutputsDesc_Tmp @!
+0 ^iRefreshRecipeRequired @!
+0 ^iRefWC_Factor @!
+0 ^iRefXBEE_CommOpenResult @!
+0 ^iRefXBEE_Index @!
+0 ^iRefXBEE_LostTransmitterFound @!
+-1 ^iRefXBEE_ReadingIndex @!
+0 ^iRefXBEE_ReceiverStatus @!
+0 ^iRefXBEE_SensorIndex @!
+0 ^iRefXBEE_SplitChar @!
+0 ^iRefXBEE_StartIndex @!
+0 ^iRefXBEE_Tmp @!
+0 ^iRefXBEE_WC_Factor @!
+-1 ^iRunProgramIndex @!
+0 ^iSaveEditGroup_Tmp @!
+0 ^iSaveEditInj_Tmp @!
+0 ^iSaveEditInj_Tmp2 @!
+0 ^iSaveEditNut_Tmp @!
+-1 ^iSaveEditOverLap @!
+0 ^iSaveEditProg_Tmp @!
+0 ^iSaveEditProg_Tmp2 @!
+0 ^iSaveEditProg_Tmp4 @!
+0 ^iSaveEditProg_Tmp5 @!
+0 ^iSaveEditProg_Tmp6 @!
+0 ^iSaveEditProg_Tmp7 @!
+0 ^iSaveEditProgErrorCheck @!
+0 ^iSaveEditProgErrorCheck1 @!
+0 ^iSaveEditProgErrorDate @!
+0 ^iSaveEditProgram @!
+0 ^iSaveEditProgramValveGroup @!
+0 ^iSaveErrorProg_Tmp1 @!
+0 ^iSaveErrorProg_Tmp2 @!
+0 ^iSaveErrorProg_Tmp3 @!
+0 ^iSaveInputSensor @!
+0 ^iSaveNutrientLibrary @!
+0 ^iSaveOutputs_Tmp @!
+0 ^iSaveOutputs_Tmp2 @!
+0 ^iSaveTargetRecipePPM @!
+0 ^iSaveTimers @!
+0 ^iSaveWaterAnalysis @!
+0 ^iSchedulerChangeFlag @!
+0 ^iScheduleRecipe @!
+0 ^iSetDefValveTimes_Tmp @!
+0 ^iStartEditGroup_Tmp @!
+0 ^iStartEditGroup_Tmp2 @!
+0 ^iStartEditInj_Tmp @!
+0 ^iStartEditInj_Tmp2 @!
+0 ^iStartEditNut_Tmp @!
+0 ^iStartEditProg_Factor @!
+0 ^iStartEditProg_Tmp @!
+0 ^iStartEditProg_Tmp2 @!
+0 ^iStartEditProg_Tmp3 @!
+0 ^iStartEditProg_Tmp4 @!
+0 ^iStartEditProg_Tmp5 @!
+0 ^iStartEditProg_Tmp6 @!
+0 ^iStartEditProgram_Tmp0 @!
+0 ^iStartEditValves_Tmp @!
+0 ^iStartEditValves_Tmp2 @!
+0 ^iStringCompare @!
+0 ^iSystemRestore @!
+0 ^iTank2_LevelSwitch_Bottom @!
+0 ^iTank_Alarm @!
+0 ^iTankAlarmActive @!
+0 ^iTankAlarmActiveTemp @!
+0 ^iTankCirgulationFlag_Tmp @!
+0 ^iTempProgramZone @!
+0 ^iTempStartDayNum @!
+0 ^iTempStartMonthNum @!
+0 ^iTempStartYearNum @!
+0 ^iTempStopDayNum @!
+0 ^iTempStopMonthNum @!
+0 ^iTempStopYearNum @!
+0 ^iTimers_Tmp @!
+0 ^iTimers_Tmp2 @!
+0 ^iTimers_Tmp3 @!
+-1 ^iTuneValveNumber @!
+-1 ^iUndoEditProgram @!
+0 ^iUndoInjectorSetpoint @!
+0 ^iValveDefinitionClose @!
+0 ^iValveDefinitionDefaultTime @!
+0 ^iValveDefinitionSave @!
+0 ^iXBEEClear_Tmp @!
+0 ^j @!
+0 ^n @!
+-1 ^nCheckSum_InjectorDisplay_Tmp @!
+0 ^nControlEngineType @!
+0 ^nDispValveNum @!
+0 ^newFront @!
+0 ^newRear @!
+0 ^nFlowPulseCount @!
+0 ^nFlowResetIndex @!
+0 ^nFreshWaterIndex @!
+0 ^nInjectorDisplay_Inc_Dec @!
+-1 ^nInjectorEditPtr @!
+-1 ^nLibraryEditPtr @!
+0 ^nMaxValveIndex @!
+0 ^nMixLast @!
+0 ^nNextProgram @!
+0 ^nOutputDispNum @!
+0 ^nProgramDataIndex @!
+1 ^nRecipeNo_ppm @!
+0 ^nResults @!
+0 ^nRunCounter1 @!
+-1 ^nRunGroupIndex @!
+-1 ^nRunProgramIndex @!
+-1 ^nRunRecipeIndex @!
+-1 ^nRunValveIndex @!
+-1 ^nRunZoneIndex @!
+-1 ^nSelectedNutrient @!
+0 ^nSolProgramIndex @!
+0 ^nTankAlarmIndex @!
+0 ^nTankIndex @!
+0 ^nTankLevelCheckIndex @!
+0 ^nTankOutputIndex @!
+0 ^nTankQueueIndex @!
+0 ^nTankWaterIndex @!
+-1 ^nTargetNutrientPtr @!
+0 ^nTempRecipeNo @!
+0 ^nTimeInterval_Hour @!
+0 ^nTimeInterval_Mins @!
+0 ^nTimeInterval_Secs @!
+0 ^nTimeIntervalExpired @!
+0 ^nTriggerType @!
+0 ^nWaterAnalysis_Index @!
+0 ^nXBEE_Chars @!
+0 ^nXBEE_Message @!
+-1 ^nXBEE_Status @!
+0 ^nZoneErrorIndex @!
+0 ^Status @!
+0 ^STRING_LEN @!
+0 ^tankNameindex @!
+0 ^tempValveMultiplier @!
+-1 ^tmpAuxiliaryIndex @!
+0 ^ui_CancelEditProgram @!
+0 ^ui_FlowRateOffset @!
+0 ^ui_SaveEditProgram @!
+0 ^ui_StartEditProgram @!
+0 ^ui_WaterPressureExtOffset @!
+0 ^ui_WaterPressureIntOffset @!
+0.00000000 ^uiAlarmSnoozeTimer @!
+0 ^uiEditECTargetDB @!
+0 ^uiEditECTargetSP @!
+0 ^uiEditGroupNum @!
+0 ^uiEditGroupNumDisp @!
+-1 ^uiEditGS3_AssignID @!
+-1 ^uiEditGS3_AssignProgramID @!
+-1 ^uiEditGS3_UnassignID @!
+-1 ^uiEditInjectorNum @!
+0 ^uiEditInjectorPHFlag @!
+0 ^uiEditInjectorProportionalFlag @!
+0.00000000 ^uiEditInjectorSPFlowRate @!
+0 ^uiEditMaintenanceCardNum @!
+0.00000000 ^uiEditMoisterAlarm @!
+0 ^uiEditPH_UpDown @!
+0.00000000 ^uiEditPHTargetDB @!
+0.00000000 ^uiEditPHTargetSP @!
+0 ^uiEditPPMRecipe @!
+0 ^uiEditProgMVOverride @!
+0 ^uiEditProgMVOverride_DB @!
+0 ^uiEditProgMVOverride_SP @!
+0 ^uiEditProgramDays @!
+-1 ^uiEditProgramNum @!
+-1 ^uiEditProgramZoneNum @!
+-1 ^uiEditRecipeNum @!
+0 ^uiEditValveSolarInfDB @!
+0.00000000 ^uiEditValveSolarInfPer @!
+0 ^uiEditValveSolarInfSP @!
+0 ^uiEditZoneRecipeCancel @!
+0 ^uiEStop @!
+0.00000000 ^uiFlowRate @!
+-1 ^uiGS3_VoltageStatus @!
+0.00000000 ^uiMixValveTimeOpen @!
+0 ^uiPause @!
+0 ^uiPPMClose @!
+0 ^uiStart @!
+0 ^uiTempProgramNum @!
+0 ^uiTransmitters_Status @!
+0 ^uiTuningPause @!
+0 ^uiTuningStart @!
+-1 ^uiZoneRecipeFlagNum @!
+0 ^uo_Overview_FT_screen @!
+0 ^uo_Overview_LeftIMG @!
+0 ^uo_Overview_RightIMG @!
+0 ^uoDispAuxNum @!
+0 ^uoDispCurrentDay @!
+0 ^uoDispCurrentProgZone @!
+-1 ^uoDispGroupNum @!
+0 ^uoDispMainECDeadBand @!
+0 ^uoDispMainECTarget @!
+0.00000000 ^uoDispMainPHDeadBand @!
+0.00000000 ^uoDispMainPHTarget @!
+0.00000000 ^uoDispMoisterAverage @!
+0 ^uoDispProgramRun @!
+0.00000000 ^uoDispProgramTimer @!
+-1 ^uoDispProgZoneDayNum @!
+0 ^uoDispRecipeNum @!
+0 ^uoDispValveflag @!
+0 ^uoDispValveNumber @!
+-1 ^uoDispZoneRun @!
+0 ^uoECInAlarm @!
+0 ^uoECOutAlarm @!
+0 ^uoFlowAlarm @!
+0 ^uoHighAlarm @!
+0 ^uoHighECInAlarm @!
+0 ^uoHighECOutAlarm @!
+0 ^uoHighFlowAlarm @!
+0 ^uoHighpHAlarm @!
+0 ^uoHighPressureAlarm @!
+0 ^uoHighTempAlarm @!
+0 ^uoInjectorEditPtr @!
+0.00000000 ^uoLogLiters @!
+0 ^uoLogStart @!
+0 ^uoLogTimeZone @!
+0 ^uoLowAlarm @!
+0 ^uoLowECInAlarm @!
+0 ^uoLowECOutAlarm @!
+0 ^uoLowFlowAlarm @!
+0 ^uoLowpHAlarm @!
+0 ^uoLowPressureAlarm @!
+0 ^uoLowTempAlarm @!
+0 ^uoMixValve @!
+0 ^uoMoisterAlarm @!
+0 ^uoPHAlarm @!
+0.00000000 ^uopHSensor @!
+0 ^uoPopupWindow @!
+0 ^uoPressureAlarm @!
+0.00000000 ^uoPressureSensor @!
+0 ^uoPulseRateAlarm @!
+0 ^uoSelectedTankDisplay @!
+0 ^uoSelectedTankDisplay_Tmp @!
+0 ^uoState @!
+0.00000000 ^uoTank_AlarmMaxSP @!
+0.00000000 ^uoTank_AlarmMinSP @!
+0 ^uoTank_Application_UpDown @!
+0.00000000 ^uoTank_CalculatedVolume @!
+0.00000000 ^uoTank_Capacity @!
+0.00000000 ^uoTank_ControlMaxSP @!
+0.00000000 ^uoTank_ControlMinSP @!
+0 ^uoTank_Enable @!
+0.00000000 ^uoTank_Height @!
+0 ^uoTank_ManualControl @!
+0 ^uoTank_Output @!
+0.00000000 ^uoTank_PercentFull @!
+0 ^uoTankDisplayNumber @!
+0 ^uoTankIndex @!
+0 ^uoTemperatureAlarm @!
+0 ^uoTuningState @!
+-1 ^uoZoneDispRecipeNum @!
+0.0 ^utCycleTimer_TimeOn_01 SetTimer
+0.0 ^utCycleTimer_TimeOn_02 SetTimer
+0.0 ^utCycleTimer_TimeOn_03 SetTimer
+0.0 ^utCycleTimer_TimeOn_04 SetTimer
+0.0 ^utCycleTimer_TimeOn_05 SetTimer
+0.0 ^utCycleTimer_TimeOn_06 SetTimer
+0.0 ^utCycleTimer_TimeOn_07 SetTimer
+0.0 ^utCycleTimer_TimeOn_08 SetTimer
+0.0 ^utCycleTimer_TimeOn_09 SetTimer
+0.0 ^utCycleTimer_TimeOn_10 SetTimer
+0.0 ^utFlowCheck SetTimer
+0.0 ^utTotalTime SetTimer
+0 0 -1 }bMaintenanceAutoFlag InitTable
+0 0 -1 }DateTimeStrTb1 InitTable
+0.00000000 0 -1 }fCurrentSolarAccum InitTable
+0.00000000 0 -1 }fEditNutrientMix InitTable
+0 0 -1 }fEditValveVolume InitTable
+0.00000000 0 -1 }fEditWater_ppm InitTable
+0.00000000 0 -1 }fFlowRates InitTable
+0.00000000 0 -1 }fInjectorCalcMaxSolub InitTable
+0.00000000 0 -1 }fInjectorCalcMixRatio InitTable
+0.00000000 0 -1 }fInjectorInjected_ppm InitTable
+50.000000 0 -1 }fInjectorMaxVolume InitTable
+1.0000000 0 -1 }fInjectorMinVolume InitTable
+0.00000000 0 -1 }fInjectorPulseRate InitTable
+0.00000000 0 -1 }fInjectorPulseSP InitTable
+0.00000000 0 -1 }fInjectorPulseTrigger InitTable
+1.0000000 0 -1 }fInjectorRecMix InitTable
+0.00000000 0 -1 }fInjectorTank_ppm InitTable
+0.00000000 0 -1 }fInjectorTimer InitTable
+0.00000000 0 -1 }fInjectorVolumeRate InitTable
+0.00000000 0 -1 }fInjectorWater_ppm InitTable
+0.00000000 0 -1 }fTank_CalculatedVolume InitTable
+0.00000000 0 -1 }fTank_PercentFull InitTable
+0.00000000 0 -1 }fTank_PercentFullTEMP InitTable
+0.00000000 0 -1 }fTargetPPM_Active InitTable
+0.00000000 0 -1 }fTargetPPM_Diff InitTable
+0.00000000 0 -1 }fTargetPPM_Diff100 InitTable
+0.00000000 0 -1 }fTotalCalculated_ppm InitTable
+0 0 -1 }iAG_BatchTankActive InitTable
+0 0 -1 }iAG_LastRun InitTable
+0 0 -1 }iAG_PtrNumTmp InitTable
+0 0 -1 }iAGCurrentRunNum InitTable
+0 0 -1 }iAGPtrNumIndex InitTable
+0 0 -1 }iAGPumpStatus InitTable
+0 0 -1 }iAGTimerRunningFlag InitTable
+0 0 -1 }iAGTmpFlag InitTable
+0 0 -1 }iAGValveActive InitTable
+0 0 -1 }iAGValveOnBit InitTable
+0 0 -1 }iAGZoneActiveFlag InitTable
+0 0 -1 }iFlowTotalizerReset InitTable
+0 0 -1 }iNCD_Lengths InitTable
+0 0 -1 }iQueueExt_ProgQueued InitTable
+0 0 -1 }iQueueExt_Tmp InitTable
+0 0 -1 }iQueueProgram InitTable
+0 0 -1 }iQueueProgramIndex InitTable
+0 0 -1 }iQueueProgramIndex_Tmp InitTable
+0 0 -1 }iQueueTemp InitTable
+0 0 -1 }iStartTimeTmp InitTable
+0 0 -1 }iStopTimeTmp InitTable
+0 0 -1 }iTank_AlarmHI InitTable
+0 0 -1 }iTank_AlarmLO InitTable
+0 0 -1 }iTank_LevelSwitch_Bottom InitTable
+0 0 -1 }iTank_LevelSwitch_Top InitTable
+0 0 -1 }iTank_ManualControl InitTable
+0 0 -1 }iTank_Output InitTable
+0 0 -1 }NCD_Data InitTable
+0.00000000 0 -1 }nInjectorLitersToPulse InitTable
+0 0 -1 }nInjectorPulseCount InitTable
+0 0 -1 }nPulseCount InitTable
+-1.0000000 0 -1 }nPulseFactor_EC InitTable
+-1.0000000 0 -1 }nPulseFactor_PH InitTable
+0 0 -1 }nStartInjectorTimer InitTable
+0 0 -1 }tCurCycleTimerState InitTable
+0 0 -1 }tCurGS3_Charging InitTable
+0.00000000 0 -1 }tCurGS3_EC InitTable
+0 0 -1 }tCurGS3_ProbeStatus InitTable
+0 0 -1 }tCurGS3_Status InitTable
+0.00000000 0 -1 }tCurGS3_Temp InitTable
+0 0 -1 }tCurGS3_UpdateTime InitTable
+-1.0000000 0 -1 }tCurGS3_Volts InitTable
+0.00000000 0 -1 }tCurGS3_VWC InitTable
+0.00000000 0 -1 }tCurGS3_VWC_Avg InitTable
+0 0 -1 }uiCycleTimer_Enabled InitTable
+0.00000000 0 -1 }uiCycleTimer_TimeEnd InitTable
+0.00000000 0 -1 }uiCycleTimer_TimeOFF InitTable
+0.00000000 0 -1 }uiCycleTimer_TimeON InitTable
+0.00000000 0 -1 }uiCycleTimer_TimeStart InitTable
+-1 0 -1 }uiEditGS3_VWC InitTable
+0.00000000 0 -1 }uiEditInjectorSP InitTable
+0 0 -1 }uiEditProgramZoneRecipeNum InitTable
+0 0 -1 }uiEditValveGroups InitTable
+0 0 -1 }uiEditValvePairs InitTable
+0.00000000 0 -1 }uiEditValveTimes InitTable
+0.00000000 0 -1 }uiEditZoneAuxECSP InitTable
+0 0 -1 }uiEditZoneDays InitTable
+0 0 -1 }uiEditZoneExternalStart InitTable
+0 0 -1 }uiEditZoneFlags InitTable
+0.00000000 0 -1 }uiEditZoneMoisterDB InitTable
+0.00000000 0 -1 }uiEditZoneMoisterSP InitTable
+0.00000000 0 -1 }uiEditZoneRestTime InitTable
+0.00000000 0 -1 }uiEditZoneSolarSP InitTable
+0 0 -1 }uiEditZoneStartDay InitTable
+0 0 -1 }uiEditZoneStartDays InitTable
+0.00000000 0 -1 }uiEditZoneStartTime InitTable
+0 0 -1 }uiEditZoneStopDay InitTable
+0 0 -1 }uiEditZoneStopDays InitTable
+0.00000000 0 -1 }uiEditZoneStopTime InitTable
+0.00000000 0 -1 }uiEditZoneTriggerTime InitTable
+1.0000000 0 -1 }uiEditZoneValveMultiplier InitTable
+0.00000000 0 -1 }uiInjectorInjectVolume InitTable
+0.00000000 0 -1 }uiInjectorNutrientMix InitTable
+0.00000000 0 -1 }uiInjectorPulseRate InitTable
+0.00000000 0 -1 }uiInjectorSolTankSize InitTable
+0.00000000 0 -1 }uiInjectorSolubRatio InitTable
+0.00000000 0 -1 }uiInjectorSoluteAmt InitTable
+0 0 -1 }uiPH_UpDown InitTable
+0 0 -1 }uoDispOutputTypes InitTable
+0 0 -1 }uoDispProgramZoneDays InitTable
+0.00000000 0 -1 }uoInjectorCalcMaxSolub InitTable
+0.00000000 0 -1 }uoInjectorCalcMixRatio InitTable
+0.00000000 0 -1 }uoInjectorInjected_ppm InitTable
+0.00000000 0 -1 }uoInjectorTank_ppm InitTable
+0.00000000 0 -1 }uoInjectorTankCalcLevel InitTable
+0.00000000 0 -1 }uoInjectorTankPercentFull InitTable
+0.00000000 0 -1 }uoInjectorVolumeRate InitTable
+0 0 -1 }uoLogInjectorPulseCount InitTable
+0.00000000 0 -1 }uoLogInjectorStroke InitTable
+0.00000000 0 -1 }uoPulseRate InitTable
+0.00000000 0 -1 }uoPulseRateActual InitTable
+0 0 -1 }uoTank_Outputs InitTable
+" "
+ *Date_and_Time $MOVE
+" "
+ *Date_String $MOVE
+" C"
+ *sCelcius $MOVE
+" "
+ *sController_Firmware $MOVE
+" "
+ *sController_IPddress $MOVE
+" "
+ *sEditNutrientMix $MOVE
+" "
+ *sEditWater_ppm $MOVE
+" "
+ *sErr $MOVE
+" F"
+ *sFahrenheit $MOVE
+" "
+ *sNCD_Battery $MOVE
+" "
+ *sNCD_Data_Byte0 $MOVE
+" "
+ *sNCD_Data_Byte1 $MOVE
+" "
+ *sNCD_Data_Byte2 $MOVE
+" "
+ *sNCD_Data_Byte3 $MOVE
+" "
+ *sNCD_ID $MOVE
+" "
+ *sRecipeName_Active $MOVE
+" "
+ *sRefXBEE_Tmp $MOVE
+" "
+ *sSaveEditProgram $MOVE
+" "
+ *sSaveOutputList $MOVE
+" "
+ *sSaveRecipe $MOVE
+" "
+ *sSaveTimer $MOVE
+" "
+ *sSaveValveGroup $MOVE
+" GPM"
+ *sScale_GPM $MOVE
+" LPM"
+ *sScale_LPM $MOVE
+" "
+ *sStrategy_Name $MOVE
+" "
+ *sTemperatureScale $MOVE
+" "
+ *sTempHours $MOVE
+" "
+ *sTempMins $MOVE
+" "
+ *stemporary_holder $MOVE
+" "
+ *sTempSecs $MOVE
+" "
+ *sTempStartDay $MOVE
+" "
+ *sTempStartMonth $MOVE
+" "
+ *sTempStartYear $MOVE
+" "
+ *sTempStopDay $MOVE
+" "
+ *sTempStopMonth $MOVE
+" "
+ *sTempStopYear $MOVE
+" "
+ *sXBEE_Message $MOVE
+" Hi from Epic"
+ *TestString $MOVE
+" "
+ *Time_String $MOVE
+" "
+ *tStartDate $MOVE
+" "
+ *tStartTime $MOVE
+" "
+ *uiEditGroupName $MOVE
+" "
+ *uiEditProgramName $MOVE
+" "
+ *uiEditRecipeName $MOVE
+" "
+ *uiInjectorNutritionName $MOVE
+" "
+ *uiTankNumber $MOVE
+" "
+ *uoDispAuxName $MOVE
+" "
+ *uoDispGroupName $MOVE
+" "
+ *uoDispMainIrrigationMode $MOVE
+" "
+ *uoDispRecipeName $MOVE
+" "
+ *uoDispValveNum $MOVE
+" "
+ *uoErrorMessage $MOVE
+" "
+ *uoErrorMessageTmp $MOVE
+" "
+ *uoLogEvent $MOVE
+" "
+ *uoLogGroup $MOVE
+" "
+ *uoLogIrrigationMode $MOVE
+" "
+ *uoLogProgram $MOVE
+" "
+ *uoLogRecipeName $MOVE
+" "
+ *uoLogStartDate $MOVE
+" "
+ *uoLogStartTime $MOVE
+" "
+ *uoLogStopDate $MOVE
+" "
+ *uoLogStopTime $MOVE
+" "
+ *uoLogTrigger $MOVE
+" "
+ *uoLogValves $MOVE
+" "
+ *uoRunGroupName $MOVE
+" "
+ *uoRunProgramName $MOVE
+" "
+ *uoRunRecipeName $MOVE
+" "
+ *uoTank_Description $MOVE
+" ser:port=1,baud=115200,data=8,parity=n,stop=1,rts-cts=0"
+ *hCom_NCD $MOVE
+" ser:0,9600,n,8,1"
+ *hCom_XBEE $MOVE
+" ser:port=0,baud=115200,data=8,parity=n,stop=1,rts-cts=0"
+ *imp_hCom_XBEE $MOVE
+ " "
+0 -1 {imp_uoOutputDesc Init$Table
+ " "
+0 -1 {stNCD_Data_To_Hex Init$Table
+ " "
+0 -1 {tGS3_UpdateTime Init$Table
+ " "
+0 -1 {tGS3ID_Unassigned Init$Table
+ " "
+0 -1 {TriggerTypeDesc Init$Table
+ " "
+0 -1 {uiEditZoneDates Init$Table
+0 MoveToPointer PTR_aiTankLevelPTR
+0 MoveToPointer PTR_aiTempPtr
+0 MoveToPointer PTR_diExtStart_Tmp
+0 MoveToPointer PTR_doAgritechOutput_Ptr
+0 MoveToPointer PTR_doClearOutputs_Ptr
+0 MoveToPointer PTR_doMain_Ptr
+0 MoveToPointer PTR_doMixValve_Ptr
+0 MoveToPointer PTR_doPumpIt_Ptr
+0 MoveToPointer PTR_doReturnValve_Ptr
+0 MoveToPointer PTR_doRunGroup_Ptr
+0 MoveToPointer PTR_doSupplyValve_Ptr
+0 MoveToPointer PTR_doTankCirgulate_Ptr
+0 MoveToPointer PTR_doTankOutput_Ptr
+0 MoveToPointer PTR_doTestFlow_Ptr
+0 MoveToPointer PTR_doTimer_Ptr
+0 MoveToPointer PTR_dtCycleTimer_TimeOff_Ptr
+0 MoveToPointer PTR_dtProgram_MinRest_Ptr
+0 MoveToPointer PTR_dtProgram_MinRest_Ptr_Edit
+0 MoveToPointer PTR_dtTimeInterval_Ptr
+0 MoveToPointer PTR_dtTimeInterval_Ptr_Edit
+0 MoveToPointer PTR_utCycleTimer_TimeOn_Ptr
+23 FOR 0 I PTBL_aiInputPtrTable TABLE! NEXT
+7 FOR 0 I PTBL_aiMIOPtrTable TABLE! NEXT
+19 FOR 0 I PTBL_diExtStart_PtrTable TABLE! NEXT
+167 FOR 0 I PTBL_doOutputPtrTable TABLE! NEXT
+19 FOR 0 I PTBL_dtCycleTimer_TimeOff_PtrTable TABLE! NEXT
+19 FOR 0 I PTBL_dtProgram_MinRest_PtrTable TABLE! NEXT
+19 FOR 0 I PTBL_dtTimeInterval_PtrTable TABLE! NEXT
+19 FOR 0 I PTBL_utCycleTimer_TimeOn_PtrTable TABLE! NEXT
+" st.uoDispOutputListDesc[0-15]" 195 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" st.uiAGZoneNames[0-4].rw" 194 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" st.sNutrientLibraryName[0-99].rw" 193 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.uoTank_Outputs[0-23]" 192 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.uoLogInjectorStroke[0-11].rw" 191 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.uiOptionsTempPressure[0-11].rw" 190 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.uiEditOutputDiagnosisEnable[0-15].rw" 189 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.uiAGZoneEnable[0-4].rw" 188 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.uiAGValveTimeSP_ZN5[0-9].rw" 187 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.uiAGValveTimeSP_ZN4[0-9].rw" 186 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.uiAGValveTimeSP_ZN3[0-9].rw" 185 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.uiAGValveTimeSP_ZN2[0-9].rw" 184 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.uiAGValveTimeSP_ZN1[0-9].rw" 183 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.uiAGValveTimeEn_ZN5[0-9].rw" 182 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.uiAGValveTimeEn_ZN4[0-9].rw" 181 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.uiAGValveTimeEn_ZN3[0-9].rw" 180 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.uiAGValveTimeEn_ZN2[0-9].rw" 179 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.uiAGValveTimeEn_ZN1[0-9].rw" 178 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.uiAGStartTime[0-4].rw" 177 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.uiAGEndtime[0-4].rw" 176 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.nInjectorLibPtrIndex[0-11].rw" 175 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.iTank_Output[0-23]" 174 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.iTank_ManualControl[0-23]" 173 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.iStopTimeTmp[0-19]" 172 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.iStartTimeTmp[0-19]" 171 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32t.iAGZoneActiveFlag[0-4].rw" 170 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fWaterAnalysis_ppm[0-199].rw" 169 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fTotalCalculated_ppm[0-19]" 168 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fTank_ControlMinSP[0-23]" 167 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fTank_ControlMaxSP[0-23]" 166 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fNutrientLibSolubRatio[0-99].rw" 165 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fNutrientLibRecMix[0-99].rw" 164 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fNutrientLibrary[0-1999].rw" 163 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fLitersTotal_Yesterday[0-99]" 162 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fInjectorTankPercentFull[0-11]" 161 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fInjectorTankCalcLevel[0-11]" 160 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fInjectorTank_ppm[0-239]" 159 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fInjectorSoluteAmt[0-11].rw" 158 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fInjectorSolubRatio[0-11].rw" 157 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fInjectorSolTankSize[0-11].rw" 156 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fInjectorRecMix[0-11]" 155 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fInjectorPulseRate[0-11]" 154 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fInjectorNutrientMix[0-239]" 153 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fInjectorInjectVolume[0-11].rw" 152 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32t.fInjectorInjected_ppm[0-239].rw" 151 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.uoLogStopDate.rw" 150 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.uoLogStartDate.rw" 149 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.uoLogRecipeName" 148 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.uoLogIrrigationMode.rw" 147 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.uoErrorMessageTmp" 146 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.uoDispMainIrrigationMode.rw" 145 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.tStartDate.rw" 144 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.Time_String.rw" 143 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.stemporary_holder.rw" 142 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.sStrategy_Name" 141 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.sNCD_ID.rw" 140 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.sNCD_Data_Byte3.rw" 139 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.sNCD_Data_Byte2.rw" 138 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.sNCD_Data_Byte1.rw" 137 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.sNCD_Data_Byte0.rw" 136 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.sNCD_Battery.rw" 135 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.sController_IPddress" 134 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.sController_Firmware" 133 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.Date_String.rw" 132 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" s.Date_and_Time" 131 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.uoTank_ManualControl.rw" 130 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.uoPressureSensor" 129 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.uopHSensor" 128 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.uoDispMainPHTarget.rw" 127 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.uoDispMainPHDeadBand.rw" 126 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.uoDispMainECTarget.rw" 125 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.uoDispMainECDeadBand.rw" 124 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.uipH_UpDownButton" 123 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.uiMIOnum.rw" 122 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.uiMaxTankQueueNum.rw" 121 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.uiEditPPMRecipe.rw" 120 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.ui_WaterPressureExtOffset.rw" 119 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.nTimeInterval_Secs.rw" 118 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.nTimeInterval_Mins.rw" 117 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.nTimeInterval_Hour.rw" 116 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.nRecipeNo_ppm.rw" 115 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.nNextProgram" 114 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iUndoInjectorSetpoint.rw" 113 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iTankCirgulationMode.rw" 112 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iTankAlarmActive" 111 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iTank2_LevelSwitch_Bottom" 110 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iSystemRestore.rw" 109 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iScratchPadEnable.rw" 108 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iSaveTargetRecipePPM.rw" 107 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iRefreshMaintenanceDisp_Tmp.rw" 106 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iPressureToggle.rw" 105 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iPPM_Enable" 104 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iMainPumpStatus" 103 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iCurrentYear" 102 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iBatchTankCirulation.rw" 101 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.iAgritechOnOff.rw" 100 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fWaterPressureExtOffset" 99 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fTank8_Capacity" 98 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fTank8_CalculatedVolume" 97 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fTank7_Capacity" 96 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fTank7_CalculatedVolume" 95 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fTank6_Capacity" 94 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fTank6_CalculatedVolume" 93 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fTank5_Capacity" 92 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fTank5_CalculatedVolume" 91 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fRecipeFlowRateDisplay" 90 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fPRESSUREPerMaConstant" 89 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fNCD_Temperature3.rw" 88 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fNCD_Temperature2.rw" 87 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fNCD_Temperature1.rw" 86 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fNCD_Moisture3.rw" 85 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fNCD_Moisture2.rw" 84 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fNCD_Moisture1.rw" 83 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fNCD_EC3.rw" 82 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fNCD_EC2.rw" 81 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fNCD_EC1.rw" 80 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fNCD_Battery.rw" 79 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fLitersGrandTotal_Yesterday" 78 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fLitersGrandTotal" 77 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fFlowRate" 76 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fCurrentPressureExt_Tmp" 75 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fCurrentPRESSURE_Int" 74 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fCurrentPRESSURE_Ext" 73 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fCurrentEC" 72 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fAuxPH" 71 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.fAPHPerMaConstant.rw" 70 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" t.dtTempAlarmDelay" 69 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" t.dtPressureShutDownDelay" 68 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" t.dtPressureAlarmDelay" 67 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" t.dtAutomatedProportionalDecideDelay" 66 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" t.dtAgritech_ZN5" 65 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" t.dtAgritech_ZN4" 64 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" t.dtAgritech_ZN3" 63 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" t.dtAgritech_ZN2" 62 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" t.dtAgritech_ZN1" 61 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" t.dt_TankLevelCheck" 60 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" t.dt_TankCirgulation" 59 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.cVersion_Major" 58 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" f32.cVersion_Build" 57 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.cOptPressurevalMinIndex" 56 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.cOptPressurevalMaxIndex" 55 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.cMaxOutputRacks.rw" 54 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.cMaxLibraryMixes.rw" 53 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" i32.bInProgress.rw" 52 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.WaterFlowSensor" 51 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.Temperature" 50 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T9_LevelMeter" 49 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T8_LevelMeter" 48 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T7_LevelMeter" 47 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T6_LevelMeter" 46 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T5_LevelMeter" 45 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T4_LevelMeter" 44 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T3_LevelMeter" 43 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T2_LevelMeter" 42 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T24_LevelMeter" 41 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T23_LevelMeter" 40 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T22_LevelMeter" 39 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T21_LevelMeter" 38 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T20_LevelMeter" 37 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T1_LevelMeter" 36 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T19_LevelMeter" 35 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T18_LevelMeter" 34 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T17_LevelMeter" 33 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T16_LevelMeter" 32 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T15_LevelMeter" 31 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T14_LevelMeter" 30 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T13_LevelMeter" 29 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T12_LevelMeter" 28 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T11_LevelMeter" 27 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.T10_LevelMeter" 26 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.Pressure_Internal" 25 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.Pressure_External" 24 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.pH_Out" 23 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.pH_In_Solar" 22 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.EC_Out" 21 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.EC_In" 20 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.ai13_MIO_03" 19 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.ai13_MIO_02" 18 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.ai13_MIO_01" 17 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.ai13_MIO_00" 16 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.ai12_MIO_03" 15 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.ai12_MIO_02" 14 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.ai12_MIO_01" 13 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" aio.ai12_MIO_00" 12 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" dio.do13_MIO_05.rw" 11 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" dio.do13_MIO_04.rw" 10 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" dio.do13_MIO_03.rw" 9 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" dio.do13_MIO_02.rw" 8 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" dio.do13_MIO_01.rw" 7 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" dio.do13_MIO_00.rw" 6 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" dio.do12_MIO_05.rw" 5 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" dio.do12_MIO_04.rw" 4 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" dio.do12_MIO_03.rw" 3 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" dio.do12_MIO_02.rw" 2 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" dio.do12_MIO_01.rw" 1 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+" dio.do12_MIO_00.rw" 0 {stPrivateListOfStrategyTags $TABLE@ $MOVE
+ " " *_HSV_INIT_IO $MOVE
+;
+T: T_INIT_IO
+W_INIT_IO
+&Powerup START.T DROP
+T;
+&_INIT_IO ' T_INIT_IO  SETTASK
+   : _RUN
+   CLEARERRORS
+   &_INIT_IO START.T DROP
+   ;

@@ -1,0 +1,1 @@
+Run InstallFonts.bat as "Run as administrator" to install all fonts at once.

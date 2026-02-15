@@ -1,0 +1,399 @@
+: 96_0
+3 JUMP ;
+: 96_1
+1 4 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^i1 @! 
+7 LINE.NUM ^i1 @@ }fInjectorTankCalcLevel TABLE@ ^i1 @@ }fInjectorSolTankSize TABLE@ F/ 100 I>F F* ^i1 @@ }fInjectorTankPercentFull TABLE! 
+10 LINE.NUM ^i1 @@ }fInjectorPulseRate TABLE@ ^i1 @@ }fInjectorInjectVolume TABLE@ F* ^i1 @@ }fInjectorVolumeRate TABLE! 
+13 LINE.NUM ^i1 @@ }fInjectorSoluteAmt TABLE@ 1000 I>F F* ^i1 @@ }fInjectorSolTankSize TABLE@ F/ ^i1 @@ }fInjectorCalcMixRatio TABLE! 
+16 LINE.NUM ^i1 @@ }fInjectorSolTankSize TABLE@ ^i1 @@ }fInjectorSoluteAmt TABLE@ F/ ^i1 @@ }fInjectorSolubRatio TABLE@ F/ ^i1 @@ }fInjectorCalcMaxSolub TABLE! 
+1 19 LINE.NUM ^cMaxNutrients @@ 1 -  1 + 0 DO? I ^i2 @! 
+21 LINE.NUM ^i1 @@ 20 *  ^i2 @@ +  }fInjectorNutrientMix TABLE@ 100 I>F F/ ^i1 @@ }fInjectorSoluteAmt TABLE@ F* ^i1 @@ }fInjectorSolTankSize TABLE@ F/ 1000000 I>F F* ^i1 @@ 20 *  ^i2 @@ +  }fInjectorTank_ppm TABLE! 
+23 LINE.NUM ^iPPM_LIVE @@ IF 
+25 LINE.NUM ^fLiterCount @@ 0 I>F F> IF 
+26 LINE.NUM ^i1 @@ 20 *  ^i2 @@ +  }fInjectorTank_ppm TABLE@ ^i1 @@ }nInjectorPulseCount TABLE@F ^i1 @@ }fInjectorInjectVolume TABLE@ F* F* ^fLiterCount @@ F/ 1000 I>F F/ ^i1 @@ 20 *  ^i2 @@ +  }fInjectorInjected_ppm TABLE! 
+27 LINE.NUM ELSE 
+28 LINE.NUM 0 I>F ^i1 @@ 20 *  ^i2 @@ +  }fInjectorInjected_ppm TABLE! 
+29 LINE.NUM THEN 
+31 LINE.NUM ELSE 
+32 LINE.NUM ^i1 @@ 20 *  ^i2 @@ +  }fInjectorTank_ppm TABLE@ ^i1 @@ }fInjectorVolumeRate TABLE@ F* ^fRecipeFlowRateDisplay @@ F/ 1000 I>F F/ ^i1 @@ 20 *  ^i2 @@ +  }fInjectorInjected_ppm TABLE! 
+33 LINE.NUM THEN 
+34 LINE.NUM 1 +LOOP 
+36 LINE.NUM 1 +LOOP 
+1 41 LINE.NUM ^cMaxNutrients @@ 1 -  1 + 0 DO? I ^i1 @! 
+43 LINE.NUM 0 I>F ^fppm_temp1 @! 
+1 46 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^i2 @! 
+48 LINE.NUM ^fppm_temp1 @@ ^i2 @@ 20 *  ^i1 @@ +  }fInjectorInjected_ppm TABLE@ F+ ^fppm_temp1 @! 
+50 LINE.NUM 1 +LOOP 
+52 LINE.NUM ^fFlowRate @@ 5.00000000e-001 F> ^iPPM_LIVE @@ LNOT  LOR  IF 
+53 LINE.NUM ^fppm_temp1 @@ ^i1 @@ }fInjectorWater_ppm TABLE@ F+ ^i1 @@ }fTotalCalculated_ppm TABLE! 
+54 LINE.NUM ELSE 
+55 LINE.NUM ^fppm_temp1 @@ ^i1 @@ }fTotalCalculated_ppm TABLE! 
+56 LINE.NUM THEN 
+58 LINE.NUM ^i1 @@ }fTotalCalculated_ppm TABLE@ ^i1 @@ }fTargetPPM_Active TABLE@ F- ^i1 @@ }fTargetPPM_Diff TABLE! 
+60 LINE.NUM ^i1 @@ }fTargetPPM_Active TABLE@ 0 I>F F> IF 
+61 LINE.NUM ^i1 @@ }fTotalCalculated_ppm TABLE@ ^i1 @@ }fTargetPPM_Active TABLE@ F- ^i1 @@ }fTargetPPM_Active TABLE@ F/ 100 I>F F*  FABS ^i1 @@ }fTargetPPM_Diff100 TABLE! 
+62 LINE.NUM ELSE 
+63 LINE.NUM 0 I>F ^i1 @@ }fTargetPPM_Diff100 TABLE! 
+64 LINE.NUM THEN 
+66 LINE.NUM 1 +LOOP 
+1 70 LINE.NUM 5 1 + 0 DO? I ^i1 @! 
+73 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorTankPercentFull TABLE@ ^i1 @@ }uoInjectorTankPercentFull TABLE! 
+74 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorVolumeRate TABLE@ ^i1 @@ }uoInjectorVolumeRate TABLE! 
+75 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorCalcMixRatio TABLE@ ^i1 @@ }uoInjectorCalcMixRatio TABLE! 
+76 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorCalcMaxSolub TABLE@ ^i1 @@ }uoInjectorCalcMaxSolub TABLE! 
+77 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }uoPulseRate TABLE@ ^i1 @@ }uoPulseRateActual TABLE! 
+1 80 LINE.NUM 19 1 + 0 DO? I ^i2 @! 
+81 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ 20 *  ^i2 @@ +  }fInjectorInjected_ppm TABLE@ ^i1 @@ 20 *  ^i2 @@ +  }uoInjectorInjected_ppm TABLE! 
+82 LINE.NUM 1 +LOOP 
+83 LINE.NUM 1 +LOOP 
+88 LINE.NUM ^nRecipeNo_ppm @@ ^nTempRecipeNo @@ <> IF 
+89 LINE.NUM 1 ^iRefreshRecipeRequired @! 
+90 LINE.NUM ELSE 
+91 LINE.NUM 0 ^iRefreshRecipeRequired @! 
+92 LINE.NUM THEN 
+21 JUMP ;
+: 96_2
+
+1 LINE.NUM
+  250    DELAY
+15 JUMP ;
+: 96_7
+5 LINE.NUM ^nInjectorEditPtr @@ -1 <> IF 
+6 LINE.NUM ^nLibraryEditPtr @@ ^nInjectorEditPtr @@ }nInjectorDisplayPtr TABLE@ }nInjectorLibPtrIndex TABLE! 
+7 LINE.NUM ^nLibraryEditPtr @@ }fLibrarySoluteAmt TABLE@ ^nInjectorEditPtr @@ }nInjectorDisplayPtr TABLE@ }fInjectorSoluteAmt TABLE! 
+8 LINE.NUM ^nLibraryEditPtr @@ }fNutrientLibSolubRatio TABLE@ ^nInjectorEditPtr @@ }nInjectorDisplayPtr TABLE@ }fInjectorSolubRatio TABLE! 
+9 LINE.NUM -1 ^nInjectorEditPtr @! 
+10 LINE.NUM -1 ^nLibraryEditPtr @! 
+11 LINE.NUM " " *sEditNutrientMix  $MOVE 
+12 LINE.NUM THEN 
+1 14 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^i1 @! 
+16 LINE.NUM ^i1 @@ }nInjectorLibPtrIndex TABLE@ {sNutrientLibraryName $TABLE@ ^i1 @@ {sNutrientTankName $TABLE@  $MOVE 
+18 LINE.NUM ^iRefreshFromRecipe @@ IF 
+19 LINE.NUM ^uiEditPPMRecipe @@ LNOT  IF 
+20 LINE.NUM ^nRecipeNo_ppm @@ 1 -  12 *  ^i1 @@ +  }uiInjectorSetpoints TABLE@ ^i1 @@ }fInjectorPulseRate TABLE! 
+21 LINE.NUM THEN 
+22 LINE.NUM THEN 
+1 24 LINE.NUM ^cMaxNutrients @@ 1 -  1 + 0 DO? I ^i2 @! 
+26 LINE.NUM ^iRefreshFromLibrary @@ IF 
+27 LINE.NUM ^i1 @@ }nInjectorLibPtrIndex TABLE@ 20 *  ^i2 @@ +  }fNutrientLibrary TABLE@ ^i1 @@ 20 *  ^i2 @@ +  }fInjectorNutrientMix TABLE! 
+28 LINE.NUM THEN 
+30 LINE.NUM ^iRefreshFromWaterSource @@ IF 
+31 LINE.NUM ^nWaterAnalysis_Index @@ 20 *  ^i2 @@ +  }fWaterAnalysis_ppm TABLE@ ^i2 @@ }fInjectorWater_ppm TABLE! 
+32 LINE.NUM ^nWaterAnalysis_Index @@ {sWaterAnalysisLibrary $TABLE@ *sWaterAnalysisActive  $MOVE 
+33 LINE.NUM THEN 
+37 LINE.NUM 1 +LOOP 
+39 LINE.NUM 0 ^iRefreshFromWaterSource @! 
+41 LINE.NUM 1 +LOOP 
+1 43 LINE.NUM 5 1 + 0 DO? I ^i1 @! 
+44 LINE.NUM ^iRefreshFromRecipe @@ IF 
+45 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorPulseRate TABLE@ ^i1 @@ }uiInjectorPulseRate TABLE! 
+46 LINE.NUM THEN 
+47 LINE.NUM 1 +LOOP 
+51 LINE.NUM ^iRefreshFromRecipe @@ IF 
+1 52 LINE.NUM ^cMaxNutrients @@ 1 -  1 + 0 DO? I ^i2 @! 
+53 LINE.NUM ^nRecipeNo_ppm @@ 1 -  20 *  ^i2 @@ +  }fTargetPPM TABLE@ ^i2 @@ }fTargetPPM_Active TABLE! 
+54 LINE.NUM 1 +LOOP 
+55 LINE.NUM THEN 
+57 LINE.NUM ^uiEditPPMRecipe @@ LNOT  IF 
+58 LINE.NUM ^nRecipeNo_ppm @@ 1 -  }uiInjectorSPFlowRate TABLE@ ^fRecipeFlowRateDisplay @! 
+59 LINE.NUM ^nRecipeNo_ppm @@ 1 - {uiRecipeName $TABLE@ *sRecipeName_Active  $MOVE 
+60 LINE.NUM THEN 
+65 LINE.NUM 0 ^iRefreshFromLibrary @! 
+66 LINE.NUM 0 ^iRefreshFromRecipe @! 
+68 LINE.NUM 0 ^iRefreshRecipeRequired @! 
+69 LINE.NUM ^nRecipeNo_ppm @@ ^nTempRecipeNo @! 
+-3 JUMP ;
+: 96_15
+4 LINE.NUM 1 ^iRefreshFromWaterSource @! 
+5 LINE.NUM 1 ^iRefreshFromLibrary @! 
+6 LINE.NUM 1 ^iRefreshFromRecipe @! 
+7 LINE.NUM 0 ^iRefreshInjectorDisplays @! 
+9 LINE.NUM -1 ^nSelectedNutrient @! 
+11 LINE.NUM -1 ^nCheckSum_InjectorDisplay_Tmp @! 
+13 LINE.NUM 0 ^uiEditPPMRecipe @! 
+-2 JUMP ;
+: 96_19
+1 3 LINE.NUM ^cMaxNutrients @@ 1 -  1 + 0 DO? I ^i1 @! 
+5 LINE.NUM ^nWaterAnalysis_Index @@ 20 *  ^i1 @@ +  }fWaterAnalysis_ppm TABLE@ ^i1 @@ }fEditWater_ppm TABLE! 
+7 LINE.NUM 1 +LOOP 
+9 LINE.NUM ^nWaterAnalysis_Index @@ {sWaterAnalysisLibrary $TABLE@ *sEditWater_ppm  $MOVE 
+12 LINE.NUM 0 ^iEditWaterAnalysis @! 
+14 JUMP ;
+: 96_31
+3 LINE.NUM }fEditWater_ppm 0 }fWaterAnalysis_ppm ^nWaterAnalysis_Index @@ 20 *  20  CopyTable  
+5 LINE.NUM *sEditWater_ppm ^nWaterAnalysis_Index @@ {sWaterAnalysisLibrary $TABLE@  $MOVE 
+8 LINE.NUM 0 ^iSaveWaterAnalysis @! 
+15 JUMP ;
+: 96_36
+3 LINE.NUM }fEditNutrientMix 0 }fNutrientLibrary ^nLibraryEditPtr @@ 20 *  20  CopyTable  
+6 LINE.NUM *sEditNutrientMix ^nLibraryEditPtr @@ {sNutrientLibraryName $TABLE@  $MOVE 
+8 LINE.NUM ^fEditLibrarySoluteAmt @@ ^nLibraryEditPtr @@ }fLibrarySoluteAmt TABLE! 
+9 LINE.NUM ^fEditLibrarySolubRatio @@ ^nLibraryEditPtr @@ }fNutrientLibSolubRatio TABLE! 
+11 LINE.NUM ^fEditLibrarySoluteAmt @@ ^nInjectorEditPtr @@ }nInjectorDisplayPtr TABLE@ }fInjectorSoluteAmt TABLE! 
+12 LINE.NUM ^fEditLibrarySolubRatio @@ ^nInjectorEditPtr @@ }nInjectorDisplayPtr TABLE@ }fInjectorSolubRatio TABLE! 
+14 LINE.NUM 0 ^iSaveNutrientLibrary @! 
+16 JUMP ;
+: 96_37
+2 LINE.NUM }fNutrientLibrary ^nLibraryEditPtr @@ 20 *  }fEditNutrientMix 0 20  CopyTable  
+5 LINE.NUM ^nInjectorEditPtr @@ }nInjectorDisplayPtr TABLE@ 1 +  ^uoInjectorEditPtr @! 
+7 LINE.NUM ^nLibraryEditPtr @@ {sNutrientLibraryName $TABLE@ *sEditNutrientMix  $MOVE 
+9 LINE.NUM ^nLibraryEditPtr @@ }fLibrarySoluteAmt TABLE@  0.0 F<> IF 
+10 LINE.NUM ^nLibraryEditPtr @@ }fLibrarySoluteAmt TABLE@ ^fEditLibrarySoluteAmt @! 
+11 LINE.NUM ELSE 
+11 LINE.NUM ^nInjectorEditPtr @@ }nInjectorDisplayPtr TABLE@ }fInjectorSoluteAmt TABLE@ ^fEditLibrarySoluteAmt @! 
+12 LINE.NUM THEN 
+15 LINE.NUM ^nLibraryEditPtr @@ }fNutrientLibSolubRatio TABLE@  0.0 F<> IF 
+16 LINE.NUM ^nLibraryEditPtr @@ }fNutrientLibSolubRatio TABLE@ ^fEditLibrarySolubRatio @! 
+17 LINE.NUM ELSE 
+17 LINE.NUM ^nInjectorEditPtr @@ }nInjectorDisplayPtr TABLE@ }fInjectorSolubRatio TABLE@ ^fEditLibrarySolubRatio @! 
+18 LINE.NUM THEN 
+20 LINE.NUM 0 ^iEditNutrientLibrary @! 
+12 JUMP ;
+: 96_46
+5 LINE.NUM ^nInjectorEditPtr @@ }nInjectorDisplayPtr TABLE@ }nInjectorLibPtrIndex TABLE@ ^nLibraryEditPtr @! 
+8 LINE.NUM ^nLibraryEditPtr @@ {sNutrientLibraryName $TABLE@ *sEditNutrientMix  $MOVE 
+9 JUMP ;
+: 96_65
+4 LINE.NUM -1 ^nLibraryEditPtr @! 
+5 LINE.NUM -1 ^nInjectorEditPtr @! 
+6 LINE.NUM " " *sEditNutrientMix  $MOVE 
+11 LINE.NUM 0 ^iCancelNutrientLibrary @! 
+18 JUMP ;
+: 96_76
+1 3 LINE.NUM 5 1 + 0 DO? I ^i1 @! 
+5 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ {sNutrientTankName $TABLE@ ^i1 @@ {uoNutrientTankName $TABLE@  $MOVE 
+7 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorSoluteAmt TABLE@ ^i1 @@ }uiInjectorSoluteAmt TABLE! 
+9 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorSolTankSize TABLE@ ^i1 @@ }uiInjectorSolTankSize TABLE! 
+11 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorCalcMixRatio TABLE@ ^i1 @@ }uoInjectorCalcMixRatio TABLE! 
+13 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorSolubRatio TABLE@ ^i1 @@ }uiInjectorSolubRatio TABLE! 
+15 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorCalcMaxSolub TABLE@ ^i1 @@ }uoInjectorCalcMaxSolub TABLE! 
+17 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorTankCalcLevel TABLE@ ^i1 @@ }uoInjectorTankCalcLevel TABLE! 
+19 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorTankPercentFull TABLE@ ^i1 @@ }uoInjectorTankPercentFull TABLE! 
+21 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorInjectVolume TABLE@ ^i1 @@ }uiInjectorInjectVolume TABLE! 
+23 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorPulseRate TABLE@ ^i1 @@ }uiInjectorPulseRate TABLE! 
+25 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }uoPulseRate TABLE@ ^i1 @@ }uoPulseRateActual TABLE! 
+27 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorVolumeRate TABLE@ ^i1 @@ }uoInjectorVolumeRate TABLE! 
+1 30 LINE.NUM 19 1 + 0 DO? I ^i2 @! 
+32 LINE.NUM 20 ^i1 @@ }nInjectorDisplayPtr TABLE@ *  ^i2 @@ +  }fInjectorNutrientMix TABLE@ 20 ^i1 @@ *  ^i2 @@ +  }uiInjectorNutrientMix TABLE! 
+34 LINE.NUM 20 ^i1 @@ }nInjectorDisplayPtr TABLE@ *  ^i2 @@ +  }fInjectorTank_ppm TABLE@ 20 ^i1 @@ *  ^i2 @@ +  }uoInjectorTank_ppm TABLE! 
+36 LINE.NUM 20 ^i1 @@ }nInjectorDisplayPtr TABLE@ *  ^i2 @@ +  }fInjectorInjected_ppm TABLE@ 20 ^i1 @@ *  ^i2 @@ +  }uoInjectorInjected_ppm TABLE! 
+39 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ 1 +  ^i1 @@ }nInjectorDisplayNumber TABLE! 
+41 LINE.NUM 1 +LOOP 
+43 LINE.NUM 1 +LOOP 
+45 LINE.NUM ^nTargetNutrientPtr @@ -1 = IF 
+48 LINE.NUM }nInjectorDisplayPtr 0 }nInjectorDisplayPtr_Tmp 0 6  CopyTable  
+49 LINE.NUM }nInjectorDisplayNumber 0 }nInjectorDisplayNumber_Tmp 0 6  CopyTable  
+50 LINE.NUM THEN 
+52 LINE.NUM ^nCheckSum_InjectorDisplay @@ ^nCheckSum_InjectorDisplay_Tmp @! 
+16 JUMP ;
+: 96_80
+2 LINE.NUM ^nInjectorDisplay_Inc_Dec @@  ABS 6 <= IF 
+1 4 LINE.NUM 5 1 + 0 DO? I ^i1 @! 
+5 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ ^nInjectorDisplay_Inc_Dec @@ +  ^i1 @@ }nInjectorDisplayPtr TABLE! 
+7 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ 12 >= IF 
+8 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ 12 -  ^i1 @@ }nInjectorDisplayPtr TABLE! 
+8 LINE.NUM THEN 
+10 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ -1 <= IF 
+11 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ 12 +  ^i1 @@ }nInjectorDisplayPtr TABLE! 
+11 LINE.NUM THEN 
+14 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ 1 +  ^i1 @@ }nInjectorDisplayNumber TABLE! 
+16 LINE.NUM 1 +LOOP 
+18 LINE.NUM ELSE 
+18 LINE.NUM ^nInjectorDisplay_Inc_Dec @@ 99 >= IF 
+20 LINE.NUM ^nInjectorDisplay_Inc_Dec @@ 100 -  ^nTargetNutrientPtr @! 
+29 LINE.NUM ^nTargetNutrientPtr @@ 0 >= IF 
+32 LINE.NUM 0 ^i1 @! 
+1 34 LINE.NUM 11 1 + 0 DO? I ^i2 @! 
+36 LINE.NUM ^i2 @@ 20 *  ^nTargetNutrientPtr @@ +  }fInjectorNutrientMix TABLE@  0.0 F<> IF 
+39 LINE.NUM ^i1 @@ 6 < IF 
+40 LINE.NUM ^i2 @@ ^i1 @@ }nInjectorDisplayPtr TABLE! 
+43 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ 1 +  ^i1 @@ }nInjectorDisplayNumber TABLE! 
+44 LINE.NUM ^i1 @@ 1 +  ^i1 @! 
+46 LINE.NUM THEN 
+47 LINE.NUM THEN 
+49 LINE.NUM 1 +LOOP 
+51 LINE.NUM ELSE 
+51 LINE.NUM ^nTargetNutrientPtr @@ -1 = IF 
+54 LINE.NUM }nInjectorDisplayPtr_Tmp 0 }nInjectorDisplayPtr 0 6  CopyTable  
+55 LINE.NUM }nInjectorDisplayNumber_Tmp 0 }nInjectorDisplayNumber 0 6  CopyTable  
+56 LINE.NUM THEN THEN 
+58 LINE.NUM THEN THEN 
+62 LINE.NUM 0 ^nInjectorDisplay_Inc_Dec @! 
+0 JUMP ;
+: 96_83
+2 LINE.NUM 0 ^nCheckSum_InjectorDisplay @! 
+1 4 LINE.NUM 5 1 + 0 DO? I ^i1 @! 
+5 LINE.NUM ^nCheckSum_InjectorDisplay @@ ^i1 @@ }nInjectorDisplayPtr TABLE@ +  ^nCheckSum_InjectorDisplay @! 
+6 LINE.NUM 1 +LOOP 
+12 JUMP ;
+: 96_89
+1 5 LINE.NUM 5 1 + 0 DO? I ^i1 @! 
+7 LINE.NUM ^i1 @@ }uiInjectorSoluteAmt TABLE@ ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorSoluteAmt TABLE! 
+9 LINE.NUM ^i1 @@ }uiInjectorSolTankSize TABLE@ ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorSolTankSize TABLE! 
+11 LINE.NUM ^i1 @@ }uiInjectorInjectVolume TABLE@ ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorInjectVolume TABLE! 
+13 LINE.NUM ^i1 @@ }uiInjectorPulseRate TABLE@ ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorPulseRate TABLE! 
+15 LINE.NUM ^i1 @@ }uoInjectorTankCalcLevel TABLE@ ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorTankCalcLevel TABLE! 
+1 18 LINE.NUM 19 1 + 0 DO? I ^i2 @! 
+20 LINE.NUM 20 ^i1 @@ *  ^i2 @@ +  }uiInjectorNutrientMix TABLE@ 20 ^i1 @@ }nInjectorDisplayPtr TABLE@ *  ^i2 @@ +  }fInjectorNutrientMix TABLE! 
+23 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ 1 +  ^i1 @@ }nInjectorDisplayNumber TABLE! 
+25 LINE.NUM 1 +LOOP 
+27 LINE.NUM 1 +LOOP 
+29 LINE.NUM 0 ^iRefreshInjectorDisplays @! 
+30 LINE.NUM 0 ^nCheckSum_InjectorDisplay_Tmp @! 
+0 JUMP ;
+: 96_95
+-15 JUMP ;
+: 96_124
+
+1 LINE.NUM
+  0  
+  ^uiPPMClose @!   
+13 JUMP ;
+: 96_129
+3 LINE.NUM }fTargetPPM_Active 0 }fTargetPPM ^nRecipeNo_ppm @@ 1 -  20 *  20  CopyTable  
+6 LINE.NUM -1 ^nSelectedNutrient @! 
+1 8 LINE.NUM 5 1 + 0 DO? I ^i1 @! 
+9 LINE.NUM ^i1 @@ }nInjectorDisplayPtr TABLE@ }fInjectorPulseRate TABLE@ ^i1 @@ }uiInjectorPulseRate TABLE! 
+10 LINE.NUM 1 +LOOP 
+12 LINE.NUM }fInjectorPulseRate 0 }uiInjectorSetpoints ^nRecipeNo_ppm @@ 1 -  12 *  12  CopyTable  
+15 LINE.NUM ^fRecipeFlowRateDisplay @@ ^nRecipeNo_ppm @@ 1 -  }uiInjectorSPFlowRate TABLE! 
+16 LINE.NUM *sRecipeName_Active ^nRecipeNo_ppm @@ 1 - {uiRecipeName $TABLE@  $MOVE 
+18 LINE.NUM 0 ^iSaveTargetRecipePPM @! 
+19 LINE.NUM 1 ^iRefreshFromRecipe @! 
+9 JUMP ;
+: 96_10
+FALSE
+
+1 LINE.NUM
+  ^iRefreshFromLibrary @@   0<>
+LOR
+
+2 LINE.NUM
+  ^iRefreshFromRecipe @@   0<>
+LOR
+
+3 LINE.NUM
+  ^iRefreshFromWaterSource @@   0<>
+LOR
+IF -16 ELSE -18 THEN JUMP ;
+: 96_18
+TRUE
+
+1 LINE.NUM
+  ^iEditWaterAnalysis @@   0<>
+LAND
+IF -15 ELSE 0 THEN JUMP ;
+: 96_29
+TRUE
+
+1 LINE.NUM
+  ^iSaveWaterAnalysis @@   0<>
+LAND
+IF -15 ELSE 1 THEN JUMP ;
+: 96_35
+TRUE
+
+1 LINE.NUM
+  ^iSaveNutrientLibrary @@   0<>
+LAND
+IF -15 ELSE 2 THEN JUMP ;
+: 96_38
+TRUE
+
+1 LINE.NUM
+  ^iEditNutrientLibrary @@   0<>
+LAND
+IF -15 ELSE -2 THEN JUMP ;
+: 96_49
+TRUE
+
+1 LINE.NUM
+  ^nInjectorEditPtr @@ 
+  0    >=
+LAND
+
+2 LINE.NUM
+  ^nLibraryEditPtr @@ 
+  -1    =
+LAND
+IF -15 ELSE -5 THEN JUMP ;
+: 96_61
+TRUE
+
+1 LINE.NUM
+  ^iCancelNutrientLibrary @@   0<>
+LAND
+IF -15 ELSE 4 THEN JUMP ;
+: 96_78
+FALSE
+
+1 LINE.NUM
+  ^nInjectorDisplay_Inc_Dec @@ 
+  0    <>
+LOR
+IF -14 ELSE -13 THEN JUMP ;
+: 96_84
+TRUE
+
+1 LINE.NUM
+  ^nCheckSum_InjectorDisplay @@ 
+  ^nCheckSum_InjectorDisplay_Tmp @@   =
+LAND
+IF 1 ELSE -16 THEN JUMP ;
+: 96_91
+TRUE
+
+1 LINE.NUM
+  ^iRefreshInjectorDisplays @@ 
+  0    =
+LAND
+IF -3 ELSE -14 THEN JUMP ;
+: 96_121
+TRUE
+
+1 LINE.NUM
+  ^uiPPMClose @@ 
+  1    =
+LAND
+IF -13 ELSE -27 THEN JUMP ;
+: 96_127
+TRUE
+
+1 LINE.NUM
+  ^iSaveTargetRecipePPM @@   0<>
+LAND
+IF -13 ELSE -3 THEN JUMP ;
+T: T96
+DUMMY
+96_0
+96_1
+96_2
+96_7
+96_15
+96_19
+96_31
+96_36
+96_37
+96_46
+96_65
+96_76
+96_80
+96_83
+96_89
+96_95
+96_124
+96_129
+96_10
+96_18
+96_29
+96_35
+96_38
+96_49
+96_61
+96_78
+96_84
+96_91
+96_121
+96_127
+T;
+&PPM_Tracker ' T96 SETTASK

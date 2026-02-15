@@ -1,0 +1,1580 @@
+: 0_0
+2 JUMP ;
+: 0_8
+
+1 LINE.NUM
+  0  
+  ^uiStart @!   
+
+2 LINE.NUM
+  1  
+  ^uoState @!   
+
+3 LINE.NUM
+  0  
+  ^uoLowAlarm @!   
+
+4 LINE.NUM
+  0  
+  ^uoHighAlarm @!   
+
+5 LINE.NUM
+  0  
+  ^uoMoisterAlarm @!   
+
+6 LINE.NUM
+  &Alarms   START.T
+  ^iChartStatus_Tmp @! 
+
+7 LINE.NUM
+  &InputSensor_Tracker   START.T
+  ^iChartStatus_Tmp @! 
+
+8 LINE.NUM
+  &Queue_Program   START.T
+  ^iChartStatus_Tmp @! 
+
+9 LINE.NUM
+  &TankLevel_Tracker   START.T
+  ^iChartStatus_Tmp @! 
+
+10 LINE.NUM
+  &Timers   START.T
+  ^iChartStatus_Tmp @! 
+
+11 LINE.NUM
+  &Flow_Tracker   START.T
+  ^iChartStatus_Tmp @! 
+
+12 LINE.NUM
+  &Refresh_XBEE   START.T
+  ^iChartStatus_Tmp @! 
+
+13 LINE.NUM
+  &Main   START.T
+  ^iChartStatus_Tmp @! 
+
+14 LINE.NUM
+  &PPM_Tracker   START.T
+  ^iChartStatus_Tmp @! 
+
+15 LINE.NUM
+  &MMP_ScratchPad   START.T
+  ^iChartStatus_Tmp @! 
+
+16 LINE.NUM
+  &Agritech   START.T
+  ^iChartStatus_Tmp @! 
+5 JUMP ;
+: 0_25
+7 LINE.NUM ^iSystemRestore @@ LNOT  IF 
+8 LINE.NUM ^dtTimeInterval_0  StopTimer 
+9 LINE.NUM ^dtTimeInterval_1  StopTimer 
+10 LINE.NUM ^dtTimeInterval_2  StopTimer 
+11 LINE.NUM ^dtTimeInterval_3  StopTimer 
+12 LINE.NUM ^dtTimeInterval_4  StopTimer 
+13 LINE.NUM ^dtTimeInterval_5  StopTimer 
+14 LINE.NUM ^dtTimeInterval_6  StopTimer 
+15 LINE.NUM ^dtTimeInterval_7  StopTimer 
+16 LINE.NUM ^dtTimeInterval_8  StopTimer 
+17 LINE.NUM ^dtTimeInterval_9  StopTimer 
+18 LINE.NUM ^dtTimeInterval_10  StopTimer 
+19 LINE.NUM ^dtTimeInterval_11  StopTimer 
+20 LINE.NUM ^dtTimeInterval_12  StopTimer 
+21 LINE.NUM ^dtTimeInterval_13  StopTimer 
+22 LINE.NUM ^dtTimeInterval_14  StopTimer 
+23 LINE.NUM ^dtTimeInterval_15  StopTimer 
+24 LINE.NUM ^dtTimeInterval_16  StopTimer 
+25 LINE.NUM ^dtTimeInterval_17  StopTimer 
+26 LINE.NUM ^dtTimeInterval_18  StopTimer 
+27 LINE.NUM ^dtTimeInterval_19  StopTimer 
+28 LINE.NUM THEN 
+30 LINE.NUM 0 ^iSystemRestore @! 
+-2 JUMP ;
+: 0_31
+2 LINE.NUM *sController_IPddress  MY.ADDRESS>String 
+3 LINE.NUM *sController_Firmware  Rev>$ 
+4 LINE.NUM *sStrategy_Name  FILENAME>$ 
+5 LINE.NUM  WhoAmI? ^nControlEngineType @! 
+8 LINE.NUM 0 ^uoLowFlowAlarm @! 
+9 LINE.NUM 0 ^uoHighFlowAlarm @! 
+10 LINE.NUM 0 ^uoFlowAlarm @! 
+11 LINE.NUM 0 ^bFlowHighAlarm @! 
+12 LINE.NUM 0 ^bFlowLowAlarm @! 
+14 LINE.NUM 0 ^uoLowECOutAlarm @! 
+15 LINE.NUM 0 ^uoLowECOutAlarm @! 
+16 LINE.NUM 0 ^uoECOutAlarm @! 
+17 LINE.NUM 0 ^bECOUTHighAlarm @! 
+18 LINE.NUM 0 ^bECOUTLowAlarm @! 
+20 LINE.NUM 0 ^uoLowpHAlarm @! 
+21 LINE.NUM 0 ^uoHighpHAlarm @! 
+22 LINE.NUM 0 ^uoPHAlarm @! 
+23 LINE.NUM 0 ^bpHHighAlarm @! 
+24 LINE.NUM 0 ^bpHLowAlarm @! 
+27 LINE.NUM 0 ^uoLowECInAlarm @! 
+28 LINE.NUM 0 ^uoHighECInAlarm @! 
+29 LINE.NUM 0 ^uoECInAlarm @! 
+30 LINE.NUM 0 ^bECINHighAlarm @! 
+31 LINE.NUM 0 ^bECINLowAlarm @! 
+33 LINE.NUM 0 ^uoLowTempAlarm @! 
+34 LINE.NUM 0 ^uoHighTempAlarm @! 
+35 LINE.NUM 0 ^uoTemperatureAlarm @! 
+36 LINE.NUM 0 ^bTempHighAlarm @! 
+37 LINE.NUM 0 ^bTempLowAlarm @! 
+39 LINE.NUM 0 ^uoLowPressureAlarm @! 
+40 LINE.NUM 0 ^uoHighPressureAlarm @! 
+41 LINE.NUM 0 ^uoPressureAlarm @! 
+42 LINE.NUM 0 ^bPressureHighAlarm @! 
+43 LINE.NUM 0 ^bPressureLowAlarm @! 
+45 LINE.NUM 0 ^bPressureShutDown @! 
+47 LINE.NUM 0 ^iTankAlarmActive @! 
+50 LINE.NUM 0 ^i @! 
+53 LINE.NUM 0 ^iSaveEditProgram @! 
+54 LINE.NUM 0 ^iCloseEditProgram @! 
+57 LINE.NUM ^fValvePositionOpen @@ 0 I>F F<= IF 
+57 LINE.NUM 0 I>F ^fValvePositionOpen @! 
+57 LINE.NUM THEN 
+61 LINE.NUM -1 ^nRunProgramIndex @! 
+62 LINE.NUM -1 ^nRunGroupIndex @! 
+63 LINE.NUM -1 ^nRunRecipeIndex @! 
+64 LINE.NUM -1 ^nRunValveIndex @! 
+66 LINE.NUM 2139095040 ^cNAN @! 
+69 LINE.NUM ^bConverted_Solar @@ 0 = ^fTotalSolarAccum @@ 0 I>F F> LAND  IF 
+70 LINE.NUM ^fTotalSolarAccum @@ 3600 I>F F* 1000000 I>F F/ ^fTotalSolarAccum @! 
+74 LINE.NUM THEN 
+75 LINE.NUM 1 ^bConverted_Solar @! 
+1 77 LINE.NUM ^cMaxPrograms @@ 1 -  1 + 0 DO? I ^iPower_Tmp @! 
+78 LINE.NUM ^iPower_Tmp @@ {uiProgramName $TABLE@ " " $= IF 
+79 LINE.NUM " Program #" ^iPower_Tmp @@ {uiProgramName $TABLE@  $MOVE 
+80 LINE.NUM ^iPower_Tmp @@ 1 +  *uiEditProgramName  I>$ 
+81 LINE.NUM *_HSV_SEMA Acquire1String ^iPower_Tmp @@ {uiProgramName $TABLE@  *_HSV_TEMP $MOVE *uiEditProgramName  *_HSV_TEMP $CAT *_HSV_TEMP ^iPower_Tmp @@ {uiProgramName $TABLE@ $MOVE Release1String 
+82 LINE.NUM 0 I>F ^iPower_Tmp @@ }fCurrentSolarAccum TABLE! 
+83 LINE.NUM THEN 
+84 LINE.NUM 1 +LOOP 
+1 86 LINE.NUM ^cMaxValveGroups @@ 1 -  1 + 0 DO? I ^iPower_Tmp @! 
+87 LINE.NUM ^iPower_Tmp @@ {uiGroupName $TABLE@ " " $= IF 
+88 LINE.NUM " Group #" ^iPower_Tmp @@ {uiGroupName $TABLE@  $MOVE 
+89 LINE.NUM ^iPower_Tmp @@ 1 +  *uiEditGroupName  I>$ 
+90 LINE.NUM *_HSV_SEMA Acquire1String ^iPower_Tmp @@ {uiGroupName $TABLE@  *_HSV_TEMP $MOVE *uiEditGroupName  *_HSV_TEMP $CAT *_HSV_TEMP ^iPower_Tmp @@ {uiGroupName $TABLE@ $MOVE Release1String 
+91 LINE.NUM ^iPower_Tmp @@ ^iPower_Tmp @@ }uiProgramValveGroup TABLE! 
+92 LINE.NUM THEN 
+93 LINE.NUM 1 +LOOP 
+1 95 LINE.NUM ^cMaxRecipes @@ 1 -  1 + 0 DO? I ^iPower_Tmp @! 
+96 LINE.NUM ^iPower_Tmp @@ {uiRecipeName $TABLE@ " " $= IF 
+97 LINE.NUM " Recipe #" ^iPower_Tmp @@ {uiRecipeName $TABLE@  $MOVE 
+98 LINE.NUM ^iPower_Tmp @@ 1 +  *uiEditRecipeName  I>$ 
+99 LINE.NUM *_HSV_SEMA Acquire1String ^iPower_Tmp @@ {uiRecipeName $TABLE@  *_HSV_TEMP $MOVE *uiEditRecipeName  *_HSV_TEMP $CAT *_HSV_TEMP ^iPower_Tmp @@ {uiRecipeName $TABLE@ $MOVE Release1String 
+100 LINE.NUM ^iPower_Tmp @@ ^iPower_Tmp @@ }uiProgramRecipeIndex TABLE! 
+1 105 LINE.NUM ^cMaxZones @@ 1 -  1 + 0 DO? I ^iPower_Tmp2 @! 
+106 LINE.NUM 0 ^iPower_Tmp @@ ^cMaxZones @@ *  ^iPower_Tmp2 @@ +  }uiProgramZoneFlags TABLE! 
+107 LINE.NUM ^iPower_Tmp @@ ^cMaxZones @@ *  ^iPower_Tmp2 @@ +  }uiProgramZoneFlags TABLE@ 0 = IF 
+108 LINE.NUM " " ^iPower_Tmp @@ ^cMaxZones @@ *  ^iPower_Tmp2 @@ + {uiProgramZoneRecipe $TABLE@  $MOVE 
+109 LINE.NUM -1 ^iPower_Tmp @@ ^cMaxZones @@ *  ^iPower_Tmp2 @@ +  }uiProgramZoneRecipeIndex TABLE! 
+110 LINE.NUM THEN 
+112 LINE.NUM 1 +LOOP 
+113 LINE.NUM THEN 
+114 LINE.NUM 1 +LOOP 
+1 117 LINE.NUM ^cMaxZones @@ 1 -  1 + 0 DO? I ^i @! 
+118 LINE.NUM ^i @@ }uiEditZoneValveMultiplier TABLE@ 0 I>F F<= IF 
+118 LINE.NUM 1 I>F ^i @@ }uiEditZoneValveMultiplier TABLE! 
+118 LINE.NUM THEN 
+119 LINE.NUM 1 +LOOP 
+1 121 LINE.NUM ^cMaxPrograms @@ ^cMaxZones @@ *  1 -  1 + 0 DO? I ^i @! 
+122 LINE.NUM ^i @@ }uiProgramZoneValveMultiplier TABLE@ 0 I>F F= IF 
+123 LINE.NUM 1 I>F ^i @@ }uiProgramZoneValveMultiplier TABLE! 
+124 LINE.NUM THEN 
+125 LINE.NUM 1 +LOOP 
+128 LINE.NUM ^fTankLevelSensors_HTConstant @@ 0 I>F F<= IF 
+128 LINE.NUM 4.00000000e+000 ^fTankLevelSensors_HTConstant @! 
+128 LINE.NUM THEN 
+1 130 LINE.NUM 23 1 + 0 DO? I ^i @! 
+131 LINE.NUM ^i @@ {sTank_Description $TABLE@ " " $= IF 
+132 LINE.NUM " Tank #" ^i @@ {sTank_Description $TABLE@  $MOVE 
+133 LINE.NUM ^i @@ 1 +  *uiTankNumber  I>$ 
+134 LINE.NUM *_HSV_SEMA Acquire1String ^i @@ {sTank_Description $TABLE@  *_HSV_TEMP $MOVE *uiTankNumber  *_HSV_TEMP $CAT *_HSV_TEMP ^i @@ {sTank_Description $TABLE@ $MOVE Release1String 
+135 LINE.NUM THEN 
+136 LINE.NUM ^i @@ }fTank_Height TABLE@ 0 I>F F<= IF 
+136 LINE.NUM 4.00000000e+000 ^i @@ }fTank_Height TABLE! 
+136 LINE.NUM THEN 
+137 LINE.NUM ^i @@ }fTank_ControlMaxSP TABLE@ 0 I>F F<= IF 
+137 LINE.NUM 90 I>F ^i @@ }fTank_ControlMaxSP TABLE! 
+137 LINE.NUM THEN 
+138 LINE.NUM ^i @@ }fTank_ControlMinSP TABLE@ 0 I>F F<= IF 
+138 LINE.NUM 10 I>F ^i @@ }fTank_ControlMinSP TABLE! 
+138 LINE.NUM THEN 
+139 LINE.NUM ^i @@ }fTank_AlarmMaxSP TABLE@ 0 I>F F<= IF 
+139 LINE.NUM 95 I>F ^i @@ }fTank_AlarmMaxSP TABLE! 
+139 LINE.NUM THEN 
+140 LINE.NUM ^i @@ }fTank_AlarmMinSP TABLE@ 0 I>F F<= IF 
+140 LINE.NUM 5 I>F ^i @@ }fTank_AlarmMinSP TABLE! 
+140 LINE.NUM THEN 
+141 LINE.NUM 1 +LOOP 
+143 LINE.NUM ^uiTemperatureScale @@ 0 = IF 
+144 LINE.NUM *sCelcius *sTemperatureScale  $MOVE 
+145 LINE.NUM ELSE 
+146 LINE.NUM *sFahrenheit *sTemperatureScale  $MOVE 
+147 LINE.NUM THEN 
+150 LINE.NUM ^uiFlowScale @@ 0 = IF 
+151 LINE.NUM 0 ^iFlowScale @! 
+152 LINE.NUM *sScale_LPM *sScaleFlow  $MOVE 
+153 LINE.NUM ELSE 
+153 LINE.NUM ^uiFlowScale @@ 1 = IF 
+154 LINE.NUM 1 ^iFlowScale @! 
+155 LINE.NUM *sScale_GPM *sScaleFlow  $MOVE 
+156 LINE.NUM THEN THEN 
+158 LINE.NUM 0 {uoCompanyName $TABLE@ " " $= IF 
+158 LINE.NUM " Climate Control Systems" 0 {uoCompanyName $TABLE@  $MOVE 
+158 LINE.NUM THEN 
+161 LINE.NUM 0 0 }MonthToDays TABLE! 
+162 LINE.NUM 0 1 }MonthToDays TABLE! 
+163 LINE.NUM 31 2 }MonthToDays TABLE! 
+164 LINE.NUM 59 3 }MonthToDays TABLE! 
+165 LINE.NUM 90 4 }MonthToDays TABLE! 
+166 LINE.NUM 120 5 }MonthToDays TABLE! 
+167 LINE.NUM 151 6 }MonthToDays TABLE! 
+168 LINE.NUM 181 7 }MonthToDays TABLE! 
+169 LINE.NUM 212 8 }MonthToDays TABLE! 
+170 LINE.NUM 243 9 }MonthToDays TABLE! 
+171 LINE.NUM 273 10 }MonthToDays TABLE! 
+172 LINE.NUM 304 11 }MonthToDays TABLE! 
+173 LINE.NUM 334 12 }MonthToDays TABLE! 
+176 LINE.NUM " None" 0 {TriggerTypeDesc $TABLE@  $MOVE 
+177 LINE.NUM " Testing" 1 {TriggerTypeDesc $TABLE@  $MOVE 
+178 LINE.NUM " Timer" 2 {TriggerTypeDesc $TABLE@  $MOVE 
+179 LINE.NUM " Solar" 3 {TriggerTypeDesc $TABLE@  $MOVE 
+180 LINE.NUM " Auxiliary" 4 {TriggerTypeDesc $TABLE@  $MOVE 
+181 LINE.NUM " External" 5 {TriggerTypeDesc $TABLE@  $MOVE 
+182 LINE.NUM " Manual" 6 {TriggerTypeDesc $TABLE@  $MOVE 
+183 LINE.NUM " Water Content" 7 {TriggerTypeDesc $TABLE@  $MOVE 
+185 LINE.NUM ^cOptSolarIntervalIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+185 LINE.NUM 1 I>F ^cOptSolarIntervalIndex @@ }uiOptions TABLE! 
+185 LINE.NUM THEN 
+187 LINE.NUM ^cOptECmAMaxIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+187 LINE.NUM 20 I>F ^cOptECmAMaxIndex @@ }uiOptions TABLE! 
+187 LINE.NUM THEN 
+188 LINE.NUM ^cOptECmAMinIndex @@ }uiOptions TABLE@ 4 I>F F< IF 
+188 LINE.NUM 4 I>F ^cOptECmAMinIndex @@ }uiOptions TABLE! 
+188 LINE.NUM THEN 
+190 LINE.NUM ^cOptAECmAMaxIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+190 LINE.NUM 20 I>F ^cOptAECmAMaxIndex @@ }uiOptions TABLE! 
+190 LINE.NUM THEN 
+191 LINE.NUM ^cOptAECmAMinIndex @@ }uiOptions TABLE@ 4 I>F F< IF 
+191 LINE.NUM 4 I>F ^cOptAECmAMinIndex @@ }uiOptions TABLE! 
+191 LINE.NUM THEN 
+193 LINE.NUM ^cOptPHmAMaxIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+193 LINE.NUM 20 I>F ^cOptPHmAMaxIndex @@ }uiOptions TABLE! 
+193 LINE.NUM THEN 
+194 LINE.NUM ^cOptPHmaMinIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+194 LINE.NUM 4 I>F ^cOptPHmaMinIndex @@ }uiOptions TABLE! 
+194 LINE.NUM THEN 
+196 LINE.NUM ^cOptAPHmAMaxIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+196 LINE.NUM 20 I>F ^cOptAPHmAMaxIndex @@ }uiOptions TABLE! 
+196 LINE.NUM THEN 
+197 LINE.NUM ^cOptAPHmAMinIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+197 LINE.NUM 4 I>F ^cOptAPHmAMinIndex @@ }uiOptions TABLE! 
+197 LINE.NUM THEN 
+199 LINE.NUM ^cOptTEMPmAMaxIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+199 LINE.NUM 20 I>F ^cOptTEMPmAMaxIndex @@ }uiOptions TABLE! 
+199 LINE.NUM THEN 
+200 LINE.NUM ^cOptTEMPmAMinIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+200 LINE.NUM 4 I>F ^cOptTEMPmAMinIndex @@ }uiOptions TABLE! 
+200 LINE.NUM THEN 
+202 LINE.NUM ^cOptWaterSensormAMaxIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+202 LINE.NUM 20 I>F ^cOptWaterSensormAMaxIndex @@ }uiOptions TABLE! 
+202 LINE.NUM THEN 
+203 LINE.NUM ^cOptWaterSensormAMinIndex @@ }uiOptions TABLE@ 4 I>F F< IF 
+203 LINE.NUM 4 I>F ^cOptWaterSensormAMinIndex @@ }uiOptions TABLE! 
+203 LINE.NUM THEN 
+205 LINE.NUM ^cOptWaterSensorvalMaxIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+205 LINE.NUM 500 I>F ^cOptWaterSensorvalMaxIndex @@ }uiOptions TABLE! 
+205 LINE.NUM THEN 
+206 LINE.NUM ^cOptWaterSensorvalMinIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+206 LINE.NUM 0 I>F ^cOptWaterSensorvalMinIndex @@ }uiOptions TABLE! 
+206 LINE.NUM THEN 
+208 LINE.NUM ^cOptPressuremAMinIndex @@ }uiOptionsTempPressure TABLE@ 1 I>F F< IF 
+208 LINE.NUM 4 I>F ^cOptPressuremAMinIndex @@ }uiOptionsTempPressure TABLE! 
+208 LINE.NUM THEN 
+209 LINE.NUM ^cOptPressuremAMaxIndex @@ }uiOptionsTempPressure TABLE@ 1 I>F F< IF 
+209 LINE.NUM 20 I>F ^cOptPressuremAMaxIndex @@ }uiOptionsTempPressure TABLE! 
+209 LINE.NUM THEN 
+211 LINE.NUM ^cOptPressurevalMaxIndex @@ }uiOptionsTempPressure TABLE@ 1 I>F F< IF 
+211 LINE.NUM 100 I>F ^cOptPressurevalMaxIndex @@ }uiOptionsTempPressure TABLE! 
+211 LINE.NUM THEN 
+212 LINE.NUM ^cOptPressurevalMinIndex @@ }uiOptionsTempPressure TABLE@ 1 I>F F< IF 
+212 LINE.NUM 0 I>F ^cOptPressurevalMinIndex @@ }uiOptionsTempPressure TABLE! 
+212 LINE.NUM THEN 
+214 LINE.NUM ^cOptPressureExtDelayIndex @@ }uiOptionsTempPressure TABLE@ 1 I>F F< IF 
+214 LINE.NUM 5 I>F ^cOptPressureExtDelayIndex @@ }uiOptionsTempPressure TABLE! 
+214 LINE.NUM THEN 
+216 LINE.NUM ^cOptECvalMaxIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+216 LINE.NUM 10000 I>F ^cOptECvalMaxIndex @@ }uiOptions TABLE! 
+216 LINE.NUM THEN 
+217 LINE.NUM ^cOptAECvalMaxIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+217 LINE.NUM 10000 I>F ^cOptAECvalMaxIndex @@ }uiOptions TABLE! 
+217 LINE.NUM THEN 
+218 LINE.NUM ^cOptPHvalMaxIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+218 LINE.NUM 14 I>F ^cOptPHvalMaxIndex @@ }uiOptions TABLE! 
+218 LINE.NUM THEN 
+219 LINE.NUM ^cOptAPHvalMaxIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+219 LINE.NUM 14 I>F ^cOptAPHvalMaxIndex @@ }uiOptions TABLE! 
+219 LINE.NUM THEN 
+220 LINE.NUM ^cOptTEMPvalMaxIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+220 LINE.NUM 100 I>F ^cOptTEMPvalMaxIndex @@ }uiOptions TABLE! 
+220 LINE.NUM THEN 
+221 LINE.NUM ^cOptSolarCalibrationMultiplier @@ }uiOptions TABLE@ 1 I>F F< IF 
+221 LINE.NUM 147 I>F ^cOptSolarCalibrationMultiplier @@ }uiOptions TABLE! 
+221 LINE.NUM THEN 
+222 LINE.NUM ^cOptSolarCalOhmsIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+222 LINE.NUM 147 I>F ^cOptSolarCalOhmsIndex @@ }uiOptions TABLE! 
+222 LINE.NUM THEN 
+224 LINE.NUM ^cOptMixValveTimeIndex @@ }uiOptions TABLE@ 0 I>F F<= IF 
+224 LINE.NUM 25 I>F ^cOptMixValveTimeIndex @@ }uiOptions TABLE! 
+224 LINE.NUM THEN 
+225 LINE.NUM ^cOptMixValveAdjustIndex @@ }uiOptions TABLE@ 0 I>F F<= IF 
+225 LINE.NUM 2 I>F ^cOptMixValveAdjustIndex @@ }uiOptions TABLE! 
+225 LINE.NUM THEN 
+226 LINE.NUM ^cOptMixECTargetIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+226 LINE.NUM 2000 I>F ^cOptMixECTargetIndex @@ }uiOptions TABLE! 
+226 LINE.NUM THEN 
+227 LINE.NUM ^cOptMixECDeadbandIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+227 LINE.NUM 50 I>F ^cOptMixECDeadbandIndex @@ }uiOptions TABLE! 
+227 LINE.NUM THEN 
+229 LINE.NUM ^cOptInjectorOnTime @@ }uiOptions TABLE@ 0 I>F F<= IF 
+229 LINE.NUM 1.00000000e+000 ^cOptInjectorOnTime @@ }uiOptions TABLE! 
+229 LINE.NUM THEN 
+230 LINE.NUM ^cOptInjectorOffTime @@ }uiOptions TABLE@ 0 I>F F<= IF 
+230 LINE.NUM 1.00000000e+000 ^cOptInjectorOffTime @@ }uiOptions TABLE! 
+230 LINE.NUM THEN 
+232 LINE.NUM ^cOptAlarmCheckDelayIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+232 LINE.NUM 10 I>F ^cOptAlarmCheckDelayIndex @@ }uiOptions TABLE! 
+232 LINE.NUM THEN 
+234 LINE.NUM ^cOptWaterLowAlarmIndex @@ }uiOptions TABLE@ -1 I>F F< IF 
+234 LINE.NUM 5 I>F ^cOptWaterLowAlarmIndex @@ }uiOptions TABLE! 
+234 LINE.NUM THEN 
+235 LINE.NUM ^cOptWaterHighAlarmIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+235 LINE.NUM 500 I>F ^cOptWaterHighAlarmIndex @@ }uiOptions TABLE! 
+235 LINE.NUM THEN 
+237 LINE.NUM ^cOptECLowAlarmIndex @@ }uiOptions TABLE@ 0 I>F F< IF 
+237 LINE.NUM -5000 I>F ^cOptECLowAlarmIndex @@ }uiOptions TABLE! 
+237 LINE.NUM THEN 
+238 LINE.NUM ^cOptECHighAlarmIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+238 LINE.NUM 5000 I>F ^cOptECHighAlarmIndex @@ }uiOptions TABLE! 
+238 LINE.NUM THEN 
+240 LINE.NUM ^cOptAECLowAlarmIndex @@ }uiOptions TABLE@ 0 I>F F< IF 
+240 LINE.NUM -5000 I>F ^cOptAECLowAlarmIndex @@ }uiOptions TABLE! 
+240 LINE.NUM THEN 
+241 LINE.NUM ^cOptAECHighAlarmIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+241 LINE.NUM 5000 I>F ^cOptAECHighAlarmIndex @@ }uiOptions TABLE! 
+241 LINE.NUM THEN 
+243 LINE.NUM ^cOptPHLowAlarmIndex @@ }uiOptions TABLE@ 0 I>F F< IF 
+243 LINE.NUM 4 I>F ^cOptPHLowAlarmIndex @@ }uiOptions TABLE! 
+243 LINE.NUM THEN 
+244 LINE.NUM ^cOptPHHighAlarmIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+244 LINE.NUM 8 I>F ^cOptPHHighAlarmIndex @@ }uiOptions TABLE! 
+244 LINE.NUM THEN 
+246 LINE.NUM ^cOptFlowAlarmDelayIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+246 LINE.NUM 10 I>F ^cOptFlowAlarmDelayIndex @@ }uiOptions TABLE! 
+246 LINE.NUM THEN 
+248 LINE.NUM ^cOptExternalDelayIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+248 LINE.NUM 1 I>F ^cOptExternalDelayIndex @@ }uiOptions TABLE! 
+248 LINE.NUM THEN 
+250 LINE.NUM ^cOptTempHighAlarmIndex @@ }uiOptionsTempPressure TABLE@ 1 I>F F< IF 
+250 LINE.NUM 99 I>F ^cOptTempHighAlarmIndex @@ }uiOptionsTempPressure TABLE! 
+250 LINE.NUM THEN 
+251 LINE.NUM ^cOptTempLowAlarmIndex @@ }uiOptionsTempPressure TABLE@ 1 I>F F< IF 
+251 LINE.NUM 0 I>F ^cOptTempLowAlarmIndex @@ }uiOptionsTempPressure TABLE! 
+251 LINE.NUM THEN 
+253 LINE.NUM ^cOptPressureHighAlarmIndex @@ }uiOptionsTempPressure TABLE@ 1 I>F F< IF 
+253 LINE.NUM 199 I>F ^cOptPressureHighAlarmIndex @@ }uiOptionsTempPressure TABLE! 
+253 LINE.NUM THEN 
+254 LINE.NUM ^cOptPressureLowAlarmIndex @@ }uiOptionsTempPressure TABLE@ 1 I>F F< IF 
+254 LINE.NUM 0 I>F ^cOptPressureLowAlarmIndex @@ }uiOptionsTempPressure TABLE! 
+254 LINE.NUM THEN 
+257 LINE.NUM ^cOptInjectorSPFlowRate @@ }uiOptions TABLE@ 0 I>F F> IF 
+1 258 LINE.NUM ^cMaxPrograms @@ 1 -  1 + 0 DO? I ^iPower_Tmp @! 
+259 LINE.NUM ^cOptInjectorSPFlowRate @@ }uiOptions TABLE@ ^iPower_Tmp @@ }uiInjectorSPFlowRate TABLE! 
+260 LINE.NUM 1 +LOOP 
+262 LINE.NUM 0 I>F ^cOptInjectorSPFlowRate @@ }uiOptions TABLE! 
+263 LINE.NUM THEN 
+1 265 LINE.NUM ^cMaxPrograms @@ 1 -  1 + 0 DO? I ^iPower_Tmp @! 
+266 LINE.NUM ^iPower_Tmp @@ }uiInjectorSPFlowRate TABLE@ 1 I>F F< IF 
+267 LINE.NUM 100 I>F ^iPower_Tmp @@ }uiInjectorSPFlowRate TABLE! 
+268 LINE.NUM THEN 
+270 LINE.NUM ^iPower_Tmp @@ }uiECTargetDB TABLE@ 1 < IF 
+271 LINE.NUM 100 ^iPower_Tmp @@ }uiECTargetDB TABLE! 
+272 LINE.NUM THEN 
+274 LINE.NUM ^iPower_Tmp @@ }uiECTargetSP TABLE@ 1 < IF 
+275 LINE.NUM 1750 ^iPower_Tmp @@ }uiECTargetSP TABLE! 
+276 LINE.NUM THEN 
+278 LINE.NUM ^iPower_Tmp @@ }uiPHTargetDB TABLE@ 1.00000001e-001 F< IF 
+279 LINE.NUM 2.00000003e-001 ^iPower_Tmp @@ }uiPHTargetDB TABLE! 
+280 LINE.NUM THEN 
+282 LINE.NUM ^iPower_Tmp @@ }uiPHTargetSP TABLE@ 1 I>F F< IF 
+283 LINE.NUM 5.90000010e+000 ^iPower_Tmp @@ }uiPHTargetSP TABLE! 
+284 LINE.NUM THEN 
+286 LINE.NUM 1 +LOOP 
+289 LINE.NUM ^uipH_UpDownButton @@ 1 < IF 
+290 LINE.NUM 2 ^uipH_UpDownButton @! 
+291 LINE.NUM THEN 
+293 LINE.NUM ^cOptKFactorIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+293 LINE.NUM 9.31439972e+001 ^cOptKFactorIndex @@ }uiOptions TABLE! 
+293 LINE.NUM THEN 
+297 LINE.NUM ^cOptAutomatedControlDelayIndex @@ }uiOptions TABLE@ 1 I>F F< IF 
+297 LINE.NUM 30 I>F ^cOptAutomatedControlDelayIndex @@ }uiOptions TABLE! 
+297 LINE.NUM THEN 
+299 LINE.NUM ^cOptMixValveDelayIndex @@ }uiOptions TABLE@ 0 I>F F<= IF 
+299 LINE.NUM 10 I>F ^cOptMixValveDelayIndex @@ }uiOptions TABLE! 
+299 LINE.NUM THEN 
+301 LINE.NUM ^iLastLeachateTankReturn @@ 0 <= IF 
+301 LINE.NUM 1 ^iLastLeachateTankReturn @! 
+301 LINE.NUM THEN 
+303 LINE.NUM ^iCollectionTankPump @@ 0 <= IF 
+303 LINE.NUM 6 ^iCollectionTankPump @! 
+303 LINE.NUM THEN 
+306 LINE.NUM ~T1_LevelMeter 
+0 PTBL_aiInputPtrTable TABLE!
+307 LINE.NUM ~T2_LevelMeter 
+1 PTBL_aiInputPtrTable TABLE!
+308 LINE.NUM ~T3_LevelMeter 
+2 PTBL_aiInputPtrTable TABLE!
+309 LINE.NUM ~T4_LevelMeter 
+3 PTBL_aiInputPtrTable TABLE!
+310 LINE.NUM ~T5_LevelMeter 
+4 PTBL_aiInputPtrTable TABLE!
+311 LINE.NUM ~T6_LevelMeter 
+5 PTBL_aiInputPtrTable TABLE!
+312 LINE.NUM ~T7_LevelMeter 
+6 PTBL_aiInputPtrTable TABLE!
+313 LINE.NUM ~T8_LevelMeter 
+7 PTBL_aiInputPtrTable TABLE!
+314 LINE.NUM ~T9_LevelMeter 
+8 PTBL_aiInputPtrTable TABLE!
+315 LINE.NUM ~T10_LevelMeter 
+9 PTBL_aiInputPtrTable TABLE!
+316 LINE.NUM ~T11_LevelMeter 
+10 PTBL_aiInputPtrTable TABLE!
+317 LINE.NUM ~T12_LevelMeter 
+11 PTBL_aiInputPtrTable TABLE!
+318 LINE.NUM ~T13_LevelMeter 
+12 PTBL_aiInputPtrTable TABLE!
+319 LINE.NUM ~T14_LevelMeter 
+13 PTBL_aiInputPtrTable TABLE!
+320 LINE.NUM ~T15_LevelMeter 
+14 PTBL_aiInputPtrTable TABLE!
+321 LINE.NUM ~T16_LevelMeter 
+15 PTBL_aiInputPtrTable TABLE!
+322 LINE.NUM ~T17_LevelMeter 
+16 PTBL_aiInputPtrTable TABLE!
+323 LINE.NUM ~T18_LevelMeter 
+17 PTBL_aiInputPtrTable TABLE!
+324 LINE.NUM ~T19_LevelMeter 
+18 PTBL_aiInputPtrTable TABLE!
+325 LINE.NUM ~T20_LevelMeter 
+19 PTBL_aiInputPtrTable TABLE!
+326 LINE.NUM ~T21_LevelMeter 
+20 PTBL_aiInputPtrTable TABLE!
+327 LINE.NUM ~T22_LevelMeter 
+21 PTBL_aiInputPtrTable TABLE!
+328 LINE.NUM ~T23_LevelMeter 
+22 PTBL_aiInputPtrTable TABLE!
+329 LINE.NUM ~T24_LevelMeter 
+23 PTBL_aiInputPtrTable TABLE!
+332 LINE.NUM ~ai12_MIO_00 
+0 PTBL_aiMIOPtrTable TABLE!
+333 LINE.NUM ~ai12_MIO_01 
+1 PTBL_aiMIOPtrTable TABLE!
+334 LINE.NUM ~ai12_MIO_02 
+2 PTBL_aiMIOPtrTable TABLE!
+335 LINE.NUM ~ai12_MIO_03 
+3 PTBL_aiMIOPtrTable TABLE!
+336 LINE.NUM ~ai13_MIO_00 
+4 PTBL_aiMIOPtrTable TABLE!
+337 LINE.NUM ~ai13_MIO_01 
+5 PTBL_aiMIOPtrTable TABLE!
+338 LINE.NUM ~ai13_MIO_02 
+6 PTBL_aiMIOPtrTable TABLE!
+339 LINE.NUM ~ai13_MIO_03 
+7 PTBL_aiMIOPtrTable TABLE!
+342 LINE.NUM ~do12_0000 
+0 PTBL_doOutputPtrTable TABLE!
+343 LINE.NUM ~do12_0001 
+1 PTBL_doOutputPtrTable TABLE!
+344 LINE.NUM ~do12_0002 
+2 PTBL_doOutputPtrTable TABLE!
+345 LINE.NUM ~do12_0003 
+3 PTBL_doOutputPtrTable TABLE!
+346 LINE.NUM ~do12_0004 
+4 PTBL_doOutputPtrTable TABLE!
+347 LINE.NUM ~do12_0005 
+5 PTBL_doOutputPtrTable TABLE!
+348 LINE.NUM ~do12_0006 
+6 PTBL_doOutputPtrTable TABLE!
+349 LINE.NUM ~do12_0007 
+7 PTBL_doOutputPtrTable TABLE!
+350 LINE.NUM ~do12_0008 
+8 PTBL_doOutputPtrTable TABLE!
+351 LINE.NUM ~do12_0009 
+9 PTBL_doOutputPtrTable TABLE!
+352 LINE.NUM ~do12_0010 
+10 PTBL_doOutputPtrTable TABLE!
+353 LINE.NUM ~do12_0011 
+11 PTBL_doOutputPtrTable TABLE!
+354 LINE.NUM ~do12_0100 
+12 PTBL_doOutputPtrTable TABLE!
+355 LINE.NUM ~do12_0101 
+13 PTBL_doOutputPtrTable TABLE!
+356 LINE.NUM ~do12_0102 
+14 PTBL_doOutputPtrTable TABLE!
+357 LINE.NUM ~do12_0103 
+15 PTBL_doOutputPtrTable TABLE!
+358 LINE.NUM ~do12_0104 
+16 PTBL_doOutputPtrTable TABLE!
+359 LINE.NUM ~do12_0105 
+17 PTBL_doOutputPtrTable TABLE!
+360 LINE.NUM ~do12_0106 
+18 PTBL_doOutputPtrTable TABLE!
+361 LINE.NUM ~do12_0107 
+19 PTBL_doOutputPtrTable TABLE!
+362 LINE.NUM ~do12_0108 
+20 PTBL_doOutputPtrTable TABLE!
+363 LINE.NUM ~do12_0109 
+21 PTBL_doOutputPtrTable TABLE!
+364 LINE.NUM ~do12_0110 
+22 PTBL_doOutputPtrTable TABLE!
+365 LINE.NUM ~do12_0111 
+23 PTBL_doOutputPtrTable TABLE!
+366 LINE.NUM ~do12_0200 
+24 PTBL_doOutputPtrTable TABLE!
+367 LINE.NUM ~do12_0201 
+25 PTBL_doOutputPtrTable TABLE!
+368 LINE.NUM ~do12_0202 
+26 PTBL_doOutputPtrTable TABLE!
+369 LINE.NUM ~do12_0203 
+27 PTBL_doOutputPtrTable TABLE!
+370 LINE.NUM ~do12_0204 
+28 PTBL_doOutputPtrTable TABLE!
+371 LINE.NUM ~do12_0205 
+29 PTBL_doOutputPtrTable TABLE!
+372 LINE.NUM ~do12_0206 
+30 PTBL_doOutputPtrTable TABLE!
+373 LINE.NUM ~do12_0207 
+31 PTBL_doOutputPtrTable TABLE!
+374 LINE.NUM ~do12_0208 
+32 PTBL_doOutputPtrTable TABLE!
+375 LINE.NUM ~do12_0209 
+33 PTBL_doOutputPtrTable TABLE!
+376 LINE.NUM ~do12_0210 
+34 PTBL_doOutputPtrTable TABLE!
+377 LINE.NUM ~do12_0211 
+35 PTBL_doOutputPtrTable TABLE!
+378 LINE.NUM ~do12_0300 
+36 PTBL_doOutputPtrTable TABLE!
+379 LINE.NUM ~do12_0301 
+37 PTBL_doOutputPtrTable TABLE!
+380 LINE.NUM ~do12_0302 
+38 PTBL_doOutputPtrTable TABLE!
+381 LINE.NUM ~do12_0303 
+39 PTBL_doOutputPtrTable TABLE!
+382 LINE.NUM ~do12_0304 
+40 PTBL_doOutputPtrTable TABLE!
+383 LINE.NUM ~do12_0305 
+41 PTBL_doOutputPtrTable TABLE!
+384 LINE.NUM ~do12_0306 
+42 PTBL_doOutputPtrTable TABLE!
+385 LINE.NUM ~do12_0307 
+43 PTBL_doOutputPtrTable TABLE!
+386 LINE.NUM ~do12_0308 
+44 PTBL_doOutputPtrTable TABLE!
+387 LINE.NUM ~do12_0309 
+45 PTBL_doOutputPtrTable TABLE!
+388 LINE.NUM ~do12_0310 
+46 PTBL_doOutputPtrTable TABLE!
+389 LINE.NUM ~do12_0311 
+47 PTBL_doOutputPtrTable TABLE!
+390 LINE.NUM ~do12_0400 
+48 PTBL_doOutputPtrTable TABLE!
+391 LINE.NUM ~do12_0401 
+49 PTBL_doOutputPtrTable TABLE!
+392 LINE.NUM ~do12_0402 
+50 PTBL_doOutputPtrTable TABLE!
+393 LINE.NUM ~do12_0403 
+51 PTBL_doOutputPtrTable TABLE!
+394 LINE.NUM ~do12_0404 
+52 PTBL_doOutputPtrTable TABLE!
+395 LINE.NUM ~do12_0405 
+53 PTBL_doOutputPtrTable TABLE!
+396 LINE.NUM ~do12_0406 
+54 PTBL_doOutputPtrTable TABLE!
+397 LINE.NUM ~do12_0407 
+55 PTBL_doOutputPtrTable TABLE!
+398 LINE.NUM ~do12_0408 
+56 PTBL_doOutputPtrTable TABLE!
+399 LINE.NUM ~do12_0409 
+57 PTBL_doOutputPtrTable TABLE!
+400 LINE.NUM ~do12_0410 
+58 PTBL_doOutputPtrTable TABLE!
+401 LINE.NUM ~do12_0411 
+59 PTBL_doOutputPtrTable TABLE!
+402 LINE.NUM ~do12_0500 
+60 PTBL_doOutputPtrTable TABLE!
+403 LINE.NUM ~do12_0501 
+61 PTBL_doOutputPtrTable TABLE!
+404 LINE.NUM ~do12_0502 
+62 PTBL_doOutputPtrTable TABLE!
+405 LINE.NUM ~do12_0503 
+63 PTBL_doOutputPtrTable TABLE!
+406 LINE.NUM ~do12_0504 
+64 PTBL_doOutputPtrTable TABLE!
+407 LINE.NUM ~do12_0505 
+65 PTBL_doOutputPtrTable TABLE!
+408 LINE.NUM ~do12_0506 
+66 PTBL_doOutputPtrTable TABLE!
+409 LINE.NUM ~do12_0507 
+67 PTBL_doOutputPtrTable TABLE!
+410 LINE.NUM ~do12_0508 
+68 PTBL_doOutputPtrTable TABLE!
+411 LINE.NUM ~do12_0509 
+69 PTBL_doOutputPtrTable TABLE!
+412 LINE.NUM ~do12_0510 
+70 PTBL_doOutputPtrTable TABLE!
+413 LINE.NUM ~do12_0511 
+71 PTBL_doOutputPtrTable TABLE!
+414 LINE.NUM ~do12_0600 
+72 PTBL_doOutputPtrTable TABLE!
+415 LINE.NUM ~do12_0601 
+73 PTBL_doOutputPtrTable TABLE!
+416 LINE.NUM ~do12_0602 
+74 PTBL_doOutputPtrTable TABLE!
+417 LINE.NUM ~do12_0603 
+75 PTBL_doOutputPtrTable TABLE!
+418 LINE.NUM ~do12_0604 
+76 PTBL_doOutputPtrTable TABLE!
+419 LINE.NUM ~do12_0605 
+77 PTBL_doOutputPtrTable TABLE!
+420 LINE.NUM ~do12_0606 
+78 PTBL_doOutputPtrTable TABLE!
+421 LINE.NUM ~do12_0607 
+79 PTBL_doOutputPtrTable TABLE!
+422 LINE.NUM ~do12_0608 
+80 PTBL_doOutputPtrTable TABLE!
+423 LINE.NUM ~do12_0609 
+81 PTBL_doOutputPtrTable TABLE!
+424 LINE.NUM ~do12_0610 
+82 PTBL_doOutputPtrTable TABLE!
+425 LINE.NUM ~do12_0611 
+83 PTBL_doOutputPtrTable TABLE!
+426 LINE.NUM ~do12_0700 
+84 PTBL_doOutputPtrTable TABLE!
+427 LINE.NUM ~do12_0701 
+85 PTBL_doOutputPtrTable TABLE!
+428 LINE.NUM ~do12_0702 
+86 PTBL_doOutputPtrTable TABLE!
+429 LINE.NUM ~do12_0703 
+87 PTBL_doOutputPtrTable TABLE!
+430 LINE.NUM ~do12_0704 
+88 PTBL_doOutputPtrTable TABLE!
+431 LINE.NUM ~do12_0705 
+89 PTBL_doOutputPtrTable TABLE!
+432 LINE.NUM ~do12_0706 
+90 PTBL_doOutputPtrTable TABLE!
+433 LINE.NUM ~do12_0707 
+91 PTBL_doOutputPtrTable TABLE!
+434 LINE.NUM ~do12_0708 
+92 PTBL_doOutputPtrTable TABLE!
+435 LINE.NUM ~do12_0709 
+93 PTBL_doOutputPtrTable TABLE!
+436 LINE.NUM ~do12_0710 
+94 PTBL_doOutputPtrTable TABLE!
+437 LINE.NUM ~do12_0711 
+95 PTBL_doOutputPtrTable TABLE!
+438 LINE.NUM ~do12_0800 
+96 PTBL_doOutputPtrTable TABLE!
+439 LINE.NUM ~do12_0801 
+97 PTBL_doOutputPtrTable TABLE!
+440 LINE.NUM ~do12_0802 
+98 PTBL_doOutputPtrTable TABLE!
+441 LINE.NUM ~do12_0803 
+99 PTBL_doOutputPtrTable TABLE!
+442 LINE.NUM ~do12_0804 
+100 PTBL_doOutputPtrTable TABLE!
+443 LINE.NUM ~do12_0805 
+101 PTBL_doOutputPtrTable TABLE!
+444 LINE.NUM ~do12_0806 
+102 PTBL_doOutputPtrTable TABLE!
+445 LINE.NUM ~do12_0807 
+103 PTBL_doOutputPtrTable TABLE!
+446 LINE.NUM ~do12_0808 
+104 PTBL_doOutputPtrTable TABLE!
+447 LINE.NUM ~do12_0809 
+105 PTBL_doOutputPtrTable TABLE!
+448 LINE.NUM ~do12_0810 
+106 PTBL_doOutputPtrTable TABLE!
+449 LINE.NUM ~do12_0811 
+107 PTBL_doOutputPtrTable TABLE!
+450 LINE.NUM ~do12_0900 
+108 PTBL_doOutputPtrTable TABLE!
+451 LINE.NUM ~do12_0901 
+109 PTBL_doOutputPtrTable TABLE!
+452 LINE.NUM ~do12_0902 
+110 PTBL_doOutputPtrTable TABLE!
+453 LINE.NUM ~do12_0903 
+111 PTBL_doOutputPtrTable TABLE!
+454 LINE.NUM ~do12_0904 
+112 PTBL_doOutputPtrTable TABLE!
+455 LINE.NUM ~do12_0905 
+113 PTBL_doOutputPtrTable TABLE!
+456 LINE.NUM ~do12_0906 
+114 PTBL_doOutputPtrTable TABLE!
+457 LINE.NUM ~do12_0907 
+115 PTBL_doOutputPtrTable TABLE!
+458 LINE.NUM ~do12_0908 
+116 PTBL_doOutputPtrTable TABLE!
+459 LINE.NUM ~do12_0909 
+117 PTBL_doOutputPtrTable TABLE!
+460 LINE.NUM ~do12_0910 
+118 PTBL_doOutputPtrTable TABLE!
+461 LINE.NUM ~do12_0911 
+119 PTBL_doOutputPtrTable TABLE!
+462 LINE.NUM ~do12_1000 
+120 PTBL_doOutputPtrTable TABLE!
+463 LINE.NUM ~do12_1001 
+121 PTBL_doOutputPtrTable TABLE!
+464 LINE.NUM ~do12_1002 
+122 PTBL_doOutputPtrTable TABLE!
+465 LINE.NUM ~do12_1003 
+123 PTBL_doOutputPtrTable TABLE!
+466 LINE.NUM ~do12_1004 
+124 PTBL_doOutputPtrTable TABLE!
+467 LINE.NUM ~do12_1005 
+125 PTBL_doOutputPtrTable TABLE!
+468 LINE.NUM ~do12_1006 
+126 PTBL_doOutputPtrTable TABLE!
+469 LINE.NUM ~do12_1007 
+127 PTBL_doOutputPtrTable TABLE!
+470 LINE.NUM ~do12_1008 
+128 PTBL_doOutputPtrTable TABLE!
+471 LINE.NUM ~do12_1009 
+129 PTBL_doOutputPtrTable TABLE!
+472 LINE.NUM ~do12_1010 
+130 PTBL_doOutputPtrTable TABLE!
+473 LINE.NUM ~do12_1011 
+131 PTBL_doOutputPtrTable TABLE!
+474 LINE.NUM ~do12_1100 
+132 PTBL_doOutputPtrTable TABLE!
+475 LINE.NUM ~do12_1101 
+133 PTBL_doOutputPtrTable TABLE!
+476 LINE.NUM ~do12_1102 
+134 PTBL_doOutputPtrTable TABLE!
+477 LINE.NUM ~do12_1103 
+135 PTBL_doOutputPtrTable TABLE!
+478 LINE.NUM ~do12_1104 
+136 PTBL_doOutputPtrTable TABLE!
+479 LINE.NUM ~do12_1105 
+137 PTBL_doOutputPtrTable TABLE!
+480 LINE.NUM ~do12_1106 
+138 PTBL_doOutputPtrTable TABLE!
+481 LINE.NUM ~do12_1107 
+139 PTBL_doOutputPtrTable TABLE!
+482 LINE.NUM ~do12_1108 
+140 PTBL_doOutputPtrTable TABLE!
+483 LINE.NUM ~do12_1109 
+141 PTBL_doOutputPtrTable TABLE!
+484 LINE.NUM ~do12_1110 
+142 PTBL_doOutputPtrTable TABLE!
+485 LINE.NUM ~do12_1111 
+143 PTBL_doOutputPtrTable TABLE!
+488 LINE.NUM 0 
+144 PTBL_doOutputPtrTable TABLE!
+489 LINE.NUM 0 
+145 PTBL_doOutputPtrTable TABLE!
+490 LINE.NUM 0 
+146 PTBL_doOutputPtrTable TABLE!
+491 LINE.NUM 0 
+147 PTBL_doOutputPtrTable TABLE!
+492 LINE.NUM ~do12_MIO_00 
+148 PTBL_doOutputPtrTable TABLE!
+493 LINE.NUM ~do12_MIO_01 
+149 PTBL_doOutputPtrTable TABLE!
+494 LINE.NUM ~do12_MIO_02 
+150 PTBL_doOutputPtrTable TABLE!
+495 LINE.NUM ~do12_MIO_03 
+151 PTBL_doOutputPtrTable TABLE!
+496 LINE.NUM ~do12_MIO_04 
+152 PTBL_doOutputPtrTable TABLE!
+497 LINE.NUM ~do12_MIO_05 
+153 PTBL_doOutputPtrTable TABLE!
+498 LINE.NUM 0 
+154 PTBL_doOutputPtrTable TABLE!
+499 LINE.NUM 0 
+155 PTBL_doOutputPtrTable TABLE!
+501 LINE.NUM 0 
+156 PTBL_doOutputPtrTable TABLE!
+502 LINE.NUM 0 
+157 PTBL_doOutputPtrTable TABLE!
+503 LINE.NUM 0 
+158 PTBL_doOutputPtrTable TABLE!
+504 LINE.NUM 0 
+159 PTBL_doOutputPtrTable TABLE!
+505 LINE.NUM ~do13_MIO_00 
+160 PTBL_doOutputPtrTable TABLE!
+506 LINE.NUM ~do13_MIO_01 
+161 PTBL_doOutputPtrTable TABLE!
+507 LINE.NUM ~do13_MIO_02 
+162 PTBL_doOutputPtrTable TABLE!
+508 LINE.NUM ~do13_MIO_03 
+163 PTBL_doOutputPtrTable TABLE!
+509 LINE.NUM ~do13_MIO_04 
+164 PTBL_doOutputPtrTable TABLE!
+510 LINE.NUM ~do13_MIO_05 
+165 PTBL_doOutputPtrTable TABLE!
+511 LINE.NUM 0 
+166 PTBL_doOutputPtrTable TABLE!
+512 LINE.NUM 0 
+167 PTBL_doOutputPtrTable TABLE!
+514 LINE.NUM 0 ^nOutputDispNum @! 
+516 LINE.NUM " Not Used" 0 {uoOutputDesc $TABLE@  $MOVE 
+517 LINE.NUM " Alarm" 1 {uoOutputDesc $TABLE@  $MOVE 
+518 LINE.NUM " Main Pump" 2 {uoOutputDesc $TABLE@  $MOVE 
+519 LINE.NUM " Reserved For Future Development" 3 {uoOutputDesc $TABLE@  $MOVE 
+520 LINE.NUM " Reserved For Future Development" 4 {uoOutputDesc $TABLE@  $MOVE 
+521 LINE.NUM " Injector 1" 5 {uoOutputDesc $TABLE@  $MOVE 
+522 LINE.NUM " Injector 2" 6 {uoOutputDesc $TABLE@  $MOVE 
+523 LINE.NUM " Injector 3" 7 {uoOutputDesc $TABLE@  $MOVE 
+524 LINE.NUM " Injector 4" 8 {uoOutputDesc $TABLE@  $MOVE 
+525 LINE.NUM " Injector 5" 9 {uoOutputDesc $TABLE@  $MOVE 
+526 LINE.NUM " Injector 6" 10 {uoOutputDesc $TABLE@  $MOVE 
+527 LINE.NUM " Injector 7" 11 {uoOutputDesc $TABLE@  $MOVE 
+528 LINE.NUM " Injector 8" 12 {uoOutputDesc $TABLE@  $MOVE 
+529 LINE.NUM " Injector 9" 13 {uoOutputDesc $TABLE@  $MOVE 
+530 LINE.NUM " Injector 10" 14 {uoOutputDesc $TABLE@  $MOVE 
+531 LINE.NUM " Injector 11" 15 {uoOutputDesc $TABLE@  $MOVE 
+532 LINE.NUM " Injector 12" 16 
+{uoOutputDesc $TABLE@  $MOVE 
+533 LINE.NUM " Inlet Valve 1 (Fresh)" 17 {uoOutputDesc $TABLE@  $MOVE 
+534 LINE.NUM " Inlet Valve 2 (Tank)" 18 {uoOutputDesc $TABLE@  $MOVE 
+535 LINE.NUM " Reserved For Future Development" 19 {uoOutputDesc $TABLE@  $MOVE 
+536 LINE.NUM " Reserved For Future Development" 20 {uoOutputDesc $TABLE@  $MOVE 
+537 LINE.NUM " Reserved For Future Development" 21 {uoOutputDesc $TABLE@  $MOVE 
+538 LINE.NUM " Reserved For Future Development" 22 {uoOutputDesc $TABLE@  $MOVE 
+539 LINE.NUM " Reserved For Future Development" 23 {uoOutputDesc $TABLE@  $MOVE 
+540 LINE.NUM " Reserved For Future Development" 24 {uoOutputDesc $TABLE@  $MOVE 
+541 LINE.NUM " Mix Valve Open" 25 {uoOutputDesc $TABLE@  $MOVE 
+542 LINE.NUM " Mix Valve Close" 26 {uoOutputDesc $TABLE@  $MOVE 
+543 LINE.NUM " Reserved For Future Development" 27 {uoOutputDesc $TABLE@  $MOVE 
+544 LINE.NUM " Reserved For Future Development" 28 {uoOutputDesc $TABLE@  $MOVE 
+545 LINE.NUM " Reserved For Future Development" 29 {uoOutputDesc $TABLE@  $MOVE 
+
+546 LINE.NUM " Reserved For Future Development" 30 {uoOutputDesc $TABLE@  $MOVE 
+547 LINE.NUM " Auxiliary 1" 31 {uoOutputDesc $TABLE@  $MOVE 
+548 LINE.NUM " Auxiliary 2" 32 {uoOutputDesc $TABLE@  $MOVE 
+549 LINE.NUM " Auxiliary 3" 33 {uoOutputDesc $TABLE@  $MOVE 
+550 LINE.NUM " Auxiliary 4" 34 {uoOutputDesc $TABLE@  $MOVE 
+551 LINE.NUM " Auxiliary 5" 35 {uoOutputDesc $TABLE@  $MOVE 
+552 LINE.NUM " Auxiliary 6" 36 {uoOutputDesc $TABLE@  $MOVE 
+553 LINE.NUM " Auxiliary 7" 37 {uoOutputDesc $TABLE@  $MOVE 
+554 LINE.NUM " Auxiliary 8" 38 {uoOutputDesc $TABLE@  $MOVE 
+555 LINE.NUM " Auxiliary 9" 39 {uoOutputDesc $TABLE@  $MOVE 
+556 LINE.NUM " Auxiliary 10" 40 {uoOutputDesc $TABLE@  $MOVE 
+557 LINE.NUM " Timer" 41 {uoOutputDesc $TABLE@  $MOVE 
+558 LINE.NUM " Reserved For Future Development" 42 {uoOutputDesc $TABLE@  $MOVE 
+559 LINE.NUM " Reserved For Future Development" 43 {uoOutputDesc $TABLE@  $MOVE 
+560 LINE.NUM " Reserved For Future Development" 44 {uoOutputDesc $TABLE@  $MOVE 
+561 LINE.NUM 
+" Reserved For Future Development" 45 {uoOutputDesc $TABLE@  $MOVE 
+562 LINE.NUM " Reserved For Future Development" 46 {uoOutputDesc $TABLE@  $MOVE 
+563 LINE.NUM " Reserved For Future Development" 47 {uoOutputDesc $TABLE@  $MOVE 
+564 LINE.NUM " Reserved For Future Development" 48 {uoOutputDesc $TABLE@  $MOVE 
+565 LINE.NUM " Reserved For Future Development" 49 {uoOutputDesc $TABLE@  $MOVE 
+566 LINE.NUM " Tank Output" 50 {uoOutputDesc $TABLE@  $MOVE 
+567 LINE.NUM " Irrigation Valve" 51 {uoOutputDesc $TABLE@  $MOVE 
+568 LINE.NUM " Auxiliary 11" 52 {uoOutputDesc $TABLE@  $MOVE 
+569 LINE.NUM " Auxiliary 12" 53 {uoOutputDesc $TABLE@  $MOVE 
+570 LINE.NUM " Auxiliary 13" 54 {uoOutputDesc $TABLE@  $MOVE 
+571 LINE.NUM " Auxiliary 14" 55 {uoOutputDesc $TABLE@  $MOVE 
+572 LINE.NUM " Auxiliary 15" 56 {uoOutputDesc $TABLE@  $MOVE 
+573 LINE.NUM " Auxiliary 16" 57 {uoOutputDesc $TABLE@  $MOVE 
+574 LINE.NUM " Auxiliary 17" 58 {uoOutputDesc $TABLE@  $MOVE 
+575 LINE.NUM " Auxiliary 18" 59 {uoOutputDesc $TABLE@  $MOVE 
+576 LINE.NUM 
+" Auxiliary 19" 60 {uoOutputDesc $TABLE@  $MOVE 
+577 LINE.NUM " Auxiliary 20" 61 {uoOutputDesc $TABLE@  $MOVE 
+578 LINE.NUM " Custom Output" 62 {uoOutputDesc $TABLE@  $MOVE 
+580 LINE.NUM ^cOT_AlarmIndex @@ }tOutputTableInitialized TABLE@ 0 = IF 
+581 LINE.NUM ^tOutAlarmIndex @@ 0 = IF 
+582 LINE.NUM -1 ^tOutAlarmIndex @! 
+583 LINE.NUM THEN 
+584 LINE.NUM 1 ^cOT_AlarmIndex @@ }tOutputTableInitialized TABLE! 
+585 LINE.NUM THEN 
+586 LINE.NUM ^cOT_PumpIndex @@ }tOutputTableInitialized TABLE@ 0 = IF 
+587 LINE.NUM ^tOutPumpIndex @@ 0 = IF 
+588 LINE.NUM -1 ^tOutPumpIndex @! 
+589 LINE.NUM THEN 
+590 LINE.NUM 1 ^cOT_PumpIndex @@ }tOutputTableInitialized TABLE! 
+591 LINE.NUM THEN 
+592 LINE.NUM ^cOT_MixValveOpenIndex @@ }tOutputTableInitialized TABLE@ 0 = IF 
+593 LINE.NUM ^tOutMixValveOpenIndex @@ 0 = IF 
+594 LINE.NUM -1 ^tOutMixValveOpenIndex @! 
+595 LINE.NUM THEN 
+596 LINE.NUM 1 ^cOT_MixValveOpenIndex @@ }tOutputTableInitialized TABLE! 
+597 LINE.NUM THEN 
+598 LINE.NUM ^cOT_MixValveCloseIndex @@ }tOutputTableInitialized TABLE@ 0 = IF 
+599 LINE.NUM ^tOutMixValveCloseIndex @@ 0 = IF 
+600 LINE.NUM -1 ^tOutMixValveCloseIndex @! 
+601 LINE.NUM THEN 
+602 LINE.NUM 1 ^cOT_MixValveCloseIndex @@ }tOutputTableInitialized TABLE! 
+603 LINE.NUM THEN 
+604 LINE.NUM ^cOT_Injector1Index @@ }tOutputTableInitialized TABLE@ 0 = IF 
+605 LINE.NUM ^cMaxInjectors @@ 1 -  }tOutInjectorIndex TABLE@ 0 = ^cMaxInjectors @@ 2 -  }tOutInjectorIndex TABLE@ 0 = LAND  IF 
+606 LINE.NUM ^cMaxInjectors @@ 1 -  ^i @! 
+607 LINE.NUM BEGIN ^i @@ -1 > WHILE 
+608 LINE.NUM ^i @@ }tOutInjectorIndex TABLE@ 0 > IF 
+608 LINE.NUM 0 ^i @! 
+608 LINE.NUM THEN 
+609 LINE.NUM -1 ^i @@ }tOutInjectorIndex TABLE! 
+610 LINE.NUM ^i @@ 1 -  ^i @! 
+611 LINE.NUM REPEAT 
+612 LINE.NUM THEN 
+613 LINE.NUM 1 ^cOT_Injector1Index @@ }tOutputTableInitialized TABLE! 
+614 LINE.NUM THEN 
+615 LINE.NUM ^cOT_ValveIndex @@ }tOutputTableInitialized TABLE@ 0 = IF 
+616 LINE.NUM ^cMaxValves @@ 1 -  }tOutValveIndex TABLE@ 0 = ^cMaxValves @@ 2 -  }tOutValveIndex TABLE@ 0 = LAND  IF 
+617 LINE.NUM ^cMaxValves @@ 1 -  ^i @! 
+618 LINE.NUM BEGIN ^i @@ -1 > WHILE 
+619 LINE.NUM ^i @@ }tOutValveIndex TABLE@ 0 > IF 
+619 LINE.NUM 0 ^i @! 
+619 LINE.NUM THEN 
+620 LINE.NUM -1 ^i @@ }tOutValveIndex TABLE! 
+621 LINE.NUM ^i @@ 1 -  ^i @! 
+622 LINE.NUM REPEAT 
+623 LINE.NUM THEN 
+624 LINE.NUM 1 ^cOT_ValveIndex @@ }tOutputTableInitialized TABLE! 
+625 LINE.NUM THEN 
+626 LINE.NUM ^cOT_Auxiliary1Index @@ }tOutputTableInitialized TABLE@ 0 = IF 
+627 LINE.NUM ^cMaxAuxiliaries @@ 1 -  10 -  }tOutAuxiliaryIndex TABLE@ 0 = ^cMaxAuxiliaries @@ 2 -  10 -  }tOutAuxiliaryIndex TABLE@ 0 = LAND  IF 
+628 LINE.NUM ^cMaxAuxiliaries @@ 1 -  10 -  ^i @! 
+629 LINE.NUM BEGIN ^i @@ -1 > WHILE 
+630 LINE.NUM ^i @@ }tOutAuxiliaryIndex TABLE@ 0 > IF 
+630 LINE.NUM 0 ^i @! 
+630 LINE.NUM THEN 
+631 LINE.NUM -1 ^i @@ }tOutAuxiliaryIndex TABLE! 
+632 LINE.NUM ^i @@ 1 -  ^i @! 
+633 LINE.NUM REPEAT 
+634 LINE.NUM THEN 
+635 LINE.NUM 1 ^cOT_Auxiliary1Index @@ }tOutputTableInitialized TABLE! 
+636 LINE.NUM THEN 
+637 LINE.NUM ^cOT_Auxiliary11Index @@ }tOutputTableInitialized TABLE@ 0 = IF 
+638 LINE.NUM ^cMaxAuxiliaries @@ 1 -  }tOutAuxiliaryIndex TABLE@ 0 = ^cMaxAuxiliaries @@ 2 -  }tOutAuxiliaryIndex TABLE@ 0 = LAND  IF 
+639 LINE.NUM ^cMaxAuxiliaries @@ 1 -  ^i @! 
+640 LINE.NUM BEGIN ^i @@ 9 > WHILE 
+641 LINE.NUM ^i @@ }tOutAuxiliaryIndex TABLE@ 0 > IF 
+641 LINE.NUM 0 ^i @! 
+641 LINE.NUM THEN 
+642 LINE.NUM -1 ^i @@ }tOutAuxiliaryIndex TABLE! 
+643 LINE.NUM ^i @@ 1 -  ^i @! 
+644 LINE.NUM REPEAT 
+645 LINE.NUM THEN 
+646 LINE.NUM 1 ^cOT_Auxiliary11Index @@ }tOutputTableInitialized TABLE! 
+647 LINE.NUM THEN 
+648 LINE.NUM ^cOT_CycleTimerIndex @@ }tOutputTableInitialized TABLE@ 0 = IF 
+649 LINE.NUM ^cMaxTimers @@ 1 -  }tOutCycleTimerIndex TABLE@ 0 = ^cMaxTimers @@ 2 -  }tOutCycleTimerIndex TABLE@ 0 = LAND  IF 
+650 LINE.NUM ^cMaxTimers @@ 1 -  ^i @! 
+651 LINE.NUM BEGIN ^i @@ -1 > WHILE 
+652 LINE.NUM ^i @@ }tOutCycleTimerIndex TABLE@ 0 > IF 
+652 LINE.NUM 0 ^i @! 
+652 LINE.NUM THEN 
+653 LINE.NUM -1 ^i @@ }tOutCycleTimerIndex TABLE! 
+654 LINE.NUM ^i @@ 1 -  ^i @! 
+655 LINE.NUM REPEAT 
+656 LINE.NUM THEN 
+657 LINE.NUM 1 ^cOT_CycleTimerIndex @@ }tOutputTableInitialized TABLE! 
+658 LINE.NUM THEN 
+1 660 LINE.NUM ^cMaxGS3_Nodes @@ 1 -  1 + 0 DO? I ^i @! 
+661 LINE.NUM ^i @@ {tGS3ID_ProgramIndex $TABLE@ " " $= IF 
+662 LINE.NUM 0 ^i @@ }tGS3_Mineral TABLE! 
+663 LINE.NUM " " ^i @@ {tGS3_Descriptions $TABLE@  $MOVE 
+664 LINE.NUM THEN 
+665 LINE.NUM 1 +LOOP 
+668 LINE.NUM ^cOT_TankIndex @@ }tOutputTableInitialized TABLE@ 0 = IF 
+669 LINE.NUM ^cMaxTanks @@ 1 -  }tOutTankIndex TABLE@ 0 = ^cMaxTanks @@ 2 -  }tOutTankIndex TABLE@ 0 = LAND  IF 
+670 LINE.NUM ^cMaxTanks @@ 1 -  ^i @! 
+671 LINE.NUM BEGIN ^i @@ -1 > WHILE 
+672 LINE.NUM ^i @@ }tOutTankIndex TABLE@ 0 > IF 
+672 LINE.NUM 0 ^i @! 
+672 LINE.NUM THEN 
+673 LINE.NUM -1 ^i @@ }tOutTankIndex TABLE! 
+674 LINE.NUM ^i @@ 1 -  ^i @! 
+675 LINE.NUM REPEAT 
+676 LINE.NUM THEN 
+677 LINE.NUM 1 ^cOT_TankIndex @@ }tOutputTableInitialized TABLE! 
+678 LINE.NUM THEN 
+681 LINE.NUM ^cOT_CustomIndex @@ }tOutputTableInitialized TABLE@ 0 = IF 
+682 LINE.NUM ^cMaxCustoms @@ 1 -  }tOutCustomIndex TABLE@ 0 = ^cMaxCustoms @@ 2 -  }tOutCustomIndex TABLE@ 0 = LAND  IF 
+683 LINE.NUM ^cMaxCustoms @@ 1 -  ^i @! 
+684 LINE.NUM BEGIN ^i @@ -1 > WHILE 
+685 LINE.NUM ^i @@ }tOutCustomIndex TABLE@ 0 > IF 
+685 LINE.NUM 0 ^i @! 
+685 LINE.NUM THEN 
+686 LINE.NUM -1 ^i @@ }tOutCustomIndex TABLE! 
+687 LINE.NUM ^i @@ 1 -  ^i @! 
+688 LINE.NUM REPEAT 
+689 LINE.NUM THEN 
+690 LINE.NUM 1 ^cOT_CustomIndex @@ }tOutputTableInitialized TABLE! 
+691 LINE.NUM THEN 
+694 LINE.NUM ^cOT_InletValve1Index @@ }tOutputTableInitialized TABLE@ 0 = IF 
+695 LINE.NUM ^cMaxInletValve1 @@ 1 -  }tOutInletValve1Index TABLE@ 0 = IF 
+696 LINE.NUM ^cMaxInletValve1 @@ 1 -  ^i @! 
+697 LINE.NUM BEGIN ^i @@ -1 > WHILE 
+698 LINE.NUM ^i @@ }tOutInletValve1Index TABLE@ 0 > IF 
+698 LINE.NUM 0 ^i @! 
+698 LINE.NUM THEN 
+699 LINE.NUM -1 ^i @@ }tOutInletValve1Index TABLE! 
+700 LINE.NUM ^i @@ 1 -  ^i @! 
+701 LINE.NUM REPEAT 
+702 LINE.NUM THEN 
+703 LINE.NUM 1 ^cOT_InletValve1Index @@ }tOutputTableInitialized TABLE! 
+704 LINE.NUM THEN 
+707 LINE.NUM ^cOT_InletValve2Index @@ }tOutputTableInitialized TABLE@ 0 = IF 
+708 LINE.NUM ^cMaxInletValve2 @@ 1 -  }tOutInletValve2Index TABLE@ 0 = IF 
+709 LINE.NUM ^cMaxInletValve2 @@ 1 -  ^i @! 
+710 LINE.NUM BEGIN ^i @@ -1 > WHILE 
+711 LINE.NUM ^i @@ }tOutInletValve2Index TABLE@ 0 > IF 
+711 LINE.NUM 0 ^i @! 
+711 LINE.NUM THEN 
+712 LINE.NUM -1 ^i @@ }tOutInletValve2Index TABLE! 
+713 LINE.NUM ^i @@ 1 -  ^i @! 
+714 LINE.NUM REPEAT 
+715 LINE.NUM THEN 
+716 LINE.NUM 1 ^cOT_InletValve2Index @@ }tOutputTableInitialized TABLE! 
+717 LINE.NUM THEN 
+720 LINE.NUM ^dtCycleTimer_TimeOff_01 
+0 PTBL_dtCycleTimer_TimeOff_PtrTable TABLE!
+721 LINE.NUM ^dtCycleTimer_TimeOff_02 
+1 PTBL_dtCycleTimer_TimeOff_PtrTable TABLE!
+722 LINE.NUM ^dtCycleTimer_TimeOff_03 
+2 PTBL_dtCycleTimer_TimeOff_PtrTable TABLE!
+723 LINE.NUM ^dtCycleTimer_TimeOff_04 
+3 PTBL_dtCycleTimer_TimeOff_PtrTable TABLE!
+724 LINE.NUM ^dtCycleTimer_TimeOff_05 
+4 PTBL_dtCycleTimer_TimeOff_PtrTable TABLE!
+725 LINE.NUM ^dtCycleTimer_TimeOff_06 
+5 PTBL_dtCycleTimer_TimeOff_PtrTable TABLE!
+726 LINE.NUM ^dtCycleTimer_TimeOff_07 
+6 PTBL_dtCycleTimer_TimeOff_PtrTable TABLE!
+727 LINE.NUM ^dtCycleTimer_TimeOff_08 
+7 PTBL_dtCycleTimer_TimeOff_PtrTable TABLE!
+728 LINE.NUM ^dtCycleTimer_TimeOff_09 
+8 PTBL_dtCycleTimer_TimeOff_PtrTable TABLE!
+729 LINE.NUM ^dtCycleTimer_TimeOff_10 
+9 PTBL_dtCycleTimer_TimeOff_PtrTable TABLE!
+731 LINE.NUM ^utCycleTimer_TimeOn_01 
+0 PTBL_utCycleTimer_TimeOn_PtrTable TABLE!
+732 LINE.NUM ^utCycleTimer_TimeOn_02 
+1 PTBL_utCycleTimer_TimeOn_PtrTable TABLE!
+733 LINE.NUM ^utCycleTimer_TimeOn_03 
+2 PTBL_utCycleTimer_TimeOn_PtrTable TABLE!
+734 LINE.NUM ^utCycleTimer_TimeOn_04 
+3 PTBL_utCycleTimer_TimeOn_PtrTable TABLE!
+735 LINE.NUM ^utCycleTimer_TimeOn_05 
+4 PTBL_utCycleTimer_TimeOn_PtrTable TABLE!
+736 LINE.NUM ^utCycleTimer_TimeOn_06 
+5 PTBL_utCycleTimer_TimeOn_PtrTable TABLE!
+737 LINE.NUM ^utCycleTimer_TimeOn_07 
+6 PTBL_utCycleTimer_TimeOn_PtrTable TABLE!
+738 LINE.NUM ^utCycleTimer_TimeOn_08 
+7 PTBL_utCycleTimer_TimeOn_PtrTable TABLE!
+739 LINE.NUM ^utCycleTimer_TimeOn_09 
+8 PTBL_utCycleTimer_TimeOn_PtrTable TABLE!
+740 LINE.NUM ^utCycleTimer_TimeOn_10 
+9 PTBL_utCycleTimer_TimeOn_PtrTable TABLE!
+742 LINE.NUM ^dtProgram_MinRest_01 
+0 PTBL_dtProgram_MinRest_PtrTable TABLE!
+743 LINE.NUM ^dtProgram_MinRest_02 
+1 PTBL_dtProgram_MinRest_PtrTable TABLE!
+744 LINE.NUM ^dtProgram_MinRest_03 
+2 PTBL_dtProgram_MinRest_PtrTable TABLE!
+745 LINE.NUM ^dtProgram_MinRest_04 
+3 PTBL_dtProgram_MinRest_PtrTable TABLE!
+746 LINE.NUM ^dtProgram_MinRest_05 
+4 PTBL_dtProgram_MinRest_PtrTable TABLE!
+747 LINE.NUM ^dtProgram_MinRest_06 
+5 PTBL_dtProgram_MinRest_PtrTable TABLE!
+748 LINE.NUM ^dtProgram_MinRest_07 
+6 PTBL_dtProgram_MinRest_PtrTable TABLE!
+749 LINE.NUM ^dtProgram_MinRest_08 
+7 PTBL_dtProgram_MinRest_PtrTable TABLE!
+750 LINE.NUM ^dtProgram_MinRest_09 
+8 PTBL_dtProgram_MinRest_PtrTable TABLE!
+751 LINE.NUM ^dtProgram_MinRest_10 
+9 PTBL_dtProgram_MinRest_PtrTable TABLE!
+752 LINE.NUM ^dtProgram_MinRest_11 
+10 PTBL_dtProgram_MinRest_PtrTable TABLE!
+753 LINE.NUM ^dtProgram_MinRest_12 
+11 PTBL_dtProgram_MinRest_PtrTable TABLE!
+754 LINE.NUM ^dtProgram_MinRest_13 
+12 PTBL_dtProgram_MinRest_PtrTable TABLE!
+755 LINE.NUM ^dtProgram_MinRest_14 
+13 PTBL_dtProgram_MinRest_PtrTable TABLE!
+756 LINE.NUM ^dtProgram_MinRest_15 
+14 PTBL_dtProgram_MinRest_PtrTable TABLE!
+757 LINE.NUM ^dtProgram_MinRest_16 
+15 PTBL_dtProgram_MinRest_PtrTable TABLE!
+758 LINE.NUM ^dtProgram_MinRest_17 
+16 PTBL_dtProgram_MinRest_PtrTable TABLE!
+759 LINE.NUM ^dtProgram_MinRest_18 
+17 PTBL_dtProgram_MinRest_PtrTable TABLE!
+760 LINE.NUM ^dtProgram_MinRest_19 
+18 PTBL_dtProgram_MinRest_PtrTable TABLE!
+761 LINE.NUM ^dtProgram_MinRest_20 
+19 PTBL_dtProgram_MinRest_PtrTable TABLE!
+763 LINE.NUM ^dtTimeInterval_0 
+0 PTBL_dtTimeInterval_PtrTable TABLE!
+764 LINE.NUM ^dtTimeInterval_1 
+1 PTBL_dtTimeInterval_PtrTable TABLE!
+765 LINE.NUM ^dtTimeInterval_2 
+2 PTBL_dtTimeInterval_PtrTable TABLE!
+766 LINE.NUM ^dtTimeInterval_3 
+3 PTBL_dtTimeInterval_PtrTable TABLE!
+767 LINE.NUM ^dtTimeInterval_4 
+4 PTBL_dtTimeInterval_PtrTable TABLE!
+768 LINE.NUM ^dtTimeInterval_5 
+5 PTBL_dtTimeInterval_PtrTable TABLE!
+769 LINE.NUM ^dtTimeInterval_6 
+6 PTBL_dtTimeInterval_PtrTable TABLE!
+770 LINE.NUM ^dtTimeInterval_7 
+7 PTBL_dtTimeInterval_PtrTable TABLE!
+771 LINE.NUM ^dtTimeInterval_8 
+8 PTBL_dtTimeInterval_PtrTable TABLE!
+772 LINE.NUM ^dtTimeInterval_9 
+9 PTBL_dtTimeInterval_PtrTable TABLE!
+773 LINE.NUM ^dtTimeInterval_10 
+10 PTBL_dtTimeInterval_PtrTable TABLE!
+774 LINE.NUM ^dtTimeInterval_11 
+11 PTBL_dtTimeInterval_PtrTable TABLE!
+775 LINE.NUM ^dtTimeInterval_12 
+12 PTBL_dtTimeInterval_PtrTable TABLE!
+776 LINE.NUM ^dtTimeInterval_13 
+13 PTBL_dtTimeInterval_PtrTable TABLE!
+777 LINE.NUM ^dtTimeInterval_14 
+14 PTBL_dtTimeInterval_PtrTable TABLE!
+778 LINE.NUM ^dtTimeInterval_15 
+15 PTBL_dtTimeInterval_PtrTable TABLE!
+779 LINE.NUM ^dtTimeInterval_16 
+16 PTBL_dtTimeInterval_PtrTable TABLE!
+780 LINE.NUM ^dtTimeInterval_17 
+17 PTBL_dtTimeInterval_PtrTable TABLE!
+781 LINE.NUM ^dtTimeInterval_18 
+18 PTBL_dtTimeInterval_PtrTable TABLE!
+782 LINE.NUM ^dtTimeInterval_19 
+19 PTBL_dtTimeInterval_PtrTable TABLE!
+2 JUMP ;
+: 0_38
+
+1 LINE.NUM
+  &Clear_Outputs   CALL.T
+  ^iChartStatus_Tmp @! 
+0 JUMP ;
+: 0_41
+
+1 LINE.NUM
+  &InputSensor_Tracker   START.T
+  ^iChartStatus_Tmp @! 
+
+2 LINE.NUM
+  &TankLevel_Tracker   START.T
+  ^iChartStatus_Tmp @! 
+-4 JUMP ;
+: 0_49
+5 LINE.NUM 0 {sNutrientLibraryName $TABLE@ " " $= IF 
+5 LINE.NUM " ----------" 0 {sNutrientLibraryName $TABLE@  $MOVE 
+5 LINE.NUM THEN 
+6 LINE.NUM 1 {sNutrientLibraryName $TABLE@ " " $= IF 
+6 LINE.NUM " Nitric Acid" 1 {sNutrientLibraryName $TABLE@  $MOVE 
+7 LINE.NUM 15 I>F 20 }fNutrientLibrary TABLE! 
+8 LINE.NUM THEN 
+9 LINE.NUM 2 {sNutrientLibraryName $TABLE@ " " $= IF 
+9 LINE.NUM " Phosphoric Acid" 2 {sNutrientLibraryName $TABLE@  $MOVE 
+10 LINE.NUM 16 I>F 41 }fNutrientLibrary TABLE! 
+11 LINE.NUM THEN 
+12 LINE.NUM 3 {sNutrientLibraryName $TABLE@ " " $= IF 
+12 LINE.NUM " Sulfuric Acid" 3 {sNutrientLibraryName $TABLE@  $MOVE 
+13 LINE.NUM 1.75000000e+001 65 }fNutrientLibrary TABLE! 
+14 LINE.NUM THEN 
+15 LINE.NUM 4 {sNutrientLibraryName $TABLE@ " " $= IF 
+15 LINE.NUM " " 4 {sNutrientLibraryName $TABLE@  $MOVE 
+15 LINE.NUM THEN 
+16 LINE.NUM 5 {sNutrientLibraryName $TABLE@ " " $= IF 
+16 LINE.NUM " Potassium Carbonate" 5 {sNutrientLibraryName $TABLE@  $MOVE 
+17 LINE.NUM 9.89999962e+000 102 }fNutrientLibrary TABLE! 
+18 LINE.NUM THEN 
+19 LINE.NUM 6 {sNutrientLibraryName $TABLE@ " " $= IF 
+19 LINE.NUM " Potassium Hydroxide" 6 {sNutrientLibraryName $TABLE@  $MOVE 
+20 LINE.NUM 9.89999962e+000 122 }fNutrientLibrary TABLE! 
+21 LINE.NUM THEN 
+22 LINE.NUM 7 {sNutrientLibraryName $TABLE@ " " $= IF 
+22 LINE.NUM " Magnesium Sulfate" 7 {sNutrientLibraryName $TABLE@  $MOVE 
+23 LINE.NUM 9.89999962e+000 144 }fNutrientLibrary TABLE! 
+24 LINE.NUM 1.30000000e+001 145 }fNutrientLibrary TABLE! 
+25 LINE.NUM THEN 
+26 LINE.NUM 8 {sNutrientLibraryName $TABLE@ " " $= IF 
+26 LINE.NUM " " 8 {sNutrientLibraryName $TABLE@  $MOVE 
+26 LINE.NUM THEN 
+27 LINE.NUM 9 {sNutrientLibraryName $TABLE@ " " $= IF 
+27 LINE.NUM " " 9 {sNutrientLibraryName $TABLE@  $MOVE 
+27 LINE.NUM THEN 
+28 LINE.NUM 10 {sNutrientLibraryName $TABLE@ " " $= IF 
+28 LINE.NUM " Calcium Nitrate" 10 {sNutrientLibraryName $TABLE@  $MOVE 
+29 LINE.NUM 15 I>F 200 }fNutrientLibrary TABLE! 
+30 LINE.NUM 18 I>F 203 }fNutrientLibrary TABLE! 
+31 LINE.NUM THEN 
+32 LINE.NUM 11 {sNutrientLibraryName $TABLE@ " " $= IF 
+32 LINE.NUM " Potassium Nitrate" 11 {sNutrientLibraryName $TABLE@  $MOVE 
+33 LINE.NUM 1.36999998e+001 220 }fNutrientLibrary TABLE! 
+34 LINE.NUM 46 I>F 222 }fNutrientLibrary TABLE! 
+35 LINE.NUM THEN 
+36 LINE.NUM 12 {sNutrientLibraryName $TABLE@ " " $= IF 
+36 LINE.NUM " Potassium Sulfate" 12 {sNutrientLibraryName $TABLE@  $MOVE 
+37 LINE.NUM 52 I>F 242 }fNutrientLibrary TABLE! 
+38 LINE.NUM 18 I>F 245 }fNutrientLibrary TABLE! 
+39 LINE.NUM THEN 
+40 LINE.NUM 13 {sNutrientLibraryName $TABLE@ " " $= IF 
+40 LINE.NUM " Magnesium Nitrate" 13 {sNutrientLibraryName $TABLE@  $MOVE 
+41 LINE.NUM 1.08000002e+001 260 }fNutrientLibrary TABLE! 
+42 LINE.NUM 9.50000000e+000 264 }fNutrientLibrary TABLE! 
+43 LINE.NUM THEN 
+44 LINE.NUM 14 {sNutrientLibraryName $TABLE@ " " $= IF 
+44 LINE.NUM " Magnesium Sulfate" 14 {sNutrientLibraryName $TABLE@  $MOVE 
+45 LINE.NUM 10 I>F 284 }fNutrientLibrary TABLE! 
+46 LINE.NUM 13 I>F 285 }fNutrientLibrary TABLE! 
+47 LINE.NUM THEN 
+48 LINE.NUM 15 {sNutrientLibraryName $TABLE@ " " $= IF 
+48 LINE.NUM " Ammonium Nitrate" 15 {sNutrientLibraryName $TABLE@  $MOVE 
+49 LINE.NUM 17 I>F 300 }fNutrientLibrary TABLE! 
+50 LINE.NUM THEN 
+51 LINE.NUM 16 {sNutrientLibraryName $TABLE@ " " $= IF 
+51 LINE.NUM " Monopotassium Phosphate" 16 {sNutrientLibraryName $TABLE@  $MOVE 
+52 LINE.NUM 2.27000008e+001 321 }fNutrientLibrary TABLE! 
+53 LINE.NUM 2.87999992e+001 322 }fNutrientLibrary TABLE! 
+54 LINE.NUM THEN 
+55 LINE.NUM 17 {sNutrientLibraryName $TABLE@ " " $= IF 
+55 LINE.NUM " Iron Chelate" 17 {sNutrientLibraryName $TABLE@  $MOVE 
+56 LINE.NUM 1.31999998e+001 351 }fNutrientLibrary TABLE! 
+57 LINE.NUM THEN 
+58 LINE.NUM 18 {sNutrientLibraryName $TABLE@ " " $= IF 
+58 LINE.NUM " Micro Nutrients" 18 {sNutrientLibraryName $TABLE@  $MOVE 
+59 LINE.NUM 2 I>F 367 }fNutrientLibrary TABLE! 
+60 LINE.NUM THEN 
+61 LINE.NUM 19 {sNutrientLibraryName $TABLE@ " " $= IF 
+61 LINE.NUM " " 19 {sNutrientLibraryName $TABLE@  $MOVE 
+61 LINE.NUM THEN 
+62 LINE.NUM 20 {sNutrientLibraryName $TABLE@ " " $= IF 
+62 LINE.NUM " Plant Prod MJ Boost" 20 {sNutrientLibraryName $TABLE@  $MOVE 
+63 LINE.NUM 15 I>F 400 }fNutrientLibrary TABLE! 
+64 LINE.NUM 30 I>F 401 }fNutrientLibrary TABLE! 
+65 LINE.NUM 15 I>F 402 }fNutrientLibrary TABLE! 
+66 LINE.NUM 5.00000007e-002 407 }fNutrientLibrary TABLE! 
+67 LINE.NUM 5.00000007e-002 408 }fNutrientLibrary TABLE! 
+68 LINE.NUM 5.00000024e-004 409 }fNutrientLibrary TABLE! 
+69 LINE.NUM 5.00000007e-002 410 }fNutrientLibrary TABLE! 
+70 LINE.NUM 1.00000001e-001 411 }fNutrientLibrary TABLE! 
+71 LINE.NUM 1.99999996e-002 412 }fNutrientLibrary TABLE! 
+72 LINE.NUM THEN 
+73 LINE.NUM 21 {sNutrientLibraryName $TABLE@ " " $= IF 
+73 LINE.NUM " Plant Prod MJ Grow" 21 {sNutrientLibraryName $TABLE@  $MOVE 
+73 LINE.NUM THEN 
+74 LINE.NUM 22 {sNutrientLibraryName $TABLE@ " " $= IF 
+74 LINE.NUM " Plant Prod MJ Bloom" 22 {sNutrientLibraryName $TABLE@  $MOVE 
+74 LINE.NUM THEN 
+75 LINE.NUM 23 {sNutrientLibraryName $TABLE@ " " $= IF 
+75 LINE.NUM " Plant Prod MJ Cal Kick" 23 {sNutrientLibraryName $TABLE@  $MOVE 
+75 LINE.NUM THEN 
+76 LINE.NUM 24 {sNutrientLibraryName $TABLE@ " " $= IF 
+76 LINE.NUM " Plant Prod MJ Spike" 24 {sNutrientLibraryName $TABLE@  $MOVE 
+76 LINE.NUM THEN 
+77 LINE.NUM 25 {sNutrientLibraryName $TABLE@ " " $= IF 
+77 LINE.NUM " Plant Prod MJ Finisher" 25 {sNutrientLibraryName $TABLE@  $MOVE 
+77 LINE.NUM THEN 
+78 LINE.NUM 26 {sNutrientLibraryName $TABLE@ " " $= IF 
+78 LINE.NUM " " 26 {sNutrientLibraryName $TABLE@  $MOVE 
+78 LINE.NUM THEN 
+79 LINE.NUM 27 {sNutrientLibraryName $TABLE@ " " $= IF 
+79 LINE.NUM " " 27 {sNutrientLibraryName $TABLE@  $MOVE 
+79 LINE.NUM THEN 
+80 LINE.NUM 28 {sNutrientLibraryName $TABLE@ " " $= IF 
+80 LINE.NUM " " 28 {sNutrientLibraryName $TABLE@  $MOVE 
+80 LINE.NUM THEN 
+81 LINE.NUM 29 {sNutrientLibraryName $TABLE@ " " $= IF 
+81 LINE.NUM " " 29 {sNutrientLibraryName $TABLE@  $MOVE 
+81 LINE.NUM THEN 
+82 LINE.NUM 30 {sNutrientLibraryName $TABLE@ " " $= IF 
+82 LINE.NUM " " 30 {sNutrientLibraryName $TABLE@  $MOVE 
+82 LINE.NUM THEN 
+83 LINE.NUM 31 {sNutrientLibraryName $TABLE@ " " $= IF 
+83 LINE.NUM " " 31 {sNutrientLibraryName $TABLE@  $MOVE 
+83 LINE.NUM THEN 
+84 LINE.NUM 32 {sNutrientLibraryName $TABLE@ " " $= IF 
+84 LINE.NUM " " 32 {sNutrientLibraryName $TABLE@  $MOVE 
+84 LINE.NUM THEN 
+85 LINE.NUM 33 {sNutrientLibraryName $TABLE@ " " $= IF 
+85 LINE.NUM " " 33 {sNutrientLibraryName $TABLE@  $MOVE 
+85 LINE.NUM THEN 
+86 LINE.NUM 34 {sNutrientLibraryName $TABLE@ " " $= IF 
+86 LINE.NUM " " 34 {sNutrientLibraryName $TABLE@  $MOVE 
+86 LINE.NUM THEN 
+87 LINE.NUM 35 {sNutrientLibraryName $TABLE@ " " $= IF 
+87 LINE.NUM " " 35 {sNutrientLibraryName $TABLE@  $MOVE 
+87 LINE.NUM THEN 
+88 LINE.NUM 36 {sNutrientLibraryName $TABLE@ " " $= IF 
+88 LINE.NUM " " 36 {sNutrientLibraryName $TABLE@  $MOVE 
+88 LINE.NUM THEN 
+89 LINE.NUM 37 {sNutrientLibraryName $TABLE@ " " $= IF 
+89 LINE.NUM " " 37 {sNutrientLibraryName $TABLE@  $MOVE 
+89 LINE.NUM THEN 
+90 LINE.NUM 38 {sNutrientLibraryName $TABLE@ " " $= IF 
+90 LINE.NUM " " 38 {sNutrientLibraryName $TABLE@  $MOVE 
+90 LINE.NUM THEN 
+91 LINE.NUM 39 {sNutrientLibraryName $TABLE@ " " $= IF 
+91 LINE.NUM " " 39 {sNutrientLibraryName $TABLE@  $MOVE 
+91 LINE.NUM THEN 
+92 LINE.NUM 40 {sNutrientLibraryName $TABLE@ " " $= IF 
+92 LINE.NUM " " 40 {sNutrientLibraryName $TABLE@  $MOVE 
+92 LINE.NUM THEN 
+93 LINE.NUM 41 {sNutrientLibraryName $TABLE@ " " $= IF 
+93 LINE.NUM " " 41 {sNutrientLibraryName $TABLE@  $MOVE 
+93 LINE.NUM THEN 
+94 LINE.NUM 42 {sNutrientLibraryName $TABLE@ " " $= IF 
+94 LINE.NUM " " 42 {sNutrientLibraryName $TABLE@  $MOVE 
+94 LINE.NUM THEN 
+95 LINE.NUM 43 {sNutrientLibraryName $TABLE@ " " $= IF 
+95 LINE.NUM " " 43 {sNutrientLibraryName $TABLE@  $MOVE 
+95 LINE.NUM THEN 
+96 LINE.NUM 44 {sNutrientLibraryName $TABLE@ " " $= IF 
+96 LINE.NUM " " 44 {sNutrientLibraryName $TABLE@  $MOVE 
+96 LINE.NUM THEN 
+97 LINE.NUM 45 {sNutrientLibraryName $TABLE@ " " $= IF 
+97 LINE.NUM " " 45 {sNutrientLibraryName $TABLE@  $MOVE 
+97 LINE.NUM THEN 
+98 LINE.NUM 46 {sNutrientLibraryName $TABLE@ " " $= IF 
+98 LINE.NUM " " 46 {sNutrientLibraryName $TABLE@  $MOVE 
+98 LINE.NUM THEN 
+99 LINE.NUM 47 {sNutrientLibraryName $TABLE@ " " $= IF 
+99 LINE.NUM " " 47 {sNutrientLibraryName $TABLE@  $MOVE 
+99 LINE.NUM THEN 
+100 LINE.NUM 48 {sNutrientLibraryName $TABLE@ " " $= IF 
+100 LINE.NUM " " 48 {sNutrientLibraryName $TABLE@  $MOVE 
+100 LINE.NUM THEN 
+101 LINE.NUM 49 {sNutrientLibraryName $TABLE@ " " $= IF 
+101 LINE.NUM " " 49 {sNutrientLibraryName $TABLE@  $MOVE 
+101 LINE.NUM THEN 
+103 LINE.NUM 0 }nInjectorLibPtrIndex TABLE@ 1 }nInjectorLibPtrIndex TABLE@ +  0 = IF 
+104 LINE.NUM 0 }nInjectorLibPtrIndex TABLE@ 0 = IF 
+104 LINE.NUM 1 0 }nInjectorLibPtrIndex TABLE! 
+104 LINE.NUM THEN 
+105 LINE.NUM 1 }nInjectorLibPtrIndex TABLE@ 0 = IF 
+105 LINE.NUM 10 1 }nInjectorLibPtrIndex TABLE! 
+105 LINE.NUM THEN 
+106 LINE.NUM 2 }nInjectorLibPtrIndex TABLE@ 0 = IF 
+106 LINE.NUM 11 2 }nInjectorLibPtrIndex TABLE! 
+106 LINE.NUM THEN 
+107 LINE.NUM 3 }nInjectorLibPtrIndex TABLE@ 0 = IF 
+107 LINE.NUM 12 3 }nInjectorLibPtrIndex TABLE! 
+107 LINE.NUM THEN 
+108 LINE.NUM 4 }nInjectorLibPtrIndex TABLE@ 0 = IF 
+108 LINE.NUM 13 4 }nInjectorLibPtrIndex TABLE! 
+108 LINE.NUM THEN 
+109 LINE.NUM 5 }nInjectorLibPtrIndex TABLE@ 0 = IF 
+109 LINE.NUM 14 5 }nInjectorLibPtrIndex TABLE! 
+109 LINE.NUM THEN 
+110 LINE.NUM 6 }nInjectorLibPtrIndex TABLE@ 0 = IF 
+110 LINE.NUM 15 6 }nInjectorLibPtrIndex TABLE! 
+110 LINE.NUM THEN 
+111 LINE.NUM 7 }nInjectorLibPtrIndex TABLE@ 0 = IF 
+111 LINE.NUM 16 7 }nInjectorLibPtrIndex TABLE! 
+111 LINE.NUM THEN 
+112 LINE.NUM 8 }nInjectorLibPtrIndex TABLE@ 0 = IF 
+112 LINE.NUM 17 8 }nInjectorLibPtrIndex TABLE! 
+112 LINE.NUM THEN 
+113 LINE.NUM 9 }nInjectorLibPtrIndex TABLE@ 0 = IF 
+113 LINE.NUM 18 9 }nInjectorLibPtrIndex TABLE! 
+113 LINE.NUM THEN 
+114 LINE.NUM 10 }nInjectorLibPtrIndex TABLE@ 0 = IF 
+114 LINE.NUM 20 10 }nInjectorLibPtrIndex TABLE! 
+114 LINE.NUM THEN 
+115 LINE.NUM 11 }nInjectorLibPtrIndex TABLE@ 0 = IF 
+115 LINE.NUM 21 11 }nInjectorLibPtrIndex TABLE! 
+115 LINE.NUM THEN 
+116 LINE.NUM THEN 
+118 LINE.NUM 1 }nInjectorDisplayPtr TABLE@ 2 }nInjectorDisplayPtr TABLE@ +  0 = IF 
+119 LINE.NUM 0 }nInjectorDisplayPtr TABLE@ 0 = IF 
+119 LINE.NUM 0 0 }nInjectorDisplayPtr TABLE! 
+119 LINE.NUM THEN 
+120 LINE.NUM 1 }nInjectorDisplayPtr TABLE@ 0 = IF 
+120 LINE.NUM 1 1 }nInjectorDisplayPtr TABLE! 
+120 LINE.NUM THEN 
+121 LINE.NUM 2 }nInjectorDisplayPtr TABLE@ 0 = IF 
+121 LINE.NUM 2 2 }nInjectorDisplayPtr TABLE! 
+121 LINE.NUM THEN 
+122 LINE.NUM 3 }nInjectorDisplayPtr TABLE@ 0 = IF 
+122 LINE.NUM 3 3 }nInjectorDisplayPtr TABLE! 
+122 LINE.NUM THEN 
+123 LINE.NUM 4 }nInjectorDisplayPtr TABLE@ 0 = IF 
+123 LINE.NUM 4 4 }nInjectorDisplayPtr TABLE! 
+123 LINE.NUM THEN 
+124 LINE.NUM 5 }nInjectorDisplayPtr TABLE@ 0 = IF 
+124 LINE.NUM 5 5 }nInjectorDisplayPtr TABLE! 
+124 LINE.NUM THEN 
+125 LINE.NUM THEN 
+127 LINE.NUM 0 }nInjectorDisplayPtr TABLE@ 0 >= IF 
+127 LINE.NUM 0 }nInjectorDisplayPtr TABLE@ 1 +  0 }nInjectorDisplayNumber TABLE! 
+127 LINE.NUM THEN 
+128 LINE.NUM 1 }nInjectorDisplayPtr TABLE@ 0 >= IF 
+128 LINE.NUM 1 }nInjectorDisplayPtr TABLE@ 1 +  1 }nInjectorDisplayNumber TABLE! 
+128 LINE.NUM THEN 
+129 LINE.NUM 2 }nInjectorDisplayPtr TABLE@ 0 >= IF 
+129 LINE.NUM 2 }nInjectorDisplayPtr TABLE@ 1 +  2 }nInjectorDisplayNumber TABLE! 
+129 LINE.NUM THEN 
+130 LINE.NUM 3 }nInjectorDisplayPtr TABLE@ 0 >= IF 
+130 LINE.NUM 3 }nInjectorDisplayPtr TABLE@ 1 +  3 }nInjectorDisplayNumber TABLE! 
+130 LINE.NUM THEN 
+131 LINE.NUM 4 }nInjectorDisplayPtr TABLE@ 0 >= IF 
+131 LINE.NUM 4 }nInjectorDisplayPtr TABLE@ 1 +  4 }nInjectorDisplayNumber TABLE! 
+131 LINE.NUM THEN 
+132 LINE.NUM 5 }nInjectorDisplayPtr TABLE@ 0 >= IF 
+132 LINE.NUM 5 }nInjectorDisplayPtr TABLE@ 1 +  5 }nInjectorDisplayNumber TABLE! 
+132 LINE.NUM THEN 
+1 135 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^i @! 
+136 LINE.NUM ^i @@ }fInjectorSoluteAmt TABLE@ 0 I>F F= IF 
+136 LINE.NUM 1.00000000e+000 ^i @@ }fInjectorSoluteAmt TABLE! 
+136 LINE.NUM THEN 
+137 LINE.NUM ^i @@ }fInjectorSolubRatio TABLE@ 0 I>F F= IF 
+137 LINE.NUM 1.00000000e+000 ^i @@ }fInjectorSolubRatio TABLE! 
+137 LINE.NUM THEN 
+138 LINE.NUM ^i @@ }fInjectorSolTankSize TABLE@ 0 I>F F= IF 
+138 LINE.NUM 1.00000000e+002 ^i @@ }fInjectorSolTankSize TABLE! 
+138 LINE.NUM THEN 
+139 LINE.NUM 1 +LOOP 
+141 LINE.NUM 0 {sWaterAnalysisLibrary $TABLE@ " " $= IF 
+141 LINE.NUM " RO Water" 0 {sWaterAnalysisLibrary $TABLE@  $MOVE 
+141 LINE.NUM THEN 
+142 LINE.NUM 1 {sWaterAnalysisLibrary $TABLE@ " " $= IF 
+142 LINE.NUM " City Water" 1 {sWaterAnalysisLibrary $TABLE@  $MOVE 
+142 LINE.NUM THEN 
+143 LINE.NUM 2 {sWaterAnalysisLibrary $TABLE@ " " $= IF 
+143 LINE.NUM " Well Water" 2 {sWaterAnalysisLibrary $TABLE@  $MOVE 
+143 LINE.NUM THEN 
+144 LINE.NUM 3 {sWaterAnalysisLibrary $TABLE@ " " $= IF 
+144 LINE.NUM " Pond Water" 3 {sWaterAnalysisLibrary $TABLE@  $MOVE 
+144 LINE.NUM THEN 
+145 LINE.NUM 4 {sWaterAnalysisLibrary $TABLE@ " " $= IF 
+145 LINE.NUM " Rain Water" 4 {sWaterAnalysisLibrary $TABLE@  $MOVE 
+145 LINE.NUM THEN 
+146 LINE.NUM 5 {sWaterAnalysisLibrary $TABLE@ " " $= IF 
+146 LINE.NUM " Leachate-1" 5 {sWaterAnalysisLibrary $TABLE@  $MOVE 
+146 LINE.NUM THEN 
+147 LINE.NUM 6 {sWaterAnalysisLibrary $TABLE@ " " $= IF 
+147 LINE.NUM " Leachate-2" 6 {sWaterAnalysisLibrary $TABLE@  $MOVE 
+147 LINE.NUM THEN 
+148 LINE.NUM 7 {sWaterAnalysisLibrary $TABLE@ " " $= IF 
+148 LINE.NUM " Leachate 25%" 7 {sWaterAnalysisLibrary $TABLE@  $MOVE 
+148 LINE.NUM THEN 
+149 LINE.NUM 8 {sWaterAnalysisLibrary $TABLE@ " " $= IF 
+149 LINE.NUM " Leachate 50%" 8 {sWaterAnalysisLibrary $TABLE@  $MOVE 
+149 LINE.NUM THEN 
+150 LINE.NUM 9 {sWaterAnalysisLibrary $TABLE@ " " $= IF 
+150 LINE.NUM " Leachate 75%" 9 {sWaterAnalysisLibrary $TABLE@  $MOVE 
+150 LINE.NUM THEN 
+153 LINE.NUM 0 {sNutrientName $TABLE@ " " $= IF 
+153 LINE.NUM " Nitrogen" 0 {sNutrientName $TABLE@  $MOVE 
+153 LINE.NUM " N" 0 {sNutrientSymbol $TABLE@  $MOVE 
+153 LINE.NUM THEN 
+154 LINE.NUM 1 {sNutrientName $TABLE@ " " $= IF 
+154 LINE.NUM " Phosphorous" 1 {sNutrientName $TABLE@  $MOVE 
+154 LINE.NUM " P" 1 {sNutrientSymbol $TABLE@  $MOVE 
+154 LINE.NUM THEN 
+155 LINE.NUM 2 {sNutrientName $TABLE@ " " $= IF 
+155 LINE.NUM " Potassium" 2 {sNutrientName $TABLE@  $MOVE 
+155 LINE.NUM " K" 2 {sNutrientSymbol $TABLE@  $MOVE 
+155 LINE.NUM THEN 
+156 LINE.NUM 3 {sNutrientName $TABLE@ " " $= IF 
+156 LINE.NUM " Calcium" 3 {sNutrientName $TABLE@  $MOVE 
+156 LINE.NUM " Ca" 3 {sNutrientSymbol $TABLE@  $MOVE 
+156 LINE.NUM THEN 
+157 LINE.NUM 4 {sNutrientName $TABLE@ " " $= IF 
+157 LINE.NUM " Magnesium" 4 {sNutrientName $TABLE@  $MOVE 
+157 LINE.NUM " Mg" 4 {sNutrientSymbol $TABLE@  $MOVE 
+157 LINE.NUM THEN 
+158 LINE.NUM 5 {sNutrientName $TABLE@ " " $= IF 
+158 LINE.NUM " Sulfur" 5 {sNutrientName $TABLE@  $MOVE 
+158 LINE.NUM " S" 5 {sNutrientSymbol $TABLE@  $MOVE 
+158 LINE.NUM THEN 
+159 LINE.NUM 6 {sNutrientName $TABLE@ " " $= IF 
+159 LINE.NUM " Ammonia" 6 {sNutrientName $TABLE@  $MOVE 
+159 LINE.NUM " NH4" 6 {sNutrientSymbol $TABLE@  $MOVE 
+159 LINE.NUM THEN 
+160 LINE.NUM 7 {sNutrientName $TABLE@ " " $= IF 
+160 LINE.NUM " Manganese" 7 {sNutrientName $TABLE@  $MOVE 
+160 LINE.NUM " Mn" 7 {sNutrientSymbol $TABLE@  $MOVE 
+160 LINE.NUM THEN 
+161 LINE.NUM 8 {sNutrientName $TABLE@ " " $= IF 
+161 LINE.NUM " Copper" 8 {sNutrientName $TABLE@  $MOVE 
+161 LINE.NUM " Cu" 8 {sNutrientSymbol $TABLE@  $MOVE 
+161 LINE.NUM THEN 
+162 LINE.NUM 9 {sNutrientName $TABLE@ " " $= IF 
+162 LINE.NUM " Molybdenum" 9 {sNutrientName $TABLE@  $MOVE 
+162 LINE.NUM " Mo" 9 {sNutrientSymbol $TABLE@  $MOVE 
+162 LINE.NUM THEN 
+163 LINE.NUM 10 {sNutrientName $TABLE@ " " $= IF 
+163 LINE.NUM " Zinc" 10 {sNutrientName $TABLE@  $MOVE 
+163 LINE.NUM " Z" 10 {sNutrientSymbol $TABLE@  $MOVE 
+163 LINE.NUM THEN 
+164 LINE.NUM 11 {sNutrientName $TABLE@ " " $= IF 
+164 LINE.NUM " Iron" 11 {sNutrientName $TABLE@  $MOVE 
+164 LINE.NUM " Fe" 11 {sNutrientSymbol $TABLE@  $MOVE 
+164 LINE.NUM THEN 
+165 LINE.NUM 12 {sNutrientName $TABLE@ " " $= IF 
+165 LINE.NUM " Boron" 12 {sNutrientName $TABLE@  $MOVE 
+165 LINE.NUM " B" 12 {sNutrientSymbol $TABLE@  $MOVE 
+165 LINE.NUM THEN 
+166 LINE.NUM 13 {sNutrientName $TABLE@ " " $= IF 
+166 LINE.NUM " Sodium" 13 {sNutrientName $TABLE@  $MOVE 
+166 LINE.NUM " Na" 13 {sNutrientSymbol $TABLE@  $MOVE 
+166 LINE.NUM THEN 
+167 LINE.NUM 14 {sNutrientName $TABLE@ " " $= IF 
+167 LINE.NUM " Chloride" 14 {sNutrientName $TABLE@  $MOVE 
+167 LINE.NUM " Cl" 14 {sNutrientSymbol $TABLE@  $MOVE 
+167 LINE.NUM THEN 
+168 LINE.NUM 15 {sNutrientName $TABLE@ " " $= IF 
+168 LINE.NUM " Cobalt" 15 {sNutrientName $TABLE@  $MOVE 
+168 LINE.NUM " Co" 15 {sNutrientSymbol $TABLE@  $MOVE 
+168 LINE.NUM THEN 
+169 LINE.NUM 16 {sNutrientName $TABLE@ " " $= IF 
+169 LINE.NUM " Silicon" 16 {sNutrientName $TABLE@  $MOVE 
+169 LINE.NUM " Si" 16 {sNutrientSymbol $TABLE@  $MOVE 
+169 LINE.NUM THEN 
+170 LINE.NUM 17 {sNutrientName $TABLE@ " " $= IF 
+170 LINE.NUM " Selenium" 17 {sNutrientName $TABLE@  $MOVE 
+170 LINE.NUM " Se" 17 {sNutrientSymbol $TABLE@  $MOVE 
+170 LINE.NUM THEN 
+171 LINE.NUM 18 {sNutrientName $TABLE@ " " $= IF 
+171 LINE.NUM " Nutrient19" 18 {sNutrientName $TABLE@  $MOVE 
+171 LINE.NUM " Xx" 18 {sNutrientSymbol $TABLE@  $MOVE 
+171 LINE.NUM THEN 
+172 LINE.NUM 19 {sNutrientName $TABLE@ " " $= IF 
+172 LINE.NUM " Nutrient20" 19 {sNutrientName $TABLE@  $MOVE 
+172 LINE.NUM " Yy" 19 {sNutrientSymbol $TABLE@  $MOVE 
+172 LINE.NUM THEN 
+174 LINE.NUM ^fMixingTankSize @@ 0 I>F F<= IF 
+174 LINE.NUM 10 I>F ^fMixingTankSize @! 
+174 LINE.NUM THEN 
+177 LINE.NUM 1 ^uiPPMClose @! 
+-3 JUMP ;
+T: T0
+DUMMY
+0_0
+0_8
+0_25
+0_31
+0_38
+0_41
+0_49
+T;
+&Powerup ' T0 SETTASK

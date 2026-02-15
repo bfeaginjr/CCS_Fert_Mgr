@@ -1,0 +1,84 @@
+: 107_0
+2 JUMP ;
+: 107_2
+2 LINE.NUM ^uoDispGroupNum @@ ^cMaxValveGroups @@ >= IF 
+3 LINE.NUM 0 ^uoDispGroupNum @! 
+4 LINE.NUM ELSE 
+4 LINE.NUM ^uoDispGroupNum @@ 0 < IF 
+5 LINE.NUM ^cMaxValveGroups @@ 1 -  ^uoDispGroupNum @! 
+6 LINE.NUM THEN THEN 
+8 LINE.NUM ^uoDispGroupNum @@ {uiGroupName $TABLE@ *uoDispGroupName  $MOVE 
+3 JUMP ;
+: 107_9
+
+1 LINE.NUM
+  500    DELAY
+3 JUMP ;
+: 107_10
+
+1 LINE.NUM
+  500    DELAY
+
+2 LINE.NUM
+  0  
+  ^iGroupClose @!   
+2 JUMP ;
+: 107_11
+1 LINE.NUM ^uoDispGroupNum @@ ^uiEditGroupNum @! 
+2 LINE.NUM &ValveGroup_Definition  CALL.T DROP  
+0 JUMP ;
+: 107_26
+
+1 LINE.NUM
+  0  
+  ^iProgramGroup @!   
+
+2 LINE.NUM
+  0  
+  ^iGroupClose @!   
+
+3 LINE.NUM
+  0  
+  ^iProgramGroupEdit @!   
+
+4 LINE.NUM
+  0  
+  ^iMainValveGroup @!   
+3 JUMP ;
+: 107_7
+TRUE
+
+1 LINE.NUM
+  ^iProgramGroupEdit @@ 
+  1    =
+LAND
+IF -3 ELSE 0 THEN JUMP ;
+: 107_8
+TRUE
+
+1 LINE.NUM
+  ^iProgramGroup @@ 
+  1    =
+LAND
+IF -7 ELSE 0 THEN JUMP ;
+: 107_12
+TRUE
+
+1 LINE.NUM
+  ^iGroupClose @@ 
+  1    =
+LAND
+IF -4 ELSE -7 THEN JUMP ;
+T: T107
+DUMMY
+107_0
+107_2
+107_9
+107_10
+107_11
+107_26
+107_7
+107_8
+107_12
+T;
+&ValveGroup ' T107 SETTASK

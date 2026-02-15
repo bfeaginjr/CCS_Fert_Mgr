@@ -1,0 +1,86 @@
+: 8_0
+2 JUMP ;
+: 8_1
+
+1 LINE.NUM
+  ^utTotalTime   StartTimer
+
+2 LINE.NUM
+  &PumpIt   CALL.T
+  ^iChartStatus_Tmp @! 
+
+3 LINE.NUM
+  ^utTotalTime   PauseTimer
+4 JUMP ;
+: 8_2
+2 JUMP ;
+: 8_9
+
+1 LINE.NUM
+  0  
+  ^uoState @!   
+
+2 LINE.NUM
+  &Alarms   STOP.T
+
+3 LINE.NUM
+  &PumpIt   STOP.T
+
+4 LINE.NUM
+  &RunGroup   STOP.T
+
+5 LINE.NUM
+  &Main   STOP.T
+
+6 LINE.NUM
+  &Powerup   STOP.T
+0 JUMP ;
+: 8_10
+
+1 LINE.NUM
+  ^cOptPumpDelayIndex @@ 
+  }uiOptions TABLE@   
+  ^fPumpDelay @! 
+
+2 LINE.NUM
+  0  
+  ^nRunValveIndex @!   
+
+3 LINE.NUM
+  ^cOptPumpDelayIndex @@ 
+  }uiOptions TABLE@   
+  ^fPumpDelay @! 
+
+4 LINE.NUM
+  ^cTT_Testing @@ 
+  ^nTriggerType @!   
+2 JUMP ;
+: 8_14
+
+1 LINE.NUM
+  &Powerup   START.T
+  ^iChartStatus_Tmp @! 
+2 JUMP ;
+: 8_17
+
+1 LINE.NUM
+  0  
+  ^nTriggerType @!   
+-5 JUMP ;
+: 8_28
+6 LINE.NUM ^tOutPumpIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTestFlow_Ptr 
+7 LINE.NUM PTR_doTestFlow_Ptr  ON 
+-7 JUMP ;
+T: T8
+DUMMY
+8_0
+8_1
+8_2
+8_9
+8_10
+8_14
+8_17
+8_28
+T;
+&TestFlow ' T8 SETTASK

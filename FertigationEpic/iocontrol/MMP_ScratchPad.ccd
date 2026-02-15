@@ -1,0 +1,74 @@
+: 116_0
+2 JUMP ;
+: 116_6
+2 LINE.NUM %Fertigation_Controller_Epic 0 ^fFlowRate @@  IO.SP.F.WRITE DROP  
+5 LINE.NUM %Fertigation_Controller_Epic 1 ^fCurrentTEMP @@  IO.SP.F.WRITE DROP  
+8 LINE.NUM %Fertigation_Controller_Epic 2 ^fCurrentPRESSURE_Int @@  IO.SP.F.WRITE DROP  
+11 LINE.NUM %Fertigation_Controller_Epic 3 ^fCurrentPRESSURE_Ext @@  IO.SP.F.WRITE DROP  
+14 LINE.NUM %Fertigation_Controller_Epic 4 ^fAuxPH @@  IO.SP.F.WRITE DROP  
+17 LINE.NUM %Fertigation_Controller_Epic 5 ^fCurrentPH @@  IO.SP.F.WRITE DROP  
+20 LINE.NUM %Fertigation_Controller_Epic 6 ^fAuxEC @@  IO.SP.F.WRITE DROP  
+23 LINE.NUM %Fertigation_Controller_Epic 7 ^fCurrentEC @@  IO.SP.F.WRITE DROP  
+26 LINE.NUM %Fertigation_Controller_Epic 8 ^fCurrentSolarValue @@  IO.SP.F.WRITE DROP  
+30 LINE.NUM %Fertigation_Controller_Epic 0 *uoLogStopTime  IO.SP.$WRITE DROP  
+32 LINE.NUM %Fertigation_Controller_Epic 1 *uoLogStartTime  IO.SP.$WRITE DROP  
+34 LINE.NUM %Fertigation_Controller_Epic 2 *uoLogProgram  IO.SP.$WRITE DROP  
+36 LINE.NUM %Fertigation_Controller_Epic 3 *uoLogGroup  IO.SP.$WRITE DROP  
+38 LINE.NUM %Fertigation_Controller_Epic 0 ^uoLogTimeZone @@  IO.SP.I.WRITE DROP  
+40 LINE.NUM %Fertigation_Controller_Epic 4 *uoLogRecipeName  IO.SP.$WRITE DROP  
+42 LINE.NUM %Fertigation_Controller_Epic 5 *uoDispValveNum  IO.SP.$WRITE DROP  
+44 LINE.NUM %Fertigation_Controller_Epic 6 *uoLogEvent  IO.SP.$WRITE DROP  
+46 LINE.NUM %Fertigation_Controller_Epic 7 *uoLogTrigger  IO.SP.$WRITE DROP  
+48 LINE.NUM %Fertigation_Controller_Epic 100 ^uoLogLiters @@  IO.SP.F.WRITE DROP  
+52 LINE.NUM %Fertigation_Controller_Epic 1 ^uoLowFlowAlarm @@  IO.SP.I.WRITE DROP  
+54 LINE.NUM %Fertigation_Controller_Epic 2 ^uoHighFlowAlarm @@  IO.SP.I.WRITE DROP  
+56 LINE.NUM %Fertigation_Controller_Epic 3 ^uoFlowAlarm @@  IO.SP.I.WRITE DROP  
+58 LINE.NUM %Fertigation_Controller_Epic 4 ^uoLowECOutAlarm @@  IO.SP.I.WRITE DROP  
+60 LINE.NUM %Fertigation_Controller_Epic 5 ^uoHighECOutAlarm @@  IO.SP.I.WRITE DROP  
+62 LINE.NUM %Fertigation_Controller_Epic 6 ^uoECOutAlarm @@  IO.SP.I.WRITE DROP  
+64 LINE.NUM %Fertigation_Controller_Epic 7 ^uoLowpHAlarm @@  IO.SP.I.WRITE DROP  
+66 LINE.NUM %Fertigation_Controller_Epic 8 ^uoHighpHAlarm @@  IO.SP.I.WRITE DROP  
+68 LINE.NUM %Fertigation_Controller_Epic 9 ^uoPHAlarm @@  IO.SP.I.WRITE DROP  
+70 LINE.NUM %Fertigation_Controller_Epic 10 ^uoLowECInAlarm @@  IO.SP.I.WRITE DROP  
+72 LINE.NUM %Fertigation_Controller_Epic 11 ^uoHighECInAlarm @@  IO.SP.I.WRITE DROP  
+74 LINE.NUM %Fertigation_Controller_Epic 12 ^uoECInAlarm @@  IO.SP.I.WRITE DROP  
+76 LINE.NUM %Fertigation_Controller_Epic 13 ^uoLowTempAlarm @@  IO.SP.I.WRITE DROP  
+78 LINE.NUM %Fertigation_Controller_Epic 14 ^uoHighTempAlarm @@  IO.SP.I.WRITE DROP  
+80 LINE.NUM %Fertigation_Controller_Epic 15 ^uoTemperatureAlarm @@  IO.SP.I.WRITE DROP  
+82 LINE.NUM %Fertigation_Controller_Epic 16 ^uoLowPressureAlarm @@  IO.SP.I.WRITE DROP  
+84 LINE.NUM %Fertigation_Controller_Epic 17 ^uoHighPressureAlarm @@  IO.SP.I.WRITE DROP  
+86 LINE.NUM %Fertigation_Controller_Epic 18 ^uoPressureAlarm @@  IO.SP.I.WRITE DROP  
+91 LINE.NUM %Fertigation_Controller_Epic 24 20 0 {sTank_Description  4 ROLL 3 ROLL ROT IO.SP.$WRITE DROP  
+93 LINE.NUM %Fertigation_Controller_Epic 24 101 0 }fTank_ControlMinSP  IO.SP.T.WRITE DROP  
+95 LINE.NUM %Fertigation_Controller_Epic 24 125 0 }fTank_ControlMaxSP  IO.SP.T.WRITE DROP  
+97 LINE.NUM %Fertigation_Controller_Epic 24 149 0 }fTank_AlarmMinSP  IO.SP.T.WRITE DROP  
+99 LINE.NUM %Fertigation_Controller_Epic 24 173 0 }fTank_AlarmMaxSP  IO.SP.T.WRITE DROP  
+101 LINE.NUM %Fertigation_Controller_Epic 24 197 0 }fTank_PercentFull  IO.SP.T.WRITE DROP  
+103 LINE.NUM %Fertigation_Controller_Epic 24 221 0 }fTank_CalculatedVolume  IO.SP.T.WRITE DROP  
+105 LINE.NUM %Fertigation_Controller_Epic 24 60 0 }iTank_Output  IO.SP.T.WRITE DROP  
+109 LINE.NUM %Fertigation_Controller_Epic 12 500 0 }fInjectorVolumeTotalizer  IO.SP.T.WRITE DROP  
+111 LINE.NUM %Fertigation_Controller_Epic 12 512 0 }fInjectorVolumeTotalizer_Yesterday  IO.SP.T.WRITE DROP  
+115 LINE.NUM %Fertigation_Controller_Epic 100 524 0 }fLitersTotal  IO.SP.T.WRITE DROP  
+117 LINE.NUM %Fertigation_Controller_Epic 100 624 0 }fLitersTotal_Yesterday  IO.SP.T.WRITE DROP  
+0 JUMP ;
+: 116_7
+
+1 LINE.NUM
+  1000    DELAY
+0 JUMP ;
+: 116_8
+TRUE
+
+1 LINE.NUM
+  ^iScratchPadEnable @@ 
+  1    =
+LAND
+IF -3 ELSE -2 THEN JUMP ;
+T: T116
+DUMMY
+116_0
+116_6
+116_7
+116_8
+T;
+&MMP_ScratchPad ' T116 SETTASK

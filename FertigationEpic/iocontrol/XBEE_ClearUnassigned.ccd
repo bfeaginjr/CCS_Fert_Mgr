@@ -1,0 +1,13 @@
+: 81_0
+0 JUMP ;
+: 81_1
+1 1 LINE.NUM 49 1 + 0 DO? I ^iXBEEClear_Tmp @! 
+2 LINE.NUM " " ^iXBEEClear_Tmp @@ {tGS3ID_Unassigned $TABLE@  $MOVE 
+3 LINE.NUM 1 +LOOP 
+0 JUMP ;
+T: T81
+DUMMY
+81_0
+81_1
+T;
+&XBEE_ClearUnassigned ' T81 SETTASK

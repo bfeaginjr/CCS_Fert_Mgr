@@ -1,0 +1,548 @@
+: 21_0
+4 JUMP ;
+: 21_16
+
+1 LINE.NUM
+  *tStartTime   TIME>$
+
+2 LINE.NUM
+  *tStartDate   -1 DATE>$
+
+3 LINE.NUM
+  &PumpIt   CALL.T
+  ^iChartStatus_Tmp @! 
+2 JUMP ;
+: 21_32
+
+1 LINE.NUM
+  &Clear_Outputs   CALL.T
+  ^iChartStatus_Tmp @! 
+
+2 LINE.NUM
+  &MixingValve   STOP.T
+
+3 LINE.NUM
+  " " 
+ 
+  *uoRunRecipeName   $MOVE
+
+4 LINE.NUM
+  -1  
+  ^nRunRecipeIndex @!   
+
+5 LINE.NUM
+  -1  
+  ^nRunGroupIndex @!   
+
+6 LINE.NUM
+  -1  
+  ^nRunValveIndex @!   
+
+7 LINE.NUM
+  " " 
+ 
+  *uoRunGroupName   $MOVE
+
+8 LINE.NUM
+  -1  
+  ^uoDispProgramRun @!   
+
+9 LINE.NUM
+  " " 
+ 
+  *uoRunProgramName   $MOVE
+
+10 LINE.NUM
+  ^utTotalTime   StopTimer
+
+11 LINE.NUM
+  " " 
+ 
+  *uoDispValveNum   $MOVE
+
+12 LINE.NUM
+  0  
+  ^iRecipeTankError @!   
+
+13 LINE.NUM
+  -1  
+  ^iRunProgramIndex @!   
+28 JUMP ;
+: 21_36
+
+1 LINE.NUM
+  ^nRunValveIndex   1+@!
+2 JUMP ;
+: 21_66
+2 LINE.NUM 0 ^uoLogStart @! 
+3 LINE.NUM *uoLogStopTime  TIME>$ 
+4 LINE.NUM *tStartTime *uoLogStartTime  $MOVE 
+5 LINE.NUM *uoLogStopDate  -1 DATE>$ 
+6 LINE.NUM *tStartDate *uoLogStartDate  $MOVE 
+7 LINE.NUM *uoRunProgramName *uoLogProgram  $MOVE 
+8 LINE.NUM *uoRunRecipeName *uoLogRecipeName  $MOVE 
+9 LINE.NUM *uoRunGroupName *uoLogGroup  $MOVE 
+10 LINE.NUM ^nRunZoneIndex @@ 1 +  ^uoLogTimeZone @! 
+11 LINE.NUM *uoDispValveNum *uoLogValves  $MOVE 
+12 LINE.NUM " " *uoDispValveNum  $MOVE 
+13 LINE.NUM " Irrigate" *uoLogEvent  $MOVE 
+14 LINE.NUM ^nTriggerType @@ {TriggerTypeDesc $TABLE@ *uoLogTrigger  $MOVE 
+15 LINE.NUM *uoDispMainIrrigationMode *uoLogIrrigationMode  $MOVE 
+16 LINE.NUM ^fLiterCount @@ ^uoLogLiters @! 
+1 19 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+20 LINE.NUM ^nRunCounter1 @@ }nInjectorPulseCount TABLE@ ^nRunCounter1 @@ }uoLogInjectorPulseCount TABLE! 
+23 LINE.NUM ^nRunCounter1 @@ }fInjectorVolumeTotalizer TABLE@ ^nRunCounter1 @@ }nInjectorPulseCount TABLE@F ^nRunCounter1 @@ }fInjectorInjectVolume TABLE@ F* 1000 I>F F/ F+ ^nRunCounter1 @@ }fInjectorVolumeTotalizer TABLE! 
+24 LINE.NUM ^nRunCounter1 @@ }nInjectorPulseCountTotalizer TABLE@ ^nRunCounter1 @@ }nInjectorPulseCount TABLE@ +  ^nRunCounter1 @@ }nInjectorPulseCountTotalizer TABLE! 
+26 LINE.NUM ^nRunCounter1 @@ }nInjectorPulseCount TABLE@F ^nRunCounter1 @@ }fInjectorInjectVolume TABLE@ F* 1000 I>F F/ ^nRunCounter1 @@ }uoLogInjectorStroke TABLE! 
+28 LINE.NUM 1 +LOOP 
+32 LINE.NUM 5  DELAY 
+34 LINE.NUM 1 ^uoLogStart @! 
+6 JUMP ;
+: 21_76
+
+1 LINE.NUM
+  ^nRunProgramIndex @@ 
+  {uiProgramName $TABLE@ 
+  *uoRunProgramName   $MOVE
+
+2 LINE.NUM
+  ^nRunProgramIndex @@ 
+  ^uoDispProgramRun @!   
+
+3 LINE.NUM
+  ^bInProgress   TRUE@!
+8 JUMP ;
+: 21_86
+1 4 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+5 LINE.NUM ^nRunRecipeIndex @@ ^cMaxInjectors @@ *  ^nRunCounter1 @@ +  }uiInjectorSetpoints TABLE@ ^nRunCounter1 @@ }fInjectorPulseSP TABLE! 
+7 LINE.NUM ^nRunCounter1 @@ }fInjectorPulseSP TABLE@ 0 I>F F> IF 
+8 LINE.NUM ^nRunRecipeIndex @@ }uiInjectorSPFlowRate TABLE@ ^nRunCounter1 @@ }fInjectorPulseSP TABLE@ F/ ^nRunCounter1 @@ }nInjectorLitersToPulse TABLE! 
+9 LINE.NUM ELSE 
+10 LINE.NUM 0 I>F ^nRunCounter1 @@ }fInjectorPulseSP TABLE! 
+11 LINE.NUM 0 I>F ^nRunCounter1 @@ }nInjectorLitersToPulse TABLE! 
+12 LINE.NUM THEN 
+21 LINE.NUM 1 I>F ^nRunCounter1 @@ }nInjectorLitersToPulse TABLE@ F+ ^nRunCounter1 @@ }fInjectorPulseTrigger TABLE! 
+24 LINE.NUM 0 ^nRunCounter1 @@ }nInjectorPulseCount TABLE! 
+25 LINE.NUM 0 I>F ^nRunCounter1 @@ }fInjectorTimer TABLE! 
+26 LINE.NUM 0 I>F ^nRunCounter1 @@ }uoPulseRate TABLE! 
+27 LINE.NUM 0 ^nRunCounter1 @@ }nStartInjectorTimer TABLE! 
+28 LINE.NUM 1 +LOOP 
+17 JUMP ;
+: 21_91
+
+1 LINE.NUM
+  &TimerRestart   CALL.T
+  ^iChartStatus_Tmp @! 
+
+2 LINE.NUM
+  0  
+  ^nRunProgramIndex @@ 
+  }fCurrentSolarAccum ITABLE!   
+
+3 LINE.NUM
+  ^utTotalTime   StartTimer
+
+4 LINE.NUM
+  &MixingValve   START.T
+  ^iChartStatus_Tmp @! 
+5 JUMP ;
+: 21_96
+1 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }uiValveGroups TABLE@ 1 ^nRunGroupIndex @@ SHIFT  AND  ^nRunCounter1 @! 
+14 JUMP ;
+: 21_102
+
+1 LINE.NUM
+  10    DELAY
+15 JUMP ;
+: 21_112
+1 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  1 +  *uoDispValveNum  I>$ 
+3 LINE.NUM ^nRunValveIndex @@ }uiValvePairs TABLE@ 0 > IF 
+4 LINE.NUM ^nRunValveIndex @@ }uiValvePairs TABLE@ *uoErrorMessage  I>$ 
+5 LINE.NUM *_HSV_SEMA Acquire1String *uoDispValveNum  *_HSV_TEMP $MOVE " /"  *_HSV_TEMP $CAT *uoErrorMessage  *_HSV_TEMP $CAT *_HSV_TEMP *uoDispValveNum $MOVE Release1String 
+6 LINE.NUM THEN 
+9 LINE.NUM *uoDispValveNum  $>I ^uoDispValveNumber @! 
+19 JUMP ;
+: 21_118
+2 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  ^cMaxValves @@ < IF 
+3 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }fLitersTotal TABLE@ ^fLiterCount @@ F+ ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  }fLitersTotal TABLE! 
+4 LINE.NUM ^fLitersGrandTotal @@ ^fLiterCount @@ F+ ^fLitersGrandTotal @! 
+5 LINE.NUM THEN 
+-9 JUMP ;
+: 21_120
+1 LINE.NUM ^nRunProgramIndex @@ PTBL_dtProgram_MinRest_PtrTable 
+TableMoveToPointer PTR_dtProgram_MinRest_Ptr 
+3 LINE.NUM ^nRunZoneIndex @@ -1 > IF 
+4 LINE.NUM ^nRunProgramIndex @@ ^cMaxZones @@ *  ^nRunZoneIndex @@ +  }uiProgramZoneRestTime TABLE@ 60 I>F F* 0 I>F F> IF 
+5 LINE.NUM PTR_dtProgram_MinRest_Ptr  StartTimer 
+6 LINE.NUM ELSE 
+7 LINE.NUM PTR_dtProgram_MinRest_Ptr  StopTimer 
+8 LINE.NUM THEN 
+9 LINE.NUM THEN 
+11 LINE.NUM "  " *uoDispMainIrrigationMode  $MOVE 
+13 LINE.NUM -1 ^bProportional_Program_Recipe @! 
+15 LINE.NUM 0 I>F 0 ^cMaxValves @@ 1 -  }nValve_AverageFlow  InitTable 
+17 LINE.NUM }nInjectorSetPoints_AutoTmp 0 }nInjectorSetpoints_Auto 0 239  CopyTable  
+21 LINE.NUM 0 ^uoLowFlowAlarm @! 
+22 LINE.NUM 0 ^uoHighFlowAlarm @! 
+23 LINE.NUM 0 ^uoFlowAlarm @! 
+24 LINE.NUM 0 ^bFlowHighAlarm @! 
+25 LINE.NUM 0 ^bFlowLowAlarm @! 
+27 LINE.NUM 0 ^uoLowECOutAlarm @! 
+28 LINE.NUM 0 ^uoLowECOutAlarm @! 
+29 LINE.NUM 0 ^uoECOutAlarm @! 
+30 LINE.NUM 0 ^bECOUTHighAlarm @! 
+31 LINE.NUM 0 ^bECOUTLowAlarm @! 
+33 LINE.NUM 0 ^uoLowpHAlarm @! 
+34 LINE.NUM 0 ^uoHighpHAlarm @! 
+35 LINE.NUM 0 ^uoPHAlarm @! 
+36 LINE.NUM 0 ^bpHHighAlarm @! 
+37 LINE.NUM 0 ^bpHLowAlarm @! 
+40 LINE.NUM 0 ^uoLowECInAlarm @! 
+41 LINE.NUM 0 ^uoHighECInAlarm @! 
+42 LINE.NUM 0 ^uoECInAlarm @! 
+43 LINE.NUM 0 ^bECINHighAlarm @! 
+44 LINE.NUM 0 ^bECINLowAlarm @! 
+46 LINE.NUM 0 ^uoLowTempAlarm @! 
+47 LINE.NUM 0 ^uoHighTempAlarm @! 
+48 LINE.NUM 0 ^uoTemperatureAlarm @! 
+49 LINE.NUM 0 ^bTempHighAlarm @! 
+50 LINE.NUM 0 ^bTempLowAlarm @! 
+52 LINE.NUM 0 ^uoLowPressureAlarm @! 
+53 LINE.NUM 0 ^uoHighPressureAlarm @! 
+54 LINE.NUM 0 ^uoPressureAlarm @! 
+55 LINE.NUM 0 ^bPressureHighAlarm @! 
+56 LINE.NUM 0 ^bPressureLowAlarm @! 
+58 LINE.NUM 0 ^iAlarmSilence @! 
+60 LINE.NUM 0 ^bPressureShutDown @! 
+62 LINE.NUM ^iTankOutput_QueueTrigger @@ IF 
+62 LINE.NUM 0 ^nRunProgramIndex @@ }iTank_Output TABLE! 
+62 LINE.NUM THEN 
+-11 JUMP ;
+: 21_130
+2 LINE.NUM 1 ^bInProgress @! 
+5 LINE.NUM ^nRunValveIndex @@ ^nRunGroupIndex @@ ^cMaxValves @@ *  -  1 +  ^nDispValveNum @! 
+1 8 LINE.NUM ^cMaxOutputs @@ 1 -  1 + 0 DO? I ^iPumpIt_Tmp2 @! 
+9 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ 0 > IF 
+10 LINE.NUM ^iPumpIt_Tmp2 @@ }doOutputs TABLE@ CASE 
+11 LINE.NUM ^cOT_Auxiliary1Index @@ OF 
+12 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary1Index @@ = IF 
+13 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+14 LINE.NUM PTR_doRunGroup_Ptr  ON 
+15 LINE.NUM THEN 
+16 LINE.NUM ENDOF 
+17 LINE.NUM ^cOT_Auxiliary2Index @@ OF 
+18 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary2Index @@ = IF 
+19 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+20 LINE.NUM PTR_doRunGroup_Ptr  ON 
+21 LINE.NUM THEN 
+22 LINE.NUM ENDOF 
+23 LINE.NUM ^cOT_Auxiliary3Index @@ OF 
+24 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary3Index @@ = IF 
+25 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+26 LINE.NUM PTR_doRunGroup_Ptr  ON 
+27 LINE.NUM THEN 
+28 LINE.NUM ENDOF 
+29 LINE.NUM ^cOT_Auxiliary4Index @@ OF 
+30 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary4Index @@ = IF 
+31 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+32 LINE.NUM PTR_doRunGroup_Ptr  ON 
+33 LINE.NUM THEN 
+34 LINE.NUM ENDOF 
+35 LINE.NUM ^cOT_Auxiliary5Index @@ OF 
+36 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary5Index @@ = IF 
+37 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+38 LINE.NUM PTR_doRunGroup_Ptr  ON 
+39 LINE.NUM THEN 
+40 LINE.NUM ENDOF 
+41 LINE.NUM ^cOT_Auxiliary6Index @@ OF 
+42 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary6Index @@ = IF 
+43 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+44 LINE.NUM PTR_doRunGroup_Ptr  ON 
+45 LINE.NUM THEN 
+46 LINE.NUM ENDOF 
+47 LINE.NUM ^cOT_Auxiliary7Index @@ OF 
+48 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary7Index @@ = IF 
+49 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+50 LINE.NUM PTR_doRunGroup_Ptr  ON 
+51 LINE.NUM THEN 
+52 LINE.NUM ENDOF 
+53 LINE.NUM ^cOT_Auxiliary8Index @@ OF 
+54 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary8Index @@ = IF 
+55 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+56 LINE.NUM PTR_doRunGroup_Ptr  ON 
+57 LINE.NUM THEN 
+58 LINE.NUM ENDOF 
+59 LINE.NUM ^cOT_Auxiliary9Index @@ OF 
+60 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary9Index @@ = IF 
+61 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+62 LINE.NUM PTR_doRunGroup_Ptr  ON 
+63 LINE.NUM THEN 
+64 LINE.NUM ENDOF 
+65 LINE.NUM ^cOT_Auxiliary10Index @@ OF 
+66 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary10Index @@ = IF 
+67 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+68 LINE.NUM PTR_doRunGroup_Ptr  ON 
+69 LINE.NUM THEN 
+70 LINE.NUM ENDOF 
+71 LINE.NUM ^cOT_Auxiliary11Index @@ OF 
+72 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary11Index @@ = IF 
+73 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+74 LINE.NUM PTR_doRunGroup_Ptr  ON 
+75 LINE.NUM THEN 
+76 LINE.NUM ENDOF 
+77 LINE.NUM ^cOT_Auxiliary12Index @@ OF 
+78 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary12Index @@ = IF 
+79 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+80 LINE.NUM PTR_doRunGroup_Ptr  ON 
+81 LINE.NUM THEN 
+82 LINE.NUM ENDOF 
+83 LINE.NUM ^cOT_Auxiliary13Index @@ OF 
+84 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary13Index @@ = IF 
+85 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+86 LINE.NUM PTR_doRunGroup_Ptr  ON 
+87 LINE.NUM THEN 
+88 LINE.NUM ENDOF 
+89 LINE.NUM ^cOT_Auxiliary14Index @@ OF 
+90 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary14Index @@ = IF 
+91 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+92 LINE.NUM PTR_doRunGroup_Ptr  ON 
+93 LINE.NUM THEN 
+94 LINE.NUM ENDOF 
+95 LINE.NUM ^cOT_Auxiliary15Index @@ OF 
+96 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary15Index @@ = IF 
+97 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+98 LINE.NUM PTR_doRunGroup_Ptr  ON 
+99 LINE.NUM THEN 
+100 LINE.NUM ENDOF 
+101 LINE.NUM ^cOT_Auxiliary16Index @@ OF 
+102 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary16Index @@ = IF 
+103 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+104 LINE.NUM PTR_doRunGroup_Ptr  ON 
+105 LINE.NUM THEN 
+106 LINE.NUM ENDOF 
+107 LINE.NUM ^cOT_Auxiliary17Index @@ OF 
+108 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary17Index @@ = IF 
+109 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+110 LINE.NUM PTR_doRunGroup_Ptr  ON 
+111 LINE.NUM THEN 
+112 LINE.NUM ENDOF 
+113 LINE.NUM ^cOT_Auxiliary18Index @@ OF 
+114 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary18Index @@ = IF 
+115 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+116 LINE.NUM PTR_doRunGroup_Ptr  ON 
+117 LINE.NUM THEN 
+118 LINE.NUM ENDOF 
+119 LINE.NUM ^cOT_Auxiliary19Index @@ OF 
+120 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary19Index @@ = IF 
+121 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+122 LINE.NUM PTR_doRunGroup_Ptr  ON 
+123 LINE.NUM THEN 
+124 LINE.NUM ENDOF 
+125 LINE.NUM ^cOT_Auxiliary20Index @@ OF 
+126 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ ^cOT_Auxiliary20Index @@ = IF 
+127 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doRunGroup_Ptr 
+128 LINE.NUM PTR_doRunGroup_Ptr  ON 
+129 LINE.NUM THEN 
+130 LINE.NUM ENDOF 
+131 LINE.NUM ENDCASE 
+132 LINE.NUM THEN 
+133 LINE.NUM 1 +LOOP 
+-8 JUMP ;
+: 21_134
+3 LINE.NUM ^cMaxValves @@ ^nRunGroupIndex @@ *  ^nRunValveIndex @! 
+5 LINE.NUM ^cMaxValves @@ ^nRunValveIndex @@ +  ^nMaxValveIndex @! 
+7 LINE.NUM " " *uoDispValveNum  $MOVE 
+9 LINE.NUM ^cOptPumpDelayIndex @@ }uiOptions TABLE@ ^fPumpDelay @! 
+11 LINE.NUM ^nRunRecipeIndex @@ {uiRecipeName $TABLE@ *uoRunRecipeName  $MOVE 
+13 LINE.NUM ^nRunGroupIndex @@ {uiGroupName $TABLE@ *uoRunGroupName  $MOVE 
+15 LINE.NUM ^nTriggerType @@ {TriggerTypeDesc $TABLE@ *uoLogTrigger  $MOVE 
+17 LINE.NUM ^nRunProgramIndex @@ ^iRunProgramIndex @! 
+10 JUMP ;
+: 21_138
+3 LINE.NUM 0 ^iRecipeTankError @! 
+5 LINE.NUM 1 }uiTank_Enable TABLE@ " (T1)" 0 *uoRunRecipeName  FindSubString 0 >= LAND  IF 
+6 LINE.NUM 1 ^iLeachateTankReturnValve @! 
+8 LINE.NUM ELSE 
+8 LINE.NUM 2 }uiTank_Enable TABLE@ " (T2)" 0 *uoRunRecipeName  FindSubString 0 >= LAND  IF 
+9 LINE.NUM 2 ^iLeachateTankReturnValve @! 
+11 LINE.NUM ELSE 
+11 LINE.NUM 3 }uiTank_Enable TABLE@ " (T3)" 0 *uoRunRecipeName  FindSubString 0 >= LAND  IF 
+12 LINE.NUM 3 ^iLeachateTankReturnValve @! 
+14 LINE.NUM ELSE 
+14 LINE.NUM 4 }uiTank_Enable TABLE@ " (T4)" 0 *uoRunRecipeName  FindSubString 0 >= LAND  IF 
+15 LINE.NUM 4 ^iLeachateTankReturnValve @! 
+17 LINE.NUM ELSE 
+18 LINE.NUM " Error: Tank not Enabled OR Invalid Recipe Name -- e.g. 'Recipe#1 (T1)'" *uoErrorMessageTmp  $MOVE 
+19 LINE.NUM ^cWindowErrorMessage @@ ^uoPopupWindow @! 
+20 LINE.NUM 1 ^iRecipeTankError @! 
+21 LINE.NUM THEN THEN THEN THEN 
+23 LINE.NUM ^iCollectionTankPump @@ }fTank_PercentFull TABLE@ ^iCollectionTankPump @@ }fTank_PercentFullTEMP TABLE! 
+25 LINE.NUM -1 ^iLeachateTankSupplyValve @! 
+13 JUMP ;
+: 21_151
+3 LINE.NUM ^uoDispValveNumber @@ 1 = ^uoDispValveNumber @@ 2 = LOR  ^uoDispValveNumber @@ 17 = LOR  IF 
+5 LINE.NUM 6 ^iCollectionTankPump @! 
+7 LINE.NUM ELSE 
+7 LINE.NUM ^uoDispValveNumber @@ 3 = ^uoDispValveNumber @@ 4 = LOR  IF 
+9 LINE.NUM 7 ^iCollectionTankPump @! 
+11 LINE.NUM THEN THEN 
+13 LINE.NUM ^iLeachateTankReturnValve @@ ^iLeachateTankSupplyValve @! 
+-16 JUMP ;
+: 21_203
+2 LINE.NUM ^iLastLeachateTankReturn @@ 1 = ^iLastLeachateTankReturn @@ 2 = LOR  ^iLastLeachateTankReturn @@ 3 = LOR  ^iLastLeachateTankReturn @@ 4 = LOR  IF 
+4 LINE.NUM 1 ^iCollectionTankPump @@ }iTank_Output TABLE! 
+6 LINE.NUM THEN 
+9 JUMP ;
+: 21_209
+
+1 LINE.NUM
+  100    DELAY
+1 JUMP ;
+: 21_271
+
+1 LINE.NUM
+  ^iLeachateTankReturnValve @@ 
+  ^iLastLeachateTankReturn @!   
+-4 JUMP ;
+: 21_277
+6 JUMP ;
+: 21_295
+-10 JUMP ;
+: 21_22
+TRUE
+
+1 LINE.NUM
+  ^nRunValveIndex @@ 
+  ^nMaxValveIndex @@   >=
+LAND
+IF -11 ELSE -15 THEN JUMP ;
+: 21_41
+TRUE
+
+1 LINE.NUM
+  ^nRunCounter1 @@ 
+  0    >
+LAND
+
+2 LINE.NUM
+  0.0  
+  ^nRunValveIndex @@ 
+  }uiValveTimes TABLE@   F<>
+LAND
+IF 2 ELSE -21 THEN JUMP ;
+: 21_62
+FALSE
+
+1 LINE.NUM
+  ^uoState @@   0<>
+LOR
+
+2 LINE.NUM
+  ^nTriggerType @@ 
+  ^cTT_Manual @@   =
+LOR
+IF -3 ELSE -13 THEN JUMP ;
+: 21_99
+TRUE
+
+1 LINE.NUM
+  &MixingValve   ?RUNNING
+LAND
+IF -17 ELSE -19 THEN JUMP ;
+: 21_107
+TRUE
+
+1 LINE.NUM
+  0  
+  ^nRunValveIndex @@ 
+  }uiValvePairs TABLE@   >
+LAND
+IF -24 ELSE -17 THEN JUMP ;
+: 21_152
+TRUE
+
+1 LINE.NUM
+  0  
+  ^iCollectionTankPump @@ 
+  }iTank_Output TABLE@   =
+LAND
+IF -9 ELSE -10 THEN JUMP ;
+: 21_161
+TRUE
+
+1 LINE.NUM
+  ^iLeachateTankReturnValve @@ 
+  ^iLastLeachateTankReturn @@   <>
+LAND
+IF -12 ELSE -13 THEN JUMP ;
+: 21_293
+TRUE
+
+1 LINE.NUM
+  ^iRecipeTankError @@ 
+  1    =
+LAND
+IF -9 ELSE -2 THEN JUMP ;
+: 21_309
+TRUE
+
+1 LINE.NUM
+  ^iPureBlueOnOff @@ 
+  1    =
+LAND
+IF -16 ELSE -30 THEN JUMP ;
+T: T21
+DUMMY
+21_0
+21_16
+21_32
+21_36
+21_66
+21_76
+21_86
+21_91
+21_96
+21_102
+21_112
+21_118
+21_120
+21_130
+21_134
+21_138
+21_151
+21_203
+21_209
+21_271
+21_277
+21_295
+21_22
+21_41
+21_62
+21_99
+21_107
+21_152
+21_161
+21_293
+21_309
+T;
+&RunGroup ' T21 SETTASK

@@ -1,0 +1,211 @@
+: 114_0
+1 JUMP ;
+: 114_3
+
+1 LINE.NUM
+  1.0    FDELAY
+2 JUMP ;
+: 114_6
+7 LINE.NUM ^cOptECmAMaxIndex @@ }uiOptions TABLE@ ^cOptECmAMinIndex @@ }uiOptions TABLE@ F- ^fEcPerMaConstant @! 
+8 LINE.NUM ^fEcPerMaConstant @@  $7F800000 AND $7F800000 <> 0 = ^fEcPerMaConstant @@ 1 I>F F< LOR  IF 
+8 LINE.NUM 1 I>F ^fEcPerMaConstant @! 
+8 LINE.NUM THEN 
+10 LINE.NUM ^cOptAECmAMaxIndex @@ }uiOptions TABLE@ ^cOptAECmAMinIndex @@ }uiOptions TABLE@ F- ^fAEcPerMaConstant @! 
+11 LINE.NUM ^fAEcPerMaConstant @@  $7F800000 AND $7F800000 <> 0 = ^fAEcPerMaConstant @@ 1 I>F F< LOR  IF 
+11 LINE.NUM 1 I>F ^fAEcPerMaConstant @! 
+11 LINE.NUM THEN 
+19 LINE.NUM ^cOptPHmAMaxIndex @@ }uiOptions TABLE@ ^cOptPHmaMinIndex @@ }uiOptions TABLE@ F- ^fPHPerMaConstant @! 
+20 LINE.NUM ^fPHPerMaConstant @@  $7F800000 AND $7F800000 <> 0 = ^fPHPerMaConstant @@ 1 I>F F< LOR  IF 
+20 LINE.NUM 1 I>F ^fPHPerMaConstant @! 
+20 LINE.NUM THEN 
+28 LINE.NUM ^cOptAPHmAMaxIndex @@ }uiOptions TABLE@ ^cOptAPHmAMinIndex @@ }uiOptions TABLE@ F- ^fAPHPerMaConstant @! 
+29 LINE.NUM ^fAPHPerMaConstant @@  $7F800000 AND $7F800000 <> 0 = ^fAPHPerMaConstant @@ 1 I>F F< LOR  IF 
+29 LINE.NUM 1 I>F ^fAPHPerMaConstant @! 
+29 LINE.NUM THEN 
+32 LINE.NUM ^cOptTEMPmAMaxIndex @@ }uiOptions TABLE@ ^cOptTEMPmAMinIndex @@ }uiOptions TABLE@ F- ^fTEMPPerMaConstant @! 
+33 LINE.NUM ^fTEMPPerMaConstant @@  $7F800000 AND $7F800000 <> 0 = ^fTEMPPerMaConstant @@ 1 I>F F< LOR  IF 
+33 LINE.NUM 1 I>F ^fTEMPPerMaConstant @! 
+33 LINE.NUM THEN 
+36 LINE.NUM ^cOptPressuremAMaxIndex @@ }uiOptionsTempPressure TABLE@ ^cOptPressuremAMinIndex @@ }uiOptionsTempPressure TABLE@ F- ^fPRESSUREPerMaConstant @! 
+37 LINE.NUM ^fPRESSUREPerMaConstant @@  $7F800000 AND $7F800000 <> 0 = ^fPRESSUREPerMaConstant @@ 1 I>F F< LOR  IF 
+37 LINE.NUM 1 I>F ^fPRESSUREPerMaConstant @! 
+37 LINE.NUM THEN 
+40 LINE.NUM ^cOptWaterSensormAMaxIndex @@ }uiOptions TABLE@ ^cOptWaterSensormAMinIndex @@ }uiOptions TABLE@ F- ^fWaterSensorPerMaConstant @! 
+41 LINE.NUM ^fWaterSensorPerMaConstant @@  $7F800000 AND $7F800000 <> 0 = ^fWaterSensorPerMaConstant @@ 1 I>F F< LOR  IF 
+41 LINE.NUM 1 I>F ^fWaterSensorPerMaConstant @! 
+41 LINE.NUM THEN 
+45 LINE.NUM ^cOptSolarCalibrationMultiplier @@ }uiOptions TABLE@ ^fSolar1mVWatts @! 
+49 LINE.NUM ^cOptSolarIntervalIndex @@ }uiOptions TABLE@ ^fSolarAccumulator @! 
+53 LINE.NUM ^uiFlowScale @@ 0 = IF 
+54 LINE.NUM 0 ^iFlowScale @! 
+55 LINE.NUM *sScale_LPM *sScaleFlow  $MOVE 
+56 LINE.NUM ELSE 
+56 LINE.NUM ^uiFlowScale @@ 1 = IF 
+57 LINE.NUM 1 ^iFlowScale @! 
+58 LINE.NUM *sScale_GPM *sScaleFlow  $MOVE 
+59 LINE.NUM THEN THEN 
+63 LINE.NUM ^uiTemperatureScale @@ 1 = IF 
+64 LINE.NUM *sFahrenheit *sTemperatureScale  $MOVE 
+65 LINE.NUM ELSE 
+66 LINE.NUM *sCelcius *sTemperatureScale  $MOVE 
+67 LINE.NUM THEN 
+69 LINE.NUM 0 ^iSaveInputSensor @! 
+0 JUMP ;
+: 114_8
+2 LINE.NUM ^nSimulationMode @@ LNOT  IF 
+4 LINE.NUM ~EC_Out @@  $7F800000 AND $7F800000 <> 0 = IF 
+5 LINE.NUM 0 I>F ^fCurrentEC_tmp @! 
+6 LINE.NUM ELSE 
+7 LINE.NUM ~EC_Out @@ ^fCurrentEC_tmp @! 
+8 LINE.NUM THEN 
+11 LINE.NUM ^cOptECmAMinIndex @@ }uiOptions TABLE@ 0 I>F F<> IF 
+12 LINE.NUM ^fCurrentEC_tmp @@ 0 I>F ^cOptECmAMinIndex @@ }uiOptions TABLE@ F- F+ ^fCurrentEC_tmp @! 
+13 LINE.NUM THEN 
+15 LINE.NUM ^fCurrentEC_tmp @@ ^fEcPerMaConstant @@ F/ ^cOptECvalMaxIndex @@ }uiOptions TABLE@ ^cOptECvalMinIndex @@ }uiOptions TABLE@ F- F* ^fCurrentEC_tmp @! 
+16 LINE.NUM ^fCurrentEC_tmp @@ ^fCurrentEC @! 
+18 LINE.NUM ^fCurrentEC @@ 0 I>F F< IF 
+18 LINE.NUM 0 I>F ^fCurrentEC @! 
+18 LINE.NUM THEN 
+20 LINE.NUM THEN 
+23 LINE.NUM ^nSimulationMode @@ LNOT  IF 
+25 LINE.NUM ~EC_In @@  $7F800000 AND $7F800000 <> 0 = IF 
+26 LINE.NUM 0 I>F ^fAuxEC_tmp @! 
+27 LINE.NUM ELSE 
+28 LINE.NUM ~EC_In @@ ^fAuxEC_tmp @! 
+29 LINE.NUM THEN 
+31 LINE.NUM ^cOptAECmAMinIndex @@ }uiOptions TABLE@ 0 I>F F<> IF 
+32 LINE.NUM ^fAuxEC_tmp @@ 0 I>F ^cOptAECmAMinIndex @@ }uiOptions TABLE@ F- F+ ^fAuxEC_tmp @! 
+33 LINE.NUM THEN 
+35 LINE.NUM ^fAuxEC_tmp @@ ^fAEcPerMaConstant @@ F/ ^cOptAECvalMaxIndex @@ }uiOptions TABLE@ ^cOptAECvalMinIndex @@ }uiOptions TABLE@ F- F* ^fAuxEC_tmp @! 
+36 LINE.NUM ^fAuxEC_tmp @@ ^fAuxEC @! 
+38 LINE.NUM THEN 
+41 LINE.NUM ^nSimulationMode @@ LNOT  IF 
+43 LINE.NUM ~pH_Out @@  $7F800000 AND $7F800000 <> 0 = IF 
+44 LINE.NUM 0 I>F ^fCurrentPH_tmp @! 
+45 LINE.NUM ELSE 
+46 LINE.NUM ~pH_Out @@ ^fCurrentPH_tmp @! 
+47 LINE.NUM THEN 
+49 LINE.NUM ^cOptPHmaMinIndex @@ }uiOptions TABLE@ 0 I>F F<> IF 
+50 LINE.NUM ^fCurrentPH_tmp @@ 0 I>F ^cOptPHmaMinIndex @@ }uiOptions TABLE@ F- F+ ^fCurrentPH_tmp @! 
+51 LINE.NUM THEN 
+53 LINE.NUM ^fCurrentPH_tmp @@ ^fPHPerMaConstant @@ F/ ^cOptPHvalMaxIndex @@ }uiOptions TABLE@ ^cOptPHvalMinIndex @@ }uiOptions TABLE@ F- F* ^fCurrentPH_tmp @! 
+54 LINE.NUM ^fCurrentPH_tmp @@ ^fCurrentPH @! 
+56 LINE.NUM THEN 
+59 LINE.NUM ^nSimulationMode @@ LNOT  IF 
+61 LINE.NUM ~Temperature @@  $7F800000 AND $7F800000 <> 0 = IF 
+62 LINE.NUM 0 I>F ^fCurrentTEMP_tmp @! 
+63 LINE.NUM ELSE 
+64 LINE.NUM ~Temperature @@ ^fCurrentTEMP_tmp @! 
+65 LINE.NUM THEN 
+67 LINE.NUM ^cOptTEMPmAMinIndex @@ }uiOptions TABLE@ 0 I>F F<> IF 
+68 LINE.NUM ^fCurrentTEMP_tmp @@ 0 I>F ^cOptTEMPmAMinIndex @@ }uiOptions TABLE@ F- F+ ^fCurrentTEMP_tmp @! 
+69 LINE.NUM THEN 
+71 LINE.NUM ^fCurrentTEMP_tmp @@ ^fTEMPPerMaConstant @@ F/ ^cOptTEMPvalMaxIndex @@ }uiOptions TABLE@ ^cOptTEMPvalMinIndex @@ }uiOptions TABLE@ F- F* ^fCurrentTEMP @! 
+73 LINE.NUM THEN 
+77 LINE.NUM ^nSimulationMode @@ LNOT  IF 
+79 LINE.NUM ~Pressure_Internal @@  $7F800000 AND $7F800000 <> 0 = IF 
+80 LINE.NUM -1 I>F ^fCurrentPressureInt_Tmp @! 
+81 LINE.NUM 1 ^iPressureToggle @! 
+82 LINE.NUM ELSE 
+83 LINE.NUM ~Pressure_Internal @@ ^fCurrentPressureInt_Tmp @! 
+84 LINE.NUM THEN 
+86 LINE.NUM ^ui_WaterPressureIntOffset @@ 1 = IF 
+87 LINE.NUM 0 I>F ^fCurrentPressureInt_Tmp @@ F- ^fWaterPressureIntOffset @! 
+88 LINE.NUM 0 ^ui_WaterPressureIntOffset @! 
+89 LINE.NUM THEN 
+91 LINE.NUM ^fWaterPressureIntOffset @@ ^fCurrentPressureInt_Tmp @@ F+ ^fCurrentPRESSURE_Int @! 
+93 LINE.NUM ^fCurrentPRESSURE_Int @@ -9.00000036e-002 F> ^fCurrentPRESSURE_Int @@ 9.00000036e-002 F< LAND  IF 
+93 LINE.NUM 0 I>F ^fCurrentPRESSURE_Int @! 
+93 LINE.NUM THEN 
+97 LINE.NUM ~Pressure_External @@  $7F800000 AND $7F800000 <> 0 = IF 
+98 LINE.NUM -1 I>F ^fCurrentPressureExt_Tmp @! 
+99 LINE.NUM 0 ^iPressureToggle @! 
+100 LINE.NUM ELSE 
+101 LINE.NUM ~Pressure_External @@ ^fCurrentPressureExt_Tmp @! 
+102 LINE.NUM THEN 
+104 LINE.NUM ^ui_WaterPressureExtOffset @@ 1 = IF 
+105 LINE.NUM 0 I>F ^fCurrentPressureExt_Tmp @@ F- ^fWaterPressureExtOffset @! 
+106 LINE.NUM 0 ^ui_WaterPressureExtOffset @! 
+107 LINE.NUM THEN 
+109 LINE.NUM ^fWaterPressureExtOffset @@ ^fCurrentPressureExt_Tmp @@ F+ ^fCurrentPRESSURE_Ext @! 
+112 LINE.NUM ^iPressureToggle @@ LNOT  IF 
+113 LINE.NUM ^fCurrentPRESSURE_Int @@ ^uoPressureSensor @! 
+114 LINE.NUM ELSE 
+115 LINE.NUM ^fCurrentPRESSURE_Ext @@ ^uoPressureSensor @! 
+116 LINE.NUM THEN 
+118 LINE.NUM ELSE 
+120 LINE.NUM ^uoPressureSensor @@ ^fCurrentPRESSURE_Int @! 
+122 LINE.NUM THEN 
+126 LINE.NUM ^nSimulationMode @@ LNOT  IF 
+128 LINE.NUM ~WaterFlowSensor @@  $7F800000 AND $7F800000 <> 0 = IF 
+129 LINE.NUM 0 I>F ^fFlowRateTmp @! 
+130 LINE.NUM ELSE 
+131 LINE.NUM ~WaterFlowSensor @@ ^fFlowRateTmp @! 
+132 LINE.NUM THEN 
+134 LINE.NUM ^cOptWaterSensormAMinIndex @@ }uiOptions TABLE@ 0 I>F F<> IF 
+135 LINE.NUM ^fFlowRateTmp @@ 0 I>F ^cOptWaterSensormAMinIndex @@ }uiOptions TABLE@ F- F+ ^fFlowRateTmp @! 
+136 LINE.NUM THEN 
+138 LINE.NUM ^fFlowRateTmp @@ ^fWaterSensorPerMaConstant @@ F/ ^cOptWaterSensorvalMaxIndex @@ }uiOptions TABLE@ ^cOptWaterSensorvalMinIndex @@ }uiOptions TABLE@ F- F* ^fFlowRateTmp @! 
+140 LINE.NUM ^ui_FlowRateOffset @@ 1 = IF 
+141 LINE.NUM 0 I>F ^fFlowRateTmp @@ F- ^fFlowRateOffset @! 
+142 LINE.NUM 0 ^ui_FlowRateOffset @! 
+143 LINE.NUM THEN 
+145 LINE.NUM ^fFlowRateOffset @@ ^fFlowRateTmp @@ F+ ^fFlowRate @! 
+147 LINE.NUM ^fFlowRate @@ -9.00000036e-002 F> ^fFlowRate @@ 9.00000036e-002 F< LAND  IF 
+147 LINE.NUM 0 I>F ^fFlowRate @! 
+147 LINE.NUM THEN 
+149 LINE.NUM THEN 
+153 LINE.NUM ^nSimulationMode @@ LNOT  IF 
+155 LINE.NUM ^cOptpHInSolarToggle @@ }uiOptions TABLE@ 1 I>F F< IF 
+157 LINE.NUM 0 I>F ^fAuxPH @! 
+159 LINE.NUM  SinceMidnight I>F  ^cOptSolarIntervalIndex @@ }uiOptions TABLE@ F<= IF 
+161 LINE.NUM 0 I>F ^fTotalSolarAccum @! 
+1 163 LINE.NUM ^cMaxPrograms @@ 1 -  1 + 0 DO? I ^nSolProgramIndex @! 
+164 LINE.NUM 0 I>F ^nSolProgramIndex @@ }fCurrentSolarAccum TABLE! 
+165 LINE.NUM 1 +LOOP 
+166 LINE.NUM THEN 
+168 LINE.NUM ~pH_In_Solar @@ 4.00000000e+000 F- 2.00000000e+001 1.60000000e+001 F/ F* ^fCurrentSolarValue_tmp @! 
+171 LINE.NUM ^fCurrentSolarValue_tmp @@  $7F800000 AND $7F800000 <> ^fCurrentSolarValue_tmp @@ 2.99999993e-002 F> LAND  IF 
+172 LINE.NUM ^fCurrentSolarValue_tmp @@ ^fSolar1mVWatts @@ F* ^fCurrentSolarValue_tmp @! 
+173 LINE.NUM ELSE 
+174 LINE.NUM 0 I>F ^fCurrentSolarValue_tmp @! 
+175 LINE.NUM THEN 
+178 LINE.NUM ^fTotalSolarAccum @@ ^fCurrentSolarValue_tmp @@ ^fSolarAccumulator @@ F* 1000000 I>F F/ F+ ^fTotalSolarAccum @! 
+1 180 LINE.NUM ^cMaxPrograms @@ 1 -  1 + 0 DO? I ^nSolProgramIndex @! 
+181 LINE.NUM ^nSolProgramIndex @@ }uiProgramFlags TABLE@ 1 = IF 
+182 LINE.NUM ^nSolProgramIndex @@ }fCurrentSolarAccum TABLE@ ^fCurrentSolarValue_tmp @@ ^fSolarAccumulator @@ F* 1000000 I>F F/ F+ ^nSolProgramIndex @@ }fCurrentSolarAccum TABLE! 
+183 LINE.NUM THEN 
+184 LINE.NUM 1 +LOOP 
+186 LINE.NUM ^fCurrentSolarValue_tmp @@ ^fCurrentSolarValue @! 
+188 LINE.NUM ELSE 
+191 LINE.NUM 0 I>F ^fCurrentSolarValue @! 
+193 LINE.NUM ~pH_In_Solar @@  $7F800000 AND $7F800000 <> 0 = IF 
+194 LINE.NUM 0 I>F ^fAuxPH_tmp @! 
+195 LINE.NUM ELSE 
+196 LINE.NUM ~pH_In_Solar @@ ^fAuxPH_tmp @! 
+197 LINE.NUM THEN 
+199 LINE.NUM ^cOptAPHmAMinIndex @@ }uiOptions TABLE@ 0 I>F F<> IF 
+200 LINE.NUM ^fAuxPH_tmp @@ 0 I>F ^cOptAPHmAMinIndex @@ }uiOptions TABLE@ F- F+ ^fAuxPH_tmp @! 
+201 LINE.NUM THEN 
+203 LINE.NUM ^fAuxPH_tmp @@ ^fAPHPerMaConstant @@ F/ ^cOptAPHvalMaxIndex @@ }uiOptions TABLE@ ^cOptAPHvalMinIndex @@ }uiOptions TABLE@ F- F* ^fAuxPH_tmp @! 
+204 LINE.NUM ^fAuxPH_tmp @@ ^fAuxPH @! 
+206 LINE.NUM THEN 
+208 LINE.NUM THEN 
+-3 JUMP ;
+: 114_11
+TRUE
+
+1 LINE.NUM
+  ^iSaveInputSensor @@ 
+  1    =
+LAND
+IF -3 ELSE -2 THEN JUMP ;
+T: T114
+DUMMY
+114_0
+114_3
+114_6
+114_8
+114_11
+T;
+&InputSensor_Tracker ' T114 SETTASK

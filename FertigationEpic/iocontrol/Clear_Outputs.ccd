@@ -1,0 +1,168 @@
+: 9_0
+1 JUMP ;
+: 9_3
+
+1 LINE.NUM
+  ^cOptPumpDelayIndex @@ 
+  }uiOptions TABLE@   
+  ^fPumpDelay @! 
+1 JUMP ;
+: 9_5
+1 7 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+8 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ 0 >= IF 
+9 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+10 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+11 LINE.NUM THEN 
+12 LINE.NUM 1 +LOOP 
+15 LINE.NUM ^tOutPumpIndex @@ 0 >= IF 
+16 LINE.NUM ^tOutPumpIndex @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+17 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+18 LINE.NUM 0 ^iMainPumpStatus @! 
+19 LINE.NUM 0 ^uoDispValveNumber @! 
+20 LINE.NUM THEN 
+1 23 LINE.NUM ^cMaxOutputs @@ 1 -  1 + 0 DO? I ^iPumpIt_Tmp2 @! 
+24 LINE.NUM ^nRunProgramIndex @@ -1 > IF 
+25 LINE.NUM ^nRunProgramIndex @@ }uiProgram_Auxiliaries TABLE@ 0 > IF 
+26 LINE.NUM ^iPumpIt_Tmp2 @@ }doOutputs TABLE@ CASE 
+27 LINE.NUM ^cOT_Auxiliary1Index @@ OF 
+28 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+29 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+30 LINE.NUM ENDOF 
+31 LINE.NUM ^cOT_Auxiliary2Index @@ OF 
+32 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+33 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+34 LINE.NUM ENDOF 
+35 LINE.NUM ^cOT_Auxiliary3Index @@ OF 
+36 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+37 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+38 LINE.NUM ENDOF 
+39 LINE.NUM ^cOT_Auxiliary4Index @@ OF 
+40 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+41 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+42 LINE.NUM ENDOF 
+43 LINE.NUM ^cOT_Auxiliary5Index @@ OF 
+44 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+45 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+46 LINE.NUM ENDOF 
+47 LINE.NUM ^cOT_Auxiliary6Index @@ OF 
+48 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+49 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+50 LINE.NUM ENDOF 
+51 LINE.NUM ^cOT_Auxiliary7Index @@ OF 
+52 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+53 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+54 LINE.NUM ENDOF 
+55 LINE.NUM ^cOT_Auxiliary8Index @@ OF 
+56 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+57 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+58 LINE.NUM ENDOF 
+59 LINE.NUM ^cOT_Auxiliary9Index @@ OF 
+60 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+61 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+62 LINE.NUM ENDOF 
+63 LINE.NUM ^cOT_Auxiliary10Index @@ OF 
+64 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+65 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+66 LINE.NUM ENDOF 
+67 LINE.NUM ^cOT_Auxiliary11Index @@ OF 
+68 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+69 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+70 LINE.NUM ENDOF 
+71 LINE.NUM ^cOT_Auxiliary12Index @@ OF 
+72 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+73 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+74 LINE.NUM ENDOF 
+75 LINE.NUM ^cOT_Auxiliary13Index @@ OF 
+76 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+77 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+78 LINE.NUM ENDOF 
+79 LINE.NUM ^cOT_Auxiliary14Index @@ OF 
+80 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+81 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+82 LINE.NUM ENDOF 
+83 LINE.NUM ^cOT_Auxiliary15Index @@ OF 
+84 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+85 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+86 LINE.NUM ENDOF 
+87 LINE.NUM ^cOT_Auxiliary16Index @@ OF 
+88 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+89 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+90 LINE.NUM ENDOF 
+91 LINE.NUM ^cOT_Auxiliary17Index @@ OF 
+92 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+93 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+94 LINE.NUM ENDOF 
+95 LINE.NUM ^cOT_Auxiliary18Index @@ OF 
+96 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+97 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+98 LINE.NUM ENDOF 
+99 LINE.NUM ^cOT_Auxiliary19Index @@ OF 
+100 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+101 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+102 LINE.NUM ENDOF 
+103 LINE.NUM ^cOT_Auxiliary20Index @@ OF 
+104 LINE.NUM ^iPumpIt_Tmp2 @@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+105 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+106 LINE.NUM ENDOF 
+107 LINE.NUM ENDCASE 
+108 LINE.NUM THEN 
+109 LINE.NUM THEN 
+110 LINE.NUM 1 +LOOP 
+1 113 LINE.NUM ^cMaxValves @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+114 LINE.NUM ^nRunCounter1 @@ }tOutValveIndex TABLE@ 0 >= IF 
+115 LINE.NUM ^nRunCounter1 @@ }tOutValveIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+116 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+117 LINE.NUM THEN 
+118 LINE.NUM 1 +LOOP 
+1 121 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+122 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ 0 >= IF 
+123 LINE.NUM ^nRunCounter1 @@ }tOutInjectorIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+124 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+125 LINE.NUM THEN 
+126 LINE.NUM 1 +LOOP 
+1 129 LINE.NUM ^cMaxInletValve1 @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+130 LINE.NUM ^nRunCounter1 @@ }tOutInletValve1Index TABLE@ 0 >= IF 
+131 LINE.NUM ^nRunCounter1 @@ }tOutInletValve1Index TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+132 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+133 LINE.NUM THEN 
+134 LINE.NUM 1 +LOOP 
+1 137 LINE.NUM ^cMaxInletValve2 @@ 1 -  1 + 0 DO? I ^nRunCounter1 @! 
+138 LINE.NUM ^nRunCounter1 @@ }tOutInletValve2Index TABLE@ 0 >= IF 
+139 LINE.NUM ^nRunCounter1 @@ }tOutInletValve2Index TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doClearOutputs_Ptr 
+140 LINE.NUM PTR_doClearOutputs_Ptr  OFF 
+141 LINE.NUM THEN 
+142 LINE.NUM 1 +LOOP 
+-2 JUMP ;
+T: T9
+DUMMY
+9_0
+9_3
+9_5
+T;
+&Clear_Outputs ' T9 SETTASK

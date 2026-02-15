@@ -1,0 +1,57 @@
+: 108_0
+3 JUMP ;
+: 108_2
+
+1 LINE.NUM
+  0  
+  ^iProgramAuxiliary @!   
+
+2 LINE.NUM
+  0  
+  ^iAuxiliaryClose @!   
+4 JUMP ;
+: 108_4
+2 LINE.NUM ^uoDispAuxNum @@ 62 > IF 
+3 LINE.NUM -1 ^uoDispAuxNum @! 
+4 LINE.NUM ELSE 
+4 LINE.NUM ^uoDispAuxNum @@ 0 < IF 
+5 LINE.NUM -1 ^uoDispAuxNum @! 
+6 LINE.NUM ELSE 
+7 LINE.NUM ^uoDispAuxNum @@ 41 < IF 
+8 LINE.NUM ^uoDispAuxNum @@ {uoOutputDesc $TABLE@ *uoDispAuxName  $MOVE 
+9 LINE.NUM ELSE 
+10 LINE.NUM ^uoDispAuxNum @@ {uoOutputDesc $TABLE@ *uoDispAuxName  $MOVE 
+11 LINE.NUM THEN 
+12 LINE.NUM THEN THEN 
+-2 JUMP ;
+: 108_17
+
+1 LINE.NUM
+  500    DELAY
+0 JUMP ;
+: 108_9
+TRUE
+
+1 LINE.NUM
+  ^iProgramAuxiliary @@ 
+  1    =
+LAND
+IF -3 ELSE 0 THEN JUMP ;
+: 108_10
+TRUE
+
+1 LINE.NUM
+  ^iAuxiliaryClose @@ 
+  1    =
+LAND
+IF -5 ELSE -3 THEN JUMP ;
+T: T108
+DUMMY
+108_0
+108_2
+108_4
+108_17
+108_9
+108_10
+T;
+&Auxiliary ' T108 SETTASK

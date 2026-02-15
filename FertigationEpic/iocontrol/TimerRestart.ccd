@@ -1,0 +1,132 @@
+: 42_0
+0 JUMP ;
+: 42_1
+4 LINE.NUM ^nTriggerType @@ ^cTT_External @@ <> IF 
+6 LINE.NUM ^nRunProgramIndex @@ 0 = IF 
+7 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+8 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_0  SetTimer 
+9 LINE.NUM ^dtTimeInterval_0  StartTimer 
+10 LINE.NUM THEN 
+11 LINE.NUM ELSE 
+11 LINE.NUM ^nRunProgramIndex @@ 1 = IF 
+12 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+13 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_1  SetTimer 
+14 LINE.NUM ^dtTimeInterval_1  StartTimer 
+15 LINE.NUM THEN 
+16 LINE.NUM ELSE 
+16 LINE.NUM ^nRunProgramIndex @@ 2 = IF 
+17 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+18 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_2  SetTimer 
+19 LINE.NUM ^dtTimeInterval_2  StartTimer 
+20 LINE.NUM THEN 
+21 LINE.NUM ELSE 
+21 LINE.NUM ^nRunProgramIndex @@ 3 = IF 
+22 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+23 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_3  SetTimer 
+24 LINE.NUM ^dtTimeInterval_3  StartTimer 
+25 LINE.NUM THEN 
+26 LINE.NUM ELSE 
+26 LINE.NUM ^nRunProgramIndex @@ 4 = IF 
+27 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+28 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_4  SetTimer 
+29 LINE.NUM ^dtTimeInterval_4  StartTimer 
+30 LINE.NUM THEN 
+31 LINE.NUM ELSE 
+31 LINE.NUM ^nRunProgramIndex @@ 5 = IF 
+32 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+33 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_5  SetTimer 
+34 LINE.NUM ^dtTimeInterval_5  StartTimer 
+35 LINE.NUM THEN 
+36 LINE.NUM ELSE 
+36 LINE.NUM ^nRunProgramIndex @@ 6 = IF 
+37 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+38 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_6  SetTimer 
+39 LINE.NUM ^dtTimeInterval_6  StartTimer 
+40 LINE.NUM THEN 
+41 LINE.NUM ELSE 
+41 LINE.NUM ^nRunProgramIndex @@ 7 = IF 
+42 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+43 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_7  SetTimer 
+44 LINE.NUM ^dtTimeInterval_7  StartTimer 
+45 LINE.NUM THEN 
+46 LINE.NUM ELSE 
+46 LINE.NUM ^nRunProgramIndex @@ 8 = IF 
+47 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+48 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_8  SetTimer 
+49 LINE.NUM ^dtTimeInterval_8  StartTimer 
+50 LINE.NUM THEN 
+51 LINE.NUM ELSE 
+51 LINE.NUM ^nRunProgramIndex @@ 9 = IF 
+52 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+53 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_9  SetTimer 
+54 LINE.NUM ^dtTimeInterval_9  StartTimer 
+55 LINE.NUM THEN 
+56 LINE.NUM ELSE 
+56 LINE.NUM ^nRunProgramIndex @@ 10 = IF 
+57 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+58 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_10  SetTimer 
+59 LINE.NUM ^dtTimeInterval_10  StartTimer 
+60 LINE.NUM THEN 
+61 LINE.NUM ELSE 
+61 LINE.NUM ^nRunProgramIndex @@ 11 = IF 
+62 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+63 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_11  SetTimer 
+64 LINE.NUM ^dtTimeInterval_11  StartTimer 
+65 LINE.NUM THEN 
+66 LINE.NUM ELSE 
+66 LINE.NUM ^nRunProgramIndex @@ 12 = IF 
+67 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+68 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_12  SetTimer 
+69 LINE.NUM ^dtTimeInterval_12  StartTimer 
+70 LINE.NUM THEN 
+71 LINE.NUM ELSE 
+71 LINE.NUM ^nRunProgramIndex @@ 13 = IF 
+72 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+73 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_13  SetTimer 
+74 LINE.NUM ^dtTimeInterval_13  StartTimer 
+75 LINE.NUM THEN 
+76 LINE.NUM ELSE 
+76 LINE.NUM ^nRunProgramIndex @@ 14 = IF 
+77 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+78 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_14  SetTimer 
+79 LINE.NUM ^dtTimeInterval_14  StartTimer 
+80 LINE.NUM THEN 
+81 LINE.NUM ELSE 
+81 LINE.NUM ^nRunProgramIndex @@ 15 = IF 
+82 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+83 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_15  SetTimer 
+84 LINE.NUM ^dtTimeInterval_15  StartTimer 
+85 LINE.NUM THEN 
+86 LINE.NUM ELSE 
+86 LINE.NUM ^nRunProgramIndex @@ 16 = IF 
+87 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+88 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_16  SetTimer 
+89 LINE.NUM ^dtTimeInterval_16  StartTimer 
+90 LINE.NUM THEN 
+91 LINE.NUM ELSE 
+91 LINE.NUM ^nRunProgramIndex @@ 17 = IF 
+92 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+93 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_17  SetTimer 
+94 LINE.NUM ^dtTimeInterval_17  StartTimer 
+95 LINE.NUM THEN 
+96 LINE.NUM ELSE 
+96 LINE.NUM ^nRunProgramIndex @@ 18 = IF 
+97 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+98 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_18  SetTimer 
+99 LINE.NUM ^dtTimeInterval_18  StartTimer 
+100 LINE.NUM THEN 
+101 LINE.NUM ELSE 
+101 LINE.NUM ^nRunProgramIndex @@ 19 = IF 
+102 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 0 I>F F> IF 
+103 LINE.NUM ^nProgramDataIndex @@ }uiProgramZoneTriggerTime TABLE@ 60 I>F F* ^dtTimeInterval_19  SetTimer 
+104 LINE.NUM ^dtTimeInterval_19  StartTimer 
+105 LINE.NUM THEN 
+106 LINE.NUM THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN THEN 
+108 LINE.NUM THEN 
+0 JUMP ;
+T: T42
+DUMMY
+42_0
+42_1
+T;
+&TimerRestart ' T42 SETTASK

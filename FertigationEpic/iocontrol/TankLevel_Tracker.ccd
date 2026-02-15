@@ -1,0 +1,393 @@
+: 91_0
+1 JUMP ;
+: 91_14
+
+1 LINE.NUM
+  100    DELAY
+0 JUMP ;
+: 91_27
+1 13 LINE.NUM ^cMaxTanks @@ 1 -  1 + 0 DO? I ^nTankIndex @! 
+15 LINE.NUM ^nTankIndex @@ }uiTank_Enable TABLE@ 1 = IF 
+18 LINE.NUM ^nTankIndex @@ PTBL_aiInputPtrTable TABLE@ TablePointer=Null? 
+IF 
+20 LINE.NUM ^nTankIndex  1+@! 
+22 LINE.NUM ELSE 
+24 LINE.NUM ^nSimulationMode @@ LNOT  IF 
+26 LINE.NUM ^nTankIndex @@ PTBL_aiInputPtrTable 
+TableMoveToPointer PTR_aiTankLevelPTR 
+28 LINE.NUM PTR_aiTankLevelPTR @@  $7F800000 AND $7F800000 <> 0 = IF 
+29 LINE.NUM 0 I>F ^fCurrentTankLevel @! 
+30 LINE.NUM ELSE 
+31 LINE.NUM PTR_aiTankLevelPTR @@ ^fCurrentTankLevel @! 
+32 LINE.NUM THEN 
+34 LINE.NUM ^fCurrentTankLevel @@ ^nTankIndex @@ }fTank_Height TABLE@ ^fTankLevelSensors_HTConstant @@ F/ F/ ^nTankIndex @@ }fTank_PercentFull TABLE! 
+36 LINE.NUM THEN 
+38 LINE.NUM ^nTankIndex @@ }fTank_PercentFull TABLE@ ^nTankIndex @@ }fTank_Capacity TABLE@ F* 100 I>F F/ ^nTankIndex @@ }fTank_CalculatedVolume TABLE! 
+41 LINE.NUM ^nTankIndex @@ }fTank_PercentFull TABLE@ ^nTankIndex @@ }fTank_ControlMaxSP TABLE@ F> IF 
+42 LINE.NUM 1 ^nTankIndex @@ }iTank_LevelSwitch_Top TABLE! 
+43 LINE.NUM ELSE 
+44 LINE.NUM 0 ^nTankIndex @@ }iTank_LevelSwitch_Top TABLE! 
+45 LINE.NUM THEN 
+46 LINE.NUM ^nTankIndex @@ }fTank_PercentFull TABLE@ ^nTankIndex @@ }fTank_ControlMinSP TABLE@ F< IF 
+47 LINE.NUM 1 ^nTankIndex @@ }iTank_LevelSwitch_Bottom TABLE! 
+48 LINE.NUM ELSE 
+49 LINE.NUM 0 ^nTankIndex @@ }iTank_LevelSwitch_Bottom TABLE! 
+50 LINE.NUM THEN 
+54 LINE.NUM ^nTankIndex @@ }fTank_PercentFull TABLE@ ^nTankIndex @@ }fTank_AlarmMaxSP TABLE@ F> IF 
+55 LINE.NUM 1 ^nTankIndex @@ }iTank_AlarmHI TABLE! 
+56 LINE.NUM ELSE 
+57 LINE.NUM 0 ^nTankIndex @@ }iTank_AlarmHI TABLE! 
+58 LINE.NUM THEN 
+59 LINE.NUM ^nTankIndex @@ }fTank_PercentFull TABLE@ ^nTankIndex @@ }fTank_AlarmMinSP TABLE@ F< IF 
+60 LINE.NUM 1 ^nTankIndex @@ }iTank_AlarmLO TABLE! 
+61 LINE.NUM ELSE 
+62 LINE.NUM 0 ^nTankIndex @@ }iTank_AlarmLO TABLE! 
+63 LINE.NUM THEN 
+68 LINE.NUM ^nTankIndex @@ }iTank_Application_UpDown TABLE@ 0 = IF 
+70 LINE.NUM ^nTankIndex @@ }iTank_AlarmHI TABLE@ IF 
+71 LINE.NUM 0 ^nTankIndex @@ }iTank_Output TABLE! 
+72 LINE.NUM ELSE 
+73 LINE.NUM ^nTankIndex @@ }iTank_AlarmHI TABLE@ 0 = IF 
+74 LINE.NUM ^nTankIndex @@ }iTank_LevelSwitch_Top TABLE@ LNOT  ^nTankIndex @@ }iTank_LevelSwitch_Bottom TABLE@ ^nTankIndex @@ }iTank_Output TABLE@ LOR  LAND  IF 
+75 LINE.NUM 1 ^nTankIndex @@ }iTank_Output TABLE! 
+76 LINE.NUM ELSE 
+77 LINE.NUM 0 ^nTankIndex @@ }iTank_Output TABLE! 
+78 LINE.NUM THEN 
+79 LINE.NUM THEN 
+80 LINE.NUM THEN 
+82 LINE.NUM ELSE 
+82 LINE.NUM ^nTankIndex @@ }iTank_Application_UpDown TABLE@ IF 
+84 LINE.NUM ^nTankIndex @@ }iTank_AlarmLO TABLE@ IF 
+85 LINE.NUM 0 ^nTankIndex @@ }iTank_Output TABLE! 
+86 LINE.NUM ELSE 
+87 LINE.NUM ^nTankIndex @@ }iTank_AlarmLO TABLE@ 0 = IF 
+88 LINE.NUM ^nTankIndex @@ }iTank_LevelSwitch_Bottom TABLE@ LNOT  ^nTankIndex @@ }iTank_LevelSwitch_Top TABLE@ ^nTankIndex @@ }iTank_Output TABLE@ LOR  LAND  IF 
+89 LINE.NUM 1 ^nTankIndex @@ }iTank_Output TABLE! 
+90 LINE.NUM ELSE 
+91 LINE.NUM 0 ^nTankIndex @@ }iTank_Output TABLE! 
+92 LINE.NUM THEN 
+93 LINE.NUM THEN 
+94 LINE.NUM THEN 
+96 LINE.NUM THEN THEN 
+98 LINE.NUM THEN 
+100 LINE.NUM ELSE 
+101 LINE.NUM 0 ^nTankIndex @@ }iTank_Output TABLE! 
+102 LINE.NUM 0 ^nTankIndex @@ }iTank_AlarmHI TABLE! 
+103 LINE.NUM 0 ^nTankIndex @@ }iTank_AlarmLO TABLE! 
+107 LINE.NUM THEN 
+109 LINE.NUM 1 +LOOP 
+111 LINE.NUM 0 ^nTankIndex @! 
+8 JUMP ;
+: 91_28
+7 LINE.NUM ^iTankOutput_QueueTrigger @@ 0 = IF 
+8 LINE.NUM 0 ^uiMaxTankQueueNum @! 
+9 LINE.NUM THEN 
+12 LINE.NUM ^uiMaxTankQueueNum @@ ^cMaxTankQueueTrigger @! 
+15 LINE.NUM ^cMaxTankQueueTrigger @@ 0 < IF 
+16 LINE.NUM 0 ^cMaxTankQueueTrigger @! 
+17 LINE.NUM THEN 
+1 19 LINE.NUM 24 1 -  1 + 0 DO? I ^uoTankIndex @! 
+21 LINE.NUM ^uoTankIndex @@ }iTank_Output TABLE@ ^uoTankIndex @@ }uoTank_Outputs TABLE! 
+23 LINE.NUM ^uoSelectedTankDisplay @@ ^uoTankIndex @@ = IF 
+25 LINE.NUM ^uoSelectedTankDisplay @@ 1 +  ^uoTankDisplayNumber @! 
+26 LINE.NUM ^uoTankIndex @@ {sTank_Description $TABLE@ *uoTank_Description  $MOVE 
+27 LINE.NUM ^uoTankIndex @@ }fTank_AlarmMaxSP TABLE@ ^uoTank_AlarmMaxSP @! 
+28 LINE.NUM ^uoTankIndex @@ }fTank_AlarmMinSP TABLE@ ^uoTank_AlarmMinSP @! 
+29 LINE.NUM ^uoTankIndex @@ }iTank_Application_UpDown TABLE@ ^uoTank_Application_UpDown @! 
+30 LINE.NUM ^uoTankIndex @@ }fTank_CalculatedVolume TABLE@ ^uoTank_CalculatedVolume @! 
+31 LINE.NUM ^uoTankIndex @@ }fTank_Capacity TABLE@ ^uoTank_Capacity @! 
+32 LINE.NUM ^uoTankIndex @@ }fTank_ControlMaxSP TABLE@ ^uoTank_ControlMaxSP @! 
+33 LINE.NUM ^uoTankIndex @@ }fTank_ControlMinSP TABLE@ ^uoTank_ControlMinSP @! 
+34 LINE.NUM ^uoTankIndex @@ }uiTank_Enable TABLE@ ^uoTank_Enable @! 
+35 LINE.NUM ^uoTankIndex @@ }fTank_Height TABLE@ ^uoTank_Height @! 
+36 LINE.NUM ^uoTankIndex @@ }iTank_Output TABLE@ ^uoTank_Output @! 
+37 LINE.NUM ^uoTankIndex @@ }fTank_PercentFull TABLE@ ^uoTank_PercentFull @! 
+39 LINE.NUM ^uoTank_PercentFull @@  $7F800000 AND $7F800000 <> 0 = ^uoTank_CalculatedVolume @@  $7F800000 AND $7F800000 <> 0 = LAND  IF 
+40 LINE.NUM 0 I>F ^uoTank_PercentFull @! 
+41 LINE.NUM 0 I>F ^uoTank_CalculatedVolume @! 
+42 LINE.NUM THEN 
+44 LINE.NUM THEN 
+46 LINE.NUM 1 +LOOP 
+49 LINE.NUM 0 ^iTankAlarmActiveTemp @! 
+50 LINE.NUM 0 ^uoTankIndex @! 
+53 LINE.NUM BEGIN ^uoTankIndex @@ ^cMaxTanks @@ < WHILE 
+55 LINE.NUM ^uoTankIndex @@ }iTank_AlarmHI TABLE@ 1 = ^uoTankIndex @@ }iTank_AlarmLO TABLE@ 1 = LOR  IF 
+57 LINE.NUM 1 ^iTankAlarmActiveTemp @! 
+58 LINE.NUM ^cMaxTanks @@ 1 +  ^uoTankIndex @! 
+59 LINE.NUM ELSE 
+61 LINE.NUM 0 ^iTankAlarmActiveTemp @! 
+62 LINE.NUM ^uoTankIndex @@ 1 +  ^uoTankIndex @! 
+63 LINE.NUM THEN 
+64 LINE.NUM REPEAT 
+67 LINE.NUM ^iTankAlarmActiveTemp @@ 1 = IF 
+68 LINE.NUM 1 ^iTankAlarmActive @! 
+69 LINE.NUM ELSE 
+70 LINE.NUM 0 ^iTankAlarmActive @! 
+71 LINE.NUM THEN 
+3 JUMP ;
+: 91_36
+1 7 LINE.NUM ^cMaxTankQueueTrigger @@ 1 -  1 + 0 DO? I ^nTankQueueIndex @! 
+8 LINE.NUM ^cMaxTankQueueTrigger @@ 0 <> IF 
+9 LINE.NUM ^nRunProgramIndex @@ ^nTankQueueIndex @@ <> IF 
+10 LINE.NUM ^nTankQueueIndex @@ }iTank_Output TABLE@ ^nTankQueueIndex @@ }uiProgramFlags TABLE@ 1 = LAND  IF 
+11 LINE.NUM 1 ^nTankQueueIndex @@ }iQueueExt_ProgQueued TABLE! 
+12 LINE.NUM THEN 
+13 LINE.NUM THEN 
+14 LINE.NUM THEN 
+15 LINE.NUM 1 +LOOP 
+17 LINE.NUM 0 ^nTankQueueIndex @! 
+-2 JUMP ;
+: 91_59
+14 LINE.NUM ^iLastLeachateTankReturn @@ 1 = IF 
+15 LINE.NUM 4 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doReturnValve_Ptr 
+16 LINE.NUM PTR_doReturnValve_Ptr  ON 
+17 LINE.NUM ELSE 
+18 LINE.NUM 4 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doReturnValve_Ptr 
+19 LINE.NUM PTR_doReturnValve_Ptr  OFF 
+20 LINE.NUM THEN 
+23 LINE.NUM ^iLastLeachateTankReturn @@ 2 = IF 
+24 LINE.NUM 5 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doReturnValve_Ptr 
+25 LINE.NUM PTR_doReturnValve_Ptr  ON 
+26 LINE.NUM ELSE 
+27 LINE.NUM 5 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doReturnValve_Ptr 
+28 LINE.NUM PTR_doReturnValve_Ptr  OFF 
+29 LINE.NUM THEN 
+32 LINE.NUM ^iLastLeachateTankReturn @@ 3 = IF 
+33 LINE.NUM 6 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doReturnValve_Ptr 
+34 LINE.NUM PTR_doReturnValve_Ptr  ON 
+35 LINE.NUM ELSE 
+36 LINE.NUM 6 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doReturnValve_Ptr 
+37 LINE.NUM PTR_doReturnValve_Ptr  OFF 
+38 LINE.NUM THEN 
+41 LINE.NUM ^iLastLeachateTankReturn @@ 4 = IF 
+42 LINE.NUM 7 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doReturnValve_Ptr 
+43 LINE.NUM PTR_doReturnValve_Ptr  ON 
+44 LINE.NUM ELSE 
+45 LINE.NUM 7 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doReturnValve_Ptr 
+46 LINE.NUM PTR_doReturnValve_Ptr  OFF 
+47 LINE.NUM THEN 
+0 JUMP ;
+: 91_65
+14 LINE.NUM ^iLeachateTankSupplyValve @@ 1 = IF 
+15 LINE.NUM 0 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doSupplyValve_Ptr 
+16 LINE.NUM PTR_doSupplyValve_Ptr  ON 
+17 LINE.NUM ELSE 
+18 LINE.NUM 0 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doSupplyValve_Ptr 
+19 LINE.NUM PTR_doSupplyValve_Ptr  OFF 
+20 LINE.NUM THEN 
+22 LINE.NUM ^iLeachateTankSupplyValve @@ 2 = IF 
+23 LINE.NUM 1 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doSupplyValve_Ptr 
+24 LINE.NUM PTR_doSupplyValve_Ptr  ON 
+25 LINE.NUM ELSE 
+26 LINE.NUM 1 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doSupplyValve_Ptr 
+27 LINE.NUM PTR_doSupplyValve_Ptr  OFF 
+28 LINE.NUM THEN 
+30 LINE.NUM ^iLeachateTankSupplyValve @@ 3 = IF 
+31 LINE.NUM 2 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doSupplyValve_Ptr 
+32 LINE.NUM PTR_doSupplyValve_Ptr  ON 
+33 LINE.NUM ELSE 
+34 LINE.NUM 2 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doSupplyValve_Ptr 
+35 LINE.NUM PTR_doSupplyValve_Ptr  OFF 
+36 LINE.NUM THEN 
+38 LINE.NUM ^iLeachateTankSupplyValve @@ 4 = IF 
+39 LINE.NUM 3 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doSupplyValve_Ptr 
+40 LINE.NUM PTR_doSupplyValve_Ptr  ON 
+41 LINE.NUM ELSE 
+42 LINE.NUM 3 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doSupplyValve_Ptr 
+43 LINE.NUM PTR_doSupplyValve_Ptr  OFF 
+44 LINE.NUM THEN 
+46 LINE.NUM ^bInProgress @@ 0 = IF 
+48 LINE.NUM -1 ^iLeachateTankSupplyValve @! 
+50 LINE.NUM THEN 
+1 JUMP ;
+: 91_76
+1 5 LINE.NUM ^cMaxTanks @@ 1 -  1 + ^uiMaxTankQueueNum @@ DO? I ^nTankOutputIndex @! 
+7 LINE.NUM ^nTankOutputIndex @@ }uiTank_Enable TABLE@ 1 = IF 
+9 LINE.NUM ^nTankOutputIndex @@ ^uiMaxTankQueueNum @@ -  }tOutTankIndex TABLE@ -1 <> IF 
+11 LINE.NUM ^nTankOutputIndex @@ }iTank_Output TABLE@ 1 = IF 
+13 LINE.NUM ^nTankOutputIndex @@ ^uiMaxTankQueueNum @@ -  }tOutTankIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTankOutput_Ptr 
+15 LINE.NUM PTR_doTankOutput_Ptr  ?OFF IF 
+16 LINE.NUM PTR_doTankOutput_Ptr  ON 
+17 LINE.NUM THEN 
+19 LINE.NUM ELSE 
+19 LINE.NUM ^nTankOutputIndex @@ }iTank_Output TABLE@ 0 = IF 
+21 LINE.NUM ^nTankOutputIndex @@ ^uiMaxTankQueueNum @@ -  }tOutTankIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTankOutput_Ptr 
+23 LINE.NUM PTR_doTankOutput_Ptr  ?ON IF 
+24 LINE.NUM PTR_doTankOutput_Ptr  OFF 
+25 LINE.NUM THEN 
+27 LINE.NUM THEN THEN 
+29 LINE.NUM THEN 
+31 LINE.NUM ELSE 
+33 LINE.NUM &Maintenance_Screen_Refresh  ?STOPPED IF 
+35 LINE.NUM ^nTankOutputIndex @@ ^uiMaxTankQueueNum @@ -  }tOutTankIndex TABLE@ -1 <> IF 
+36 LINE.NUM ^nTankOutputIndex @@ }iTank_Output TABLE@ 0 = IF 
+37 LINE.NUM ^nTankOutputIndex @@ ^uiMaxTankQueueNum @@ -  }tOutTankIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doTankOutput_Ptr 
+38 LINE.NUM PTR_doTankOutput_Ptr  OFF 
+39 LINE.NUM THEN 
+40 LINE.NUM THEN 
+42 LINE.NUM THEN 
+44 LINE.NUM THEN 
+46 LINE.NUM 1 +LOOP 
+48 LINE.NUM 0 ^nTankOutputIndex @! 
+-7 JUMP ;
+: 91_146
+14 LINE.NUM 0 }iTank_Output TABLE@ 1 = 1 }iTank_Output TABLE@ 1 = LOR  2 }iTank_Output TABLE@ 1 = LOR  3 }iTank_Output TABLE@ 1 = LOR  4 }iTank_Output TABLE@ 1 = LOR  IF 
+15 LINE.NUM 8 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doSupplyValve_Ptr 
+16 LINE.NUM PTR_doSupplyValve_Ptr  ON 
+17 LINE.NUM ELSE 
+17 LINE.NUM 0 }iTank_Output TABLE@ 0 = 1 }iTank_Output TABLE@ 0 = LOR  2 }iTank_Output TABLE@ 0 = LOR  3 }iTank_Output TABLE@ 0 = LOR  4 }iTank_Output TABLE@ 0 = LOR  IF 
+18 LINE.NUM 8 }tOutCustomIndex TABLE@ PTBL_doOutputPtrTable 
+TableMoveToPointer PTR_doSupplyValve_Ptr 
+19 LINE.NUM PTR_doSupplyValve_Ptr  OFF 
+20 LINE.NUM THEN THEN 
+1 JUMP ;
+: 91_156
+8 LINE.NUM ^iRunProgramIndex @@ 0 <> IF 
+9 LINE.NUM 0 }iTank_Output TABLE@ 0 }uiTank_Enable TABLE@ LAND  0 }uiProgramFlags TABLE@ 1 = LAND  0 }iAGTimerRunningFlag TABLE@ 0 = 0 }iAGPtrNumIndex TABLE@ 9 = LOR  0 }iAGPtrNumIndex TABLE@ 0 = LOR  LAND  IF 
+10 LINE.NUM 1 0 }iAG_BatchTankActive TABLE! 
+11 LINE.NUM 1 0 }iQueueExt_ProgQueued TABLE! 
+12 LINE.NUM ELSE 
+13 LINE.NUM 0 0 }iAG_BatchTankActive TABLE! 
+14 LINE.NUM 0 0 }iAG_LastRun TABLE! 
+15 LINE.NUM THEN 
+16 LINE.NUM THEN 
+18 LINE.NUM ^iRunProgramIndex @@ 1 <> IF 
+19 LINE.NUM 1 }iTank_Output TABLE@ 1 }uiTank_Enable TABLE@ LAND  1 }uiProgramFlags TABLE@ 1 = LAND  1 }iAGTimerRunningFlag TABLE@ 0 = 1 }iAGPtrNumIndex TABLE@ 9 = LOR  1 }iAGPtrNumIndex TABLE@ 0 = LOR  LAND  IF 
+20 LINE.NUM 1 1 }iAG_BatchTankActive TABLE! 
+21 LINE.NUM 1 1 }iQueueExt_ProgQueued TABLE! 
+22 LINE.NUM ELSE 
+23 LINE.NUM 0 1 }iAG_BatchTankActive TABLE! 
+24 LINE.NUM 0 1 }iAG_LastRun TABLE! 
+25 LINE.NUM THEN 
+26 LINE.NUM THEN 
+28 LINE.NUM ^iRunProgramIndex @@ 2 <> IF 
+29 LINE.NUM 2 }iTank_Output TABLE@ 2 }uiTank_Enable TABLE@ LAND  2 }uiProgramFlags TABLE@ 1 = LAND  2 }iAGTimerRunningFlag TABLE@ 0 = 2 }iAGPtrNumIndex TABLE@ 9 = LOR  2 }iAGPtrNumIndex TABLE@ 0 = LOR  LAND  IF 
+30 LINE.NUM 1 2 }iAG_BatchTankActive TABLE! 
+31 LINE.NUM 1 2 }iQueueExt_ProgQueued TABLE! 
+32 LINE.NUM ELSE 
+33 LINE.NUM 0 2 }iAG_BatchTankActive TABLE! 
+34 LINE.NUM 0 2 }iAG_LastRun TABLE! 
+35 LINE.NUM THEN 
+36 LINE.NUM THEN 
+38 LINE.NUM ^iRunProgramIndex @@ 3 <> IF 
+39 LINE.NUM 3 }iTank_Output TABLE@ 3 }uiTank_Enable TABLE@ LAND  3 }uiProgramFlags TABLE@ 1 = LAND  3 }iAGTimerRunningFlag TABLE@ 0 = 3 }iAGPtrNumIndex TABLE@ 9 = LOR  3 }iAGPtrNumIndex TABLE@ 0 = LOR  LAND  IF 
+40 LINE.NUM 1 3 }iAG_BatchTankActive TABLE! 
+41 LINE.NUM 1 3 }iQueueExt_ProgQueued TABLE! 
+42 LINE.NUM ELSE 
+43 LINE.NUM 0 3 }iAG_BatchTankActive TABLE! 
+44 LINE.NUM 0 3 }iAG_LastRun TABLE! 
+45 LINE.NUM THEN 
+46 LINE.NUM THEN 
+48 LINE.NUM ^iRunProgramIndex @@ 4 <> IF 
+49 LINE.NUM 4 }iTank_Output TABLE@ 4 }uiTank_Enable TABLE@ LAND  4 }uiProgramFlags TABLE@ 1 = LAND  4 }iAGTimerRunningFlag TABLE@ 0 = 4 }iAGPtrNumIndex TABLE@ 9 = LOR  4 }iAGPtrNumIndex TABLE@ 0 = LOR  LAND  IF 
+50 LINE.NUM 1 4 }iAG_BatchTankActive TABLE! 
+51 LINE.NUM 1 4 }iQueueExt_ProgQueued TABLE! 
+52 LINE.NUM ELSE 
+53 LINE.NUM 0 4 }iAG_BatchTankActive TABLE! 
+54 LINE.NUM 0 4 }iAG_LastRun TABLE! 
+55 LINE.NUM THEN 
+56 LINE.NUM THEN 
+59 LINE.NUM ^iRunProgramIndex @@ 0 = 0 }iAG_BatchTankActive TABLE@ 1 = LAND  IF 
+60 LINE.NUM 0 }iAGTmpFlag TABLE@ 0 = IF 
+61 LINE.NUM 1 7 }iTank_Output TABLE! 
+62 LINE.NUM 1 0 }iAGTmpFlag TABLE! 
+63 LINE.NUM THEN 
+64 LINE.NUM ELSE 
+65 LINE.NUM 0 0 }iAGTmpFlag TABLE! 
+66 LINE.NUM THEN 
+68 LINE.NUM ^iRunProgramIndex @@ 1 = 1 }iAG_BatchTankActive TABLE@ 1 = LAND  IF 
+69 LINE.NUM 1 }iAGTmpFlag TABLE@ 0 = IF 
+70 LINE.NUM 1 8 }iTank_Output TABLE! 
+71 LINE.NUM 1 1 }iAGTmpFlag TABLE! 
+72 LINE.NUM THEN 
+73 LINE.NUM ELSE 
+74 LINE.NUM 0 1 }iAGTmpFlag TABLE! 
+75 LINE.NUM THEN 
+77 LINE.NUM ^iRunProgramIndex @@ 2 = 2 }iAG_BatchTankActive TABLE@ 1 = LAND  IF 
+78 LINE.NUM 2 }iAGTmpFlag TABLE@ 0 = IF 
+79 LINE.NUM 1 9 }iTank_Output TABLE! 
+80 LINE.NUM 1 2 }iAGTmpFlag TABLE! 
+81 LINE.NUM THEN 
+82 LINE.NUM ELSE 
+83 LINE.NUM 0 2 }iAGTmpFlag TABLE! 
+84 LINE.NUM THEN 
+86 LINE.NUM ^iRunProgramIndex @@ 3 = 3 }iAG_BatchTankActive TABLE@ 1 = LAND  IF 
+87 LINE.NUM 3 }iAGTmpFlag TABLE@ 0 = IF 
+88 LINE.NUM 1 10 }iTank_Output TABLE! 
+89 LINE.NUM 1 3 }iAGTmpFlag TABLE! 
+90 LINE.NUM THEN 
+91 LINE.NUM ELSE 
+92 LINE.NUM 0 3 }iAGTmpFlag TABLE! 
+93 LINE.NUM THEN 
+95 LINE.NUM ^iRunProgramIndex @@ 4 = 4 }iAG_BatchTankActive TABLE@ 1 = LAND  IF 
+96 LINE.NUM 4 }iAGTmpFlag TABLE@ 0 = IF 
+97 LINE.NUM 1 11 }iTank_Output TABLE! 
+98 LINE.NUM 1 4 }iAGTmpFlag TABLE! 
+99 LINE.NUM THEN 
+100 LINE.NUM ELSE 
+101 LINE.NUM 0 4 }iAGTmpFlag TABLE! 
+102 LINE.NUM THEN 
+105 LINE.NUM 0 }uiProgramFlags TABLE@ 1 = 0 }iTank_Output TABLE@ LAND  1 }uiProgramFlags TABLE@ 1 = 1 }iTank_Output TABLE@ LAND  LOR  2 }uiProgramFlags TABLE@ 1 = 2 }iTank_Output TABLE@ LAND  LOR  3 }uiProgramFlags TABLE@ 1 = 3 }iTank_Output TABLE@ LAND  LOR  4 }uiProgramFlags TABLE@ 1 = 4 }iTank_Output TABLE@ LAND  LOR  ^iTankCirgulationMode @@ LAND  IF 
+111 LINE.NUM 0 6 }iTank_Output TABLE! 
+113 LINE.NUM THEN 
+-7 JUMP ;
+: 91_23
+TRUE
+
+1 LINE.NUM
+  ^iTankOutput_QueueTrigger @@   0<>
+LAND
+IF 1 ELSE -8 THEN JUMP ;
+: 91_149
+TRUE
+
+1 LINE.NUM
+  ^iPureBlueOnOff @@ 
+  1    =
+LAND
+IF -7 ELSE -2 THEN JUMP ;
+: 91_153
+TRUE
+
+1 LINE.NUM
+  ^iAgritechOnOff @@ 
+  1    =
+LAND
+IF -4 ELSE -9 THEN JUMP ;
+T: T91
+DUMMY
+91_0
+91_14
+91_27
+91_28
+91_36
+91_59
+91_65
+91_76
+91_146
+91_156
+91_23
+91_149
+91_153
+T;
+&TankLevel_Tracker ' T91 SETTASK

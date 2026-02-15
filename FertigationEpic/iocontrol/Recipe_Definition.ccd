@@ -1,0 +1,146 @@
+: 104_0
+4 JUMP ;
+: 104_7
+4 LINE.NUM ^uiEditRecipeNum @@ {uiRecipeName $TABLE@ *uiEditRecipeName  $MOVE 
+6 LINE.NUM ^uiEditRecipeNum @@ }uiInjectorSPFlowRate TABLE@ ^uiEditInjectorSPFlowRate @! 
+8 LINE.NUM ^uiEditRecipeNum @@ ^cMaxInjectors @@ *  ^iStartEditInj_Tmp @! 
+1 9 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^iStartEditInj_Tmp2 @! 
+10 LINE.NUM ^iStartEditInj_Tmp @@ ^iStartEditInj_Tmp2 @@ +  }uiInjectorSetpoints TABLE@ ^iStartEditInj_Tmp2 @@ }uiEditInjectorSP TABLE! 
+11 LINE.NUM 1 +LOOP 
+13 LINE.NUM ^uiEditRecipeNum @@ }uiECTargetSP TABLE@ ^uiEditECTargetSP @! 
+14 LINE.NUM ^uiEditRecipeNum @@ }uiECTargetDB TABLE@ ^uiEditECTargetDB @! 
+15 LINE.NUM ^uiEditRecipeNum @@ }uiPHTargetSP TABLE@ ^uiEditPHTargetSP @! 
+16 LINE.NUM ^uiEditRecipeNum @@ }uiPHTargetDB TABLE@ ^uiEditPHTargetDB @! 
+18 LINE.NUM ^uiEditRecipeNum @@ }uiRecipeProportional TABLE@ ^uiEditInjectorProportionalFlag @! 
+19 LINE.NUM ^uiEditInjectorProportionalFlag @@ 0 > IF 
+20 LINE.NUM 1 ^uiEditInjectorProportionalFlag @! 
+21 LINE.NUM THEN 
+6 JUMP ;
+: 104_14
+1 LINE.NUM ^uiEditInjectorSPFlowRate @@ ^uiEditRecipeNum @@ }uiInjectorSPFlowRate TABLE! 
+3 LINE.NUM *uiEditRecipeName ^uiEditRecipeNum @@ {uiRecipeName $TABLE@  $MOVE 
+1 5 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^iSaveEditInj_Tmp @! 
+6 LINE.NUM ^iSaveEditInj_Tmp @@ }uiEditInjectorSP TABLE@ ^uiEditRecipeNum @@ ^cMaxInjectors @@ *  ^iSaveEditInj_Tmp @@ +  }uiInjectorSetpoints TABLE! 
+7 LINE.NUM 1 +LOOP 
+9 LINE.NUM ^uiEditECTargetSP @@ ^uiEditRecipeNum @@ }uiECTargetSP TABLE! 
+10 LINE.NUM ^uiEditECTargetDB @@ ^uiEditRecipeNum @@ }uiECTargetDB TABLE! 
+11 LINE.NUM ^uiEditPHTargetSP @@ ^uiEditRecipeNum @@ }uiPHTargetSP TABLE! 
+12 LINE.NUM ^uiEditPHTargetDB @@ ^uiEditRecipeNum @@ }uiPHTargetDB TABLE! 
+14 LINE.NUM ^uiEditInjectorProportionalFlag @@ 0 > IF 
+15 LINE.NUM 1 ^uiEditRecipeNum @@ }uiRecipeProportional TABLE! 
+16 LINE.NUM ELSE 
+17 LINE.NUM 0 ^uiEditRecipeNum @@ }uiRecipeProportional TABLE! 
+18 LINE.NUM THEN 
+1 21 LINE.NUM ^cMaxPrograms @@ 1 -  1 + 0 DO? I ^iSaveEditInj_Tmp @! 
+22 LINE.NUM ^iSaveEditInj_Tmp @@ }uiProgramRecipeIndex TABLE@ ^uiEditRecipeNum @@ = IF 
+1 24 LINE.NUM ^cMaxInjectors @@ 1 -  1 + 0 DO? I ^iSaveEditInj_Tmp2 @! 
+25 LINE.NUM ^uiEditRecipeNum @@ ^cMaxInjectors @@ *  ^iSaveEditInj_Tmp2 @@ +  }uiInjectorSetpoints TABLE@ ^iSaveEditInj_Tmp @@ ^cMaxInjectors @@ *  ^iSaveEditInj_Tmp2 @@ +  }nInjectorSetpoints_Auto TABLE! 
+26 LINE.NUM 1 +LOOP 
+28 LINE.NUM }nInjectorSetpoints_Auto 0 }nInjectorSetPoints_AutoTmp 0 239  CopyTable  
+30 LINE.NUM ^uiEditRecipeNum @@ }uiRecipeProportional TABLE@ 1 = IF 
+32 LINE.NUM 0 I>F ^iSaveEditInj_Tmp @@ }nPulseFactor_EC TABLE! 
+33 LINE.NUM 0 I>F ^iSaveEditInj_Tmp @@ }nPulseFactor_PH TABLE! 
+34 LINE.NUM ELSE 
+36 LINE.NUM ^iSaveEditInj_Tmp @@ }nPulseFactor_EC TABLE@ 0 I>F F= IF 
+37 LINE.NUM 1 I>F ^iSaveEditInj_Tmp @@ }nPulseFactor_EC TABLE! 
+38 LINE.NUM 1 I>F ^iSaveEditInj_Tmp @@ }nPulseFactor_PH TABLE! 
+39 LINE.NUM THEN 
+40 LINE.NUM THEN 
+41 LINE.NUM THEN 
+42 LINE.NUM 1 +LOOP 
+3 JUMP ;
+: 104_15
+
+1 LINE.NUM
+  -1    ABS
+  ^uiEditRecipeNum @! 
+
+2 LINE.NUM
+  0  
+  ^iRecipeDefinitionSave @!   
+
+3 LINE.NUM
+  0  
+  ^iRecipeDefinitionCancel @!   
+8 JUMP ;
+: 104_27
+
+1 LINE.NUM
+  250    DELAY
+5 JUMP ;
+: 104_39
+
+1 LINE.NUM
+  0  
+  ^iRecipeDefinitionSave @!   
+
+2 LINE.NUM
+  0  
+  ^iRecipeDefinitionCancel @!   
+3 JUMP ;
+: 104_48
+
+1 LINE.NUM
+  0  
+  ^iRecipeDefinitionSave @!   
+
+2 LINE.NUM
+  " Saved Successfully" 
+ 
+  *sSaveRecipe   $MOVE
+
+3 LINE.NUM
+  1000    DELAY
+-6 JUMP ;
+: 104_51
+
+1 LINE.NUM
+  750    DELAY
+1 JUMP ;
+: 104_54
+
+1 LINE.NUM
+  "  " 
+ 
+  *sSaveRecipe   $MOVE
+1 JUMP ;
+: 104_5
+TRUE
+
+1 LINE.NUM
+  ^uiEditRecipeNum @@ 
+  0    >=
+LAND
+IF -9 ELSE -3 THEN JUMP ;
+: 104_10
+TRUE
+
+1 LINE.NUM
+  ^iRecipeDefinitionSave @@ 
+  1    =
+LAND
+IF -9 ELSE 0 THEN JUMP ;
+: 104_11
+TRUE
+
+1 LINE.NUM
+  ^iRecipeDefinitionCancel @@ 
+  1    =
+LAND
+IF -9 ELSE -8 THEN JUMP ;
+T: T104
+DUMMY
+104_0
+104_7
+104_14
+104_15
+104_27
+104_39
+104_48
+104_51
+104_54
+104_5
+104_10
+104_11
+T;
+&Recipe_Definition ' T104 SETTASK
