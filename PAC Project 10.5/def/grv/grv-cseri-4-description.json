@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.8",
+  "moduleId": "0x0C00001E",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-CSERI-4",
+  "numberOfChannels": 4,
+  "productDescription": {
+    "en": "Serial communication, 4 channels, RS-232 or RS-485, channel-to-channel isolation"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0x08000026",
+        "0x08000027",
+        "0x08000028",
+        "0x08000029",
+        "0x0800002A",
+        "0x0800002B",
+        "0x0800002C",
+        "0x0800002D",
+        "0x0800002E"
+      ],
+      "defaultChannelType": "0x08000027"
+    }
+  },
+  "productSpecification": {
+    "en": {
+      "Serial Standards": "RS-232 (DTE), RS-485 half and full duplex",
+      "Bit Rates": "300 bps - 1 Mbps",
+      "Maximum Cable Length (RS-232)": "10 m",
+      "Maximum Cable Length (RS-485)": "1200 m at 38.4 Kbps, 500 m at 115.2 Kbps, 50 m at 1 Mbps",
+      "Bus Loading (RS-485)": "1/8 Unit Load",
+      "Bus Termination": "5 KOhms (RS-232 mode), 120 Ohms (RS-485 mode, selectable)",
+      "Bus Bias": "750 Ohms, (RS-485 mode only, selectable)",
+      "Isolation (field-to-logic)": "300 V working, 1500 V transient (1 minute)",
+      "Isolation (channel-to-channel)": "300 V working",
+      "Number of Channels": "4 individually configurable channels",
+      "Indicators": "Transmit and Receive LEDs for each channel",
+      "Chassis Power Consumption": "1.5 W",
+      "Chassis Compatibility": "Slots 0–3 only.  The maximum number of modules per chassis is 4.",
+      "Minimum groov EPIC Firmware Version": "1.2.0",
+      "Minimum PAC Project Version": "10.1000",
+      "Minimum Library Package for CODESYS Version": "1.0.0.1",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "30 months"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+13
+ 0,  0, 0x0008, None,                             0, 0, 0x00000000,          ,   0,  0,                , 0,              , 0
+ 6,  1, 0x0008, Enable Scan for Event,            0, 1, 0x00000010, &Event:,     0, -1,                , 0,              , 0
+ 6,  2, 0x0008, Disable Scan for Event,           0, 1, 0x00000010, &Event:,     0,  0,                , 0,              , 0
+14, 26, 0x0002, Enable Scan for E/R Group,        0, 1, 0x00000080, &E/R Group:, 0, -1,                , 0,            , 0
+14, 27, 0x0002, Disable Scan for E/R Group,       0, 1, 0x00000080, &E/R Group:, 0,  0,                , 0,            , 0
+13,  3, 0x0008, Disable Scan for All Events,      0, 0, 0x00000000,          ,   0,  0,                , 0,              , 0
+12, 19, 0x0008, Read & Hold Analog Input Data,    1, 1, 0x00000001, I/&O Point:, 1,  0,                , 0,              , 1
+12, 20, 0x0008, Read & Hold Analog Output Data,   1, 1, 0x00000002, I/&O Point:, 1,  0,                , 0,              , 1
+10, 21, 0x0008, Activate PID Loop,                0, 1, 0x00000200, PID &Loop:,  0, -1,                , 0,              , 0
+10, 22, 0x0008, Deactivate PID Loop,              0, 1, 0x00000200, PID &Loop:,  0,  0,                , 0,              , 0
+11, 23, 0x0008, Set PID Loop Setpoint,            1, 1, 0x00000200, PID &Loop:,  0,  3, S&etpoint:,      0,              , 0
+ 8, 24, 0x0008, Set Analog Output,                1, 1, 0x00000002, I/&O Point:, 0,  3, Output Val&ue:,  0,              , 0
+ 9, 25, 0x0008, Ramp Analog Output to Endpoint,   1, 1, 0x00000002, I/&O Point:, 0,  3, &Units/Second:,  3, &Endpoint:   , 0
+
+
+
+Column  1: Id number of reaction needed by compiler/mistic
+
+Column  2: PAC Control unique id number for the reaction
+
+Column  3: Bitmask of I/O Units the reaction is allowed on
+
+Column  4: String giving reaction name
+
+Column  5: Value indicating how this reaction should be compiled
+           (0 = as integer, 1 = as float)
+
+Column  6: Of the 4 bitmasks in a typemask, which bitmask the data
+           in the next column is for (0 - 3 are valid numbers).
+
+Column  7: TypeMask of item affected by the reaction
+           0: none (e.g. watchdog, MOMO), otherwise
+           typemask for point type of feature, PID loop, E/R, etc.
+
+Column  8: Dialog prompt string for previous column item
+
+Column  9: Value indicating if this reaction is a "Read & Hold..." type
+           (0 = not Read and Hold, 1 = is Read and Hold)
+
+Column 10: Reaction data type 1:
+            -1: put a -1 into the data1 field (for "Enable/Activate"-type events)
+             0: none
+             1: unsigned long
+             2: signed long
+             3: float
+             4: MOMO
+
+Column 11: Dialog prompt string for previous column data
+
+Column 12: Reaction data type 2 (same as Column 8)
+
+Column 13: Dialog prompt string for previous column data
+
+Column 14: If event is allowed on analog I/O units, boolean flag
+           (0 = FALSE, 1 = TRUE) indicating whether an analog value
+           type is needed (i.e. current value, average value, peak
+           value, etc.)
+
+

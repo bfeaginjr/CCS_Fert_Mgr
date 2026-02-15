@@ -1,0 +1,20 @@
+FFF8B828
+4
+0x00000000, 0x00000000, None, None, N/A,     OUTPUT
+0x00010000, 0x00000000, TPO,  TPO,  Percent, TPO
+0x00040000, 0x00000000, On-Time Totalizer,  On-Time,  Seconds, +TOTALIZER
+0x00080000, 0x00000000, Off-Time Totalizer,  Off-Time,  Seconds, -TOTALIZER
+
+
+Column 1: Bitmask of Feature
+
+Column 2: Display filter ( 0x10000000 == PRO )
+
+Column 3: Feature Name
+
+Column 4: Feature Name (short version)
+
+Column 5: Feature Units
+
+Column 6: Compiler Feature String
+

@@ -1,0 +1,121 @@
+
+33
+
+; 
+; Item Type             vtCanonicalDataType            dwAccessRights     wstrDescription                              bIsEUType    bIsReadFromMask   	bIsWriteToMask	bIsReadClear    nMaxPVal      sReadAddressHi      sReadAddressLo               sWriteAddressHi     sWriteAddressLo           sWriteTrueAddressHi    sWriteTrueAddressLo         sWriteFalseAddressHi    sWriteFalseAddressLo     dwRelatedPropertyIDs
+; 
+STATE,                  VT_BOOL,                       3,                 "On/Off state",                              0,           1,                	0,		0,              63,           0xFFFF,             0xF0400007;p;8;/;-,          0,                  0,                        0xFFFF,                0xF0900000;p;0x40;*;+,      0xFFFF,                 0xF0900004;p;0x40;*;+,   [0]
+ONLATCH,                VT_BOOL,                       1,                 "State of On Latch",                         0,           1,                	0,		0,              63,           0xFFFF,             0xF040000F;p;8;/;-,          0,                  0,                        0,                     0,                          0,                      0,                       [1];ONLATCH_READCLEAR
+OFFLATCH,               VT_BOOL,                       1,                 "State of Off Latch",                        0,           1,                	0,		0,              63,           0xFFFF,             0xF0400017;p;8;/;-,          0,                  0,                        0,                     0,                          0,                      0,                       [1];OFFLATCH_READCLEAR
+ACTIVECOUNTER,          VT_BOOL,                       3,                 "Enable/Disable state of digital counter",   0,           1,                	0,		0,              63,           0xFFFF,             0xF040001F;p;8;/;-,          0,                  0,                        0xFFFF,                0xF0900008;p;0x40;*;+,      0xFFFF,                 0xF090000C;p;0x40;*;+,   [3];COUNTERDATA;COUNTERDATA_READCLEAR;FEATURE
+COUNTERDATA,            VT_I4,                         1,                 "Value of digital counter",                  0,           0,                	0,		0,              63,           0xFFFF,             0xF0400100;p;4;*;+,          0,                  0,                        0,                     0,                          0,                      0,                       [3];ACTIVECOUNTER;COUNTERDATA_READCLEAR;FEATURE
+EU,                     VT_R4,                         3,                 "Value of engineering units",                1,           0,                	0,		0,              63,           0xFFFF,             0xF0600000;p;4;*;+,          0xFFFF,             0xF0700000;p;4;*;+,       0,                     0,                          0,                      0,                       [9];COUNTS;MIN;MAX;MIN_READCLEAR;MAX_READCLEAR;OFFSET;GAIN;HISCALE;LOSCALE
+COUNTS,                 VT_R4,                         3,                 "Value of counts",                           0,           0,                	0,		0,              63,           0xFFFF,             0xF0600100;p;4;*;+,          0xFFFF,             0xF0700100;p;4;*;+,       0,                     0,                          0,                      0,                       [1];EU
+MIN,                    VT_R4,                         1,                 "Minimum value",                             1,           0,                	0,		0,              63,           0xFFFF,             0xF0600200;p;4;*;+,          0,                  0,                        0,                     0,                          0,                      0,                       [1];MIN_READCLEAR
+MAX,                    VT_R4,                         1,                 "Maximum value",                             1,           0,                	0,		0,              63,           0xFFFF,             0xF0600300;p;4;*;+,          0,                  0,                        0,                     0,                          0,                      0,                       [1];MAX_READCLEAR
+ONLATCH_READCLEAR,      VT_BOOL,                       1,                 "Read then clear on-latch",                  0,           0,               	0,		1,              63,           0xFFFF,             0xF0F00100;p;4;*;+,          0,                  0,                        0,                     0,                          0,                      0,                       [1];ONLATCH
+OFFLATCH_READCLEAR,     VT_BOOL,                       1,                 "Read then clear off-latch",                 0,           0,               	0,		1,              63,           0xFFFF,             0xF0F00200;p;4;*;+,          0,                  0,                        0,                     0,                          0,                      0,                       [1];OFFLATCH
+COUNTERDATA_READCLEAR,  VT_I4,                         1,                 "Read then clear digital counter value",     0,           0,               	0,		1,              63,           0xFFFF,             0xF0F00000;p;4;*;+,          0,                  0,                        0,                     0,                          0,                      0,                       [3];ACTIVECOUNTER;COUNTERDATA;FEATURE
+MIN_READCLEAR,          VT_R4,                         1,                 "Read then clear minimum value",             0,           0,               	0,		1,              63,           0xFFFF,             0xF0F80000;p;4;*;+,          0,                  0,                        0,                     0,                          0,                      0,                       [1];MIN
+MAX_READCLEAR,          VT_R4,                         1,                 "Read then clear maximum value",             0,           0,               	0,		1,              63,           0xFFFF,             0xF0F80100;p;4;*;+,          0,                  0,                        0,                     0,                          0,                      0,                       [1];MAX
+ALARM_HI_STATE,         VT_BOOL,                       1,                 "On/Off state of Hi Alarm",                  0,           0,               	0,		0,              63,           0xFFFF,             0xF1100020;p;0x80;*;+,       0,                  0,                        0,                     0,                          0,                      0,                       [3];ALARM_HI_ENABLE;ALARM_HI_SETPOINT;ALARM_HI_DEADBAND
+ALARM_HI_ENABLE,        VT_BOOL,                       3,                 "Enable/Disable state of Hi Alarm",          0,           0,               	0,		0,              63,           0xFFFF,             0xF1100024;p;0x80;*;+,       0xFFFF,             0xF1100024;p;0x80;*;+,    0,                     0,                          0,                      0,                       [3];ALARM_HI_STATE;ALARM_HI_SETPOINT;ALARM_HI_DEADBAND
+ALARM_HI_SETPOINT,      VT_R4,                         3,                 "Value of Hi Alarm setpoint",                0,           0,                	0,		0,              63,           0xFFFF,             0xF1100028;p;0x80;*;+,       0xFFFF,             0xF1100028;p;0x80;*;+,    0,                     0,                          0,                      0,                       [3];ALARM_HI_STATE;ALARM_HI_ENABLE;ALARM_HI_DEADBAND
+ALARM_HI_DEADBAND,      VT_R4,                         3,                 "Value of Hi Alarm deadband",                0,           0,               	0,		0,              63,           0xFFFF,             0xF110002C;p;0x80;*;+,       0xFFFF,             0xF110002C;p;0x80;*;+,    0,                     0,                          0,                      0,                       [3];ALARM_HI_STATE;ALARM_HI_ENABLE;ALARM_HI_SETPOINT
+ALARM_LO_STATE,         VT_BOOL,                       1,                 "On/Off state of Lo Alarm",                  0,           0,                	0,		0,              63,           0xFFFF,             0xF1100040;p;0x80;*;+,       0,                  0,                        0,                     0,                          0,                      0,                       [3];ALARM_LO_ENABLE;ALARM_LO_SETPOINT;ALARM_LO_DEADBAND
+ALARM_LO_ENABLE,        VT_BOOL,                       3,                 "Enable/Disable state of Lo Alarm",          0,           0,                	0,		0,              63,           0xFFFF,             0xF1100044;p;0x80;*;+,       0xFFFF,             0xF1100044;p;0x80;*;+,    0,                     0,                          0,                      0,                       [3];ALARM_LO_STATE;ALARM_LO_SETPOINT;ALARM_LO_DEADBAND
+ALARM_LO_SETPOINT,      VT_R4,                         3,                 "Value of Lo Alarm setpoint",                0,           0,                	0,		0,              63,           0xFFFF,             0xF1100048;p;0x80;*;+,       0xFFFF,             0xF1100048;p;0x80;*;+,    0,                     0,                          0,                      0,                       [3];ALARM_LO_STATE;ALARM_LO_ENABLE;ALARM_LO_DEADBAND
+ALARM_LO_DEADBAND,      VT_R4,                         3,                 "Value of Lo Alarm deadband",                0,           0,                	0,		0,              63,           0xFFFF,             0xF110004C;p;0x80;*;+,       0xFFFF,             0xF110004C;p;0x80;*;+,    0,                     0,                          0,                      0,                       [3];ALARM_LO_STATE;ALARM_LO_ENABLE;ALARM_LO_SETPOINT
+MODULETYPE,             VT_I4,                         1,                 "Value of module type",                      0,           0,                	0,		0,              63,           0xFFFF,             0xF0C00000;p;0x40;*;+,       0,                  0,                        0,                     0,                          0,                      0,                       [0]
+POINTTYPE,              VT_I4,                         3,                 "Value of point type",                       0,           0,                	0,		0,              63,           0xFFFF,             0xF0C00004;p;0x40;*;+,       0xFFFF,             0xF0C00004;p;0x40;*;+,    0,                     0,                          0,                      0,                       [0]
+FEATURE,                VT_I4,                         3,                 "Value of Feature configuration",            0,           0,                	0,		0,              63,           0xFFFF,             0xF0C00008;p;0x40;*;+,       0xFFFF,             0xF0C00008;p;0x40;*;+,    0,                     0,                          0,                      0,                       [0]
+OFFSET,                 VT_R4,                         3,                 "Value of analog offset",                    0,           0,                	0,		0,              63,           0xFFFF,             0xF0C0000C;p;0x40;*;+,       0xFFFF,             0xF0C0000C;p;0x40;*;+,    0,                     0,                          0,                      0,                       [1];GAIN
+GAIN,                   VT_R4,                         3,                 "Value of analog gain",                      0,           0,                	0,		0,              63,           0xFFFF,             0xF0C00010;p;0x40;*;+,       0xFFFF,             0xF0C00010;p;0x40;*;+,    0,                     0,                          0,                      0,                       [1];OFFSET
+HISCALE,                VT_R4,                         3,                 "Value of Hi Scale configuration",           0,           0,                	0,		0,              63,           0xFFFF,             0xF0C00014;p;0x40;*;+,       0xFFFF,             0xF0C00014;p;0x40;*;+,    0,                     0,                          0,                      0,                       [1];LOSCALE
+LOSCALE,                VT_R4,                         3,                 "Value of Lo Scale configuration",           0,           0,                	0,		0,              63,           0xFFFF,             0xF0C00018;p;0x40;*;+,       0xFFFF,             0xF0C00018;p;0x40;*;+,    0,                     0,                          0,                      0,                       [1];HISCALE
+SP_BIT,                 VT_BOOL,                       3,                 "Scratch Pad Bit On/Off state",              0,           1,                	1,		0,              63,           0xFFFF,             0xF0D80007;p;8;/;-,          0,                  0,                        0xFFFF,                0xF0D80407;p;8;/;-,      	0xFFFF,                 0xF0D8040F;p;8;/;-,	 [0]
+SP_INTEGER,		VT_I4,			       3,		  "Scratch Pad Integer",		       0,	    0,			0,		0,		1023,	      0xFFFF,		  0xF0D81000;p;4;*;+,	       0xFFFF,		  0xF0D81000;p;4;*;+,	     0,			    0,				0,			0,			 [0]	
+SP_FLOAT,		VT_R4,			       3,		  "Scratch Pad Float",			       0,	    0,			0,		0,		1023,	      0xFFFF,		  0xF0D82000;p;4;*;+,	       0xFFFF,		  0xF0D82000;p;4;*;+,	     0,			    0,				0,			0,			 [0]
+SP_STRING,		VT_BSTR;0x80,		       3,		  "Scratch Pad String",			       0,	    0,			0,		0,		63,	      0xFFFF,		  0xF0D83002;p;0x82;*;+;,      0xFFFF,		  0xF0D83002;p;0x82;*;+;,    0,			    0,				0,			0,			 [0]	
+; 
+; Item Type             vtCanonicalDataType            dwAccessRights     wstrDescription                              bIsEUType    bIsReadFromMask   	bIsWriteToMask	bIsReadClear    nMaxPVal      sReadAddressHi      sReadAddressLo               sWriteAddressHi     sWriteAddressLo           sWriteTrueAddressHi    sWriteTrueAddressLo         sWriteFalseAddressHi    sWriteFalseAddressLo     dwRelatedPropertyIDs
+; 
+
+
+;Notes:
+;
+; All blank lines or lines beginning with a simi-colon are considered "comment" lines
+;
+; The first (non-comment) line contains the quantity of Item Types
+;
+; Hexidecimal numbers need to begin with "Ox"
+;
+; For each ItemID definition in this list, the scanner will create Read Block Request
+; or Write Block Request firewire packet and it will receive a Read Block Response
+; or Write Block Response packet. When adding an ItemID definition to the list,
+; make sure that the resulting firewire packets do not exceed 0x400 bytes in size.
+; (Actually, it could be a little greater than 0x400. For example, if an ItemID were
+; created to read an array of 256 integers, the Read Block Response packet will 
+; contain 0x400 bytes of data plus 16 bytes header data. This is OK.)
+; Note: Currently (10/12/01), because of some limitations in the scanner, do not
+; create ItemIDs which require arrays of data. (because the data for an ItemID
+; cannot cross "ScanArea" boundaries)
+;
+; vtCanonicalDataType possibilities = VT_BOOL, VT_UI1, VT_I1, VT_UI2,
+; VT_I2, VT_UI4, VT_I4, VT_R4, as well as these types or'ed with VT_ARRAY.
+; If you want an array of 32 floats then enter "VT_ARRAY;32;VT_R4"
+; (without the quotes). If you want an array of 10 BSTRs with each string
+; each string occupying 0xC0 bytes in the memory map then enter
+; "VT_ARRAY;10;VT_BSTR;0xC0"
+;
+; dwAccessRights column: read only = 1, write only = 2, read / write = 3
+;
+; bIsEUType informs the server that it may need to acquire scaling
+; parameters for this item.
+;
+; If bIsReadFromMask is True then it is assumed that data is associated
+; with a bitmask. This flag is only usefull on items with VT_BOOL datatypes.
+; Setting this flag to true allows a client to consider a single bit in the
+; memory map as a boolean value (instead of requiring the client to read a 
+; byte then perofrming the bit check). An item with this flag set to true 
+; will use the formula in sReadAddressHi and sReadAddressLo to determine
+; which byte in the memory map to read. Notice that when this flag is set,
+; the 'p' in the formula relates to a bit number. (see notes below on the
+; 'p' parameter).
+; Note: the flag pertains only to reads - it does not pertain to writes.
+;
+; If bIsWriteToMask is True then it is assumed that data is associated
+; with a bitmask. This flag is only usefull on items with VT_BOOL datatypes.
+; Also, it is assumed the area written to is of type MOMO. See SP_BIT as as
+; example.
+;
+; Setting bIsReadClear to true informs the server that this Item will not be
+; scanned. This item will only be read with a Sync Read - because when a read
+; is performed on this item, the IO Unit will clear its value (for example,
+; Read and Clear Counterdata).
+;
+; nMaxPVal pertains to the 'p' parameter in the address formulas. The value of
+; nMaxPVal represents the maximum allowable value for the 'p' parameter. Therefore,
+; an ItemID of "[bla|bla|bla|]State.4" is OK but an ItemID of 
+; "[bla|bla|bla|]State.64" in not OK. If an Item does not need a 'p' parameter
+; in the formula then nMaxPVal should be set to -1.
+;
+; All columns pertaining *AddressHi or *AddressLo contain formulas used to
+; calculate the address (formulas use Reverse Polish Notation,
+; operands/operators are separated by semi-colons)
+;
+; In formulas, all operands are assumed to be DWORDS (unsigned)
+;
+; In formulas, the '/' character will perform integer divide
+;
+; In formulas, the 'p' parameter represents a variable. It could represent a
+; point number as in the Item Type "State." For example, "[bla|bla|bla]State.3".
+; We may come up with an Item Type which is an array, in which case the 'p'
+; parameter could represent the index into the array. For example, we could
+; create an Item Type called ScratchPadIntegerTable in which case the 'p'
+; parameter would represent the index - "[bla|bla|bla]ScratchPadIntegerTable.5"
+; would represent element 5 of the Scratch Pad Integer Table (zero offset).
+;
+; In the dwRelatedPropertyIDs column, number in the brackets is the
+; quantity of related Items followed by a semi-colon delimited list of
+; Item Types.

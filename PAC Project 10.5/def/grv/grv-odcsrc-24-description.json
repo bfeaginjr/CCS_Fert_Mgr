@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.2.0",
+  "contentVersion": "1.0.9",
+  "moduleId": "0x90000013",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-ODCSRC-24",
+  "numberOfChannels": 24,
+  "productDescription": {
+    "en": "DC digital output, 24 channels, 5–60 VDC, sourcing"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0x90000000"
+      ],
+      "defaultChannelType": "0x90000000"
+    }
+  },
+  "enhancedDigitalChannelTypeId": "0x90000077",
+  "productSpecification": {
+    "en": {
+      "Line Voltage Range (nominal)": "12–24 VDC",
+      "Line Voltage Range (max)": "5–60 VDC",
+      "Current Rating (per channel)": "0.4 A",
+      "Surge Current": "1.5 A for 1.0 Second",
+      "Recommended Max. Fuse (fast) / Circuit Breaker": "2 A, 60 VDC / channel or 20 A, 60 VDC common",
+      "Minimum Load": "5.0 mA",
+      "Output Voltage Drop": "0.3 V max. at 0.4 A",
+      "Off-State Leakage (per channel)": "<10 µA (@ 60 V, 70 °C)",
+      "Peak Blocking Voltage": "60 VDC",
+      "TPO Period (min, max, resolution)": "0.005 seconds, 429496.7296 seconds, 0.001 seconds",
+      "Turn On / Off Time": "2.5 ms",
+      "Isolation (field-to-logic)": "300 V working, 1500 V transient",
+      "Isolation (channel-to-channel)": "None",
+      "Number of Channels": "24",
+      "Chassis Power Consumption": "1.2 W",
+      "Minimum groov EPIC Firmware Version": "1.0.0",
+      "Minimum PAC Project Version": "10.0000",
+      "Minimum Library Package for CODESYS Version": "1.0.0.0",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "Lifetime"
+    }
+  }
+}

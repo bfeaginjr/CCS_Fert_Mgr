@@ -1,0 +1,28 @@
+4
+1.463693e-03; 2.404274e-04; -3.164615e-07; 1.158210e-07; 2252
+1.395821e-03; 2.401969e-04; -3.606346e-07; 1.135830e-07; 3K
+1.104951e-03; 2.418766e-04; -8.041257e-07; 1.147039e-07; 10K Type 2
+1.043207e-03; 2.344864e-04; 5.001219e-07; 1.390960e-07; 10K Type 3
+
+-------------------------------------------------------------------------------
+
+This file contains predefined Steinhat-Hart coefficients for thermistor curves
+used by the SNAP-AIR400K module. 
+
+The module uses the Steinhart-Hart equation
+(http://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation) to determine
+what temperature a thermistor's resistance indicates. The user is free to use
+any coefficients they like, we simply include coefficients for some common
+thermistor curves.
+
+The module actually uses the more general form of the equation described at
+Wikipedia, including an (ln(R))^2 term as the coefficient named K. The full
+equation we use is:
+  A + B(ln(R)) + K(ln(R))^2 + C(ln(R))^3
+
+The lines above are formatted as following:
+A; B; K; C; Name
+
+Where A, B, K, and C are the coefficients for the above equation, and Name is
+the name used in the Thermistor curve dropdown menu.
+

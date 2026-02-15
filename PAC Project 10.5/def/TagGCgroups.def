@@ -1,0 +1,25 @@
+12
+Chart                    ,100
+Communication - Network  ,101
+Communication - Serial   ,102
+Controller               ,103
+Digital Point            ,104
+Event/Reaction           ,105
+I/O Unit                 ,106 
+Logical                  ,107
+Miscellaneous            ,108
+Simulation               ,109
+String                   ,110
+Pointers                 ,111
+
+// Opto 22 reserves group numbers 0 - 99 for Action Groups and group
+// numbers 100 - 199 for Condition Groups.  User-defined groups must
+// use group numbers above 199. 
+//
+// Please refer to the file USERCMDS.XID for information on creating and
+// formatting commands which are in user-defined groups. 
+//
+// Do not use group names longer than 25 characters.
+//
+// The number at the top of this file must be set to the number of groups
+// defined in the file.

@@ -1,0 +1,310 @@
+{
+  "schemaVersion": "1.2.1",
+  "contentVersion": "1.2.8",
+  "moduleId": "0xF0000022",
+  "family": "GRV-RIO",
+  "productNumber": "GRV-R7-MM1001-10",
+  "numberOfChannels": 10,
+  "productDescription": {
+    "en": "groov RIO, 8 channels in/out multi-signal, 2 channels form C mechanical relay, 0–250 VAC/5–30 VDC"
+  },
+  "channelDescriptions": {
+    "0-1": {
+      "defaultChannelType": "0x50000079",
+      "channelTypes": [
+        "0x50000079",
+        "0x50000068",
+        "0x9000007B",
+        "0x60000018",
+        "0x60000015",
+        "0x60000016",
+        "0x60000031",
+        "0x60000009",
+        "0x6000000C",
+        "0x6000000E",
+        "0x6000000F",
+        "0x60000010",
+        "0x60000011",
+        "0x60000012",
+        "0x60000013",
+        "0x6000003F",
+        "0x60000040",
+        "0x60000041",
+        "0x60000042",
+        "0x60000043",
+        "0x60000005",
+        "0x60000006",
+        "0x60000008",
+        "0x60000033"
+      ],
+      "description": {
+        "en": "3 terminal multi-signal in/out channel: IDC, IDCSW, ODC, IV, IMA, IICTD, ITM"
+      }
+    },
+    "2-3": {
+      "defaultChannelType": "0x5400007A",
+      "channelTypes": [
+        "0x5400007A",
+        "0x54000085",
+        "0x9000007B",
+        "0x60000018",
+        "0x60000015",
+        "0x60000016",
+        "0x60000031",
+        "0x60000009",
+        "0x6000000C",
+        "0x6000000E",
+        "0x6000000F",
+        "0x60000010",
+        "0x60000011",
+        "0x60000012",
+        "0x60000013",
+        "0x6000003F",
+        "0x60000040",
+        "0x60000041",
+        "0x60000042",
+        "0x60000043",
+        "0x60000005",
+        "0x60000006",
+        "0x60000008",
+        "0x60000033"
+      ],
+      "description": {
+        "en": "3 terminal multi-signal in/out channel: IDC, IDCSW, ODC, IV, IMA, IICTD, ITM"
+      }
+    },
+    "4-7": {
+      "defaultChannelType": "0x5400007A",
+      "channelTypes": [
+        "0x5400007A",
+        "0x54000085",
+        "0x9000007B",
+        "0x60000018",
+        "0x60000031",
+        "0x6000003F",
+        "0x60000040",
+        "0x60000041",
+        "0x60000042",
+        "0x60000043",
+        "0x60000033",
+        "0xA0000020",
+        "0xA000001B"
+      ],
+      "description": {
+        "en": "2 terminal multi-signal in/out channel: IDC, ODC, IV, OVMA"
+      }
+    },
+    "8-9": {
+      "defaultChannelType": "0x94000078",
+      "channelTypes": [
+        "0x94000078"
+      ],
+      "description": {
+        "en": "Form C mechanical relay"
+      }
+    }
+  },
+  "productSpecification": {
+    "en": {
+      "Voltage Input": {
+        "Available Channels": "0–7",
+        "Input Range": "0–10 V DC",
+        "Over-range Limit": "0–11 V DC",
+        "Resolution": "0.5 mV",
+        "Accuracy": "±0.05% of range (±5 mV)",
+        "Gain Temperature Coefficient": "30 ppm/°C",
+        "Offset Temperature Coefficient": "15 ppm/°C",
+        "Input Impedance": "> 425 kOhms",
+        "Data Refresh Time": "550 ms x SMA value (1.1 s @ 2 SMA, Default SMA = 2)",
+        "50 / 60 Hz rejection": "> 90 dB"
+      },
+      "Current Input": {
+        "Available Channels": "0–3",
+        "Input Range": "0–20 mA, 4–20 mA",
+        "Over-range Limits": "0.0–20.8 mA, 2.0–20.8 mA",
+        "Recommended Fuse": "32–40 mA, Fast Acting (for example, Eaton S500–32-R)",
+        "Resolution": "1.0 µA",
+        "Accuracy": "±0.05% ( ±10 µA )",
+        "Gain Temperature Coefficient": "30 ppm/°C",
+        "Offset Temperature Coefficient": "15 ppm/°C",
+        "Input Voltage Drop (±10%)": "0.9 V @ 4 mA, 2.0 V @ 20 mA, 25 °C",
+        "Equivalent Input Impedance (±10%)": "225 Ohms @ 4 mA, 100 Ohms @ 20 mA, 25 °C",
+        "Data Refresh Time": "550 ms x SMA value (1.1 s @ 2 SMA, Default SMA = 2)",
+        "50 / 60 Hz rejection": "> 90 dB"
+      },
+      "ICTD Input": {
+        "Available Channels": "0–7",
+        "Input Range with ICTD Probe": "-40 to +100 °C",
+        "Resolution": "0.04 °C",
+        "Accuracy with ICTD Probe": "±1.0 °C (1.8 °F)",
+        "Gain Temperature Coefficient": "30 ppm/°C",
+        "Offset Temperature Coefficient": "60 ppm/°C",
+        "Data Refresh Time": "550 ms x SMA value (1.1 s @ 2 SMA, Default SMA = 2)",
+        "50 / 60 Hz rejection": "> 90 dB"
+      },
+      "Thermocouple Input": {
+        "Available Channels": "0–3 (*)",
+        "Input Range": "-75 to +75 mV",
+        "Over-range Limit": "-78 to +78 mV",
+        "Input Resolution": "3 microvolts",
+        "Input Impedance": "> 1 megohm",
+        "Data Refresh Time": "550 ms x SMA value (1.1 s @ 2 SMA, Default SMA = 2)",
+        "50 / 60 Hz rejection": "> 90 dB",
+        "Thermocouple ITS90 Types": "± Accuracy / Resolution",
+        "B:   90 °C to 1,820 °C": "7 °C / 0.4 °C",
+        "E:  -80 °C to 1,000 °C": "2 °C / 0.1 °C",
+        "J: -100 °C to 1,200 °C": "2 °C / 0.1 °C",
+        "K:  -80 °C to 1,372 °C": "2 °C / 0.1 °C",
+        "N: -100 °C to 1,300 °C": "3 °C / 0.1 °C",
+        "R:  100 °C to 1,768 °C": "7 °C / 0.3 °C",
+        "S:  100 °C to 1,768 °C": "7 °C / 0.3 °C",
+        "T:  -60 °C to  400 °C": "3 °C / 0.1 °C",
+        "* Note": "To achieve the best thermocouple accuracy when also using current outputs or discrete outputs, always configure thermocouples on the lowest channel numbers and outputs on the highest channel numbers."
+      },
+      "Millivolt Input": {
+        "Available Channels": "0–3",
+        "Input Ranges": "±150 mV, ±75 mV, ±25 mV",
+        "Over-range Limits": "±165.0 mV, ±78.0 mV, ±27.5 mV",
+        "Resolution": "10 µV, 3 µV, 2 µV",
+        "Accuracy": "±0.1% of Full Scale (±150 µV), ±0.1% of Full Scale (±75 µV), ±0.2% of Full Scale (±50 µV)",
+        "Input Impedance": "> 1 MOhms",
+        "Data Refresh Time": "550 ms x SMA value (1.1 s @ 2 SMA, Default SMA = 2)",
+        "50 / 60 Hz rejection": "> 90 dB"
+      },
+      "Thermistor Input (Requires firmware version 3.0.0 or later)": {
+        "Available Channels": "0–7 (*)",
+        "Input Range (Ohm)": "0–400k",
+        "Accuracy (Ohm @ Range)": "greater of 3 Ohm or 0.5%@0–25k, 400@25k–50k, 900@50k–75k, 1.5k@75k–100k, 5k@100k–200K, 20k@200k–400k",
+        "Gain Temperature Coefficient": "500 ppm/°C",
+        "Resolution (Ohm @ Range)": "0.5@0–1k, 1@1k–5k, 2@5k–10k, 5@10k–25k, 50@25k–100k, 200@100k–200k, 700@200k–400k",
+        "Power Dissipation @ Resistance (µW@Ohm)": "375@1k, 950@5k, 1075@10k, 875@25k, 600@50k, 450@75k, 350@100k, 200@200k, 100@400k",
+        "2252 Thermistor Accuracy (°C) @ Range (°C)": "0.2@-40–70, 2.5@70–150",
+        "3K Thermistor Accuracy (°C) @ Range (°C)": "0.2@-40–70, 2.5@70–150",
+        "10K type 2 Thermistor Accuracy (°C) @ Range (°C)": "0.75@-40 – -20, 0.2@-20–120, 0.6@120–150",
+        "10k type 3 Thermistor Accuracy (°C) @ Range (°C)": "0.5@-40 – -20, 0.3@-20–120, 0.6@120–150",
+        "Custom Thermistor Accuracy (°C) @ Range (°C)": "depends on curve",
+        "Data Refresh Time": "550 ms x SMA value (1.1 s @ 2 SMA, Default SMA = 2)",
+        "* Note": "To achieve the best thermistor accuracy when also using current outputs, always configure thermistors on the lowest channel numbers and current outputs on the highest channel numbers."
+      },
+      "0–400 kOhm Input (Requires firmware version 3.0.0 or later)": {
+        "Available Channels": "0–7 (*)",
+        "Input Range (Ohm)": "0–400k",
+        "Accuracy (Ohm @ Range)": "greater of 3 Ohm or 0.5%@0–25k, 400@25k–50k, 900@50k–75k, 1.5k@75k–100k, 5k@100k–200k, 20k@200k–400k",
+        "Gain Temperature Coefficient": "500 ppm/°C",
+        "Resolution (Ohm @ Range)": "0.5@0–1k, 1@1k–5k, 2@5k–10k, 5@10k–25k, 50@25k–100k, 200@100k–200k, 700@200k–400k",
+        "Power Dissipation @ Resistance (µW@Ohm)": "375@1k, 950@5k, 1075@10k, 875@25k, 600@50k, 450@75k, 350@100k, 200@200k, 100@400k",
+        "Data Refresh Time": "550 ms x SMA value (1.1 s @ 2 SMA, Default SMA = 2)",
+        "* Note": "To achieve the best resistance accuracy when also using current outputs, always configure the 0–400 kOhm channel type on the lowest channel numbers and current outputs on the highest channel numbers."
+      },
+      "Discrete DC Input": {
+        "Available Channels": "0–7",
+        "Input Voltage Range": "5–30 V DC",
+        "Minimum ON Voltage": "5.0 V",
+        "Maximum OFF Voltage": "1.5 V",
+        "Input Impedance": "> 425 KOhms",
+        "Max. Input Frequency (50% square wave)": "10000 Hz"
+      },
+      "Switch Input, Powered": {
+        "Available Channels": "0–7",
+        "Open Circuit Voltage (Switch Open)": "10.5 V (minimum)",
+        "Channel Current Limit": "1.1 mA max.",
+        "Channel Operating Current": "0.63 mA typical",
+        "Minimum Off Resistance": "3300 Ohms",
+        "Maximum On Resistance": "1200 Ohms",
+        "Minimum ON Voltage": "5 V",
+        "Maximum OFF Voltage": "1.5 V",
+        "Maximum Continuous Survivable Input Voltage": "32 V",
+        "Input Impedance": "> 425 KOhms",
+        "Max. Freq. (50% square wave)": "10000 Hz"
+      },
+      "Discrete Counter Input": {
+        "Available Channels": "0–1",
+        "Input Voltage Range": "5–30 V DC",
+        "'ON' Threshold": "5 V",
+        "'OFF' Threshold": "1.5 V",
+        "Input Impedance": "> 425 KOhms",
+        "Max. Frequency (50% square wave): State, Latches, Counter": "10000 Hz",
+        "Max. Frequency (50% square wave): On/Off pulse width, Period, Frequency": "2000 Hz",
+        "Max. Frequency (50% square wave): On/Off totalization": "750 Hz",
+        "Pulse Width Measurement Resolution": "100 microseconds",
+        "Pulse Width Measurement Error (50% square wave)": "0.1% 0 to 20 Hz., 1% 21 to 200 Hz., 5% 201 to 2000 Hz.",
+        "Period/Frequency Error (50% square wave)": "0.05% 0 to 20 Hz., 0.1% 21 to 200 Hz., 1% 201 to 2000 Hz."
+      },
+      "Discrete DC Sinking Output": {
+        "Available Channels": "0–7 (4–7 if using any thermocouple inputs)",
+        "Line Voltage Range": "5–30 V DC",
+        "Maximum Continuous Current": "1.0 A",
+        "Peak Current (< 10 ms)": "4.0 A",
+        "Recommended Fuse / Circuit Breaker": "1 A at 30 V DC",
+        "Output Voltage Drop": "175 mV at 1 A",
+        "Off-State Leakage (per channel)": "< 80 µA at 24 V, -20 to +70 °C",
+        "Peak Blocking Voltage": "32 V",
+        "TPO Period (min, max, resolution)": "0.004, 4294967, 0.001",
+        "Turn On / Off Time": "20 ms nominal."
+      },
+      "Form C Relay Output": {
+        "Available Channels": "8, 9",
+        "Line Voltage Range": "0–250 V AC or 5–30 V DC",
+        "Clamp Voltage": "440 V nominal",
+        "Current Rating": "5 A per channel",
+        "Surge Current": "6 A peak for 1 second",
+        "Recommended Fuse / Circuit Breaker": "5 A at 250 V AC / > 30 V DC per channel",
+        "Initial Contact Resistance": "< 100 milliohms",
+        "Turn On Time": "8 ms",
+        "Turn Off Time": "4 ms",
+        "Operating Life (to specification)": "Min. 30,000 cycles at max. ratings",
+        "Mechanical Life": "Min. 10,000,000 cycles"
+      },
+      "Voltage Output": {
+        "Available Channels": "4–7",
+        "Range": "0–10 V",
+        "Resolution": "2.5 mV",
+        "Accuracy": "±0.3% of range ( ±30 mV )",
+        "Gain Temperature Coefficient": "50 ppm/°C",
+        "Offset Temperature Coefficient": "20 ppm/°C",
+        "Output Slew Rate": "> 15 V/ms",
+        "Minimum Load Resistance": "7.5 kOhms",
+        "Output Impedance": "< 10 Ohms",
+        "Short-circuit Current": "20 mA",
+        "Data Refresh Time": "Nominal 20 ms.  Proportional to I/O scan time."
+      },
+      "Current Output": {
+        "Available Channels": "4–7",
+        "Output Range": "0–20 mA",
+        "Resolution": "5 µA",
+        "Accuracy": "±0.325% of range (±65 µA)",
+        "Gain Temperature Coefficient": "60 ppm/°C",
+        "Output Slew Rate": "> 10 mA/ms",
+        "Maximum Loop Resistance": "700 Ohms",
+        "Data Refresh Time": "Nominal 20 ms.  Proportional to I/O scan time."
+      },
+      "Common Specifications": {
+        "Ethernet": "Two switched Gigabit ports; daisy-chainable; ETH1 with 802.3af PoE powered device (PD)",
+        "USB": "One Port, USB 2.0 HS",
+        "Memory": "1 GB RAM, 4.0 GB user space",
+        "Power Supply": "802.3af PoE Class 0 or 10–32 V DC",
+        "Power Consumption": "10 W",
+        "Max. Survivable Input (channels 0 – 7)": "32 V DC",
+        "Isolation (between channels 0 – 7)": "None",
+        "Isolation (between channel 8 or 9 and all others)": "3000 V ACrms 1 min.",
+        "Isolation (field to Ethernet / power input)": "1500 V ACrms 1 min.",
+        "Minimum groov RIO Firmware Version": "N/A",
+        "Minimum groov EPIC Firmware Version": "2.0.0 (3.0.0 for Thermistors)",
+        "Minimum PAC Project Version": "10.3000 (10.3003 for Thermistors)",
+        "Minimum Library Package for CODESYS Version": "2.0.0.0 (2.0.1.0 for Thermistors)",
+        "Ignition & Ignition Edge version": "N/A",
+        "Field Connector Wire Size": "28–14 AWG",
+        "Torque, field connector screw": "2.5 in-lb (0.28 N-m)",
+        "Power Connector Wire Size": "22–14 AWG",
+        "Torque, DC power connector screws": "7.0 in-lb (0.79 N-m)",
+        "Torque, panel mount tab screw": "2.0 in-lb (0.23 N-m)",
+        "Temperature (operating)": "-20 °C to +70 °C",
+        "Temperature (storage)": "-40 °C to +85 °C",
+        "Relative Humidity (non-condensing)": "5–95%",
+        "MTBF (minimum, 25 °C)": "1.2 Mhrs",
+        "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+        "Warranty": "30 months"
+      }
+    }
+  }
+}

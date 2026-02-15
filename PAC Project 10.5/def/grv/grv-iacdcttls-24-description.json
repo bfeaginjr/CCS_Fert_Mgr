@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.2.0",
+  "contentVersion": "1.0.10",
+  "moduleId": "0x54000007",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-IACDCTTLS-24",
+  "numberOfChannels": 24,
+  "productDescription": {
+    "en": "AC/DC input, polarity insensitive, 24 channels, 2–16 V AC/DC, on/off state only"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0x54000000"
+      ],
+      "defaultChannelType": "0x54000000"
+    }
+  },
+  "enhancedDigitalChannelTypeId": "0x5400006C",
+  "productSpecification": {
+    "en": {
+      "Input Voltage": "2–16 VAC / VDC",
+      "Turn-on Voltage": "2.0 VAC (peak) / VDC",
+      "Turn-off Voltage": "0.8 VAC (Peak) / VDC",
+      "Input Impedance (± 5%)": "2 kOhms",
+      "Max. Freq. (50% square wave 5 Vp-p)": "N/A",
+      "IEC Input Type": "N/A",
+      "Isolation (field-to-logic)": "300 V working, 1500 V transient (1 minute)",
+      "Isolation (channel-to-channel)": "None",
+      "Number of Channels": "24",
+      "Chassis Power Consumption": "1.0 W",
+      "Minimum groov EPIC Firmware Version": "1.0.0",
+      "Minimum PAC Project Version": "10.0000",
+      "Minimum Library Package for CODESYS Version": "1.0.0.0",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "Lifetime"
+    }
+  }
+}

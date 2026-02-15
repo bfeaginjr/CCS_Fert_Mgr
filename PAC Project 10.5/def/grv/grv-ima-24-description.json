@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.15",
+  "moduleId": "0x60000001",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-IMA-24",
+  "numberOfChannels": 24,
+  "productDescription": {
+    "en": "Analog current input, 24 channels, configurable input ranges of ± 20 mA, 0–20 mA, 4–20 mA"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0x60000014",
+        "0x60000015",
+        "0x60000016"
+      ],
+      "defaultChannelType": "0x60000014"
+    }
+  },
+  "productSpecification": {
+    "en": {
+      "Input Range (per channel)": "-20 to +20 mA, 0 to 20 mA, 4 to 20 mA",
+      "Over-range limits": "-22 mA to +22 mA, 0.0 to 22.0mA, 2.0 mA to 22.0 mA",
+      "Resolution": "0.02 µA (20-bits)",
+      "Accuracy ±0.1% of Full Scale": "± 20 µA",
+      "Input Voltage Drop nominal (Impedance ± 20%)": "5.5 V nominal @ 20 mA (275 Ohms)",
+      "Input Filter (hardware)": "-3 dB at 140 Hz",
+      "Software Filtering: Simple Moving Average": "1 to 32 readings",
+      "Software Filtering: Weighted Average": "1 to 4096",
+      "Data Refresh Time": "225 ms",
+      "Step Input Response Time": "225 ms x SMA value (7.2 s @ 32 SMA, Default SMA = 4)",
+      "Analog Data Filtering": "-3 dB @ 2.4 Hz / -25 dB @ 60 Hz",
+      "Common Mode Rejection": "> -120 dB",
+      "Max. Survivable Input": "± 32 V",
+      "Problem Indications": "out of range",
+      "Isolation (field-to-logic)": "300 V working, 1500 V transient (1 minute)",
+      "Isolation (channel-to-channel)": "300 V between group A (ch 0–11) & group B (ch 12–23)",
+      "Number of Channels": "24",
+      "Chassis Power Consumption": "1.0 W",
+      "Minimum groov EPIC Firmware Version": "1.0.0",
+      "Minimum PAC Project Version": "10.0000",
+      "Minimum Library Package for CODESYS Version": "1.0.0.0",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "Lifetime"
+    }
+  }
+}

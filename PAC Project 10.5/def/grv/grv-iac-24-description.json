@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.2.0",
+  "contentVersion": "1.0.7",
+  "moduleId": "0x5000000F",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-IAC-24",
+  "numberOfChannels": 24,
+  "productDescription": {
+    "en": "AC/DC digital input, 24 channels, 85–140 VAC/VDC"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0x50000000"
+      ],
+      "defaultChannelType": "0x50000000"
+    }
+  },
+  "enhancedDigitalChannelTypeId": "0x50000069",
+  "productSpecification": {
+    "en": {
+      "Nominal Input Voltage Range (RMS)": "85–140 VAC / VDC",
+      "Turn-on Voltage": "85 VAC / VDC",
+      "Turn-off Voltage": "35 VAC / VDC",
+      "Input Impedance (± 5%)": "133 kOhms",
+      "Operating Frequency": "40 Hz to 400 Hz or DC",
+      "Isolation (field-to-logic)": "300 V working, 1500 V transient (1 minute)",
+      "Isolation (channel-to-channel)": "NONE",
+      "Number of Channels": "24",
+      "Chassis Power Consumption": "1.0 W",
+      "Minimum groov EPIC Firmware Version": "1.0.0",
+      "Minimum PAC Project Version": "10.0000",
+      "Minimum Library Package for CODESYS Version": "1.0.0.0",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "Lifetime"
+    }
+  }
+}

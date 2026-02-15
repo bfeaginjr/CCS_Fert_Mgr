@@ -1,0 +1,168 @@
+7051879C
+5
+Local
+Remote
+Arcnet/TP
+Ethernet
+Firewire
+
+30
+
+0x0000000004000000; 0x00000000; GRV-EPIC-PR1; Ethernet, groov I/O Analog and Digital channels; BBOARD
+8; GRV-EPIC-PR1
+1024; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0xFFFFFFFF; 0x0006; 0; 96; 1
+
+0x0000000008000000; 0x00000000; GRV-EPIC-PR2; Ethernet, groov I/O Analog and Digital channels; BBOARD
+8; GRV-EPIC-PR2
+1024; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0xFFFFFFFF; 0x0006; 0; 96; 1
+
+0x0000000100000000; 0x00000000; GRV-R7-MM1001-10; Ethernet, groov Remote I/O; BBOARD
+8; GRV-R7-MM1001-10
+10; 1; 0x000000FF; 0x000003FF; 0x000003FF; 0xFFFFFFFF; 0x0006; 0; 4; 1
+
+0x0000000200000000; 0x00000000; GRV-R7-MM2001-10; Ethernet, groov Remote I/O; BBOARD
+8; GRV-R7-MM2001-10
+10; 1; 0x000000FF; 0x000003FF; 0x000003FF; 0xFFFFFFFF; 0x0006; 0; 4; 1
+
+0x0000000400000000; 0x00000000; GRV-R7-I1VAPM-3; Ethernet, groov Remote I/O; BBOARD
+8; GRV-R7-I1VAPM-3
+64; 1; 0x000000FF; 0x000003FF; 0x000003FF; 0xFFFFFFFF; 0x0006; 0; 4; 1
+
+
+0x0000000010000000; 0x00000000; SNAP-PAC-R1; Ethernet, SNAP Analog and Digital points; BBOARD
+8; SNAP-PAC-R1
+512; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0xFFFFFFFF; 0x0006; 0; 96; 1
+
+0x0000000080000000; 0x00000000; SNAP-PAC-R1-B; Ethernet, SNAP Analog and Digital points; BBOARD
+8; SNAP-PAC-R1-B
+512; 16; 0x0000FFFF; 0x0000FFFF; 0x000000FF; 0xFFFFFFFF; 0x0006; 0; 96; 1
+
+0x0000000020000000; 0x00000000; SNAP-PAC-R2; Ethernet, SNAP Analog and Simple Digital points; BBOARD
+8; SNAP-PAC-R2
+512; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0x00010300; 0x0006; 0; 96; 1
+
+0x0000000000000010; 0x00000000; SNAP-PAC-EB1; Ethernet, SNAP Analog and Digital points; BBOARD
+8; SNAP-PAC-EB1
+512; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0xFFFFFFFF; 0x0006; 0; 96; 1
+
+0x0000000000000020; 0x00000000; SNAP-PAC-EB2; Ethernet, SNAP Analog and Simple Digital points; BBOARD
+8; SNAP-PAC-EB2
+512; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0x00010300; 0x0006; 0; 96; 1
+
+0x0000000000000100; 0x00000000; SNAP-PAC-SB1; Serial, SNAP Analog and Digital points; BBOARD
+2; SNAP-PAC-SB1
+512; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0xFFFFFFFF; 0x0006; 0; 96; 1
+
+0x0000000000000200; 0x00000000; SNAP-PAC-SB2; Serial, SNAP Analog and Simple Digital points; BBOARD
+2; SNAP-PAC-SB2
+512; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0x00010300; 0x0006; 0; 96; 1
+
+0x0000000040000000; 0x00000000; Generic OptoMMP Device; Any Ethernet device with an OptoMMP memory map; BBOARD
+8; GENERIC-OPTOMMP-DEVICE
+0; 0; 0; 0; 0; 0; 0; 0; 0; 1
+
+0x0000000000000001; 0x00000000; G4EB2; Ethernet, G4 Simple Digital points; BBOARD
+8; G4EB2
+32; 32; 0xFFFFFFFF; 0xFFFFFFFF; 0xFFFFFFFF; 0x00010300; 0; 0; 0; 1
+
+0x0000000001000000; 0x00000000; E1; Ethernet, G1, G4 Simple Digital points; BBOARD
+8; E1
+16; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0x00000001; 0; 0; 0; 1
+
+0x0000000002000000; 0x00000000; E2; Ethernet, G1 Analog points; BBOARD
+8; E2
+16; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0x00000000; 0x0006; 0; 0; 1
+
+
+0x0000000000200000; 0x00000002; SNAP-UP1-ADS; Ethernet, SNAP Analog and Digital points; BBOARD
+8; SNAP-UP1-ADS
+64; 16; 0x0000FFFF; 0x0000FFFF; 0x000000FF; 0xFFFFF03F; 0x0006; 0; 32; 1
+
+0x0000000000100000; 0x00000002; SNAP-UP1-D64; Ethernet, SNAP Simple Digital points; SBOARD
+8; SNAP-UP1-D64
+64; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0x0000; 0x0000; 0; 0; 1
+
+0x0000000000400000; 0x00000002; SNAP-UP1-M64; Ethernet, SNAP Analog and Simple Digital points; BBOARD
+8; SNAP-UP1-M64
+64; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0x0000; 0x0006; 0; 32; 1
+
+0x0000000000080000; 0x00000002; SNAP-B3000-ENET, SNAP-ENET-RTC; Ethernet, SNAP Analog and Digital points; BBOARD
+8; SNAP-B3000-ENET, SNAP-ENET-RTC, SNAP-WLAN-FH-ADS
+64; 16; 0x0000FFFF; 0x0000FFFF; 0x000000FF; 0xFFFFF03F; 0x0006; 0; 16; 1
+
+0x0000000000040000; 0x00000002; SNAP-ENET-D64; Ethernet, SNAP Simple Digital points; SBOARD
+8; SNAP-ENET-D64
+64; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0x0000; 0x0000; 0; 0; 1
+
+0x0000000000800000; 0x00000002; SNAP-ENET-S64; Ethernet, SNAP Analog and Simple Digital points; BBOARD
+8; SNAP-ENET-S64
+64; 16; 0x0000FFFF; 0x0000FFFF; 0x0000FFFF; 0x0000; 0x0006; 0; 0; 1
+
+
+
+0x0000000000002000; 0x10000008; B3000 Digital; Serial,  SNAP Digital points; SBOARD
+2; B3000
+16; 4; 0x000F; 0x000F; 0x000F; 0xFFFFFFFF; 0; 128; 0; 4
+
+0x0000000000004000; 0x10000008; B3000 Analog; Serial,  SNAP Analog points; ABOARD
+2; B3000
+16; 8; 0x00FF; 0x00FF; 0; 0; 0x0007; 128; 8; 4
+
+0x0000000000020000; 0x10000008; SNAP-BRS; Serial,  SNAP Simple Digital points; RBOARD
+2; SNAP-BRS
+16; 4; 0x000F; 0x000F; 0x000F; 0x0000; 0; 0; 0; 2
+
+0x0000000000000002; 0x10000008; G4D16R; Serial,  G4 Digital points; SBOARD
+2; G4D16R
+16; 16; 0xFFFF; 0xFFFF; 0xFFFF; 0xFFFFFFFF; 0; 256; 0; 1
+
+0x0000000000000004; 0x10000008; G4D32RS; Serial,  G4 Simple Digital points; RBOARD
+2; G4D32RS
+16; 16; 0xFFFF; 0xFFFF; 0xFFFF; 0x00000000; 0; 0; 0; 2
+
+0x0000000000000008; 0x10000008; G4A8R, G4RAX; Serial,  G4 Analog points; ABOARD;
+2; G4A8R, G4RAX
+16; 16; 0xFFFF; 0xFFFF; 0; 0; 0x0003; 256; 8; 1
+
+0x0000000000010000; 0x10000008; B100; Serial,  G1 or G4 Digital points; SBOARD
+2; B100
+16; 16; 0xFFFF; 0xFFFF; 0xFFFF; 0xFFFFFFFF; 0; 256; 0; 1
+
+0x0000000000001000; 0x10000008; B200; Serial,  G1 or G4 Analog points; ABOARD
+2; B200
+16; 16; 0xFFFF; 0xFFFF; 0; 0; 0x0003; 256; 8; 1
+
+
+
+
+
+
+File Format:
+
+Line 1:    Number of I/O Unit communication interfaces
+Lines 2-6: Descriptions of I/O Unit communication interfaces (add more lines for more comm interfaces)
+Line 7:    Blank
+Line 8:    Number of I/O Units defined
+Line 9:    Blank
+
+The I/O Unit definitions follow, with the following format:
+
+Row 1:   I/O Unit Bitmask ID (Hex)
+         Display Filter (Hex)
+         I/O Unit Product Name
+         I/O Unit Description
+         Board Name for Compiler
+Row 2:   Comm: Bit 3: Ethernet
+         P/N of I/O Unit for each interface
+Row 3:   Number I/O Points per Address
+         Number I/O Modules per Address
+         Input Modules mask (32-bit Hex)
+         Output Modules mask (32-bit Hex)
+         Standard Digital Modules mask (32-bit Hex)
+         Digital: Features allowed bitmask.  
+         Analog: Bit 1: Temp inputs, Bit 2: Clampable outputs  (Hex)
+         Not used. Should be 0
+         Number of PID Loops Allowed (0-96; anything more requires a code change)
+         Number of consecutive Addresses used by this type of brick
+Row 4:   Blank
+

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.9",
+  "moduleId": "0xA0000003",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-OVMALC-8",
+  "numberOfChannels": 8,
+  "productDescription": {
+    "en": "Analog output, 8 channels, voltage or current, chassis-powered loop"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0xA000001B",
+        "0xA000001C",
+        "0xA000001D",
+        "0xA000001F",
+        "0xA0000020",
+        "0xA0000021",
+        "0xA0000022",
+        "0xA0000023"
+      ],
+      "defaultChannelType": "0xA0000023"
+    }
+  },
+  "productSpecification": {
+    "en": {
+      "Output Ranges (Resolution)": "0 to 5 VDC  (1.22 mV), 0 to 10 VDC  (2.44 mV), -5 to +5 VDC  (2.44 mV), -10 to +10 VDC  (4.88 mV), 4 to 20 mA  (4 microamps), 0 to 20 mA  (5 microamps), 0 to 22 mA  (6 microamps)",
+      "Resolution": "Range / 4096 (12-bits)",
+      "Accuracy": "± 0.1% of span",
+      "Max Current for Voltage Output": "10 mA",
+      "Voltage Output impedance": "280 Ohms",
+      "External current loop power": "N/A, internal loop power only",
+      "Maximum loop resistance": "750 Ohms",
+      "Minimum loop resistance": "50 Ohms",
+      "Data Refresh Time": "10 ms",
+      "Problem Indication": "Current outputs: Open circuit / Voltage outputs: Over-current",
+      "Isolation (field-to-logic)": "300 V working, 1500 V transient (1 minute)",
+      "Isolation (channel-to-channel)": "None",
+      "Number of Channels": "8",
+      "Chassis Power Consumption": "1.8 W all voltage outputs / 6.2 W all current outputs",
+      "Minimum groov EPIC Firmware Version": "1.0.0",
+      "Minimum PAC Project Version": "10.0000",
+      "Minimum Library Package for CODESYS Version": "1.0.0.0",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "Lifetime"
+    }
+  }
+}

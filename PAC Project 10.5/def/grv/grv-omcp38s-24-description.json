@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.2.0",
+  "contentVersion": "1.0.0",
+  "moduleId": "0x94000029",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-OMCP38-24",
+  "numberOfChannels": 24,
+  "productDescription": {
+    "en": "AC/DC digital output, 24 electromechanical relays organized as a crosspoint switch with 8 channels and 3 buses"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0x94000086"
+      ],
+      "defaultChannelType": "0x94000086"
+    }
+  },
+  "productSpecification": {
+    "en": {
+      "Line Voltage Range": "0–250VAC or 0–220VDC",
+      "Max Switching Power": "125–250VAC 62.5W, 30VDC 60W, 110VDC 30W, 220VDC 60W",
+      "Max Current": "2 A per channel (subject to Max Switching Power)",
+      "Surge Current": "N/A",
+      "Recommended Fuse / Circuit Breaker": "2A",
+      "Leakage Current": "N/A",
+      "Contact Resistance": "< 50 mOhm initial",
+      "Turn-On Time": "< 3ms",
+      "Turn-Off Time": "< 5ms",
+      "Operating Life (to specification)": ">100,000 cycles at max ratings",
+      "Mechanical Life": "Min. 10,000,000 cycles",
+      "Transient Clamp Holding Voltage": "> 350V",
+      "Transient Clamping Voltage (max.)": "< 475V",
+      "Isolation (coil-to-contact)": "1500 V",
+      "Isolation (channel-to-channel)": "750 V",
+      "Number of Channels": "8 channels to 3 busses, 24 relays",
+      "Chassis Power Consumption": "4 W",
+      "Minimum GRV-EPIC-PR1 Firmware Version": "?",
+      "Minimum PAC Project Version": "?",
+      "Minimum Library Package for CODESYS Version": "?",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Shock (misoperation)": "5 G",
+      "Shock (survival)": "100 G",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "Agency Approvals": "None",
+      "Warranty": "30 months"
+    }
+  }
+}

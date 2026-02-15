@@ -1,0 +1,43 @@
+9
+ 1; 0x00000000; 0x000000F0; 0xB00F0330; SNAP-SCM-232: 2 Channel RS-232 Serial Communication Module;                              2;  0xFFFF; 2 Channel RS-232;
+ 2; 0x00000000; 0x000000F1; 0xB00F0330; SNAP-SCM-485-422: 2 Channel RS-485/422 (2-wire or 4-wire) Serial Communication Module;   2;  0xFFFF; 2 Channel RS-485/422 (2-wire or 4-wire);
+ 3; 0x00000000; 0x000000F3; 0xB00F0330; SNAP-SCM-232-1: 1 Channel RS-232 Serial Communication Module;                            1;  0xFFFF; 1 Channel RS-232;
+ 4; 0x00000000; 0x000000F6; 0xB00F0330; SNAP-SCM-PROFI: PROFIBUS Module;                                                         1;  0xFFFF; PROFIBUS Module;
+ 5; 0x00000000; 0x000000F8; 0xB00F0330; SNAP-SCM-MCH16: Motion Control Host Communication Module;                               16;  0xFFFF; Motion Control Host Communication Module;
+ 6; 0x00000000; 0x000000F9; 0xB00F0330; SNAP-SCM-W2: 2 Channel Wiegand Interface Serial Communication Module;                    2;  0xFFFF; 2 Channel Wiegand Interface;
+ 7; 0x00000000; 0x000000FA; 0xB00F0330; SNAP-SCM-SSI: Serial Synchronous Interface Module;                                       2;  0xFFFF; Serial Synchronous Interface Module;
+ 8; 0x00000000; 0x000000FB; 0xB00F0330; SNAP-SCM-ST2: 2 Channel Pulse & Direction Digital Output Module;                         2;  0xFFFF; 2 Channel Pulse & Direction Digital Output;
+ 9; 0x00000000; 0x000000FC; 0xB00F0330; SNAP-SCM-CAN2B: 1 Channel Controller Area Network Communication Module;                  1;  0xFFFF; 1 Channel Controller Area Network;
+
+
+Column 1: Unique Id
+
+Column 2: Channel Type
+
+Column 3: Module Type
+
+Column 4: Bitmask of I/O Units the module is allowed on
+      0x00020000 = Snap Remote Simple Digital
+      0x00040000 = Snap Digital 64 Ethernet I/O
+      0x00080000 = Snap Mixed 64 Ethernet I/O
+      0x00100000 = Snap Digital 64 Ultimate I/O
+      0x00200000 = Snap Mixed 64 Ultimate I/O
+      0x00400000 = Snap Mixed AD 64 Ultimate I/O
+      0x00800000 = Snap Mixed AD 64 Simple I/O
+      0x10000000 = SNAP-PAC-R1
+      0x20000000 = SNAP-PAC-R2
+      0x80000000 = SNAP-PAC-R1-B
+      0x00000010 = SNAP-PAC-EB1
+      0x00000020 = SNAP-PAC-EB2
+      0x00000100 = SNAP-PAC-SB1
+      0x00000200 = SNAP-PAC-SB2
+      0x04000000 = GRV-EPIC-PR1
+      0x08000000 = GRV-EPIC-PR2
+
+Column 5: Module name and description
+
+Column 6: Number of channels on the module
+
+Column 7: Bitmask of module positions on the rack where the module can reside
+
+Column 8: Optional description of the channel type

@@ -1,0 +1,32 @@
+18
+Analog Point            ,0
+Chart                   ,1
+Communication - I/O     ,2
+Communication - Network ,3
+Communication - Serial  ,4
+Controller              ,5
+Digital Point           ,6
+Event/Reaction          ,7
+I/O Unit                ,8
+Logical                 ,9
+Mathematical            ,10
+Miscellaneous           ,11
+PID                     ,12
+Simulation              ,13
+String                  ,14
+Time/Date               ,15
+Pointers                ,16
+Subroutines             ,99
+
+// Opto 22 reserves group numbers 0 - 99 for Action Groups and group
+// numbers 100 - 199 for Condition Groups.  User-defined groups must
+// use group numbers above 199.
+//
+// Please refer to the file USERCMDS.XID for information on creating and
+// formatting commands which are in user-defined groups. 
+//
+// Do not use group names longer than 25 characters.
+//
+// The number at the top of this file must be set to the number of groups
+// defined in the file.
+

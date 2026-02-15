@@ -1,0 +1,71 @@
+
+16
+
+;
+; wAddressHi     dwAddressLo       dwQty
+;
+
+; Digital Bank Read
+0xFFFF,          0xF0400000,       0x200
+
+; Analog Bank Read
+0xFFFF,          0xF0600000,       0x400
+
+; Alarm Event Settings
+0xFFFF,          0xF1100000,       0x2000
+
+; Scratch Pad Bits
+0xFFFF,		 0xF0D80000,	   0x8
+
+; Scratch Pad Integers
+0xFFFF,		 0xF0D81000,	   0x1000
+
+; Scratch Pad Floats
+0xFFFF,		 0xF0D82000,	   0x1000
+
+; Scratch Pad Strings (0 - 6)
+0xFFFF,		 0xF0D83000,	   0x38E
+
+; Scratch Pad Strings (7 - 13)
+0xFFFF,		 0xF0D8338E,	   0x38E
+
+; Scratch Pad Strings (14 - 20)
+0xFFFF,		 0xF0D8371C,	   0x38E
+
+; Scratch Pad Strings (21 - 27)
+0xFFFF,		 0xF0D83AAA,	   0x38E
+
+; Scratch Pad Strings (28 - 34)
+0xFFFF,		 0xF0D83E38,	   0x38E
+
+; Scratch Pad Strings (35 - 41)
+0xFFFF,		 0xF0D841C6,	   0x38E
+
+; Scratch Pad Strings (42 - 48)
+0xFFFF,		 0xF0D84554,	   0x38E
+
+; Scratch Pad Strings (49 - 55)
+0xFFFF,		 0xF0D848E2,	   0x38E
+
+; Scratch Pad Strings (56 - 62)
+0xFFFF,		 0xF0D84C70,	   0x38E
+
+; Scratch Pad Strings (63)
+0xFFFF,		 0xF0D84FFE,	   0x82
+
+
+
+;Notes:
+;
+; All blank lines or lines beginning with a simi-colon are considered "comment" lines
+;
+; The first (non-comment) line contains the quantity of Cache Areas
+;
+; Hexidecimal numbers need to begin with "Ox"
+;
+; wAddressHi and dwAddressLo represent the starting address (48 bit memory map address) of the mem map area to be cached.
+;
+; dwQty is the number of bytes in the respective area to cache.
+;
+; 
+

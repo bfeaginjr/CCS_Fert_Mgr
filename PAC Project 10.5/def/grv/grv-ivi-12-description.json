@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.7",
+  "moduleId": "0x60000025",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-IVI-12",
+  "numberOfChannels": 12,
+  "productDescription": {
+    "en": "Analog voltage input, 12 channels, configurable input ranges from ±160 VDC to ±1.25 VDC, channel-to-channel isolation"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0x60000024",
+        "0x6000000D",
+        "0x6000000B",
+        "0x6000000A",
+        "0x60000017",
+        "0x60000019",
+        "0x60000025",
+        "0x60000001"
+      ],
+      "defaultChannelType": "0x60000024"
+    }
+  },
+  "productSpecification": {
+    "en": {
+      "Input Ranges": "±160.0 VDC, ±80.0 VDC, ±40.0 VDC, ±20.0 VDC, ±10.0 VDC, ±5.0 VDC, ±2.5 VDC, ±1.25 VDC",
+      "Over-range limits": "±176.0 VDC, ±88.0 VDC, ±44.0 VDC, ±22.0 VDC, ±11.0 VDC, ±5.5 VDC, ±2.75 VDC, ±1.375 VDC",
+      "Resolution": "Range / 1,048,576 (20-bits)",
+      "Accuracy ±0.1% of Full Scale": "±160 mV, ±80 mV, ±40 mV, ±20 mV, ±10 mV, ±5 mV, ±2.5 mV, ±1.25 mV",
+      "Input Impedance Nominal": "9.7 MOhms",
+      "Input Filter": "-3 dB at 46 HZ",
+      "Analog Data Filtering": "-3 dB @ 46 Hz / -5 dB @ 60 Hz",
+      "Software Filtering: Simple Moving Average (SMA)": "1 to 32 readings",
+      "Software Filtering: Weighted Average": "1 to 4096",
+      "Data Refresh Time": "15.5 ms",
+      "Step Input Response Time": "16.5 ms x SMA value (0.53 s @ 32 SMA, Default SMA = 4 )",
+      "Common Mode Rejection": "> -120 dB",
+      "Max. Survivable Input": "300 V",
+      "Max. Operating Common Mode Voltage": "250 V",
+      "Problem Indications": "out of range",
+      "Isolation (field-to-logic)": "300 V working, 1500 V transient (1 minute)",
+      "Isolation (channel-to-channel)": "300 V working, 1500 V transient (1 minute)",
+      "Number of Channels": "12",
+      "Chassis Power Consumption": "2.2 W",
+      "Minimum groov EPIC Firmware Version": "1.4.2",
+      "Minimum PAC Project Version": "10.2003",
+      "Minimum Library Package for CODESYS Version": "1.0.2.0",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "Lifetime"
+    }
+  }
+}

@@ -1,0 +1,650 @@
+{
+  "schemaVersion": "1.2.3",
+  "contentVersion": "1.1.2",
+  "moduleId": "0x6000002D",
+  "family": "GRV-RIO",
+  "productNumber": "GRV-R7-I1VAPM-3",
+  "numberOfChannels": 64,
+  "productDescription": {
+    "en": "groov RIO, input, power monitoring, 3 phase, 600 VAC with 0.333 V, 1 V, or 5 A CT"
+  },
+  "channelDescriptions": {
+    "0": {
+      "description": {
+        "en": "Phase A: Voltage, Wye or Delta"
+      },
+      "channelTypes": [
+        "0x60000087",
+        "0x60000088",
+        "0x6000008A",
+        "0x60000089",
+        "0x6000008E",
+        "0x6000008B"
+      ],
+      "defaultChannelType": "0x60000089"
+    },
+    "1": {
+      "description": {
+        "en": "Phase A: Current Transformer"
+      },
+      "channelTypes": [
+        "0x6000008C",
+        "0x600000A1",
+        "0x6000008D",
+        "0x600000A3"
+      ],
+      "defaultChannelType": "0x6000008C"
+    },
+    "2": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x6000008F"
+      ],
+      "defaultChannelType": "0x6000008F"
+    },
+    "3": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x60000090"
+      ],
+      "defaultChannelType": "0x60000090"
+    },
+    "4": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x60000091"
+      ],
+      "defaultChannelType": "0x60000091"
+    },
+    "5": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x60000092"
+      ],
+      "defaultChannelType": "0x60000092"
+    },
+    "6": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x60000093"
+      ],
+      "defaultChannelType": "0x60000093"
+    },
+    "7": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x60000094"
+      ],
+      "defaultChannelType": "0x60000094"
+    },
+    "8": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x60000095"
+      ],
+      "defaultChannelType": "0x60000095"
+    },
+    "9": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x60000096"
+      ],
+      "defaultChannelType": "0x60000096"
+    },
+    "10": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x60000097"
+      ],
+      "defaultChannelType": "0x60000097"
+    },
+    "11": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x60000098"
+      ],
+      "defaultChannelType": "0x60000098"
+    },
+    "12": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x60000099"
+      ],
+      "defaultChannelType": "0x60000099"
+    },
+    "13": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x6000009A"
+      ],
+      "defaultChannelType": "0x6000009A"
+    },
+    "14": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x6000009C"
+      ],
+      "defaultChannelType": "0x6000009C"
+    },
+    "15": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x6000009D"
+      ],
+      "defaultChannelType": "0x6000009D"
+    },
+    "16": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x6000009E"
+      ],
+      "defaultChannelType": "0x6000009E"
+    },
+    "17": {
+      "description": {
+        "en": "Phase A"
+      },
+      "channelTypes": [
+        "0x6000009F"
+      ],
+      "defaultChannelType": "0x6000009F"
+    },
+    "18": {
+      "description": {
+        "en": "Phase B: Voltage, Wye or Delta"
+      },
+      "channelTypes": [
+        "0x60000087",
+        "0x60000088",
+        "0x6000008A",
+        "0x60000089",
+        "0x6000008E",
+        "0x6000008B"
+      ],
+      "defaultChannelType": "0x60000089"
+    },
+    "19": {
+      "description": {
+        "en": "Phase B: Current Transformer"
+      },
+      "channelTypes": [
+        "0x6000008C",
+        "0x600000A1",
+        "0x6000008D",
+        "0x600000A3"
+      ],
+      "defaultChannelType": "0x6000008C"
+    },
+    "20": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x6000008F"
+      ],
+      "defaultChannelType": "0x6000008F"
+    },
+    "21": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x60000090"
+      ],
+      "defaultChannelType": "0x60000090"
+    },
+    "22": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x60000091"
+      ],
+      "defaultChannelType": "0x60000091"
+    },
+    "23": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x60000092"
+      ],
+      "defaultChannelType": "0x60000092"
+    },
+    "24": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x60000093"
+      ],
+      "defaultChannelType": "0x60000093"
+    },
+    "25": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x60000094"
+      ],
+      "defaultChannelType": "0x60000094"
+    },
+    "26": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x60000095"
+      ],
+      "defaultChannelType": "0x60000095"
+    },
+    "27": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x60000096"
+      ],
+      "defaultChannelType": "0x60000096"
+    },
+    "28": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x60000097"
+      ],
+      "defaultChannelType": "0x60000097"
+    },
+    "29": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x60000098"
+      ],
+      "defaultChannelType": "0x60000098"
+    },
+    "30": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x60000099"
+      ],
+      "defaultChannelType": "0x60000099"
+    },
+    "31": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x6000009A"
+      ],
+      "defaultChannelType": "0x6000009A"
+    },
+    "32": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x6000009C"
+      ],
+      "defaultChannelType": "0x6000009C"
+    },
+    "33": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x6000009D"
+      ],
+      "defaultChannelType": "0x6000009D"
+    },
+    "34": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x6000009E"
+      ],
+      "defaultChannelType": "0x6000009E"
+    },
+    "35": {
+      "description": {
+        "en": "Phase B"
+      },
+      "channelTypes": [
+        "0x6000009F"
+      ],
+      "defaultChannelType": "0x6000009F"
+    },
+    "36": {
+      "description": {
+        "en": "Phase C: Voltage, Wye or Delta"
+      },
+      "channelTypes": [
+        "0x60000087",
+        "0x60000088",
+        "0x6000008A",
+        "0x60000089",
+        "0x6000008E",
+        "0x6000008B"
+      ],
+      "defaultChannelType": "0x60000089"
+    },
+    "37": {
+      "description": {
+        "en": "Phase C: Current Transformer"
+      },
+      "channelTypes": [
+        "0x6000008C",
+        "0x600000A1",
+        "0x6000008D",
+        "0x600000A3"
+      ],
+      "defaultChannelType": "0x6000008C"
+    },
+    "38": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x6000008F"
+      ],
+      "defaultChannelType": "0x6000008F"
+    },
+    "39": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x60000090"
+      ],
+      "defaultChannelType": "0x60000090"
+    },
+    "40": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x60000091"
+      ],
+      "defaultChannelType": "0x60000091"
+    },
+    "41": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x60000092"
+      ],
+      "defaultChannelType": "0x60000092"
+    },
+    "42": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x60000093"
+      ],
+      "defaultChannelType": "0x60000093"
+    },
+    "43": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x60000094"
+      ],
+      "defaultChannelType": "0x60000094"
+    },
+    "44": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x60000095"
+      ],
+      "defaultChannelType": "0x60000095"
+    },
+    "45": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x60000096"
+      ],
+      "defaultChannelType": "0x60000096"
+    },
+    "46": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x60000097"
+      ],
+      "defaultChannelType": "0x60000097"
+    },
+    "47": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x60000098"
+      ],
+      "defaultChannelType": "0x60000098"
+    },
+    "48": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x60000099"
+      ],
+      "defaultChannelType": "0x60000099"
+    },
+    "49": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x6000009A"
+      ],
+      "defaultChannelType": "0x6000009A"
+    },
+    "50": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x6000009C"
+      ],
+      "defaultChannelType": "0x6000009C"
+    },
+    "51": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x6000009D"
+      ],
+      "defaultChannelType": "0x6000009D"
+    },
+    "52": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x6000009E"
+      ],
+      "defaultChannelType": "0x6000009E"
+    },
+    "53": {
+      "description": {
+        "en": "Phase C"
+      },
+      "channelTypes": [
+        "0x6000009F"
+      ],
+      "defaultChannelType": "0x6000009F"
+    },
+    "54": {
+      "description": {
+        "en": "All 3 Phases: Total True Power"
+      },
+      "channelTypes": [
+        "0x6000008F"
+      ],
+      "defaultChannelType": "0x6000008F"
+    },
+    "55": {
+      "description": {
+        "en": "All 3 Phases: Total Reactive Power"
+      },
+      "channelTypes": [
+        "0x60000090"
+      ],
+      "defaultChannelType": "0x60000090"
+    },
+    "56": {
+      "description": {
+        "en": "All 3 Phases: Total Apparent Power"
+      },
+      "channelTypes": [
+        "0x60000091"
+      ],
+      "defaultChannelType": "0x60000091"
+    },
+    "57": {
+      "description": {
+        "en": "Total Net Energy for All 3 Phases"
+      },
+      "channelTypes": [
+        "0x6000009A"
+      ],
+      "defaultChannelType": "0x6000009A"
+    },
+    "58": {
+      "description": {
+        "en": "Total Unsigned Energy for All 3 Phases"
+      },
+      "channelTypes": [
+        "0x6000009B"
+      ],
+      "defaultChannelType": "0x6000009B"
+    },
+    "59": {
+      "description": {
+        "en": "Total Positive Energy for All 3 Phases"
+      },
+      "channelTypes": [
+        "0x6000009C"
+      ],
+      "defaultChannelType": "0x6000009C"
+    },
+    "60": {
+      "description": {
+        "en": "Total Negative Energy for All 3 Phases"
+      },
+      "channelTypes": [
+        "0x6000009D"
+      ],
+      "defaultChannelType": "0x6000009D"
+    },
+    "61": {
+      "description": {
+        "en": "Total Net Reactive Energy for All 3 Phases"
+      },
+      "channelTypes": [
+        "0x6000009E"
+      ],
+      "defaultChannelType": "0x6000009E"
+    },
+    "62": {
+      "description": {
+        "en": "Total Net Apparent Energy for All 3 Phases"
+      },
+      "channelTypes": [
+        "0x6000009F"
+      ],
+      "defaultChannelType": "0x6000009F"
+    },
+    "63": {
+      "description": {
+        "en": "Average Power Factor for All 3 Phases"
+      },
+      "channelTypes": [
+        "0x60000092"
+      ],
+      "defaultChannelType": "0x60000092"
+    }
+  },
+  "productSpecification": {
+    "en": {
+      "Maximum UL61010–3 Measurement Category": "Category III 600 VAC",
+      "Delta Voltage Input Ranges, Vrms": "600, 520, 260 (Line-to-Line)",
+      "Wye Voltage Input Ranges, Vrms": "400, 300, 150 (Line-to-Neutral; higher voltages require use of potential transformer)",
+      "Voltage Accuracy (% of range @ 50–60 Hz, excluding voltage transformer)": "Wye: ±0.35%, Delta: ±0.5%",
+      "Current Transformer (CT) Outputs Supported": "5.0 A, 1.0 VAC or 0.3333 VAC",
+      "Current Accuracy (% of CT range @ 50–60 Hz, excluding current transformer)": "±0.5%",
+      "Power Accuracy (% of (Vrms range) * (CT current rating), @ 50–60Hz)": "±0.5%",
+      "Data Refresh Time": "1 s",
+      "Step Response Time": "1 s",
+      "Problem Indication": "Vrms out of range, Irms out of range",
+      "Number of Data Channels": "64",
+      "Ethernet": "Two switched Gigabit ports; daisy-chainable; ETH1 with 802.3af PoE powered device (PD)",
+      "USB": "One Port, USB 2.0 HS",
+      "Memory": "1 GB RAM, 4.0 GB disk space",
+      "Power Supply": "802.3af PoE Class 0 or 10–32 V DC",
+      "Power Consumption": "4.5 W",
+      "Isolation (field to Ethernet / power input)": "3600 VAC working, 5400 VAC transient",
+      "Isolation (channel-to-channel)": "N/A",
+      "Minimum GRV-R7 Firmware Version": "3.3.0",
+      "Minimum groov EPIC Firmware Version": "3.3.0",
+      "Minimum PAC Project Version": "10.4000",
+      "Minimum Library Package for CODESYS Version": "2.0.4.0",
+      "Field Connector Wire Size": "28–14 AWG",
+      "Torque, field connector screw": "2.5 in-lb (0.28 N-m)",
+      "Power Connector Wire Size": "22–14 AWG",
+      "Torque, DC power connector screws": "7.0 in-lb (0.79 N-m)",
+      "Torque, panel mount tab screw": "2.0 in-lb (0.23 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "MTBF (minimum, 25 °C)": "1.2 Mhrs",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "30 months"
+    }
+  }
+}

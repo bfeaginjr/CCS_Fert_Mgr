@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.13",
+  "moduleId": "0x60000006",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-ITMI-8",
+  "numberOfChannels": 8,
+  "productDescription": {
+    "en": "Analog input, 8 channel, thermocouple or mV, channel-to-channel isolation"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0x60000002",
+        "0x60000003",
+        "0x60000004",
+        "0x60000005",
+        "0x60000006",
+        "0x60000007",
+        "0x60000008",
+        "0x60000009",
+        "0x6000000C",
+        "0x6000000E",
+        "0x6000000F",
+        "0x60000010",
+        "0x60000011",
+        "0x60000012",
+        "0x60000013"
+      ],
+      "defaultChannelType": "0x60000002"
+    }
+  },
+  "productSpecification": {
+    "en": {
+      "Millivolt Input Ranges": "±1200.0 mV, ±600.0 mV, ±300.0 mV, ±150.0 mV, ±75.0 mV, ±50.0 mV, ±25.0 mV",
+      "Over range limits (± 10%)": "±1320.0 mV, ±660.0 mV, ±330.0 mV, ±165.0 mV, ±82.5 mV, ±55.0 mV, ±27.5 mV",
+      "Resolution": "mV Range / 1,048,576  (20 bits)",
+      "Accuracy": "±1200 µV, ±600 µV, ±300 µV, ±150 µV, ±75 µV, ±50 µV, ±50 µV",
+      "Thermocouple ITS90 Types": "Accuracy (default) / Accuracy (user-calibrated) / Resolution",
+      "B:   90 °C to 1,820 °C": "5.0 °C / 3.0 °C, @ 250 °C / 0.05 °C",
+      "E: -270 °C to 1,000 °C": "2.0 °C / 0.5 °C, @ 0.0 °C / 0.05 °C",
+      "J: -210 °C to 1,200 °C": "2.0 °C / 0.5 °C, @ 0.0 °C / 0.05 °C",
+      "K: -270 °C to 1,372 °C": "2.0 °C / 0.5 °C, @ 0.0 °C / 0.05 °C",
+      "N: -270 °C to 1,300 °C": "3.0 °C / 0.8 °C, @ 0.0 °C / 0.05 °C",
+      "R:  -50 °C to 1,768 °C": "5.0 °C / 2.5 °C, @ 250 °C / 0.05 °C",
+      "S:  -50 °C to 1,768 °C": "5.0 °C / 3.0 °C, @ 250 °C / 0.05 °C",
+      "T: -270 °C to  400 °C": "3.0 °C / 0.5 °C, @ 0.0 °C  / 0.05 °C",
+      "Cold Junction Compensation": "Automatic",
+      "Analog Data Filtering": "-3 dB @ 14 Hz / -25 dB @ 60 Hz",
+      "Software Filtering: Simple Moving Average (SMA)": "1 to 32 readings",
+      "Software Filtering: Weighted Average": "1 to 4096",
+      "Data Refresh Time": "mV Ranges = 100 ms  /  T/C Ranges = 200 ms",
+      "Step Input Response Time": "16.5 ms x SMA value (0.53 s @ 32 SMA, Default SMA = 8 )",
+      "Common Mode Rejection": "> -120 dB",
+      "Input Resistance": "100 megohm",
+      "Problem Indication": "out of range, open thermocouple",
+      "Isolation (field-to-logic)": "300 V working, 1500 V transient (1 minute)",
+      "Isolation (channel-to-channel)": "300 V working, 1500 V transient (1 minute)",
+      "Number of Channels": "8",
+      "Chassis Power Consumption": "1.4 W",
+      "Minimum groov EPIC Firmware Version": "1.0.0",
+      "Minimum PAC Project Version": "10.0000",
+      "Minimum Library Package for CODESYS Version": "1.0.0.0",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Humidity (non-condensing)": "5–95% RH",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "Lifetime"
+    }
+  }
+}

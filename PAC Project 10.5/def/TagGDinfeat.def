@@ -1,0 +1,20 @@
+9
+0x00000000, None, N/A, INPUT
+0x00000001, Counter, Counts, COUNTER
+0x00000002, Quadrature Counter, Counts, QUADRATURE
+0x00000010, On-Pulse, Seconds, +PULSE
+0x00000020, Off-Pulse, Seconds, -PULSE
+0x00000040, Frequency, Hz, FREQ
+0x00000080, Period, Seconds, PERIOD
+0x00000100, On-Time Totalizer, Seconds, +TOTALIZER
+0x00000200, Off-Time Totalizer, Seconds, -TOTALIZER
+
+
+Column 1: Bitmask of Feature
+
+Column 3: Feature Name
+
+Column 3: Feature Units
+
+Column 4: Compiler Feature String
+

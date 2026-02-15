@@ -1,0 +1,109 @@
+
+27
+
+;
+; wAddressHi     dwAddressLo       dwCacheAreaSize,	dwScanAreaSize
+;
+
+; Analog Point Read (0 - 4095)
+0xFFFF,          0xF0260000,       0x40000,             0x400
+
+; Digital Bank Read (0 - 63)
+0xFFFF,          0xF0400000,       0x200,		0x200
+
+; Analog Bank Read (0 - 63)
+0xFFFF,          0xF0600000,       0x400,		0x400
+
+; Alarm Event Settings (0 - 63)
+0xFFFF,          0xF1100000,       0x2000,		0x400
+
+; Scratch Pad Bits (0 - 63)
+0xFFFF,		 0xF0D80000,	   0x8,			0x8
+
+; Scratch Pad Integers (0 - 1023)
+0xFFFF,		 0xF0D81000,	   0x1000,		0x400
+
+; Scratch Pad Floats (0 - 1023)
+0xFFFF,		 0xF0D82000,	   0x1000,		0x400
+
+; Scratch Pad Strings (0 - 63)
+0xFFFF,		 0xF0D83000,	   0x2080,		0x410
+
+; Scratch Pad Integers Extended (1024 - 10239)
+0xFFFF,		 0xF0DA0000,	   0x9000,		0x400
+
+; Scratch Pad Floats Extended (1024 - 10239)
+0xFFFF,		 0xF0DC0000,	   0x9000,		0x400
+
+; PID Current Algorithm Values and Status Flags
+0xFFFF,		 0xF2000000,	   0x2800,		0x140
+
+; PID Scanned Values and Configuration Addresses
+0xFFFF,		 0xF2100000,	   0x4000,		0x200
+
+; High Density Digital State, OnLatch, OffLatch
+0xFFFF,	         0xF1808000,       0x400,               0x400
+
+; High Density Digital Counter
+0xFFFF,	         0xF1809000,       0x1000,              0x400
+0xFFFF,          0xF01E0000,       0x40000,             0x400
+
+; I/O Configuration
+0xFFFF,	         0xF0100000,       0xc0000,             0x400
+
+; Status Read Area
+0xFFFF,	         0xF0300000,       0x14C,               0x14C
+
+; 64-bit Milliseconds Since Powerup Area
+0xFFFF,	         0xF0300228,       0x008,               0x008
+
+; Seconds Since Powerup Area
+0xFFFF,	         0xF0300160,       0x004,               0x004
+
+; Status Write Area
+0xFFFF,	         0xF0380000,       0x004,               0x004
+0xFFFF,	         0xF0380010,       0x004,               0x004
+0xFFFF,	         0xF0380050,       0x008,               0x008
+0xFFFF,	         0xF0380294,       0x004,               0x004
+
+; Date Time String
+0xFFFF,	         0xF0350000,       0x018,               0x018
+
+; SNMP Location Strings
+0xFFFF,	         0xF03C0000,       0x060,               0x060
+
+; Old I/O Configuration
+0xFFFF,	         0xF0C00000,       0x1000,              0x400
+
+; Pulsed Output Area
+0xFFFF,	         0xF08C4000,       0x6000,              0x200
+
+
+;
+; wAddressHi     dwAddressLo       dwCacheAreaSize,	dwScanAreaSize
+;
+
+
+;Notes:
+;
+; All blank lines or lines beginning with a simi-colon are considered "comment" lines
+;
+; The first (non-comment) line contains the quantity of Cache Areas
+;
+; Hexidecimal numbers need to begin with "0x"
+;
+; wAddressHi and dwAddressLo represent the starting address (48 bit memory map address)
+; of the mem map area to be cached.
+;
+; dwCacheAreaSize is the number of bytes in the respective area to cache.
+;
+; dwScanAreaSize: when the scanner reads from the memory map, it should only do so in
+; chunks that are <= 1536 (0x600) bytes. Therefore, areas that are much larger must be 
+; divided into reasonable sized chunks. This "chunk" size is dwScanAreaSize. Also, the
+; value of dwScanAreaSize should be evenly divisable by the number of bytes in the
+; respective data type. For example, in the scratch Pad string area, each string 
+; occupies 130 (0x82) bytes. Eight strings would occupy 1040 (ox410) bytes, which is 
+; less than or equal to 1536. Therefore, 1040 is a reasonable value for dwScanAreaSize.
+; As another example, in the Alarm Event Settings area, each "Alarm" occupies 128 (0x80)
+; bytes. Eight Alarms would occupy 1024 (0x400) bytes, which is less than or equal to 
+; 1536. Therefore, 1024 is a reasonable value for dwScanAreaSize. 

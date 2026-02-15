@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.5",
+  "moduleId": "0x50000023",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-IDCSW-12",
+  "numberOfChannels": 12,
+  "productDescription": {
+    "en": "DC input, 12 channels, switch status"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0x50000068"
+      ],
+      "defaultChannelType": "0x50000068"
+    }
+  },
+  "productSpecification": {
+    "en": {
+      "Open Circuit Voltage (Switch Open)": "> 20 V",
+      "Channel Current Limit": "2.0 mA ±25%",
+      "Channel Operating Current": "0.7 mA typical",
+      "Minimum Off Resistance": "50 KOhms",
+      "Maximum On Resistance": "10 KOhms",
+      "Minimum ON Voltage": "4.5 V",
+      "Maximum OFF Voltage": "1.5 V",
+      "Maximum Continuous Survivable Input Voltage": "32 V",
+      "Input Impedance": "3.9 KOhms",
+      "Max. Freq. (50% square wave)": "80 Hz",
+      "Debounce Time": ">500 microseconds",
+      "Isolation (field-to-logic)": "300 V working, 1500 V transient (1 minute)",
+      "Isolation (channel-to-channel)": "None",
+      "Number of Channels": "12",
+      "Chassis Power Consumption": "2.4 W",
+      "Minimum groov EPIC Firmware Version": "1.4.2",
+      "Minimum PAC Project Version": "10.2003",
+      "Minimum Library Package for CODESYS Version": "1.0.2.0",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "Lifetime"
+    }
+  }
+}

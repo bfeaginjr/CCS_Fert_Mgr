@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.2.0",
+  "contentVersion": "1.0.10",
+  "moduleId": "0x9400001C",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-OACS-12",
+  "numberOfChannels": 12,
+  "productDescription": {
+    "en": "AC digital output, 12 channels, 12–250 VAC, on/off only"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0x94000000"
+      ],
+      "defaultChannelType": "0x94000000"
+    }
+  },
+  "enhancedDigitalChannelTypeId": "0x94000074",
+  "productSpecification": {
+    "en": {
+      "Line Voltage": "12–250 VAC",
+      "Current Rating (per channel)": "0.5 A",
+      "Recommended Max. Fuse (fast) or Circuit Breaker": "2 A 250 VAC / channel, 6 A 250 VAC common",
+      "Minimum Load Current": "20 mA",
+      "Output Voltage Drop": "1 V",
+      "Off-state Leakage at Nominal Voltage - 60 Hz": "1.25 mA @240 VAC, 0.7 mA @120 VAC",
+      "Peak Blocking Voltage": "500 V",
+      "Operating Frequency": "40 to 60 Hz, 400 Hz",
+      "Turn-on Time": "≤ 1/2 cycle (zero crossing)",
+      "Turn-off Time": "≤ 1/2 cycle (zero crossing)",
+      "TPO Period (min, max, resolution)": "N/A",
+      "Problem Indication": "none",
+      "Isolation (field-to-logic)": "300 V working, 1500 V transient (1 minute)",
+      "Isolation (channel-to-channel)": "NONE",
+      "Number of Channels": "12",
+      "Chassis Power Consumption": "1.3 W",
+      "Minimum groov EPIC Firmware Version": "1.0.0",
+      "Minimum PAC Project Version": "10.0000",
+      "Minimum Library Package for CODESYS Version": "1.0.0.0",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "Lifetime"
+    }
+  }
+}

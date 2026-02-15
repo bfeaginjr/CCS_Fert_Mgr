@@ -1,0 +1,14 @@
+3
+0x00000000, None, N/A, OUTPUT
+0x00010000, TPO, Percent, TPO
+0x00020000, Pulsed Output, None, PO
+
+
+Column 1: Bitmask of Feature
+
+Column 2: Feature Name
+
+Column 3: Feature Units
+
+Column 4: Compiler Feature String
+

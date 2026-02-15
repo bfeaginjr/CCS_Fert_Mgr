@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.2.0",
+  "contentVersion": "1.0.9",
+  "moduleId": "0x94000019",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-OMRIS-8",
+  "numberOfChannels": 8,
+  "productDescription": {
+    "en": "AC/DC digital output, 8 channels, electromechanical Form C relay, 0–250 VAC/5–30 VDC, 5 A"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0x94000000"
+      ],
+      "defaultChannelType": "0x94000000"
+    }
+  },
+  "enhancedDigitalChannelTypeId": "0x94000078",
+  "productSpecification": {
+    "en": {
+      "Line Voltage Range (nominal)": "0–250 VAC or 5–30 VDC",
+      "Current Rating": "5 A per channel",
+      "Surge Current": "6 A peak for 1 second",
+      "Recommended Fuse / Circuit Breaker": "5 A at 250 VAC / > 30 VDC per channel",
+      "Leakage Current": "< 2 µA @ 250 VAC",
+      "Contact Resistance": "≤100 mOhms",
+      "Turn-On Time": "8 ms",
+      "Turn-Off Time": "4 ms",
+      "Operating Life (to specification)": "Min. 30,000 cycles at max. ratings",
+      "Mechanical Life": "Min. 10,000,000 cycles",
+      "Transient Clamp Holding Voltage": "440 V",
+      "Transient Clamping Voltage (max.)": "720 V",
+      "Isolation (coil-to-contact)": "4000 VACrms 1 min., 10 mA detect/channel",
+      "Isolation (channel-to-channel)": "300 V working, 1500 V transient (1 minute)",
+      "Number of Channels": "8",
+      "Chassis Power Consumption": "1.4 W",
+      "Minimum groov EPIC Firmware Version": "1.0.0",
+      "Minimum PAC Project Version": "10.0000",
+      "Minimum Library Package for CODESYS Version": "1.0.0.0",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Shock (misoperation)": "5 G",
+      "Shock (survival)": "100 G",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "30 months"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+26
+Analog Point            ,0
+Chart                   ,1
+I/O Unit - Memory Map   ,2
+Control Engine          ,5
+Digital Point           ,6
+Event/Reaction          ,7
+I/O Unit                ,8
+Logical                 ,9
+Mathematical            ,10
+Miscellaneous           ,11
+PID - Ethernet          ,12
+Simulation              ,13
+String                  ,14
+Time/Date               ,15
+Pointers                ,16
+Communication           ,17
+I/O Unit - Event Message,18
+Timing                  ,19
+Error Handling          ,20
+I/O Unit - Scratch Pad  ,21
+High Density Digital Module, 22
+PID - Mistic            ,23
+Deprecated              ,24
+Quality                 ,25
+Module                  ,26
+Subroutines             ,99
+
+
+// Opto 22 reserves group numbers 0 - 99 for Action Groups and group
+// numbers 100 - 199 for Condition Groups.  
+//
+
+// Do not use group names longer than 25 characters.
+//
+// The number at the top of this file must be set to the number of groups
+// defined in the file.
+

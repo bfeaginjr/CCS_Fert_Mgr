@@ -1,0 +1,72 @@
+ _____________________________________________________________________________________
+| ServerCollection                                                                    |
+|	Events: GlobalDataChange, ServerShuttingDown, AsyncWriteComplete,             |
+|		AsyncCancelComplete                                                   |
+|	Methods: DialogAddServer, AddServer, RemoveServer, GetServer,                 |
+|		 DialogAddGroup, AddGroup, DialogModifyGroup,                         |
+|		 RemoveGroup, GetGroup,                                               |
+|		 DialogAddItems, AddItems, RemoveItem, RemoveItems,                   |
+|		 ReadItem, ReadItems, WriteItem, WriteItems, GetItem,                 |
+|		 AsyncReadItems, AsyncWriteItems, AsyncRefresh, AsyncCancel           |
+|	 ___________________________________________________________________________  |
+|	| CServer                                                                   | |
+|	|	Events: GlobalDataChange, ServerShuttingDown, AsyncWriteComplete    | |
+|	|		AsyncCancelComplete                                         | |
+|	|	Methods: ConnectToServer, DisconnectFromServer,                     | |
+|	|		 DialogAddGroup, AddGroup, DialogModifyGroup,               | |
+|	|		 RemoveGroup, GetGroup,                                     | |
+|	|		 DialogAddItems, AddItems, RemoveItem, RemoveItems,         | |
+|	|		 ReadItem, ReadItems, WriteItem, WriteItems, GetItem,       | |
+|	|		 AsyncReadItems, AsyncWriteItems, AsyncRefresh, AsyncCancel | |
+|	|	 _______________________________                                    | |
+|	|	| frmServer                     |                                   | |
+|	|	|	 _____________________  |                                   | |
+|	|	|	| OPCServer           | |                                   | |
+|	|	|	|	 ___________  | |                                   | |
+|	|	|	|	| OPCGroups | | |                                   | |
+|	|	|	|	|___________| | |                                   | |
+|	|	|	|_____________________| |                                   | |
+|	|	|_______________________________|                                   | |
+|	|                                                                           | |
+|	|	 _________________________________________________________________  | |
+|	|	| GroupCollection                                                 | | |
+|	|	|	 _______________________________________________________  | | |
+|	|	|	| CGroup                                                | | | |
+|	|	|	|	Methods: AddItems, RemoveItem, RemoveItems,     | | | |
+|	|	|	|		 ReadItem, ReadItems, AsyncReadItems,   | | | |
+|	|	|	|		 WriteItem, WriteItems, AsyncWriteItems | | | |
+|	|	|	|		 AsyncRefresh, AsyncCancel, GetItem     | | | |
+|	|	|	|	Properties: GroupName, IsActive,                | | | |
+|	|	|	|	            UpdateRate, TimeBias,               | | | |
+|	|	|	|	            Deadband, DataChangeMethod          | | | |
+|	|	|	|	 ______________________________                 | | | |
+|	|	|	|	| frmGroup                     |                | | | |
+|	|	|	|	|	 ____________________  |                | | | |
+|	|	|	|	|	| OPCGroup           | |                | | | |
+|	|	|	|	|	|	 __________  | |                | | | |
+|	|	|	|	|	|	| OPCItems | | |                | | | |
+|	|	|	|	|	|	|__________| | |                | | | |
+|	|	|	|	|	|____________________| |                | | | |
+|	|	|	|	|______________________________|                | | | |
+|	|	|	|	                                                | | | |
+|	|	|	|	 _____________________________________________  | | | |
+|	|	|	|	| ItemCollection                              | | | | |
+|	|	|	|	|	 ___________________________________  | | | | |
+|	|	|	|	|	| CItem                             | | | | | |
+|	|	|	|	|	|    Methods: ReadItem, WriteItem   | | | | | |
+|	|	|	|	|	|    Properties: AccessPath,        | | | | | |
+|	|	|	|	|	|                AccessRights,      | | | | | |
+|	|	|	|	|	|                CanonicalDatatype, | | | | | |
+|	|	|	|	|	|                IsActive, ItemID,  | | | | | |
+|	|	|	|	|	|                RequestedDatatype, | | | | | |
+|	|	|	|	|	|                Quality, TimeStamp,| | | | | |
+|	|	|	|	|	|                Value              | | | | | |
+|	|	|	|	|	|     _________                     | | | | | |
+|	|	|	|	|	|    | OPCItem |                    | | | | | |
+|	|	|	|	|	|    |_________|                    | | | | | |
+|	|	|	|	|	|___________________________________| | | | | |
+|	|	|	|	|_____________________________________________| | | | |
+|	|	|	|_______________________________________________________| | | |
+|	|	|_________________________________________________________________| | |
+|	|___________________________________________________________________________| |
+|_____________________________________________________________________________________|

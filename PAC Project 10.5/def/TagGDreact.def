@@ -1,0 +1,73 @@
+28
+ 0,  0, 0x00012002, None,                             0, 0, 0x00000000,            , 0,  0,                , 0,            , 0
+ 6,  1, 0x00012002, Enable Scan for Event,            0, 1, 0x00000008, &Event:,     0, -1,                , 0,            , 0
+ 6,  2, 0x00012002, Disable Scan for Event,           0, 1, 0x00000008, &Event:,     0,  0,                , 0,            , 0
+14, 26, 0x00012002, Enable Scan for E/R Group,        0, 1, 0x00000080, &E/R Group:, 0, -1,                , 0,            , 0
+14, 27, 0x00012002, Disable Scan for E/R Group,       0, 1, 0x00000080, &E/R Group:, 0,  0,                , 0,            , 0
+13,  3, 0x00012002, Disable Scan for All Events,      0, 0, 0x00000000,            , 0,  0,                , 0,            , 0
+ 1,  4, 0x00012002, Set MOMO Outputs,                 0, 0, 0x00000000,            , 0,  4,                , 0, 
+ 2,  5, 0x00012002, Start On-Pulse,                   1, 0, 0x10000000, I/O &Point:, 0,  3, P&ulse Length:,  0, 
+ 3,  6, 0x00012002, Start Off-Pulse,                  1, 0, 0x10000000, I/O &Point:, 0,  3, P&ulse Length:,  0, 
+ 4,  7, 0x00012002, Start Counter,                    0, 0, 0x00000001, I/O &Point:, 0, -1,                , 0, 
+ 4,  8, 0x00012002, Stop Counter,                     0, 0, 0x00000001, I/O &Point:, 0,  0,                , 0, 
+ 4, 24, 0x00010002, Start Quadrature Counter,         0, 0, 0x00000002, I/O &Point:, 0, -1,                , 0, 
+ 4, 25, 0x00010002, Stop Quadrature Counter,          0, 0, 0x00000002, I/O &Point:, 0,  0,                , 0, 
+ 5,  9, 0x00012002, Clear Counter,                    0, 0, 0x00000001, I/O &Point:, 0,  0,                , 0, 
+ 5, 10, 0x00010002, Clear Quadrature Counter,         0, 0, 0x00000002, I/O &Point:, 0,  0,                , 0, 
+ 5, 19, 0x00012002, Clear On-Pulse,                   0, 0, 0x00000010, I/O &Point:, 0,  0,                , 0, 
+ 5, 20, 0x00012002, Clear Off-Pulse,                  0, 0, 0x00000020, I/O &Point:, 0,  0,                , 0, 
+ 5, 21, 0x00012002, Clear Period,                     0, 0, 0x00000080, I/O &Point:, 0,  0,                , 0, 
+ 5, 22, 0x00012002, Clear Totalize On,                0, 0, 0x00000100, I/O &Point:, 0,  0,                , 0, 
+ 5, 23, 0x00012002, Clear Totalize Off,               0, 0, 0x00000200, I/O &Point:, 0,  0,                , 0, 
+ 7, 11, 0x00012002, Read & Hold Counter Value,        0, 0, 0x00000001, I/O &Point:, 1,  0,                , 0, 
+ 7, 12, 0x00010002, Read & Hold Quadrature Value,     0, 0, 0x00000002, I/O &Point:, 1,  0,                , 0, 
+ 7, 13, 0x00012002, Read & Hold Totalize On Value,    1, 0, 0x00000100, I/O &Point:, 1,  0,                , 0, 
+ 7, 14, 0x00012002, Read & Hold Totalize Off Value,   1, 0, 0x00000200, I/O &Point:, 1,  0,                , 0, 
+ 7, 15, 0x00012002, Read & Hold On-Pulse Value,       1, 0, 0x00000010, I/O &Point:, 1,  0,                , 0, 
+ 7, 16, 0x00012002, Read & Hold Off-Pulse Value,      1, 0, 0x00000020, I/O &Point:, 1,  0,                , 0, 
+ 7, 17, 0x00012002, Read & Hold Period Value,         1, 0, 0x00000080, I/O &Point:, 1,  0,                , 0, 
+ 7, 18, 0x00012002, Read & Hold Frequency Value,      0, 0, 0x00000040, I/O &Point:, 1,  0,                , 0, 
+
+
+
+Column  1: Id number of reaction needed by compiler/mistic
+
+Column  2: Cyrano unique id number for the reaction
+
+Column  3: Bitmask of I/O Units the reaction is allowed on
+
+Column  4: String giving reaction name
+
+Column  5: Value indicating how this reaction should be compiled
+           (0 = as integer, 1 = as float)
+
+Column  6: Of the 4 bitmasks in a typemask, which bitmask the data
+           in the next column is for (0 - 3 are valid numbers).
+
+Column  7: TypeMask of item affected by the reaction
+           0: none (e.g. watchdog, MOMO), otherwise
+           typemask for point type of feature, PID loop, E/R, etc.
+
+Column  8: Dialog prompt string for previous column item
+
+Column  9: Value indicating if this reaction is a "Read & Hold..." type
+           (0 = not Read and Hold, 1 = is Read and Hold)
+
+Column 10: Reaction data type 1:
+            -1: put a -1 into the data1 field (for "Enable/Activate"-type events)
+             0: none
+             1: unsigned long
+             2: signed long
+             3: float
+             4: MOMO
+
+Column 11: Dialog prompt string for previous column data
+
+Column 12: Reaction data type 2 (same as Column 8)
+
+Column 13: Dialog prompt string for previous column data
+
+Column 14: If event is allowed on analog I/O units, boolean flag
+           (0 = FALSE, 1 = TRUE) indicating whether an analog value
+           type is needed (i.e. current value, average value, peak
+           value, etc.)

@@ -1,0 +1,1995 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "1.0.16",
+  "channelTypes": [
+    {
+      "channelTypeId": "0x00000000",
+      "name": {
+        "en": "Generic Type"
+      }
+    },
+    {
+      "channelTypeId": "0x60000000",
+      "name": {
+        "en": "Generic Analog Input",
+        "de": "Generischer Analoger Eingang"
+      }
+    },
+    {
+      "channelTypeId": "0xA0000000",
+      "name": {
+        "en": "Generic Analog Output",
+        "de": "Generischer Analoger Ausgang"
+      }
+    },
+    {
+      "channelTypeId": "0x50000000",
+      "name": {
+        "en": "Digital Input",
+        "de": "Digitaler Eingang"
+      }
+    },
+    {
+      "channelTypeId": "0x90000000",
+      "name": {
+        "en": "Digital Output",
+        "de": "Digitaler Ausgang"
+      }
+    },
+    {
+      "channelTypeId": "0x64000000",
+      "name": {
+        "en": "Generic Simple Analog Input"
+      }
+    },
+    {
+      "channelTypeId": "0xA4000000",
+      "name": {
+        "en": "Generic Simple Analog Output"
+      }
+    },
+    {
+      "channelTypeId": "0x54000000",
+      "name": {
+        "en": "Simple Digital Input"
+      }
+    },
+    {
+      "channelTypeId": "0x94000000",
+      "name": {
+        "en": "Simple Digital Output"
+      }
+    },
+    {
+      "channelTypeId": "0x60000001",
+      "name": {
+        "en": "±1.25 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -1.3875,
+      "lowScale": -1.25,
+      "highScale": 1.25,
+      "maxOverScale": 1.3875
+    },
+    {
+      "channelTypeId": "0x60000002",
+      "name": {
+        "en": "±1200 mV"
+      },
+      "engineeringUnits": "mV",
+      "minUnderScale": -1332.0,
+      "lowScale": -1200.0,
+      "highScale": 1200.0,
+      "maxOverScale": 1332.0
+    },
+    {
+      "channelTypeId": "0x60000003",
+      "name": {
+        "en": "±600 mV"
+      },
+      "engineeringUnits": "mV",
+      "minUnderScale": -666.0,
+      "lowScale": -600.0,
+      "highScale": 600.0,
+      "maxOverScale": 666.0
+    },
+    {
+      "channelTypeId": "0x60000004",
+      "name": {
+        "en": "±300 mV"
+      },
+      "engineeringUnits": "mV",
+      "minUnderScale": -333.0,
+      "lowScale": -300.0,
+      "highScale": 300.0,
+      "maxOverScale": 333.0
+    },
+    {
+      "channelTypeId": "0x60000005",
+      "name": {
+        "en": "±150 mV"
+      },
+      "engineeringUnits": "mV",
+      "minUnderScale": -166.5,
+      "lowScale": -150.0,
+      "highScale": 150.0,
+      "maxOverScale": 166.5
+    },
+    {
+      "channelTypeId": "0x60000006",
+      "name": {
+        "en": "±75 mV"
+      },
+      "engineeringUnits": "mV",
+      "minUnderScale": -83.25,
+      "lowScale": -75.0,
+      "highScale": 75.0,
+      "maxOverScale": 83.25
+    },
+    {
+      "channelTypeId": "0x60000007",
+      "name": {
+        "en": "±50 mV"
+      },
+      "engineeringUnits": "mV",
+      "minUnderScale": -55.5,
+      "lowScale": -50.0,
+      "highScale": 50.0,
+      "maxOverScale": 55.5
+    },
+    {
+      "channelTypeId": "0x60000008",
+      "name": {
+        "en": "±25 mV"
+      },
+      "engineeringUnits": "mV",
+      "minUnderScale": -27.75,
+      "lowScale": -25.0,
+      "highScale": 25.0,
+      "maxOverScale": 27.75
+    },
+    {
+      "channelTypeId": "0x60000009",
+      "name": {
+        "en": "Type B Thermocouple (°C)",
+        "de": "Typ B Thermoelement (°C)",
+        "es": "Tipo B Termopar (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 1820.0,
+      "maxOverScale": 1820.0
+    },
+    {
+      "channelTypeId": "0x6000000A",
+      "name": {
+        "en": "±20 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -22.2,
+      "lowScale": -20.0,
+      "highScale": 20.0,
+      "maxOverScale": 22.2
+    },
+    {
+      "channelTypeId": "0x6000000B",
+      "name": {
+        "en": "±40 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -44.4,
+      "lowScale": -40.0,
+      "highScale": 40.0,
+      "maxOverScale": 44.4
+    },
+    {
+      "channelTypeId": "0x6000000C",
+      "name": {
+        "en": "Type E Thermocouple (°C)",
+        "de": "Typ E Thermoelement (°C)",
+        "es": "Tipo E Termopar (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -270.0,
+      "lowScale": -270.0,
+      "highScale": 1000.0,
+      "maxOverScale": 1000.0
+    },
+    {
+      "channelTypeId": "0x6000000D",
+      "name": {
+        "en": "±80 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -88.8,
+      "lowScale": -80.0,
+      "highScale": 80.0,
+      "maxOverScale": 88.8
+    },
+    {
+      "channelTypeId": "0x6000000E",
+      "name": {
+        "en": "Type J Thermocouple (°C)",
+        "de": "Typ J Thermoelement (°C)",
+        "es": "Tipo J Termopar (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -210.0,
+      "lowScale": -210.0,
+      "highScale": 1200.0,
+      "maxOverScale": 1200.0
+    },
+    {
+      "channelTypeId": "0x6000000F",
+      "name": {
+        "en": "Type K Thermocouple (°C)",
+        "de": "Typ K Thermoelement (°C)",
+        "es": "Tipo K Termopar (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -270.0,
+      "lowScale": -270.0,
+      "highScale": 1372.0,
+      "maxOverScale": 1372.0
+    },
+    {
+      "channelTypeId": "0x60000010",
+      "name": {
+        "en": "Type N Thermocouple (°C)",
+        "de": "Typ N Thermoelement (°C)",
+        "es": "Tipo N Termopar (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -270.0,
+      "lowScale": -270.0,
+      "highScale": 1300.0,
+      "maxOverScale": 1300.0
+    },
+    {
+      "channelTypeId": "0x60000011",
+      "name": {
+        "en": "Type R Thermocouple (°C)",
+        "de": "Typ R Thermoelement (°C)",
+        "es": "Tipo R Termopar (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -50.0,
+      "lowScale": -50.0,
+      "highScale": 1768.0,
+      "maxOverScale": 1768.0
+    },
+    {
+      "channelTypeId": "0x60000012",
+      "name": {
+        "en": "Type S Thermocouple (°C)",
+        "de": "Typ S Thermoelement (°C)",
+        "es": "Tipo S Termopar (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -50.0,
+      "lowScale": -50.0,
+      "highScale": 1768.0,
+      "maxOverScale": 1768.0
+    },
+    {
+      "channelTypeId": "0x60000013",
+      "name": {
+        "en": "Type T Thermocouple (°C)",
+        "de": "Typ T Thermoelement (°C)",
+        "es": "Tipo T Termopar (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -270.0,
+      "lowScale": -270.0,
+      "highScale": 400.0,
+      "maxOverScale": 400.0
+    },
+    {
+      "channelTypeId": "0x60000014",
+      "name": {
+        "en": "±20 mA"
+      },
+      "engineeringUnits": "mA",
+      "minUnderScale": -22.2,
+      "lowScale": -20.0,
+      "highScale": 20.0,
+      "maxOverScale": 22.2
+    },
+    {
+      "channelTypeId": "0x60000015",
+      "name": {
+        "en": "0-20 mA"
+      },
+      "engineeringUnits": "mA",
+      "minUnderScale": -1.0,
+      "lowScale": 0.0,
+      "highScale": 20.0,
+      "maxOverScale": 22.2
+    },
+    {
+      "channelTypeId": "0x60000016",
+      "name": {
+        "en": "4-20 mA"
+      },
+      "engineeringUnits": "mA",
+      "minUnderScale": 1.8,
+      "lowScale": 4.0,
+      "highScale": 20.0,
+      "maxOverScale": 22.2
+    },
+    {
+      "channelTypeId": "0x60000017",
+      "name": {
+        "en": "±10 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -11.1,
+      "lowScale": -10.0,
+      "highScale": 10.0,
+      "maxOverScale": 11.1
+    },
+    {
+      "channelTypeId": "0x60000018",
+      "name": {
+        "en": "0-10 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -0.1,
+      "lowScale": 0.0,
+      "highScale": 10.0,
+      "maxOverScale": 11.1
+    },
+    {
+      "channelTypeId": "0x60000019",
+      "name": {
+        "en": "±5 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -5.55,
+      "lowScale": -5.0,
+      "highScale": 5.0,
+      "maxOverScale": 5.55
+    },
+    {
+      "channelTypeId": "0x6000001A",
+      "name": {
+        "en": "0-5 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -0.05,
+      "lowScale": 0.0,
+      "highScale": 5.0,
+      "maxOverScale": 5.55
+    },
+    {
+      "channelTypeId": "0xA000001B",
+      "name": {
+        "en": "0-20 mA"
+      },
+      "engineeringUnits": "mA",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 20.0,
+      "maxOverScale": 20.0
+    },
+    {
+      "channelTypeId": "0xA000001C",
+      "name": {
+        "en": "0-24 mA"
+      },
+      "engineeringUnits": "mA",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 24.0,
+      "maxOverScale": 24.0
+    },
+    {
+      "channelTypeId": "0xA000001D",
+      "name": {
+        "en": "4-20 mA"
+      },
+      "engineeringUnits": "mA",
+      "minUnderScale": 4.0,
+      "lowScale": 4.0,
+      "highScale": 20.0,
+      "maxOverScale": 20.0
+    },
+    {
+      "channelTypeId": "0xA000001E",
+      "name": {
+        "en": "3.2-24 mA"
+      },
+      "engineeringUnits": "mA",
+      "minUnderScale": 3.2,
+      "lowScale": 3.2,
+      "highScale": 24.0,
+      "maxOverScale": 24.0
+    },
+    {
+      "channelTypeId": "0xA000001F",
+      "name": {
+        "en": "±10 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -10.0,
+      "lowScale": -10.0,
+      "highScale": 10.0,
+      "maxOverScale": 10.0
+    },
+    {
+      "channelTypeId": "0xA0000020",
+      "name": {
+        "en": "0-10 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 10.0,
+      "maxOverScale": 10.0
+    },
+    {
+      "channelTypeId": "0xA0000021",
+      "name": {
+        "en": "±5 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -5.0,
+      "lowScale": -5.0,
+      "highScale": 5.0,
+      "maxOverScale": 5.0
+    },
+    {
+      "channelTypeId": "0xA0000022",
+      "name": {
+        "en": "0-5 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 5.0,
+      "maxOverScale": 5.0
+    },
+    {
+      "channelTypeId": "0xA0000023",
+      "name": {
+        "en": "Analog Hi-Z"
+      },
+      "engineeringUnits": "None",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 0.0,
+      "maxOverScale": 0.0
+    },
+    {
+      "channelTypeId": "0x60000024",
+      "name": {
+        "en": "±160 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -177.6,
+      "lowScale": -160.0,
+      "highScale": 160.0,
+      "maxOverScale": 177.6
+    },
+    {
+      "channelTypeId": "0x60000025",
+      "name": {
+        "en": "±2.5 V"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -2.775,
+      "lowScale": -2.5,
+      "highScale": 2.5,
+      "maxOverScale": 2.775
+    },
+
+    {
+      "channelTypeId" : "0x08000026",
+      "name" : {
+        "en": "RS232"
+      }
+    },
+    {
+      "channelTypeId" : "0x08000027",
+      "name" : {
+        "en": "RS485, 2-Wire, no termination, no bias"
+      }
+    },
+    {
+      "channelTypeId" : "0x08000028",
+      "name" : {
+        "en": "RS485, 2-Wire, termination, no bias"
+      }
+    },
+    {
+      "channelTypeId" : "0x08000029",
+      "name" : {
+        "en": "RS485, 2-Wire, no termination, bias"
+      }
+    },
+    {
+     "channelTypeId" : "0x0800002A",
+     "name" : {
+       "en": "RS485, 2-Wire, termination, bias"
+     }
+    },
+    {
+     "channelTypeId" : "0x0800002B",
+     "name" : {
+       "en": "RS485, 4-Wire, no termination, no bias"
+     }
+    },
+    {
+     "channelTypeId" : "0x0800002C",
+     "name" : {
+       "en": "RS485, 4-Wire, termination, no bias"
+     }
+    },
+    {
+     "channelTypeId" : "0x0800002D",
+     "name" : {
+       "en": "RS485, 4-Wire, no termination, bias"
+     }
+    },
+    {
+     "channelTypeId" : "0x0800002E",
+     "name" : {
+       "en": "RS485, 4-Wire, termination, bias"
+     }
+    },
+    {
+     "channelTypeId" : "0x5000002F",
+     "name" : {
+       "en": "2.5–30 VDC with Quadrature"
+     },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 2.5,
+      "lowScale": 2.5,
+      "highScale": 30.0,
+      "maxOverScale": 30.0
+    },
+    {
+     "channelTypeId" : "0x50000030",
+     "name" : {
+       "en": "2.5–30 VDC with Quadrature Index"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 2.5,
+      "lowScale": 2.5,
+      "highScale": 30.0,
+      "maxOverScale": 30.0
+    },
+    {
+     "channelTypeId" : "0x60000031",
+     "name" : {
+       "en": "ICTD Temperature Probe"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -270.0,
+      "lowScale": -270.0,
+      "highScale": 150.0,
+      "maxOverScale": 150.0
+    },
+    {
+      "channelTypeId": "0x60000032",
+      "name": {
+        "en": "0–400k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 400000.0,
+      "maxOverScale": 444000.0
+    },
+    {
+      "channelTypeId": "0x60000033",
+      "name": {
+        "en": "0–400k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 400000.0,
+      "maxOverScale": 444000.0
+    },
+    {
+      "channelTypeId": "0x60000034",
+      "name": {
+        "en": "0–200k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 200000.0,
+      "maxOverScale": 222000.0
+    },
+    {
+      "channelTypeId": "0x60000035",
+      "name": {
+        "en": "0–100k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 100000.0,
+      "maxOverScale": 111000.0
+    },
+    {
+      "channelTypeId": "0x60000036",
+      "name": {
+        "en": "0–50k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 50000.0,
+      "maxOverScale": 55500.0
+    },
+    {
+      "channelTypeId": "0x60000037",
+      "name": {
+        "en": "0–40k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 40000.0,
+      "maxOverScale": 44400.0
+    },
+    {
+      "channelTypeId": "0x60000038",
+      "name": {
+        "en": "0–20k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 20000.0,
+      "maxOverScale": 22200.0
+    },
+    {
+      "channelTypeId": "0x60000039",
+      "name": {
+        "en": "0–10k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 10000.0,
+      "maxOverScale": 11100.0
+    },
+    {
+      "channelTypeId": "0x6000003A",
+      "name": {
+        "en": "0–5k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 5000.0,
+      "maxOverScale": 5550.0
+    },
+    {
+      "channelTypeId": "0x6000003B",
+      "name": {
+        "en": "0–4k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 4000.0,
+      "maxOverScale": 4440.0
+    },
+    {
+      "channelTypeId": "0x6000003C",
+      "name": {
+        "en": "0–2k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 2000.0,
+      "maxOverScale": 2220.0
+    },
+    {
+      "channelTypeId": "0x6000003D",
+      "name": {
+        "en": "0–1k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 1000.0,
+      "maxOverScale": 1110.0
+    },
+    {
+      "channelTypeId": "0x6000003E",
+      "name": {
+        "en": "0–500 Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 500.0,
+      "maxOverScale": 555.0
+    },
+    {
+      "channelTypeId": "0x6000003F",
+      "name": {
+        "en": "Thermistor: 2252 Curve (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -10000.0,
+      "lowScale": -40.0,
+      "highScale": 150.0,
+      "maxOverScale": 10000.0
+    },
+    {
+      "channelTypeId": "0x60000040",
+      "name": {
+        "en": "Thermistor: 3K Curve (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -10000.0,
+      "lowScale": -40.0,
+      "highScale": 150.0,
+      "maxOverScale": 10000.0
+    },
+    {
+      "channelTypeId": "0x60000041",
+      "name": {
+        "en": "Thermistor: 10K Type 2 Curve (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -10000.0,
+      "lowScale": -40.0,
+      "highScale": 150.0,
+      "maxOverScale": 10000.0
+    },
+    {
+      "channelTypeId": "0x60000042",
+      "name": {
+        "en": "Thermistor: 10K Type 3 Curve (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -10000.0,
+      "lowScale": -40.0,
+      "highScale": 150.0,
+      "maxOverScale": 10000.0
+    },
+    {
+      "channelTypeId": "0x60000043",
+      "name": {
+        "en": "Thermistor: Custom Curve (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -10000.0,
+      "lowScale": -40.0,
+      "highScale": 150.0,
+      "maxOverScale": 10000.0
+    },
+    {
+      "channelTypeId": "0x60000044",
+      "name": {
+        "en": "RTD: 1000 Ohm @ 70F Ni 3-wire (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -45.0,
+      "lowScale": -45.0,
+      "highScale": 250.0,
+      "maxOverScale": 250.0
+    },
+    {
+      "channelTypeId": "0x60000045",
+      "name": {
+        "en": "RTD: 1000 Ohm @ 0C Ni 3-wire (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -60.0,
+      "lowScale": -60.0,
+      "highScale": 250.0,
+      "maxOverScale": 250.0
+    },
+    {
+      "channelTypeId": "0x60000046",
+      "name": {
+        "en": "RTD: 1000 Ohm Pt 3-wire (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -200.0,
+      "lowScale": -200.0,
+      "highScale": 850.0,
+      "maxOverScale": 850.0
+    },
+    {
+      "channelTypeId": "0x60000047",
+      "name": {
+        "en": "RTD: 120 Ohm Ni 3-wire (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -80.0,
+      "lowScale": -80.0,
+      "highScale": 260.0,
+      "maxOverScale": 260.0
+    },
+    {
+      "channelTypeId": "0x60000048",
+      "name": {
+        "en": "RTD: 100 Ohm Ni 3-wire (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -60.0,
+      "lowScale": -60.0,
+      "highScale": 250.0,
+      "maxOverScale": 250.0
+    },
+    {
+      "channelTypeId": "0x60000049",
+      "name": {
+        "en": "RTD: 100 Ohm Pt 3-wire (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -200.0,
+      "lowScale": -200.0,
+      "highScale": 850.0,
+      "maxOverScale": 850.0
+    },
+    {
+      "channelTypeId": "0x6000004A",
+      "name": {
+        "en": "RTD: 10 Ohm Cu 3-wire (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -200.0,
+      "lowScale": -200.0,
+      "highScale": 260.0,
+      "maxOverScale": 260.0
+    },
+    {
+      "channelTypeId": "0x6000004B",
+      "name": {
+        "en": "0-8k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 8000.0,
+      "maxOverScale": 8880.0
+    },
+    {
+      "channelTypeId": "0x6000004C",
+      "name": {
+        "en": "0-4k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 4000.0,
+      "maxOverScale": 4440.0
+    },
+    {
+      "channelTypeId": "0x6000004D",
+      "name": {
+        "en": "0-2k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 2000.0,
+      "maxOverScale": 2220.0
+    },
+    {
+      "channelTypeId": "0x6000004E",
+      "name": {
+        "en": "0-1k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 1000.0,
+      "maxOverScale": 1110.0
+    },
+    {
+      "channelTypeId": "0x6000004F",
+      "name": {
+        "en": "0-800 Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 800.0,
+      "maxOverScale": 888.0
+    },
+    {
+      "channelTypeId": "0x60000050",
+      "name": {
+        "en": "0-400 Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 400.0,
+      "maxOverScale": 444.0
+    },
+    {
+      "channelTypeId": "0x60000051",
+      "name": {
+        "en": "0-200 Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 200.0,
+      "maxOverScale": 222.0
+    },
+    {
+      "channelTypeId": "0x60000052",
+      "name": {
+        "en": "0-100 Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 100.0,
+      "maxOverScale": 111.0
+    },
+    {
+      "channelTypeId": "0x60000053",
+      "name": {
+        "en": "0-80 Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 80.0,
+      "maxOverScale": 88.8
+    },
+    {
+      "channelTypeId": "0x60000054",
+      "name": {
+        "en": "0-40 Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 40.0,
+      "maxOverScale": 44.4
+    },
+    {
+      "channelTypeId": "0x60000055",
+      "name": {
+        "en": "0-20 Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 20.0,
+      "maxOverScale": 22.2
+    },
+    {
+      "channelTypeId": "0x60000056",
+      "name": {
+        "en": "0-8k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 8000.0,
+      "maxOverScale": 8880.0
+    },
+    {
+      "channelTypeId": "0x60000057",
+      "name": {
+        "en": "0-800 Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 800.0,
+      "maxOverScale": 888.0
+    },
+    {
+      "channelTypeId": "0x60000058",
+      "name": {
+        "en": "0-400 Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 400.0,
+      "maxOverScale": 444.0
+    },
+    {
+      "channelTypeId": "0x60000059",
+      "name": {
+        "en": "0-200 Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 200.0,
+      "maxOverScale": 222.0
+    },
+    {
+      "channelTypeId": "0x6000005A",
+      "name": {
+        "en": "0-100 Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 100.0,
+      "maxOverScale": 111.0
+    },
+    {
+      "channelTypeId": "0x6000005B",
+      "name": {
+        "en": "0-80 Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 80.0,
+      "maxOverScale": 88.8
+    },
+    {
+      "channelTypeId": "0x6000005C",
+      "name": {
+        "en": "0-40 Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 40.0,
+      "maxOverScale": 44.4
+    },
+    {
+      "channelTypeId": "0x6000005D",
+      "name": {
+        "en": "0-20 Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 20.0,
+      "maxOverScale": 22.2
+    },
+    {
+      "channelTypeId": "0x6000005E",
+      "name": {
+        "en": "0-10 Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 10.0,
+      "maxOverScale": 11.1
+    },
+    {
+      "channelTypeId": "0x6000005F",
+      "name": {
+        "en": "0-200k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 200000.0,
+      "maxOverScale": 222000.0
+    },
+    {
+      "channelTypeId": "0x60000060",
+      "name": {
+        "en": "0-100k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 100000.0,
+      "maxOverScale": 111000.0
+    },
+    {
+      "channelTypeId": "0x60000061",
+      "name": {
+        "en": "0-50k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 50000.0,
+      "maxOverScale": 55500.0
+    },
+    {
+      "channelTypeId": "0x60000062",
+      "name": {
+        "en": "0-40k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 40000.0,
+      "maxOverScale": 44400.0
+    },
+    {
+      "channelTypeId": "0x60000063",
+      "name": {
+        "en": "0-20k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 20000.0,
+      "maxOverScale": 22200.0
+    },
+    {
+      "channelTypeId": "0x60000064",
+      "name": {
+        "en": "0-10k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 10000.0,
+      "maxOverScale": 11100.0
+    },
+    {
+      "channelTypeId": "0x60000065",
+      "name": {
+        "en": "0-5k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 5000.0,
+      "maxOverScale": 5550.0
+    },
+    {
+      "channelTypeId" : "0x08000066",
+      "name" : {
+        "en": "CAN, no termination"
+      }
+    },
+    {
+      "channelTypeId" : "0x08000067",
+      "name" : {
+        "en": "CAN, with termination"
+      }
+    },
+    {
+      "channelTypeId" : "0x50000068",
+      "name" : {
+        "en": "Switch Input, Powered"
+      }
+    },
+    {
+      "channelTypeId": "0x50000069",
+      "name": {
+        "en": "85–140 VAC"
+      },
+      "engineeringUnits": "VAC",
+      "minUnderScale": 85.0,
+      "lowScale": 85.0,
+      "highScale": 140.0,
+      "maxOverScale": 140.0
+    },
+    {
+      "channelTypeId": "0x5400006A",
+      "name": {
+        "en": "85–140 VAC"
+      },
+      "engineeringUnits": "VAC",
+      "minUnderScale": 85.0,
+      "lowScale": 85.0,
+      "highScale": 140.0,
+      "maxOverScale": 140.0
+    },
+    {
+      "channelTypeId": "0x5000006B",
+      "name": {
+        "en": "2–16 VDC"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 2.0,
+      "lowScale": 2.0,
+      "highScale": 16.0,
+      "maxOverScale": 16.0
+    },
+    {
+      "channelTypeId": "0x5400006C",
+      "name": {
+        "en": "2–16 VDC"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 2.0,
+      "lowScale": 2.0,
+      "highScale": 16.0,
+      "maxOverScale": 16.0
+    },
+    {
+      "channelTypeId": "0x5000006D",
+      "name": {
+        "en": "180–280 VAC"
+      },
+      "engineeringUnits": "VAC",
+      "minUnderScale": 180.0,
+      "lowScale": 180.0,
+      "highScale": 280.0,
+      "maxOverScale": 280.0
+    },
+    {
+      "channelTypeId": "0x5400006E",
+      "name": {
+        "en": "180–280 VAC"
+      },
+      "engineeringUnits": "VAC",
+      "minUnderScale": 180.0,
+      "lowScale": 180.0,
+      "highScale": 280.0,
+      "maxOverScale": 280.0
+    },
+    {
+      "channelTypeId": "0x5000006F",
+      "name": {
+        "en": "15-30 VDC"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 15.0,
+      "lowScale": 15.0,
+      "highScale": 30.0,
+      "maxOverScale": 30.0
+    },
+    {
+      "channelTypeId": "0x50000070",
+      "name": {
+        "en": "10-30 VDC"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 10.0,
+      "lowScale": 10.0,
+      "highScale": 30.0,
+      "maxOverScale": 30.0
+    },
+    {
+      "channelTypeId": "0x54000071",
+      "name": {
+        "en": "10-30 VDC"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 10.0,
+      "lowScale": 10.0,
+      "highScale": 30.0,
+      "maxOverScale": 30.0
+    },
+    {
+      "channelTypeId": "0x54000072",
+      "name": {
+        "en": "15-30 VDC"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 15.0,
+      "lowScale": 15.0,
+      "highScale": 30.0,
+      "maxOverScale": 30.0
+    },
+    {
+      "channelTypeId": "0x90000073",
+      "name": {
+        "en": "12–250 VAC"
+      },
+      "engineeringUnits": "VAC",
+      "minUnderScale": 12.0,
+      "lowScale": 12.0,
+      "highScale": 250.0,
+      "maxOverScale": 250.0
+    },
+    {
+      "channelTypeId": "0x94000074",
+      "name": {
+        "en": "12–250 VAC"
+      },
+      "engineeringUnits": "VAC",
+      "minUnderScale": 12.0,
+      "lowScale": 12.0,
+      "highScale": 250.0,
+      "maxOverScale": 250.0
+    },
+    {
+      "channelTypeId": "0x90000075",
+      "name": {
+        "en": "5–60 VDC"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 5.0,
+      "lowScale": 5.0,
+      "highScale": 60.0,
+      "maxOverScale": 60.0
+    },
+    {
+      "channelTypeId": "0x94000076",
+      "name": {
+        "en": "5–60 VDC"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 5.0,
+      "lowScale": 5.0,
+      "highScale": 60.0,
+      "maxOverScale": 60.0
+    },
+    {
+      "channelTypeId": "0x90000077",
+      "name": {
+        "en": "5–60 VDC sourcing"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 5.0,
+      "lowScale": 5.0,
+      "highScale": 60.0,
+      "maxOverScale": 60.0
+    },
+    {
+      "channelTypeId": "0x94000078",
+      "name": {
+        "en": "Form C Relay"
+      }
+    },
+    {
+      "channelTypeId": "0x50000079",
+      "name": {
+        "en": "5-30 VDC"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 5.0,
+      "lowScale": 5.0,
+      "highScale": 30.0,
+      "maxOverScale": 30.0
+    },
+    {
+      "channelTypeId": "0x5400007A",
+      "name": {
+        "en": "5-30 VDC"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 5.0,
+      "lowScale": 5.0,
+      "highScale": 30.0,
+      "maxOverScale": 30.0
+    },
+    {
+      "channelTypeId": "0x9000007B",
+      "name": {
+        "en": "5-30 VDC"
+      },
+      "engineeringUnits": "VDC",
+      "minUnderScale": 5.0,
+      "lowScale": 5.0,
+      "highScale": 30.0,
+      "maxOverScale": 30.0
+    },
+    {
+      "channelTypeId": "0x6000007C",
+      "name": {
+        "en": "0–300 Vrms"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 300.0,
+      "maxOverScale": 333.0
+    },
+    {
+      "channelTypeId": "0x6000007D",
+      "name": {
+        "en": "0–150 Vrms"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 150.0,
+      "maxOverScale": 166.5
+    },
+    {
+      "channelTypeId": "0x6000007E",
+      "name": {
+        "en": "0–60 Vrms"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 60.0,
+      "maxOverScale": 66.6
+    },
+    {
+      "channelTypeId": "0x6000007F",
+      "name": {
+        "en": "0–30 Vrms"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 30.0,
+      "maxOverScale": 33.3
+    },
+    {
+      "channelTypeId": "0x60000080",
+      "name": {
+        "en": "0–20 Vrms"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 20.0,
+      "maxOverScale": 22.2
+    },
+    {
+      "channelTypeId": "0x60000081",
+      "name": {
+        "en": "0–10 Vrms"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 10.0,
+      "maxOverScale": 11.1
+    },
+    {
+      "channelTypeId": "0x60000082",
+      "name": {
+        "en": "0–5 Vrms"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 5.0,
+      "maxOverScale": 5.55
+    },
+    {
+      "channelTypeId": "0x60000083",
+      "name": {
+        "en": "0–1 Vrms"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 1.0,
+      "maxOverScale": 1.11
+    },
+    {
+      "channelTypeId": "0x60000084",
+      "name": {
+        "en": "0–0.5 Vrms"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 0.5,
+      "maxOverScale": 0.555
+    },
+    {
+      "channelTypeId": "0x54000085",
+      "name": {
+        "en": "Switch Input, Powered"
+      }
+    },
+    {
+      "channelTypeId": "0x94000086",
+      "name": {
+        "en": "Crosspoint Switch"
+      }
+    },
+    {
+      "channelTypeId": "0x60000087",
+      "name": {
+        "en": "0–600 Vrms Delta"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 600.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x60000088",
+      "name": {
+        "en": "0–520 Vrms Delta"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 520.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x60000089",
+      "name": {
+        "en": "0–400 Vrms Wye"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 400.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x6000008A",
+      "name": {
+        "en": "0–260 Vrms Delta"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 260.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x6000008B",
+      "name": {
+        "en": "0–150 Vrms Wye"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 150.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x6000008C",
+      "name": {
+        "en": "0–5 Arms CT"
+      },
+      "engineeringUnits": "Arms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x6000008D",
+      "name": {
+        "en": "0–0.333 Vrms CT"
+      },
+      "engineeringUnits": "Arms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x6000008E",
+      "name": {
+        "en": "0–300 Vrms Wye"
+      },
+      "engineeringUnits": "Vrms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 300.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x6000008F",
+      "name": {
+        "en": "True Power"
+      },
+      "engineeringUnits": "W",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x60000090",
+      "name": {
+        "en": "Reactive Power"
+      },
+      "engineeringUnits": "VAr",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x60000091",
+      "name": {
+        "en": "Apparent Power"
+      },
+      "engineeringUnits": "VA",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x60000092",
+      "name": {
+        "en": "Power Factor"
+      },
+      "engineeringUnits": "",
+      "minUnderScale": -1.0,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+	"maxOverScale": 1.0
+    },
+    {
+      "channelTypeId": "0x60000093",
+      "name": {
+        "en": "Peak Voltage"
+      },
+      "engineeringUnits": "V",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x60000094",
+      "name": {
+        "en": "Peak Current"
+      },
+      "engineeringUnits": "A",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x60000095",
+      "name": {
+        "en": "Frequency"
+      },
+      "engineeringUnits": "Hz",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x60000096",
+      "name": {
+        "en": "True Power At Fundamental Freq"
+      },
+      "engineeringUnits": "W",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x60000097",
+      "name": {
+        "en": "Harmonic True Power"
+      },
+      "engineeringUnits": "W",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x60000098",
+      "name": {
+        "en": "Reactive Power At Fundamental Freq"
+      },
+      "engineeringUnits": "VAr",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x60000099",
+      "name": {
+        "en": "Average Reactive Power"
+      },
+      "engineeringUnits": "VAr",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x6000009A",
+      "name": {
+        "en": "Net Energy"
+      },
+      "engineeringUnits": "kWh",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x6000009B",
+      "name": {
+        "en": "Energy (Unsigned)"
+      },
+      "engineeringUnits": "kWh",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x6000009C",
+      "name": {
+        "en": "Positive Energy"
+      },
+      "engineeringUnits": "kWh",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x6000009D",
+      "name": {
+        "en": "Negative Energy"
+      },
+      "engineeringUnits": "kWh",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x6000009E",
+      "name": {
+        "en": "Net Reactive Energy"
+      },
+      "engineeringUnits": "kVArh",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x6000009F",
+      "name": {
+        "en": "Apparent Energy"
+      },
+      "engineeringUnits": "kVAh",
+      "minUnderScale": -3.40282347e+38,
+      "lowScale": -1.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x600000A0",
+      "name": {
+        "en": "0–1 Arms CT"
+      },
+      "engineeringUnits": "Arms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x600000A1",
+      "name": {
+        "en": "0–1 Vrms CT"
+      },
+      "engineeringUnits": "Arms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 1.0,
+      "maxOverScale": 3.40282347e+38
+    },
+    {
+      "channelTypeId": "0x500000A2",
+      "name": {
+        "en": "10–25 VAC",
+        "de": "10–25 VAC"
+      }
+    },
+    {
+      "channelTypeId": "0x600000A3",
+      "name": {
+        "en": "Disabled",
+        "de": "deaktiviert"
+      },
+      "engineeringUnits": "",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 0.0,
+      "maxOverScale": 0.0
+    },
+    {
+      "channelTypeId": "0x600000A4",
+      "name": {
+        "en": "FastADC, 0–400k Ohms (autorange)"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 400000.0,
+      "maxOverScale": 444000.0
+    },
+    {
+      "channelTypeId": "0x600000A5",
+      "name": {
+        "en": "FastADC, 0–400k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 400000.0,
+      "maxOverScale": 444000.0
+    },
+    {
+      "channelTypeId": "0x600000A6",
+      "name": {
+        "en": "FastADC, 0–200k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 200000.0,
+      "maxOverScale": 222000.0
+    },
+    {
+      "channelTypeId": "0x600000A7",
+      "name": {
+        "en": "FastADC, 0–100k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 100000.0,
+      "maxOverScale": 111000.0
+    },
+    {
+      "channelTypeId": "0x600000A8",
+      "name": {
+        "en": "FastADC, 0–50k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 50000.0,
+      "maxOverScale": 55500.0
+    },
+    {
+      "channelTypeId": "0x600000A9",
+      "name": {
+        "en": "FastADC, 0–40k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 40000.0,
+      "maxOverScale": 44400.0
+    },
+    {
+      "channelTypeId": "0x600000AA",
+      "name": {
+        "en": "FastADC, 0–20k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 20000.0,
+      "maxOverScale": 22200.0
+    },
+    {
+      "channelTypeId": "0x600000AB",
+      "name": {
+        "en": "FastADC, 0–10k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 10000.0,
+      "maxOverScale": 11100.0
+    },
+    {
+      "channelTypeId": "0x600000AC",
+      "name": {
+        "en": "FastADC, 0–5k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 5000.0,
+      "maxOverScale": 5550.0
+    },
+    {
+      "channelTypeId": "0x600000AD",
+      "name": {
+        "en": "FastADC, 0–4k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 4000.0,
+      "maxOverScale": 4440.0
+    },
+    {
+      "channelTypeId": "0x600000AE",
+      "name": {
+        "en": "FastADC, 0–2k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 2000.0,
+      "maxOverScale": 2220.0
+    },
+    {
+      "channelTypeId": "0x600000AF",
+      "name": {
+        "en": "FastADC, 0–1k Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 1000.0,
+      "maxOverScale": 1110.0
+    },
+    {
+      "channelTypeId": "0x600000B0",
+      "name": {
+        "en": "FastADC, 0–500 Ohms"
+      },
+      "engineeringUnits": "Ohms",
+      "minUnderScale": 0.0,
+      "lowScale": 0.0,
+      "highScale": 500.0,
+      "maxOverScale": 555.0
+    },
+    {
+      "channelTypeId": "0x600000B1",
+      "name": {
+        "en": "FastADC, Thermistor: 2252 Curve (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -10000.0,
+      "lowScale": -40.0,
+      "highScale": 150.0,
+      "maxOverScale": 10000.0
+    },
+    {
+      "channelTypeId": "0x600000B2",
+      "name": {
+        "en": "FastADC, Thermistor: 3K Curve (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -10000.0,
+      "lowScale": -40.0,
+      "highScale": 150.0,
+      "maxOverScale": 10000.0
+    },
+    {
+      "channelTypeId": "0x600000B3",
+      "name": {
+        "en": "FastADC, Thermistor: 10K Type 2 Curve (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -10000.0,
+      "lowScale": -40.0,
+      "highScale": 150.0,
+      "maxOverScale": 10000.0
+    },
+    {
+      "channelTypeId": "0x600000B4",
+      "name": {
+        "en": "FastADC, Thermistor: 10K Type 3 Curve (°C)"
+      },
+      "engineeringUnits": "°C",
+      "minUnderScale": -10000.0,
+      "lowScale": -40.0,
+      "highScale": 150.0,
+      "maxOverScale": 10000.0
+    },
+    {
+      "channelTypeId": "0x600000B5",
+      "name": {
+        "en": "FastADC, Thermistor: Custom Curve (°C)"
+      },
+
+      "engineeringUnits": "°C",
+      "minUnderScale": -10000.0,
+      "lowScale": -40.0,
+      "highScale": 150.0,
+      "maxOverScale": 10000.0
+    }
+  ]
+}

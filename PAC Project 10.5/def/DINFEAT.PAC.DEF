@@ -1,0 +1,27 @@
+FFFEADB2
+11
+0x00000000, 0x00000000, None,                             None,       N/A,     INPUT
+0x00000001, 0x00000000, Counter,                          Counter,    Counts,  COUNTER
+0x00000002, 0x00000000, Quadrature Counter,               Quadrature, Counts,  QUADRATURE
+0x00000004, 0x00000000, Quadrature Index on Rising Edge,  Quadrature, Counts,  INDEXRISING
+0x00000008, 0x00000000, Quadrature Index on Falling Edge, Quadrature, Counts,  INDEXFALLING
+0x00000010, 0x00000000, On-Pulse,                         On-Pulse,   Seconds, +PULSE
+0x00000020, 0x00000000, Off-Pulse,                        Off-Pulse,  Seconds, -PULSE
+0x00000040, 0x00000000, Frequency,                        Frequency,  Hz,      FREQ
+0x00000080, 0x00000000, Period,                           Period,     Seconds, PERIOD
+0x00000100, 0x00000000, On-Time Totalizer,                On-Time,    Seconds, +TOTALIZER
+0x00000200, 0x00000000, Off-Time Totalizer,               Off-Time,   Seconds, -TOTALIZER
+
+
+Column 1: Bitmask of Feature
+
+Column 2: Display filter ( 0x10000000 == PRO )
+
+Column 3: Feature Name
+
+Column 4: Feature Name (short version)
+
+Column 5: Feature Units
+
+Column 6: Compiler Feature String
+

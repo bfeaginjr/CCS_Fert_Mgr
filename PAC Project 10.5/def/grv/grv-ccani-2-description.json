@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.1.1",
+  "contentVersion": "1.0.4",
+  "moduleId": "0x0C000027",
+  "family": "GRV-EPIC",
+  "productNumber": "GRV-CCANI-2",
+  "numberOfChannels": 2,
+  "productDescription": {
+    "en": "Serial communication, 2 channels, CAN, channel to channel isolation"
+  },
+  "channelDescriptions": {
+    "all": {
+      "channelTypes": [
+        "0x08000066",
+        "0x08000067"
+      ],
+      "defaultChannelType": "0x08000066"
+    }
+  },
+  "productSpecification": {
+    "en": {
+      "Serial Standards": "CAN 2.0",
+      "Bit Rates": "10 Kbps, 20 Kbps, 50 Kbps, 100 Kbps, 125 Kbps, 250 Kbps, 500 Kbps, 750 Kbps, 1 Mbps",
+      "Maximum Bus Length (1 Mbps)": "40 m",
+      "Maximum Bus Length (50 Kbps)": "1000 m",
+      "Bus Termination": "120 Ohms, selectable",
+      "Isolation (field-to-logic)": "300 V working, 1500 V transient (1 minute)",
+      "Isolation (channel-to-channel)": "300 V working",
+      "Number of Channels": "2 individually configurable channels",
+      "Indicators": "Transmit and Receive LEDs for each channel",
+      "Chassis Power Consumption": "1.5 W",
+      "Chassis Compatibility": "Slots 0–3 only.  The maximum number of modules per chassis is 4.",
+      "Minimum groov EPIC Firmware Version": "1.5.0",
+      "Minimum PAC Project Version": "TBD",
+      "Minimum Library Package for CODESYS Version": "1.0.2.0",
+      "Wire Size": "28–14 AWG",
+      "Torque, connector screw": "2.5 in-lb (0.28 N-m)",
+      "Torque, hold-down screw": "3.5 in-lb (0.4 N-m)",
+      "Temperature (operating)": "-20 °C to +70 °C",
+      "Temperature (storage)": "-40 °C to +85 °C",
+      "Relative Humidity (non-condensing)": "5–95%",
+      "Agency Approvals": "UL/cUL(Class 1 Div. 2); CE, ATEX(Category 3, Zone 2), RoHS; DFARS; CB Scheme; UKCA",
+      "Warranty": "30 months"
+    }
+  }
+}
